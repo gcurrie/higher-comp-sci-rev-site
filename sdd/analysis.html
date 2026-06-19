@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analysis — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="index.html">Software Design &amp; Development</a>
+    <span class="sep">›</span>
+    <span class="current">Analysis</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Software Design &amp; Development</div>
+    <h1>Analysis</h1>
+    <p>Identifying and documenting the purpose, scope, boundaries and functional requirements of a software problem before design or coding begins.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#purpose">Purpose</a></li>
+      <li><a href="#scope">Scope &amp; Boundaries</a></li>
+      <li><a href="#functional">Functional Requirements</a></li>
+      <li><a href="#end-user">End-user Requirements</a></li>
+      <li><a href="#example">Worked Example</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="purpose">Purpose</h2>
+      <p>The <strong>purpose</strong> statement describes, in plain language, what the software will do and for whom. It answers the question: <em>"Why does this system need to exist?"</em></p>
+      <p>A good purpose statement is:</p>
+      <ul>
+        <li>Clear and unambiguous</li>
+        <li>Written for a non-technical audience</li>
+        <li>Short — usually one or two sentences</li>
+      </ul>
+
+      <div class="example-block">
+        <div class="example-label">Example Purpose Statement</div>
+        <blockquote style="border-left:3px solid var(--green-primary);padding:.6rem 1rem;margin:.5rem 0;font-style:italic;">
+          "A stock management system for a small bookshop that allows staff to search for book availability, add new stock and generate low-stock alerts."
+        </blockquote>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="scope">Scope &amp; Boundaries</h2>
+      <p>The <strong>scope</strong> defines exactly what the system will and will not do. Establishing clear boundaries at the analysis stage prevents <em>scope creep</em> — where a project grows beyond what was originally planned.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+        <div style="background:#e8f5ee;border-radius:var(--radius);padding:1rem;">
+          <strong style="color:var(--green-primary);">In scope (will do)</strong>
+          <ul style="margin:.5rem 0 0;font-size:.9rem;">
+            <li>Search stock by title or author</li>
+            <li>Add, edit and delete stock records</li>
+            <li>Display items below minimum stock level</li>
+          </ul>
+        </div>
+        <div style="background:#fff3cd;border-radius:var(--radius);padding:1rem;">
+          <strong style="color:#856404;">Out of scope (will not do)</strong>
+          <ul style="margin:.5rem 0 0;font-size:.9rem;">
+            <li>Process customer payments</li>
+            <li>Manage staff accounts or permissions</li>
+            <li>Order books from suppliers automatically</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>When answering exam questions about scope, always identify <strong>what is included</strong> and what is <strong>deliberately excluded</strong>.</p>
+    </article>
+
+    <article>
+      <h2 id="functional">Functional Requirements</h2>
+      <p>Functional requirements describe what the system must <em>do</em>. They are broken into three categories:</p>
+
+      <table>
+        <thead><tr><th>Category</th><th>Definition</th><th>Bookshop example</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Inputs</strong></td>
+            <td>Data entered into the system</td>
+            <td>Book title, author name, ISBN, quantity in stock</td>
+          </tr>
+          <tr>
+            <td><strong>Processes</strong></td>
+            <td>Actions performed on data</td>
+            <td>Search for a book, calculate stock totals, flag low stock</td>
+          </tr>
+          <tr>
+            <td><strong>Outputs</strong></td>
+            <td>Information produced by the system</td>
+            <td>Search results list, low-stock report, stock quantity displayed</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Exam questions often ask you to identify the <strong>inputs, processes and outputs</strong> from a description. Look for data going <em>in</em> (inputs), calculations or decisions (processes) and results shown to the user (outputs).</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="end-user">End-user Requirements</h2>
+      <p>End-user requirements capture what the <strong>people who will use the software</strong> need from it. These are distinct from technical requirements and focus on usability, accessibility and user experience.</p>
+
+      <p>Examples of end-user requirements:</p>
+      <ul>
+        <li>The interface must be operable by staff with no IT background</li>
+        <li>Search results must appear in under two seconds</li>
+        <li>Text must be readable on standard monitors without zooming</li>
+      </ul>
+
+      <p>End-user requirements feed directly into the <strong>usability evaluation criterion</strong> — during evaluation, you assess whether the software meets these agreed requirements.</p>
+    </article>
+
+    <article>
+      <h2 id="example">Worked Example</h2>
+      <p>The following shows a complete analysis section for a typical Higher-level programming task.</p>
+
+      <div class="example-block">
+        <div class="example-label">Scenario: School Exam Results System</div>
+        <p><em>"Create a program that stores pupil exam results, finds the highest and lowest marks, and counts how many pupils achieved grade A (70% and above)."</em></p>
+
+        <p><strong>Purpose:</strong> A program to store and analyse exam results for a class of pupils, allowing a teacher to quickly identify top performers and count grade A passes.</p>
+
+        <p><strong>Scope:</strong> The program will store names and marks; calculate highest, lowest and count of grade As. It will not handle multiple subjects, calculate averages, or store the data permanently.</p>
+
+        <p><strong>Functional Requirements:</strong></p>
+        <table>
+          <thead><tr><th>Category</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td>Inputs</td><td>Pupil names (string), exam marks (integer 0–100), class size (integer)</td></tr>
+            <tr><td>Processes</td><td>Store names and marks; find highest mark; find lowest mark; count marks ≥ 70</td></tr>
+            <tr><td>Outputs</td><td>Highest mark (and pupil name); lowest mark (and pupil name); count of grade A passes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Analysis</div>
+      <div class="placeholder-sub">Exam-style questions on identifying purpose, scope and functional requirements</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS — WDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Web Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">CSS</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Web Design &amp; Development</div>
+    <h1>CSS</h1>
+    <p>Display property, float and clear, navigation bars with hover effects, margins, padding, fonts and colours.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#basics">CSS Basics</a></li>
+      <li><a href="#display">Display Property</a></li>
+      <li><a href="#float">Float &amp; Clear</a></li>
+      <li><a href="#navbar">Navigation Bars</a></li>
+      <li><a href="#hover">Hover Effects</a></li>
+      <li><a href="#boxmodel">Box Model</a></li>
+      <li><a href="#fonts">Fonts &amp; Colours</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="basics">CSS Basics</h2>
+      <p>CSS (Cascading Style Sheets) controls the visual appearance of HTML elements. Rules are written as <em>selector { property: value; }</em></p>
+
+      <div class="code-block">
+        <div class="code-label">CSS Rule Syntax</div>
+        <pre>/* Selector targets element(s); rules inside braces */
+h1 {
+    color: #00442A;      /* font colour */
+    font-size: 2rem;     /* font size */
+    font-family: Arial, sans-serif;
+}
+
+/* Class selector */
+.highlight {
+    background-color: yellow;
+    padding: 5px;
+}
+
+/* ID selector */
+#main-nav {
+    background-color: #002D1C;
+}</pre>
+      </div>
+
+      <h3>Ways to Apply CSS</h3>
+      <table>
+        <thead><tr><th>Method</th><th>How</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>External stylesheet</td><td><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td><td>Production websites — reused across pages</td></tr>
+          <tr><td>Internal (embedded)</td><td><code>&lt;style&gt; ... &lt;/style&gt;</code> in <code>&lt;head&gt;</code></td><td>Single-page demos</td></tr>
+          <tr><td>Inline</td><td><code>style="color:red"</code> on the element</td><td>Quick overrides — avoid for large sites</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="display">Display Property</h2>
+      <p>The <code>display</code> property controls how an element occupies space in the page flow.</p>
+
+      <table>
+        <thead><tr><th>Value</th><th>Behaviour</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>block</code></td>
+            <td>Takes up the full width available; starts on a new line; can have width/height/margin</td>
+            <td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code></td>
+          </tr>
+          <tr>
+            <td><code>inline</code></td>
+            <td>Only as wide as its content; does NOT start a new line; cannot set width/height</td>
+            <td><code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code></td>
+          </tr>
+          <tr>
+            <td><code>inline-block</code></td>
+            <td>Flows inline (no new line) BUT can have width, height and vertical margins</td>
+            <td>Navigation items, image galleries</td>
+          </tr>
+          <tr>
+            <td><code>none</code></td>
+            <td>Element is hidden completely — takes up no space</td>
+            <td>Hiding dropdown menus, modal dialogs</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-block">
+        <pre>/* Make list items display side-by-side */
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Hide an element */
+.hidden {
+    display: none;
+}</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="float">Float and Clear</h2>
+      <p><code>float</code> moves an element to the left or right, allowing text and other elements to wrap around it. It is commonly used to create multi-column layouts and navigation bars.</p>
+
+      <div class="code-block">
+        <div class="code-label">Float Example — Two-Column Layout</div>
+        <pre>/* Left column — 70% width, floated left */
+.main-content {
+    float: left;
+    width: 70%;
+}
+
+/* Right sidebar — 28% width, floated right */
+.sidebar {
+    float: right;
+    width: 28%;
+}
+
+/* Footer — clear floats so it appears below both columns */
+footer {
+    clear: both;
+}</pre>
+      </div>
+
+      <h3>The Clear Property</h3>
+      <p><code>clear</code> prevents an element from sitting beside a floated element. It forces the element below any floats on the specified side.</p>
+      <ul>
+        <li><code>clear: left</code> — clears left-floated elements</li>
+        <li><code>clear: right</code> — clears right-floated elements</li>
+        <li><code>clear: both</code> — clears floats on both sides (most common)</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Always add <code>clear: both</code> to the footer or any element that should appear below a floated layout — otherwise it will sit alongside the floated columns instead of below them.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="navbar">Navigation Bars</h2>
+      <p>Navigation bars are one of the most common CSS layout challenges. At Higher level, you need to be able to create both horizontal and vertical navigation bars.</p>
+
+      <h3>Horizontal Navigation Bar (Using Float)</h3>
+      <div class="code-block">
+        <div class="code-label">HTML</div>
+        <pre>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</pre>
+      </div>
+      <div class="code-block">
+        <div class="code-label">CSS</div>
+        <pre>nav ul {
+    list-style: none;   /* remove bullet points */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;   /* contain floated items */
+    background-color: #00442A;
+}
+
+nav ul li {
+    float: left;        /* place items side by side */
+}
+
+nav ul li a {
+    display: block;     /* make link fill the li */
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #C9A227;  /* highlight on hover */
+    color: #002D1C;
+}</pre>
+      </div>
+
+      <h3>Vertical Navigation Bar</h3>
+      <div class="code-block">
+        <pre>/* For a vertical nav, remove float — block display stacks items */
+nav ul li {
+    display: block;    /* each item on its own line */
+    border-bottom: 1px solid #ccc;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 15px;
+    color: #00442A;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #e8f5ee;
+}</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="hover">Hover Effects</h2>
+      <p>The <code>:hover</code> pseudo-class applies styles when the user moves their mouse over an element. It is used extensively for navigation feedback, button effects and interactive elements.</p>
+
+      <div class="code-block">
+        <pre>/* Button hover effect */
+.btn {
+    background-color: #00442A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #C9A227;
+    color: #002D1C;
+}
+
+/* Image hover — slight enlargement */
+img:hover {
+    transform: scale(1.05);
+}
+
+/* Link underline on hover */
+a {
+    text-decoration: none;
+    color: #00442A;
+}
+a:hover {
+    text-decoration: underline;
+}</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="boxmodel">Box Model — Margins and Padding</h2>
+      <p>Every HTML element is a rectangular "box". The CSS box model defines four areas around the content:</p>
+
+      <div style="text-align:center;margin:1rem 0;">
+        <div style="display:inline-block;background:#f0f0f0;padding:1.5rem;border:2px dashed #aaa;font-size:.8rem;">
+          <div>Margin (space outside border)</div>
+          <div style="background:#d4edda;padding:1rem;border:2px solid #28a745;margin:.5rem 0;">
+            <div>Border</div>
+            <div style="background:#cce5ff;padding:1rem;border:2px solid #004085;margin:.5rem 0;">
+              <div>Padding (space inside border)</div>
+              <div style="background:white;padding:.5rem;border:1px solid #999;margin:.5rem 0;font-weight:bold;">Content</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <pre>/* Shorthand: top, right, bottom, left */
+.box {
+    margin: 10px 20px 10px 20px;  /* all four sides */
+    padding: 15px;                 /* same on all sides */
+    border: 2px solid #00442A;
+}
+
+/* Individual sides */
+.card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}</pre>
+      </div>
+
+      <table>
+        <thead><tr><th>Property</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><code>margin</code></td><td>Space <em>outside</em> the border — pushes other elements away</td></tr>
+          <tr><td><code>padding</code></td><td>Space <em>inside</em> the border — between border and content</td></tr>
+          <tr><td><code>border</code></td><td>Line around the element (width, style, colour)</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="fonts">Fonts and Colours</h2>
+      <div class="code-block">
+        <pre>body {
+    font-family: Arial, Helvetica, sans-serif; /* fallback chain */
+    font-size: 16px;
+    font-weight: normal;           /* or bold, 400, 700 */
+    font-style: italic;            /* or normal */
+    line-height: 1.6;              /* spacing between lines */
+    color: #333333;                /* text colour */
+}
+
+h1 {
+    font-size: 2rem;               /* relative to root font size */
+    font-weight: bold;
+    color: #00442A;
+    text-align: center;
+    text-transform: uppercase;     /* ALL CAPS */
+    letter-spacing: 2px;
+}
+
+/* Background colours */
+header {
+    background-color: #002D1C;     /* hex colour */
+    color: white;
+}
+
+.highlight {
+    background-color: rgba(201, 162, 39, 0.2);  /* semi-transparent gold */
+}</pre>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — CSS</div>
+      <div class="placeholder-sub">Write CSS for navigation bars, two-column layouts and hover effects</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standard Algorithms — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Software Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Standard Algorithms</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Software Design &amp; Development</div>
+    <h1>Standard Algorithms</h1>
+    <p>At Higher level, three standard algorithms are required: linear search, find minimum and maximum, and count occurrences. These can be applied to 1D arrays or arrays of records.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#which">Higher Algorithms</a></li>
+      <li><a href="#linear-search">Linear Search</a></li>
+      <li><a href="#min-max">Find Min &amp; Max</a></li>
+      <li><a href="#count">Count Occurrences</a></li>
+      <li><a href="#records">With Arrays of Records</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="which">Which Algorithms Are Required at Higher?</h2>
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <p><strong>Higher requires only three standard algorithms:</strong></p>
+          <ul>
+            <li>Linear search</li>
+            <li>Find minimum and maximum</li>
+            <li>Count occurrences</li>
+          </ul>
+          <p style="margin-bottom:0;">Input validation and running total are <strong>National 5 algorithms</strong> — they will not be asked in a Higher exam context as a "standard algorithm" question.</p>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="linear-search">Linear Search</h2>
+      <p>A linear search checks every element in an array <strong>one at a time</strong>, from the first element to the last, until the target value is found or the end of the array is reached.</p>
+
+      <h3>Key Steps</h3>
+      <ol>
+        <li>Set a flag (found) to FALSE and an index to 0</li>
+        <li>Loop through each element</li>
+        <li>If the element matches the target, set found to TRUE and record the index</li>
+        <li>After the loop, report whether the target was found</li>
+      </ol>
+
+      <div class="code-block">
+        <div class="code-label">Linear Search — 1D Array</div>
+        <pre>DECLARE names AS ARRAY OF STRING INITIALLY ["Alice","Bob","Claire","David"]
+DECLARE target AS STRING INITIALLY "Claire"
+DECLARE found AS BOOLEAN INITIALLY FALSE
+DECLARE foundAt AS INTEGER INITIALLY -1
+
+FOR i FROM 0 TO LENGTH(names) - 1 DO
+    IF names[i] = target THEN
+        SET found TO TRUE
+        SET foundAt TO i
+    END IF
+END FOR
+
+IF found THEN
+    SEND target &amp; " found at index " &amp; foundAt TO DISPLAY
+ELSE
+    SEND target &amp; " not found" TO DISPLAY
+END IF</pre>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Some exam mark schemes accept a version that exits the loop early once found (using a WHILE NOT found loop). Either approach is valid — check what your teacher prefers for coursework.</div>
+      </div>
+
+      <h3>Variation: Exit Early When Found</h3>
+      <div class="code-block">
+        <pre>DECLARE i AS INTEGER INITIALLY 0
+DECLARE found AS BOOLEAN INITIALLY FALSE
+
+WHILE i &lt; LENGTH(names) AND NOT found DO
+    IF names[i] = target THEN
+        SET found TO TRUE
+    ELSE
+        SET i TO i + 1
+    END IF
+END WHILE</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Linear Search — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-linear-search"
+            title="Linear Search Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Linear Search</div>
+          <div class="ip-sub">Interactive editor coming here — modify the target value and trace how the algorithm finds (or doesn't find) a match</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="min-max">Find Minimum and Maximum</h2>
+      <p>Scan through the entire array, keeping track of the smallest (or largest) value seen so far. After the loop, the tracked value is the minimum (or maximum).</p>
+
+      <h3>Finding the Minimum</h3>
+      <div class="code-block">
+        <div class="code-label">Find Minimum Value and Its Index</div>
+        <pre>DECLARE marks AS ARRAY OF INTEGER INITIALLY [78, 45, 92, 61, 55]
+DECLARE minIndex AS INTEGER INITIALLY 0
+
+FOR i FROM 1 TO LENGTH(marks) - 1 DO
+    IF marks[i] &lt; marks[minIndex] THEN
+        SET minIndex TO i
+    END IF
+END FOR
+
+SEND "Lowest mark: " &amp; marks[minIndex] &amp; " (index " &amp; minIndex &amp; ")" TO DISPLAY</pre>
+      </div>
+
+      <h3>Finding the Maximum</h3>
+      <div class="code-block">
+        <pre>DECLARE maxIndex AS INTEGER INITIALLY 0
+
+FOR i FROM 1 TO LENGTH(marks) - 1 DO
+    IF marks[i] > marks[maxIndex] THEN
+        SET maxIndex TO i
+    END IF
+END FOR
+
+SEND "Highest mark: " &amp; marks[maxIndex] TO DISPLAY</pre>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div>Always <strong>start from index 1</strong> (not 0) in the loop — you use index 0 as the initial best candidate, then compare all others against it. Starting the loop from 0 would make an unnecessary comparison of the first element with itself.</div>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Find Minimum &amp; Maximum — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-min-max"
+            title="Find Minimum and Maximum Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Find Min &amp; Max</div>
+          <div class="ip-sub">Interactive editor coming here — change the array values and watch the minIndex/maxIndex update as the loop runs</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="count">Count Occurrences</h2>
+      <p>Traverse the entire array, incrementing a counter each time the element matches the target value.</p>
+
+      <div class="code-block">
+        <div class="code-label">Count Occurrences of a Value</div>
+        <pre>DECLARE grades AS ARRAY OF STRING INITIALLY ["A","B","A","C","A","B"]
+DECLARE target AS STRING INITIALLY "A"
+DECLARE count AS INTEGER INITIALLY 0
+
+FOR i FROM 0 TO LENGTH(grades) - 1 DO
+    IF grades[i] = target THEN
+        SET count TO count + 1
+    END IF
+END FOR
+
+SEND "Number of " &amp; target &amp; " grades: " &amp; count TO DISPLAY</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Count Occurrences — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-count"
+            title="Count Occurrences Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Count Occurrences</div>
+          <div class="ip-sub">Interactive editor coming here — change the target value and see the counter increment each time a match is found</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="records">Applying Algorithms to Arrays of Records</h2>
+      <p>All three algorithms work with arrays of records — you simply specify which <strong>field</strong> to compare.</p>
+
+      <div class="code-block">
+        <div class="code-label">Find Maximum in an Array of Records</div>
+        <pre>RECORD Pupil IS
+    name : STRING
+    mark : INTEGER
+END RECORD
+
+DECLARE class AS ARRAY OF Pupil INITIALLY []
+# (assume class is populated with pupil data)
+
+DECLARE maxIndex AS INTEGER INITIALLY 0
+
+FOR i FROM 1 TO LENGTH(class) - 1 DO
+    IF class[i].mark > class[maxIndex].mark THEN
+        SET maxIndex TO i
+    END IF
+END FOR
+
+SEND "Top pupil: " &amp; class[maxIndex].name &amp;
+     " with " &amp; class[maxIndex].mark TO DISPLAY</pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-label">Linear Search on a Record Field</div>
+        <pre>DECLARE target AS STRING INITIALLY "Bob"
+DECLARE found AS BOOLEAN INITIALLY FALSE
+DECLARE foundAt AS INTEGER INITIALLY -1
+
+FOR i FROM 0 TO LENGTH(class) - 1 DO
+    IF class[i].name = target THEN
+        SET found TO TRUE
+        SET foundAt TO i
+    END IF
+END FOR</pre>
+      </div>
+
+      <table>
+        <thead><tr><th>Algorithm</th><th>Array version</th><th>Array of records version</th></tr></thead>
+        <tbody>
+          <tr><td>Linear search</td><td><code>names[i] = target</code></td><td><code>class[i].name = target</code></td></tr>
+          <tr><td>Find max</td><td><code>marks[i] > marks[max]</code></td><td><code>class[i].mark > class[max].mark</code></td></tr>
+          <tr><td>Count occurrences</td><td><code>grades[i] = "A"</code></td><td><code>class[i].grade = "A"</code></td></tr>
+        </tbody>
+      </table>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Algorithms on Arrays of Records — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-records-algorithms"
+            title="Applying Algorithms to Arrays of Records"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Algorithms on Arrays of Records</div>
+          <div class="ip-sub">Interactive editor coming here — apply linear search, find max, and count occurrences on a record field of your choice</div>
+        </div>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Standard Algorithms</div>
+      <div class="placeholder-sub">Write and trace algorithms on 1D arrays and arrays of records</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

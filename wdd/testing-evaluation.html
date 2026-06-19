@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing &amp; Evaluation — WDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Web Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Testing &amp; Evaluation</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Web Design &amp; Development</div>
+    <h1>Testing &amp; Evaluation</h1>
+    <p>Usability testing with personas and test cases, compatibility testing across browsers and devices, and evaluating a website against fitness for purpose and usability.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#usability-testing">Usability Testing</a></li>
+      <li><a href="#personas">Personas</a></li>
+      <li><a href="#test-cases">Test Cases</a></li>
+      <li><a href="#compatibility">Compatibility Testing</a></li>
+      <li><a href="#evaluation">Evaluation Criteria</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="usability-testing">Usability Testing</h2>
+      <p><strong>Usability testing</strong> assesses how easy a website is to use for its intended audience. Real or representative users attempt to complete specific tasks on the website while an observer notes where they succeed, struggle or fail.</p>
+
+      <h3>What Usability Testing Checks</h3>
+      <ul>
+        <li><strong>Navigation</strong> — can users find their way around the site without help?</li>
+        <li><strong>Clarity</strong> — is the purpose of each page immediately obvious?</li>
+        <li><strong>Efficiency</strong> — can users complete tasks in a reasonable number of steps?</li>
+        <li><strong>Error recovery</strong> — when users make mistakes (e.g. in forms), can they easily correct them?</li>
+        <li><strong>Accessibility</strong> — can the site be used by people with visual or motor impairments?</li>
+      </ul>
+
+      <h3>Process</h3>
+      <ol>
+        <li>Define target user profiles (personas)</li>
+        <li>Write specific test cases (tasks for the user to attempt)</li>
+        <li>Observe users attempting the tasks — note where they struggle</li>
+        <li>Record results in a test plan</li>
+        <li>Revise the website based on findings</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 id="personas">Personas</h2>
+      <p>A <strong>persona</strong> is a fictional but realistic profile of a typical user in the target audience. Personas are used to focus usability testing by ensuring you test with representative user types, not just the people who built the site.</p>
+
+      <div class="example-block">
+        <div class="example-label">Example Persona — Sports Club Website</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+          <strong>Name:</strong> Margaret, 54 years old<br>
+          <strong>Role:</strong> Club treasurer, long-standing member<br>
+          <strong>Tech ability:</strong> Basic — uses email and Facebook, rarely shops online<br>
+          <strong>Device:</strong> iPad at home, occasionally desktop PC<br>
+          <strong>Goal:</strong> Check upcoming events and download the fixture list<br>
+          <strong>Frustrations:</strong> Small text, too many clicks to find information, confusing menus
+        </div>
+      </div>
+
+      <div class="example-block" style="margin-top:1rem;">
+        <div class="example-label">Example Persona — Sports Club Website</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+          <strong>Name:</strong> Callum, 17 years old<br>
+          <strong>Role:</strong> Junior member, prospective new player<br>
+          <strong>Tech ability:</strong> High — daily social media and gaming; primarily mobile<br>
+          <strong>Device:</strong> Smartphone (iPhone, Chrome browser)<br>
+          <strong>Goal:</strong> Find out how to join the club, sign up for taster session<br>
+          <strong>Frustrations:</strong> Sites that don't work on mobile, too much text, no clear "Join" button
+        </div>
+      </div>
+
+      <p>Each persona reminds the developer that different people use the site in different ways — and that the site must cater for all of them, not just the developer's own preferences.</p>
+    </article>
+
+    <article>
+      <h2 id="test-cases">Test Cases (Usability)</h2>
+      <p>A <strong>test case</strong> is a specific task given to a user during usability testing, along with an expected completion path and success criteria. Test cases should be realistic, representative of how real users would use the site.</p>
+
+      <h3>Test Plan Example</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Test No.</th>
+            <th>Persona</th>
+            <th>Task</th>
+            <th>Expected outcome</th>
+            <th>Actual outcome</th>
+            <th>Pass?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Margaret</td>
+            <td>Find the date of the next home fixture</td>
+            <td>Navigate to Events page, read date from calendar</td>
+            <td>Found in under 2 clicks</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Callum</td>
+            <td>Complete the online membership form</td>
+            <td>Form submitted without errors</td>
+            <td>Got confused by radio button — no label visible on mobile</td>
+            <td>✗</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Margaret</td>
+            <td>Find the club's phone number</td>
+            <td>Phone number visible on Contact page</td>
+            <td>Found on Contact page</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Callum</td>
+            <td>Navigate from Events page back to Home page</td>
+            <td>Click Home in navigation bar</td>
+            <td>Navigation bar not visible on mobile without scrolling</td>
+            <td>✗</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>A failed test case is not a bad thing — it reveals a genuine usability problem that can be fixed. Tests with all passes and no fails may simply mean the tasks were too easy or not representative of real usage.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="compatibility">Compatibility Testing</h2>
+      <p><strong>Compatibility testing</strong> ensures the website works correctly across different browsers and devices. A site that works perfectly in Chrome may have layout or functionality issues in Firefox, Safari or Edge — or on a mobile screen.</p>
+
+      <h3>Browsers to Test</h3>
+      <ul>
+        <li>Google Chrome</li>
+        <li>Mozilla Firefox</li>
+        <li>Apple Safari (especially on Mac and iPhone)</li>
+        <li>Microsoft Edge</li>
+      </ul>
+
+      <h3>Devices and Screen Sizes</h3>
+      <ul>
+        <li><strong>Desktop</strong> — large screen (1280px+ wide), mouse navigation</li>
+        <li><strong>Tablet</strong> — medium screen (~768px), touch navigation</li>
+        <li><strong>Mobile/Smartphone</strong> — small screen (~375px), touch only</li>
+      </ul>
+
+      <h3>What to Check in Each Browser/Device</h3>
+      <ul>
+        <li>Page layout is correct — columns, navigation bar, spacing</li>
+        <li>All images load and display correctly</li>
+        <li>Navigation links all work</li>
+        <li>Forms submit correctly and show error messages</li>
+        <li>JavaScript event handlers function (onclick, hover effects)</li>
+        <li>Font sizes are readable without zooming</li>
+        <li>No horizontal scrollbar appears on mobile</li>
+      </ul>
+
+      <div class="example-block">
+        <div class="example-label">Compatibility Test Table</div>
+        <table>
+          <thead><tr><th>Feature</th><th>Chrome (desktop)</th><th>Firefox (desktop)</th><th>Safari (iPhone)</th><th>Chrome (Android)</th></tr></thead>
+          <tbody>
+            <tr><td>Navigation bar</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Hover effects</td><td>✓</td><td>✓</td><td>N/A (touch)</td><td>N/A (touch)</td></tr>
+            <tr><td>Registration form</td><td>✓</td><td>✓</td><td>✓</td><td>✗ labels too small</td></tr>
+            <tr><td>Image gallery</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="evaluation">Evaluation Criteria</h2>
+      <p>A WDD solution is evaluated against <strong>fitness for purpose</strong> and <strong>usability</strong>.</p>
+
+      <h3>1. Fitness for Purpose</h3>
+      <p>Does the website do what it was designed to do? Compare the implemented site against the functional requirements and end-user requirements agreed at the analysis stage.</p>
+
+      <div class="example-block">
+        <div class="example-label">Example Evaluation — Fitness for Purpose</div>
+        <p>"The website includes all required pages (Home, Events, Contact), allows users to complete the registration form, and displays upcoming fixtures as specified in the requirements. All hyperlinks work correctly and the navigation structure matches the agreed hierarchy. The website is fit for purpose."</p>
+      </div>
+
+      <h3>2. Usability</h3>
+      <p>How easy is the website for the target audience to use? Evaluate against the end-user requirements, usability test results and persona goals.</p>
+
+      <div class="example-block">
+        <div class="example-label">Example Evaluation — Usability</div>
+        <p>"Usability testing showed that the majority of tasks were completed successfully by both personas. However, test case 2 revealed that radio button labels were not visible on mobile screens — this was corrected by adding explicit labels with <code>for</code> attributes. After the fix, all tasks were completed without assistance. The navigation bar is consistent across all pages and the colour contrast meets accessibility guidelines. The website is usable for the target audience."</p>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Testing &amp; Evaluation</div>
+      <div class="placeholder-sub">Write persona profiles, design test cases, complete compatibility tables and write evaluation answers</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

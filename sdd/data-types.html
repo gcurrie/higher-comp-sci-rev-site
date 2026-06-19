@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Types — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">SDD</a><span class="sep">›</span>
+    <span class="current">Data Types</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">SDD — Topic 2</div>
+    <h1>Data Types</h1>
+    <p>Understanding the different types of data used in programming and when to use each one.</p>
+  </div>
+</section>
+<main class="page-content">
+  <div class="content-layout">
+    <aside class="content-sidebar">
+      <nav class="sidebar-nav">
+        <div class="sn-header">💻 SDD Topics</div>
+        <ul>
+          <li><a href="languages-environments.html"><span class="sn-icon">🌐</span>Languages &amp; Environments</a></li>
+          <li><a href="data-types.html" class="active"><span class="sn-icon">🔢</span>Data Types</a></li>
+          <li><a href="data-structures.html"><span class="sn-icon">🗂️</span>Data Structures</a></li>
+          <li><a href="computational-constructs.html"><span class="sn-icon">⚙️</span>Computational Constructs</a></li>
+          <li><a href="standard-algorithms.html"><span class="sn-icon">🔍</span>Standard Algorithms</a></li>
+          <li><a href="testing-debugging.html"><span class="sn-icon">🐛</span>Testing &amp; Debugging</a></li>
+          <li><a href="design-notations.html"><span class="sn-icon">📐</span>Design Notations</a></li>
+          <li><a href="development-methodologies.html"><span class="sn-icon">🔄</span>Development Methodologies</a></li>
+          <li><a href="evaluation.html"><span class="sn-icon">✅</span>Evaluation</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <article class="content-article">
+      <h2>Data Types</h2>
+      <div class="article-meta">
+        <span class="badge">SDD Unit 1</span>
+        <span>Topic 2 of 9</span>
+      </div>
+
+      <p>A <strong>data type</strong> tells the program what kind of value a variable will hold and what operations can be performed on it. Choosing the correct data type is important for accuracy and efficiency.</p>
+
+      <h3>The Main Data Types</h3>
+      <table>
+        <thead><tr><th>Data Type</th><th>Description</th><th>Example Values</th><th>Storage</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Integer</strong></td><td>Whole numbers, positive or negative. No decimal point.</td><td><code>5</code>, <code>-12</code>, <code>0</code></td><td>Typically 2 or 4 bytes</td></tr>
+          <tr><td><strong>Real / Float</strong></td><td>Numbers with a decimal point (floating-point).</td><td><code>3.14</code>, <code>-0.5</code>, <code>100.0</code></td><td>Typically 4 or 8 bytes</td></tr>
+          <tr><td><strong>Boolean</strong></td><td>Can only hold one of two values: true or false.</td><td><code>True</code>, <code>False</code></td><td>1 bit (stored as 1 byte)</td></tr>
+          <tr><td><strong>Character</strong></td><td>A single letter, digit or symbol.</td><td><code>'A'</code>, <code>'3'</code>, <code>'!'</code></td><td>1 byte (ASCII) or 2 bytes (Unicode)</td></tr>
+          <tr><td><strong>String</strong></td><td>A sequence of characters (text).</td><td><code>"Hello"</code>, <code>"abc123"</code></td><td>Varies — one byte per character</td></tr>
+        </tbody>
+      </table>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">📷</div>
+        <p>Diagram: Data types overview — to be added here</p>
+      </div>
+
+      <h3>Integer</h3>
+      <p>Integers are used for counting, indexing and any situation where whole numbers are required. They <strong>cannot</strong> store decimal values — if a calculation produces a decimal result, it is truncated (not rounded).</p>
+      <pre><code># Python example
+age = 16
+score = 95
+temperature = -3</code></pre>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Integer Data Type — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-integer"
+            title="Integer Data Type Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <h3>Real (Floating-Point)</h3>
+      <p>Real numbers (also called floats or doubles) are used when decimal precision is needed — for example, prices, measurements or scientific values. They use more storage than integers and can introduce small rounding errors due to binary representation.</p>
+      <pre><code># Python example
+price = 4.99
+height = 1.75
+pi = 3.14159</code></pre>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Real (Float) Data Type — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-real"
+            title="Real Data Type Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <h3>Boolean</h3>
+      <p>Booleans store a logical true/false value. They are commonly used in conditions (if statements) and flags. Named after mathematician George Boole.</p>
+      <pre><code># Python example
+logged_in = True
+game_over = False
+
+if logged_in:
+    print("Welcome back!")</code></pre>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Boolean Data Type — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-boolean"
+            title="Boolean Data Type Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <h3>Character &amp; String</h3>
+      <p>A <strong>character</strong> is a single symbol. A <strong>string</strong> is a sequence of characters treated as a single unit. Strings support operations like concatenation (joining), length, and slicing.</p>
+      <pre><code># Python example
+initial = 'J'          # character
+name = "John Smith"    # string
+greeting = "Hello, " + name   # concatenation
+print(len(name))       # length = 10</code></pre>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Character &amp; String Data Types — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-string"
+            title="Character and String Data Types Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>Common exam mistake:</strong> Don't confuse the integer <code>5</code> with the string <code>"5"</code>. You cannot perform arithmetic on a string, even if it contains a number.</div>
+      </div>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">🎬</div>
+        <p>Video: Data types explained — to be embedded here</p>
+      </div>
+
+      <h3>Key Terms</h3>
+      <div class="key-terms">
+        <div class="key-term"><div class="term">Variable</div><div class="def">A named location in memory used to store a value that can change during program execution.</div></div>
+        <div class="key-term"><div class="term">Literal</div><div class="def">A fixed value written directly in code, e.g. <code>42</code> or <code>"hello"</code>.</div></div>
+        <div class="key-term"><div class="term">Concatenation</div><div class="def">Joining two or more strings together, e.g. <code>"Hello" + " World"</code>.</div></div>
+        <div class="key-term"><div class="term">Casting</div><div class="def">Converting a value from one data type to another, e.g. <code>int("5")</code> converts the string "5" to the integer 5.</div></div>
+      </div>
+
+      <h3>Practice Questions</h3>
+      <div class="practice-q">
+        <div class="q-label">Question 1 — 1 mark</div>
+        <p>State the most appropriate data type to store a pupil's age.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 2 — 1 mark</div>
+        <p>State the most appropriate data type to store whether a player has won a game.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 3 — 2 marks</div>
+        <p>Explain why a real (float) data type should be used rather than an integer to store the price of an item.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 4 — 2 marks</div>
+        <p>A programmer stores a user's phone number as an integer. Give <strong>two</strong> reasons why this is inappropriate.</p>
+      </div>
+    </article>
+  </div>
+</main>
+</body>
+</html>

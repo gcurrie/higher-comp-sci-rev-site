@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing &amp; Evaluation — DDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Database Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Testing &amp; Evaluation</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Database Design &amp; Development</div>
+    <h1>Testing &amp; Evaluation</h1>
+    <p>Testing a database solution and evaluating it against the two DDD criteria: fitness for purpose and accuracy of output.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#testing">Testing</a></li>
+      <li><a href="#criteria">Evaluation Criteria</a></li>
+      <li><a href="#fitness">Fitness for Purpose</a></li>
+      <li><a href="#accuracy">Accuracy of Output</a></li>
+      <li><a href="#writing">Writing Evaluations</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="testing">Testing a Database Solution</h2>
+      <p>Testing a database involves verifying that:</p>
+      <ul>
+        <li>The <strong>structure</strong> is correct — tables, keys and relationships are set up as designed</li>
+        <li>The <strong>validation rules</strong> work — invalid data is rejected; valid data is accepted</li>
+        <li>The <strong>SQL queries</strong> return the expected results</li>
+        <li>The <strong>CRUD operations</strong> (INSERT, UPDATE, DELETE) work correctly and maintain referential integrity</li>
+      </ul>
+
+      <h3>Test Plan Example</h3>
+      <table>
+        <thead><tr><th>Test No.</th><th>Description</th><th>SQL / Action</th><th>Expected Result</th><th>Actual Result</th><th>Pass?</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Retrieve all pupils with mark ≥ 70</td>
+            <td><code>SELECT ... WHERE Mark &gt;= 70</code></td>
+            <td>3 records returned (Alice, Bob, Claire)</td>
+            <td>3 records returned</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Insert new pupil record</td>
+            <td><code>INSERT INTO Pupil...</code></td>
+            <td>1 row added; COUNT increases by 1</td>
+            <td>1 row added</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Presence check on FirstName</td>
+            <td>Attempt INSERT with NULL FirstName</td>
+            <td>Error — field cannot be null</td>
+            <td>Error raised</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Average mark calculation</td>
+            <td><code>SELECT AVG(Mark)...</code></td>
+            <td>72.5 (manually calculated)</td>
+            <td>72.5</td>
+            <td>✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="criteria">DDD Evaluation Criteria</h2>
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <p>The DDD specification requires evaluation against <strong>two criteria only</strong>:</p>
+          <ol style="margin-bottom:0;">
+            <li><strong>Fitness for purpose</strong></li>
+            <li><strong>Accuracy of output</strong></li>
+          </ol>
+          <p style="margin-bottom:0;margin-top:.5rem;">Maintainability, robustness and usability are SDD evaluation criteria — do not use them for DDD evaluation answers.</p>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="fitness">1. Fitness for Purpose</h2>
+      <p>A database solution is <strong>fit for purpose</strong> if it meets all the requirements identified during the analysis stage. This is assessed by comparing the implemented solution against the original functional requirements (what data needs to be stored, what queries need to be supported, what outputs are required).</p>
+
+      <h3>What to evaluate</h3>
+      <ul>
+        <li>Are all required entities and their attributes stored?</li>
+        <li>Are the relationships between tables correct (matching the ER diagram)?</li>
+        <li>Are all the required queries implemented and returning data?</li>
+        <li>Do all CRUD operations work as expected?</li>
+        <li>Are the validation rules in place for the required fields?</li>
+      </ul>
+
+      <div class="example-block">
+        <div class="example-label">Example Evaluation Comment — Fitness for Purpose</div>
+        <p>"The database stores all required entities (Member, Book, Loan) with their specified attributes and correctly links them using primary and foreign keys as shown in the ER diagram. All five required queries have been implemented and tested. The solution is fit for purpose."</p>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="accuracy">2. Accuracy of Output</h2>
+      <p><strong>Accuracy of output</strong> means that the SQL queries return the correct, expected data — not just some data. The outputs must match what was specified in the requirements, with no missing, extra or incorrect records.</p>
+
+      <h3>How to verify accuracy</h3>
+      <ul>
+        <li>Manually calculate what the correct output should be from known test data</li>
+        <li>Run the SQL query and compare actual output to expected output</li>
+        <li>Check that aggregate functions (COUNT, AVG, SUM) return mathematically correct values</li>
+        <li>Verify that WHERE conditions filter correctly — expected rows appear, excluded rows do not</li>
+        <li>Check that ORDER BY and GROUP BY produce the right ordering and groupings</li>
+      </ul>
+
+      <div class="example-block">
+        <div class="example-label">Example Evaluation Comment — Accuracy of Output</div>
+        <p>"The query to find the average mark returned 72.5, which was manually verified against the test data (marks: 65, 78, 74, 73 → total 290 ÷ 4 = 72.5). The query to list pupils with marks ≥ 70 returned exactly the three pupils expected. All outputs are accurate."</p>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="writing">Writing a DDD Evaluation</h2>
+      <p>For each criterion, a good evaluation answer should:</p>
+      <ol>
+        <li><strong>Name the criterion</strong></li>
+        <li><strong>State what it means in a database context</strong></li>
+        <li><strong>Provide specific evidence</strong> from your testing</li>
+        <li><strong>Reach a justified conclusion</strong></li>
+      </ol>
+
+      <div class="example-block">
+        <div class="example-label">Model Answer — Accuracy of Output (2 marks)</div>
+        <p>"The database output is accurate [1]. The query to count loans per member was tested against manually calculated expected values from the test data and returned the correct counts for all five test members [1]."</p>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — DDD Evaluation</div>
+      <div class="placeholder-sub">Write evaluation comments using fitness for purpose and accuracy of output</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

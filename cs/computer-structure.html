@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Structure &amp; Performance — CS — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Computer Systems</a><span class="sep">›</span>
+    <span class="current">Computer Structure &amp; Performance</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Computer Systems</div>
+    <h1>Computer Structure &amp; Performance</h1>
+    <p>The fetch-execute cycle, key hardware components, and the four factors that affect computer performance.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#components">Key Components</a></li>
+      <li><a href="#fetch">Fetch-Execute Cycle</a></li>
+      <li><a href="#performance">Performance Factors</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="components">Key Hardware Components</h2>
+      <table>
+        <thead><tr><th>Component</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>CPU (Central Processing Unit)</strong></td>
+            <td>Carries out all processing — fetches, decodes and executes instructions</td>
+          </tr>
+          <tr>
+            <td><strong>ALU (Arithmetic Logic Unit)</strong></td>
+            <td>Part of the CPU; performs arithmetic (add, subtract) and logical (AND, OR, compare) operations</td>
+          </tr>
+          <tr>
+            <td><strong>Control Unit (CU)</strong></td>
+            <td>Part of the CPU; manages the fetch-execute cycle — directs data flow between CPU, memory and devices</td>
+          </tr>
+          <tr>
+            <td><strong>Registers</strong></td>
+            <td>Tiny, extremely fast storage locations inside the CPU. Key registers: Program Counter (PC), Memory Address Register (MAR), Memory Data Register (MDR), Accumulator (ACC)</td>
+          </tr>
+          <tr>
+            <td><strong>Cache Memory</strong></td>
+            <td>Small, very fast memory between the CPU and RAM. Stores frequently used instructions and data to speed up access</td>
+          </tr>
+          <tr>
+            <td><strong>RAM (Random Access Memory)</strong></td>
+            <td>Main working memory — stores programs and data currently in use. Volatile (lost when power off)</td>
+          </tr>
+          <tr>
+            <td><strong>ROM (Read-Only Memory)</strong></td>
+            <td>Stores permanent startup instructions (BIOS/firmware). Non-volatile</td>
+          </tr>
+          <tr>
+            <td><strong>Address Bus</strong></td>
+            <td>Carries memory addresses from CPU to RAM</td>
+          </tr>
+          <tr>
+            <td><strong>Data Bus</strong></td>
+            <td>Carries data between CPU and RAM (in both directions)</td>
+          </tr>
+          <tr>
+            <td><strong>Control Bus</strong></td>
+            <td>Carries control signals (read/write commands, clock signals)</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="fetch">Fetch-Execute Cycle</h2>
+      <p>The <strong>fetch-execute cycle</strong> (also called the instruction cycle) is the continuous process by which the CPU retrieves and carries out program instructions.</p>
+
+      <div style="display:flex;gap:0;flex-wrap:wrap;margin:1rem 0;">
+        <div style="background:var(--green-primary);color:#fff;padding:.75rem 1.1rem;border-radius:var(--radius) 0 0 var(--radius);flex:1;min-width:100px;text-align:center;">
+          <div style="font-size:1.4rem;margin-bottom:.2rem;">1</div>
+          <strong>Fetch</strong>
+          <p style="font-size:.8rem;margin:.3rem 0 0;opacity:.9;">PC holds address of next instruction. MAR copies address. Instruction loaded from RAM into MDR.</p>
+        </div>
+        <div style="background:#1B6B45;color:#fff;padding:.75rem 1.1rem;flex:1;min-width:100px;text-align:center;">
+          <div style="font-size:1.4rem;margin-bottom:.2rem;">2</div>
+          <strong>Decode</strong>
+          <p style="font-size:.8rem;margin:.3rem 0 0;opacity:.9;">Control unit interprets the instruction in MDR — determines what operation is required.</p>
+        </div>
+        <div style="background:#00442A;color:#fff;padding:.75rem 1.1rem;border-radius:0 var(--radius) var(--radius) 0;flex:1;min-width:100px;text-align:center;">
+          <div style="font-size:1.4rem;margin-bottom:.2rem;">3</div>
+          <strong>Execute</strong>
+          <p style="font-size:.8rem;margin:.3rem 0 0;opacity:.9;">ALU performs the required operation. PC increments to point to next instruction. Cycle repeats.</p>
+        </div>
+      </div>
+
+      <h3>Registers in the Fetch Stage</h3>
+      <table>
+        <thead><tr><th>Register</th><th>Full name</th><th>Role in fetch cycle</th></tr></thead>
+        <tbody>
+          <tr><td><strong>PC</strong></td><td>Program Counter</td><td>Holds the address of the <em>next</em> instruction to fetch; increments after each fetch</td></tr>
+          <tr><td><strong>MAR</strong></td><td>Memory Address Register</td><td>Receives the address from PC; holds the address being accessed on the bus</td></tr>
+          <tr><td><strong>MDR</strong></td><td>Memory Data Register</td><td>Temporarily holds the instruction or data fetched from RAM</td></tr>
+          <tr><td><strong>ACC</strong></td><td>Accumulator</td><td>Stores the result of ALU operations during execute stage</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="performance">Factors Affecting Computer Performance</h2>
+      <p>The Higher CS specification identifies <strong>four specific factors</strong> that affect how fast a computer can process instructions:</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin:1rem 0;">
+
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;">
+          <div style="font-size:1.6rem;margin-bottom:.4rem;">🔲</div>
+          <h3 style="margin:0 0 .4rem;">Number of Processors (Cores)</h3>
+          <p style="font-size:.88rem;color:var(--text-body);">A multi-core processor has multiple processing units on one chip. Each core can execute a different instruction stream simultaneously.</p>
+          <p style="font-size:.82rem;color:var(--text-muted);margin-top:.4rem;"><strong>Effect:</strong> More cores = more instructions processed simultaneously = better performance on multi-threaded workloads.</p>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;">
+          <div style="font-size:1.6rem;margin-bottom:.4rem;">🚌</div>
+          <h3 style="margin:0 0 .4rem;">Width of the Data Bus</h3>
+          <p style="font-size:.88rem;color:var(--text-body);">The data bus carries data between the CPU and memory. A wider bus (more parallel wires) can carry more bits in a single transfer.</p>
+          <p style="font-size:.82rem;color:var(--text-muted);margin-top:.4rem;"><strong>Effect:</strong> A 64-bit data bus transfers twice as much data per cycle as a 32-bit bus — reduces the number of transfers needed for large data values.</p>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;">
+          <div style="font-size:1.6rem;margin-bottom:.4rem;">⚡</div>
+          <h3 style="margin:0 0 .4rem;">Cache Memory</h3>
+          <p style="font-size:.88rem;color:var(--text-body);">Cache stores frequently used data and instructions between the CPU and slower main RAM. The CPU checks cache before fetching from RAM.</p>
+          <p style="font-size:.82rem;color:var(--text-muted);margin-top:.4rem;"><strong>Effect:</strong> More / larger cache = fewer slow RAM accesses = faster execution. Cache access is 10–100× faster than RAM.</p>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;">
+          <div style="font-size:1.6rem;margin-bottom:.4rem;">⏱️</div>
+          <h3 style="margin:0 0 .4rem;">Clock Speed</h3>
+          <p style="font-size:.88rem;color:var(--text-body);">The system clock generates regular pulses that synchronise CPU operations. One fetch-execute cycle takes a fixed number of clock pulses.</p>
+          <p style="font-size:.82rem;color:var(--text-muted);margin-top:.4rem;"><strong>Effect:</strong> Higher clock speed (measured in GHz) = more cycles per second = more instructions executed per second.</p>
+        </div>
+
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Exam questions often ask you to <strong>explain how increasing a factor improves performance</strong>. Always state <em>what</em> changes and <em>why</em> that speeds up processing — don't just say "it makes it faster."</div>
+      </div>
+
+      <div class="example-block">
+        <div class="example-label">Model Answer — Clock Speed (2 marks)</div>
+        <p>"Increasing the clock speed means the CPU completes more clock cycles per second [1]. Since each instruction is executed in a fixed number of clock cycles, more cycles per second means more instructions are executed per second, so the processor runs faster [1]."</p>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Computer Structure</div>
+      <div class="placeholder-sub">Trace the fetch-execute cycle; explain performance factors</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

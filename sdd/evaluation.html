@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluation — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Software Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Evaluation</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Software Design &amp; Development</div>
+    <h1>Evaluation</h1>
+    <p>Evaluating a software solution against five criteria: fitness for purpose, efficient use of coding constructs, usability, maintainability, and robustness.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#criteria">The Five Criteria</a></li>
+      <li><a href="#fitness">Fitness for Purpose</a></li>
+      <li><a href="#efficiency">Efficient Use of Coding Constructs</a></li>
+      <li><a href="#usability">Usability</a></li>
+      <li><a href="#maintainability">Maintainability</a></li>
+      <li><a href="#robustness">Robustness</a></li>
+      <li><a href="#writing">Writing Evaluations</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="criteria">The Five Evaluation Criteria</h2>
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>The SQA Higher SDD evaluation criteria are: <strong>fitness for purpose</strong>, <strong>efficient use of coding constructs</strong>, <strong>usability</strong>, <strong>maintainability</strong>, and <strong>robustness</strong>. <strong>"Readability" is a National 5 criterion</strong> — do not use it at Higher.</div>
+      </div>
+
+      <table>
+        <thead><tr><th>Criterion</th><th>Key question</th></tr></thead>
+        <tbody>
+          <tr><td>Fitness for purpose</td><td>Does the software do what it was designed to do?</td></tr>
+          <tr><td>Efficient use of coding constructs</td><td>Is the code written as efficiently as possible — loops used instead of repetition, subprograms used for reuse?</td></tr>
+          <tr><td>Usability</td><td>Is the software easy for the intended user to use?</td></tr>
+          <tr><td>Maintainability</td><td>Can the code easily be understood and updated by another programmer?</td></tr>
+          <tr><td>Robustness</td><td>Does the program handle unexpected or invalid input without crashing?</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="fitness">1. Fitness for Purpose</h2>
+      <p>A solution is <strong>fit for purpose</strong> if it meets all the requirements agreed during the analysis stage. This is assessed against the functional requirements (inputs, processes and outputs) defined at the start of the project.</p>
+
+      <h3>How to evaluate it</h3>
+      <ul>
+        <li>Compare the program's outputs against the expected outputs defined in the requirements</li>
+        <li>Run a comprehensive test plan and check all tests pass</li>
+        <li>Confirm all functional requirements are implemented</li>
+      </ul>
+
+      <div class="example-block">
+        <div class="example-label">Example Evaluation Comment</div>
+        <p>"The program correctly accepts pupil names and marks, stores them in an array of records, displays the highest and lowest marks, and counts grade A passes. All test cases in the test plan passed. The solution is fit for purpose."</p>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="efficiency">2. Efficient Use of Coding Constructs</h2>
+      <p>Efficient code uses the available constructs (loops, conditions, subprograms, arrays) in the most appropriate way — avoiding unnecessary repetition, reducing code complexity, and making good use of modularisation.</p>
+
+      <h3>Signs of efficient code</h3>
+      <ul>
+        <li>Loops used instead of copy-pasting similar code blocks</li>
+        <li>Functions and procedures used for operations performed more than once</li>
+        <li>Arrays used to store collections of related values, rather than many separate variables</li>
+        <li>Conditions simplified — e.g. <code>IF flag = TRUE</code> rather than <code>IF flag = TRUE THEN SET result TO TRUE</code></li>
+      </ul>
+
+      <h3>Signs of inefficient code</h3>
+      <ul>
+        <li>Copy-pasted blocks of near-identical code that could be in a loop</li>
+        <li>Separate variables (<code>name1</code>, <code>name2</code>, <code>name3</code>…) where an array should be used</li>
+        <li>Repeated calculations not stored in a variable</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="usability">3. Usability</h2>
+      <p><strong>Usability</strong> is how easy the software is for its intended users to use effectively. It is assessed against the end-user requirements defined during analysis.</p>
+
+      <h3>Factors affecting usability</h3>
+      <ul>
+        <li>Clear, unambiguous prompts that tell the user exactly what to enter</li>
+        <li>Meaningful error messages that explain what went wrong and how to correct it</li>
+        <li>Logical screen layout and navigation flow</li>
+        <li>Appropriate use of menus, buttons and labelling</li>
+        <li>Consistent interface design throughout the program</li>
+      </ul>
+
+      <div class="example-block">
+        <div class="example-label">Example Evaluation Comment</div>
+        <p>"The program displays clear prompts at each input stage and shows an error message when the user enters a mark outside 0–100. The menu options are labelled plainly and the interface matches the wireframes agreed at design. Usability is good — a non-technical user can operate the program without assistance."</p>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="maintainability">4. Maintainability</h2>
+      <p>A program is <strong>maintainable</strong> if another programmer can understand the code and make changes to it with minimum difficulty. This is important because software often needs to be updated after it is first delivered.</p>
+
+      <h3>What makes code maintainable</h3>
+      <ul>
+        <li><strong>Meaningful variable names</strong> — <code>totalMark</code> is clearer than <code>x</code></li>
+        <li><strong>Modular structure</strong> — separate procedures and functions for distinct tasks</li>
+        <li><strong>Internal commentary</strong> — comments explaining the purpose of non-obvious sections</li>
+        <li><strong>Consistent indentation</strong> — makes the structure of loops and conditions easy to read</li>
+        <li><strong>No magic numbers</strong> — use named constants rather than unexplained literal values</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="robustness">5. Robustness</h2>
+      <p>A <strong>robust</strong> program handles unexpected or invalid input gracefully — it does not crash, produce nonsensical output, or enter an infinite loop when the user does something unexpected.</p>
+
+      <h3>Techniques for robustness</h3>
+      <ul>
+        <li>Input validation loops that reject out-of-range values and re-prompt the user</li>
+        <li>Checking for empty inputs or incorrect data types</li>
+        <li>Checking an array is not empty before attempting to find min/max</li>
+        <li>Providing informative error messages rather than crashing silently</li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-label">Input Validation — Robust Mark Entry</div>
+        <pre>RECEIVE mark FROM KEYBOARD
+WHILE mark &lt; 0 OR mark > 100 DO
+    SEND "Invalid — enter a mark between 0 and 100" TO DISPLAY
+    RECEIVE mark FROM KEYBOARD
+END WHILE</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="writing">Writing Evaluation Answers</h2>
+      <p>Exam evaluation questions are typically worth 3–5 marks. To gain full marks, your answer must:</p>
+      <ol>
+        <li><strong>Name the criterion</strong> being discussed</li>
+        <li><strong>State what it means</strong> (brief definition)</li>
+        <li><strong>Apply it to the specific program</strong> — give evidence from the code or testing</li>
+        <li><strong>Reach a justified conclusion</strong> — is the criterion met or not, and why?</li>
+      </ol>
+
+      <div class="example-block">
+        <div class="example-label">Model Answer — Robustness (3 marks)</div>
+        <p>"The program is robust [1] because it validates all user inputs using WHILE loops that re-prompt the user if the entered value is out of range [1]. For example, the mark entry uses <code>WHILE mark &lt; 0 OR mark > 100</code> to reject invalid data. The program therefore handles unexpected input without crashing [1]."</p>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Evaluation</div>
+      <div class="placeholder-sub">Write evaluation comments for given programs using all five criteria</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

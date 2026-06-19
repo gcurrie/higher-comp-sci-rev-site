@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing &amp; Debugging — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Software Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Testing &amp; Debugging</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Software Design &amp; Development</div>
+    <h1>Testing &amp; Debugging</h1>
+    <p>Comprehensive test plans, error types, test data categories, dry runs, trace tables, breakpoints and watchpoints.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#test-plan">Test Plans</a></li>
+      <li><a href="#error-types">Types of Error</a></li>
+      <li><a href="#test-data">Test Data</a></li>
+      <li><a href="#dry-run">Dry Runs &amp; Trace Tables</a></li>
+      <li><a href="#debugging">Debugging Tools</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="test-plan">Test Plans</h2>
+      <p>A <strong>comprehensive test plan</strong> is created before testing begins. It defines exactly what will be tested, what data will be used, what the expected result is, and what the actual result turned out to be.</p>
+
+      <table>
+        <thead><tr><th>Test No.</th><th>Description</th><th>Data</th><th>Expected Result</th><th>Actual Result</th><th>Pass/Fail</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Normal mark accepted</td><td>75</td><td>Grade B displayed</td><td>Grade B displayed</td><td>Pass</td></tr>
+          <tr><td>2</td><td>Boundary — minimum pass</td><td>0</td><td>Stored without error</td><td>Stored without error</td><td>Pass</td></tr>
+          <tr><td>3</td><td>Boundary — maximum</td><td>100</td><td>Grade A displayed</td><td>Grade A displayed</td><td>Pass</td></tr>
+          <tr><td>4</td><td>Exceptional — letter entered</td><td>"abc"</td><td>Error message displayed</td><td>Error message displayed</td><td>Pass</td></tr>
+        </tbody>
+      </table>
+
+      <p>A comprehensive test plan tests <strong>all</strong> paths through the program — including normal inputs, edge cases, and invalid inputs.</p>
+    </article>
+
+    <article>
+      <h2 id="error-types">Types of Error</h2>
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>The SQA Higher specification uses the term <strong>"execution error"</strong> — NOT "runtime error". Use the correct SQA terminology in your exam answers.</div>
+      </div>
+
+      <table>
+        <thead><tr><th>Error Type</th><th>When Detected</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Syntax error</strong></td>
+            <td>During translation (before running)</td>
+            <td>Code that violates the grammar rules of the language</td>
+            <td><code>WHLIE i &lt; 10 DO</code> (misspelled keyword)</td>
+          </tr>
+          <tr>
+            <td><strong>Execution error</strong></td>
+            <td>At runtime (while the program is running)</td>
+            <td>An operation that cannot be carried out — causes the program to crash</td>
+            <td>Dividing by zero; accessing an array index that doesn't exist</td>
+          </tr>
+          <tr>
+            <td><strong>Logic error</strong></td>
+            <td>During testing (program runs but gives wrong output)</td>
+            <td>The code runs without crashing but produces incorrect results</td>
+            <td>Using <code>&gt;</code> instead of <code>&gt;=</code> in a condition; adding when you meant to subtract</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="test-data">Categories of Test Data</h2>
+      <p>Three categories of test data are used to thoroughly test a program:</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:1rem 0;">
+        <div style="background:#e8f5ee;border-radius:var(--radius);padding:1rem;">
+          <strong style="color:var(--green-primary);">Normal</strong>
+          <p style="font-size:.88rem;margin:.4rem 0 0;">Typical valid inputs that the program is designed to handle. Should produce the expected output.</p>
+          <div style="font-size:.82rem;color:var(--text-muted);margin-top:.5rem;">Example: mark of 65 → expects Grade B</div>
+        </div>
+        <div style="background:#fff3cd;border-radius:var(--radius);padding:1rem;">
+          <strong style="color:#856404;">Extreme (Boundary)</strong>
+          <p style="font-size:.88rem;margin:.4rem 0 0;">Valid values at the very edge of the accepted range. These are the minimum and maximum allowed values.</p>
+          <div style="font-size:.82rem;color:var(--text-muted);margin-top:.5rem;">Example: marks of 0 and 100 (if 0–100 is valid range)</div>
+        </div>
+        <div style="background:#ffe0e0;border-radius:var(--radius);padding:1rem;">
+          <strong style="color:#a00;">Exceptional</strong>
+          <p style="font-size:.88rem;margin:.4rem 0 0;">Invalid inputs that the program should <em>not</em> accept. Used to test that error handling works correctly.</p>
+          <div style="font-size:.82rem;color:var(--text-muted);margin-top:.5rem;">Example: entering "hello" for a numeric field; -5 for a mark</div>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>In the exam you may be asked to <em>choose</em> appropriate test data and <em>justify</em> why each piece falls into its category. For each value, explain what it tests — don't just list numbers without explanation.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="dry-run">Dry Runs and Trace Tables</h2>
+      <p>A <strong>dry run</strong> is the process of manually tracing through a piece of code step by step, recording the value of variables at each point. A <strong>trace table</strong> is the table used to record these changing values.</p>
+
+      <div class="example-block">
+        <div class="example-label">Trace Table Example — Find Maximum</div>
+        <pre>marks = [45, 78, 31, 92, 60]
+maxIndex = 0
+
+i=1: marks[1]=78 > marks[0]=45 → maxIndex = 1
+i=2: marks[2]=31 > marks[1]=78? NO
+i=3: marks[3]=92 > marks[1]=78? YES → maxIndex = 3
+i=4: marks[4]=60 > marks[3]=92? NO
+
+Result: maxIndex = 3, highest mark = 92</pre>
+
+        <table style="margin-top:.75rem;">
+          <thead><tr><th>i</th><th>marks[i]</th><th>marks[maxIndex]</th><th>maxIndex</th></tr></thead>
+          <tbody>
+            <tr><td>start</td><td>—</td><td>45</td><td>0</td></tr>
+            <tr><td>1</td><td>78</td><td>45</td><td>1</td></tr>
+            <tr><td>2</td><td>31</td><td>78</td><td>1</td></tr>
+            <tr><td>3</td><td>92</td><td>78</td><td>3</td></tr>
+            <tr><td>4</td><td>60</td><td>92</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="debugging">Debugging Tools</h2>
+      <p>Modern IDEs provide debugging tools that allow programmers to pause and inspect program execution without manually modifying code.</p>
+
+      <table>
+        <thead><tr><th>Tool</th><th>What it does</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Breakpoint</strong></td>
+            <td>Marks a specific line in the code where execution will <em>pause</em></td>
+            <td>Checking the state of all variables at a known point in the program</td>
+          </tr>
+          <tr>
+            <td><strong>Watchpoint</strong></td>
+            <td>Pauses execution whenever a specific variable <em>changes to a particular value</em></td>
+            <td>Tracking down exactly where a variable takes on an unexpected value</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div>
+          <p><strong>Key difference:</strong></p>
+          <ul style="margin-bottom:0;">
+            <li>A <strong>breakpoint</strong> stops at a <em>line of code</em></li>
+            <li>A <strong>watchpoint</strong> stops when a <em>variable's value</em> changes to something specific</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Example Scenario</h3>
+      <p>Suppose your find-maximum algorithm is returning an incorrect index. You might:</p>
+      <ol>
+        <li>Set a <strong>breakpoint</strong> at the start of the FOR loop to check the initial state of <code>maxIndex</code></li>
+        <li>Set a <strong>watchpoint</strong> on <code>maxIndex</code> to pause every time it changes — so you can see which comparison caused it to update</li>
+        <li>Step through the loop line by line, checking that <code>maxIndex</code> updates correctly each time a larger value is found</li>
+      </ol>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Testing &amp; Debugging</div>
+      <div class="placeholder-sub">Complete trace tables, identify error types, and write test plans</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

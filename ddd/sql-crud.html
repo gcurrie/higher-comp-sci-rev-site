@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL — INSERT, UPDATE, DELETE — DDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">DDD</a><span class="sep">›</span>
+    <span class="current">SQL — INSERT, UPDATE, DELETE</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">DDD — Topic 6</div>
+    <h1>SQL — INSERT, UPDATE, DELETE</h1>
+    <p>Adding new records, modifying existing data, and removing records from database tables.</p>
+  </div>
+</section>
+<main class="page-content">
+  <div class="content-layout">
+    <aside class="content-sidebar">
+      <nav class="sidebar-nav">
+        <div class="sn-header">🗄️ DDD Topics</div>
+        <ul>
+          <li><a href="analysis.html"><span class="sn-icon">🔍</span>Database Analysis</a></li>
+          <li><a href="er-diagrams.html"><span class="sn-icon">🔗</span>ER Diagrams</a></li>
+          <li><a href="database-design.html"><span class="sn-icon">🗄️</span>Database Design</a></li>
+          <li><a href="sql-queries.html"><span class="sn-icon">🔎</span>SQL — SELECT</a></li>
+          <li><a href="sql-joins.html"><span class="sn-icon">🔀</span>SQL — Joins</a></li>
+          <li><a href="sql-crud.html" class="active"><span class="sn-icon">✏️</span>SQL — INSERT/UPDATE/DELETE</a></li>
+          <li><a href="testing-evaluation.html"><span class="sn-icon">✅</span>Testing &amp; Evaluation</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <article class="content-article">
+      <h2>SQL — INSERT, UPDATE, DELETE</h2>
+      <div class="article-meta">
+        <span class="badge">DDD Unit 2</span>
+        <span>Topic 6 of 7</span>
+      </div>
+
+      <p>As well as querying data with SELECT, SQL can <strong>modify</strong> the data in a database. The three commands for this are <strong>INSERT</strong> (add), <strong>UPDATE</strong> (change) and <strong>DELETE</strong> (remove).</p>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div><strong>Be careful with UPDATE and DELETE:</strong> Always use a WHERE clause unless you intend to affect every record. Without WHERE, these commands affect the entire table.</div>
+      </div>
+
+      <h3>INSERT INTO — Adding New Records</h3>
+      <p>Adds a new row to a table. You list the field names and then the corresponding values:</p>
+      <pre><code>INSERT INTO Pupil (PupilID, FirstName, LastName, YearGroup, Score, Passed)
+VALUES (106, 'Callum', 'Ross', 5, 74, TRUE);</code></pre>
+
+      <p>If you are inserting values for <strong>all</strong> fields in order, you can omit the field list:</p>
+      <pre><code>INSERT INTO Pupil
+VALUES (107, 'Niamh', 'Murray', 6, 83, TRUE);</code></pre>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Text values must be enclosed in <strong>single quotes</strong> (<code>'</code>). Numbers and booleans do not need quotes.</div>
+      </div>
+
+      <h3>UPDATE — Modifying Existing Records</h3>
+      <p>Changes the value of one or more fields in existing records. <strong>Always use WHERE</strong> to specify which records to change:</p>
+
+      <pre><code>-- Update the score for one pupil
+UPDATE Pupil
+SET Score = 88
+WHERE PupilID = 102;
+
+-- Mark all pupils as passed if their score is 50 or over
+UPDATE Pupil
+SET Passed = TRUE
+WHERE Score >= 50;
+
+-- Update multiple fields at once
+UPDATE Pupil
+SET Score = 70, Passed = TRUE
+WHERE PupilID = 105;</code></pre>
+
+      <h4>UPDATE without WHERE — danger!</h4>
+      <pre><code>-- This updates EVERY record in the table!
+UPDATE Pupil
+SET YearGroup = 6;</code></pre>
+
+      <h3>DELETE — Removing Records</h3>
+      <p>Permanently removes one or more records from a table. <strong>Always use WHERE</strong>:</p>
+
+      <pre><code>-- Remove one specific pupil
+DELETE FROM Pupil
+WHERE PupilID = 105;
+
+-- Remove all pupils who failed
+DELETE FROM Pupil
+WHERE Passed = FALSE;
+
+-- Remove all Year 6 pupils
+DELETE FROM Pupil
+WHERE YearGroup = 6;</code></pre>
+
+      <h4>DELETE without WHERE — removes everything!</h4>
+      <pre><code>-- This deletes ALL records from the table (but keeps the table structure)
+DELETE FROM Pupil;</code></pre>
+
+      <h3>Summary of DML Commands</h3>
+      <table>
+        <thead><tr><th>Command</th><th>Purpose</th><th>Key clause</th></tr></thead>
+        <tbody>
+          <tr><td><code>INSERT INTO</code></td><td>Add a new record</td><td><code>VALUES</code></td></tr>
+          <tr><td><code>UPDATE</code></td><td>Modify existing records</td><td><code>SET</code> and <code>WHERE</code></td></tr>
+          <tr><td><code>DELETE FROM</code></td><td>Remove records</td><td><code>WHERE</code></td></tr>
+          <tr><td><code>SELECT</code></td><td>Retrieve/query records</td><td><code>FROM</code>, <code>WHERE</code></td></tr>
+        </tbody>
+      </table>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">🎬</div>
+        <p>Video: INSERT, UPDATE and DELETE with examples — to be embedded here</p>
+      </div>
+
+      <h3>Practice Questions</h3>
+      <div class="practice-q">
+        <div class="q-label">Question 1 — 2 marks</div>
+        <p>Write a SQL statement to add a new pupil to the Pupil table: PupilID 108, first name 'Zara', last name 'Khan', Year Group 5, Score 65, Passed TRUE.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 2 — 2 marks</div>
+        <p>Write a SQL statement to update the score of the pupil with PupilID 102 to 58 and set their Passed field to TRUE.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 3 — 2 marks</div>
+        <p>Write a SQL statement to delete all records from the Pupil table where the pupil's score is less than 40.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 4 — 2 marks</div>
+        <p>Explain why omitting the WHERE clause from an UPDATE or DELETE statement is potentially dangerous. Give an example.</p>
+      </div>
+    </article>
+  </div>
+</main>
+</body>
+</html>

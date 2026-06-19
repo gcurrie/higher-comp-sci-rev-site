@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL — Joins — DDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">DDD</a><span class="sep">›</span>
+    <span class="current">SQL — Joins</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">DDD — Topic 5</div>
+    <h1>SQL — Joins</h1>
+    <p>Combining data from multiple related tables using INNER JOIN to produce meaningful query results.</p>
+  </div>
+</section>
+<main class="page-content">
+  <div class="content-layout">
+    <aside class="content-sidebar">
+      <nav class="sidebar-nav">
+        <div class="sn-header">🗄️ DDD Topics</div>
+        <ul>
+          <li><a href="analysis.html"><span class="sn-icon">🔍</span>Database Analysis</a></li>
+          <li><a href="er-diagrams.html"><span class="sn-icon">🔗</span>ER Diagrams</a></li>
+          <li><a href="database-design.html"><span class="sn-icon">🗄️</span>Database Design</a></li>
+          <li><a href="sql-queries.html"><span class="sn-icon">🔎</span>SQL — SELECT</a></li>
+          <li><a href="sql-joins.html" class="active"><span class="sn-icon">🔀</span>SQL — Joins</a></li>
+          <li><a href="sql-crud.html"><span class="sn-icon">✏️</span>SQL — INSERT/UPDATE/DELETE</a></li>
+          <li><a href="testing-evaluation.html"><span class="sn-icon">✅</span>Testing &amp; Evaluation</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <article class="content-article">
+      <h2>SQL — Joins</h2>
+      <div class="article-meta">
+        <span class="badge">DDD Unit 2</span>
+        <span>Topic 5 of 7</span>
+      </div>
+
+      <p>A <strong>JOIN</strong> combines rows from two or more tables based on a related field (usually a primary key / foreign key pair). At Higher level, you need to use <strong>INNER JOIN</strong>.</p>
+
+      <h3>Why Joins Are Needed</h3>
+      <p>In a relational database, data is spread across multiple tables to avoid repetition. A join lets you bring that data back together in a query.</p>
+      <p>For example, a Pupil table stores TeacherID but not the teacher's name. To display a pupil's name alongside their teacher's name, you must join the Pupil and Teacher tables.</p>
+
+      <h3>INNER JOIN Syntax</h3>
+      <pre><code>SELECT table1.field, table2.field
+FROM table1
+INNER JOIN table2
+ON table1.primaryKey = table2.foreignKey;</code></pre>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Use <code>tableName.fieldName</code> notation when the same field name appears in multiple tables to avoid ambiguity.</div>
+      </div>
+
+      <h3>Sample Tables</h3>
+      <h4>Teacher</h4>
+      <table>
+        <thead><tr><th>TeacherID</th><th>FirstName</th><th>LastName</th><th>Department</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Sarah</td><td>MacLeod</td><td>Computing</td></tr>
+          <tr><td>2</td><td>James</td><td>Fraser</td><td>Maths</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Pupil</h4>
+      <table>
+        <thead><tr><th>PupilID</th><th>FirstName</th><th>LastName</th><th>YearGroup</th><th>Score</th><th>TeacherID (FK)</th></tr></thead>
+        <tbody>
+          <tr><td>101</td><td>Emma</td><td>Smith</td><td>5</td><td>78</td><td>1</td></tr>
+          <tr><td>102</td><td>Liam</td><td>Brown</td><td>6</td><td>45</td><td>2</td></tr>
+          <tr><td>103</td><td>Isla</td><td>Campbell</td><td>5</td><td>92</td><td>1</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Basic INNER JOIN Example</h3>
+      <pre><code>-- Display each pupil's name alongside their teacher's name
+SELECT Pupil.FirstName, Pupil.LastName,
+       Teacher.FirstName AS TeacherFirst,
+       Teacher.LastName AS TeacherLast
+FROM Pupil
+INNER JOIN Teacher
+ON Pupil.TeacherID = Teacher.TeacherID;</code></pre>
+
+      <p><strong>Result:</strong></p>
+      <table>
+        <thead><tr><th>FirstName</th><th>LastName</th><th>TeacherFirst</th><th>TeacherLast</th></tr></thead>
+        <tbody>
+          <tr><td>Emma</td><td>Smith</td><td>Sarah</td><td>MacLeod</td></tr>
+          <tr><td>Liam</td><td>Brown</td><td>James</td><td>Fraser</td></tr>
+          <tr><td>Isla</td><td>Campbell</td><td>Sarah</td><td>MacLeod</td></tr>
+        </tbody>
+      </table>
+
+      <h3>JOIN with WHERE and ORDER BY</h3>
+      <pre><code>-- Pupils in the Computing department, sorted by score
+SELECT Pupil.FirstName, Pupil.LastName, Pupil.Score,
+       Teacher.Department
+FROM Pupil
+INNER JOIN Teacher
+ON Pupil.TeacherID = Teacher.TeacherID
+WHERE Teacher.Department = 'Computing'
+ORDER BY Pupil.Score DESC;</code></pre>
+
+      <h3>Joining Three Tables</h3>
+      <p>You can chain multiple JOINs to combine three or more tables:</p>
+      <pre><code>-- Example: Show pupil name, club name and date joined
+SELECT Pupil.FirstName, Pupil.LastName,
+       Club.ClubName, PupilClub.DateJoined
+FROM Pupil
+INNER JOIN PupilClub ON Pupil.PupilID = PupilClub.PupilID
+INNER JOIN Club ON PupilClub.ClubID = Club.ClubID
+ORDER BY Club.ClubName;</code></pre>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">📷</div>
+        <p>Diagram: Visual showing how INNER JOIN links two tables — to be added here</p>
+      </div>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">🎬</div>
+        <p>Video: SQL joins explained with worked examples — to be embedded here</p>
+      </div>
+
+      <h3>Practice Questions</h3>
+      <div class="practice-q">
+        <div class="q-label">Question 1 — 3 marks</div>
+        <p>Using the Pupil and Teacher tables above, write a SQL query to display the first name and last name of each pupil, along with the department of their teacher.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 2 — 4 marks</div>
+        <p>A database has a <em>Customer</em> table (CustomerID, Name, Email) and an <em>Order</em> table (OrderID, CustomerID, ProductName, Price). Write a query to display each customer's name alongside the product they ordered and its price, sorted by price descending.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 3 — 2 marks</div>
+        <p>Explain why <code>tableName.fieldName</code> notation is used when writing a JOIN query involving two tables that both have a field called <code>FirstName</code>.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 4 — 1 mark</div>
+        <p>What does INNER JOIN return when there is no matching record in the joined table?</p>
+      </div>
+    </article>
+  </div>
+</main>
+</body>
+</html>

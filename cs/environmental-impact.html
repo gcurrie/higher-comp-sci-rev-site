@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intelligent Systems &amp; Environmental Impact — CS — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Computer Systems</a><span class="sep">›</span>
+    <span class="current">Intelligent Systems &amp; Environmental Impact</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Computer Systems</div>
+    <h1>Intelligent Systems &amp; Environmental Impact</h1>
+    <p>How computer-based intelligent systems — heating systems, traffic control, and car management — reduce energy consumption and improve environmental outcomes.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#what">What Are Intelligent Systems?</a></li>
+      <li><a href="#heating">Heating Systems</a></li>
+      <li><a href="#traffic">Traffic Control Systems</a></li>
+      <li><a href="#car">Car Management Systems</a></li>
+      <li><a href="#impact">Environmental Impact</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <div class="callout callout-warning">
+      <div class="callout-icon">⚠️</div>
+      <div>The Higher CS specification covers <strong>intelligent systems</strong> specifically — heating systems, traffic control, and car management systems. General topics like e-waste, data centre energy, or green IT are <strong>not</strong> part of the Higher Computer Systems specification.</div>
+    </div>
+
+    <article>
+      <h2 id="what">What Are Intelligent Systems?</h2>
+      <p>An <strong>intelligent system</strong> is a computer-controlled system that uses sensors and software to monitor its environment, make decisions, and take actions automatically — without requiring constant human input.</p>
+
+      <p>Key components of an intelligent system:</p>
+      <ul>
+        <li><strong>Sensors</strong> — collect real-world data (temperature, motion, speed, pressure)</li>
+        <li><strong>Processor / controller</strong> — analyses sensor data and makes decisions</li>
+        <li><strong>Actuators</strong> — carry out actions based on decisions (open a valve, change a signal, adjust fuel injection)</li>
+        <li><strong>Feedback loop</strong> — the system continuously monitors the outcome and adjusts accordingly</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="heating">Intelligent Heating Systems</h2>
+      <p>Traditional thermostats simply switch heating on or off at a set temperature. Intelligent heating systems go further — they learn from patterns, respond to occupancy, and optimise energy use automatically.</p>
+
+      <h3>How They Work</h3>
+      <ul>
+        <li><strong>Temperature sensors</strong> monitor indoor and outdoor temperature continuously</li>
+        <li><strong>Occupancy sensors</strong> detect whether a room is occupied</li>
+        <li><strong>Learning algorithms</strong> analyse usage patterns (when the house is occupied, when it usually gets cold) to pre-heat efficiently</li>
+        <li><strong>Remote control</strong> via apps allows users to adjust from anywhere</li>
+        <li>The system can <strong>zone</strong> heating — heating only occupied rooms</li>
+      </ul>
+
+      <h3>Environmental Benefits</h3>
+      <ul>
+        <li>Reduces energy wasted heating empty rooms</li>
+        <li>Pre-heats just in time instead of running all day</li>
+        <li>Provides usage data so occupants can identify where they're using most energy</li>
+        <li>Can integrate with renewable energy sources (e.g. heat when solar energy is available)</li>
+      </ul>
+
+      <div class="example-block">
+        <div class="example-label">Example: Smart Thermostat</div>
+        <p>A smart thermostat learns that the house is always empty between 08:30 and 17:00. It automatically stops heating during this period and begins warming the house at 16:30 so it reaches the target temperature when the occupants return. A traditional thermostat would heat the house all day.</p>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="traffic">Intelligent Traffic Control Systems</h2>
+      <p>Static traffic lights run on fixed timers regardless of actual traffic flow. Intelligent traffic control systems use real-time data to adjust signal timings dynamically, reducing congestion and unnecessary idling.</p>
+
+      <h3>How They Work</h3>
+      <ul>
+        <li><strong>Induction loops</strong> or <strong>cameras</strong> detect vehicles waiting at junctions</li>
+        <li><strong>Central controllers</strong> analyse traffic density and queue lengths across a network of junctions</li>
+        <li>Traffic light timings are adjusted in <strong>real time</strong> to clear queues and keep traffic moving</li>
+        <li>Systems can <strong>give priority</strong> to buses and emergency vehicles</li>
+        <li><strong>Variable message signs</strong> can divert traffic around incidents or congestion</li>
+      </ul>
+
+      <h3>Environmental Benefits</h3>
+      <ul>
+        <li>Reduces time spent idling at red lights — engines produce more pollution at low speed with frequent stop-start</li>
+        <li>Smoother traffic flow reduces fuel consumption per journey</li>
+        <li>Fewer congestion-related diversions mean shorter overall journey distances</li>
+        <li>Bus priority reduces private car use by making public transport faster and more reliable</li>
+      </ul>
+
+      <div class="example-block">
+        <div class="example-label">Example: SCOOT (Split Cycle Offset Optimisation Technique)</div>
+        <p>SCOOT is used in many UK cities. Sensors continuously measure queue lengths at junctions. The central computer adjusts green-light timings every few seconds across all connected junctions to keep the network flowing as efficiently as possible.</p>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="car">Car Management Systems</h2>
+      <p>Modern vehicles contain dozens of computer-controlled systems that continuously monitor engine performance, driving conditions, and driver behaviour to optimise fuel consumption and reduce emissions.</p>
+
+      <h3>Key Car Management Systems</h3>
+
+      <table>
+        <thead><tr><th>System</th><th>What it monitors/controls</th><th>Environmental benefit</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Engine Management System (EMS)</strong></td>
+            <td>Fuel injection timing, ignition timing, air-fuel ratio; adjusts based on engine load, temperature and oxygen sensor readings</td>
+            <td>Optimises combustion for maximum efficiency — reduces fuel use and CO₂ emissions</td>
+          </tr>
+          <tr>
+            <td><strong>Start-Stop System</strong></td>
+            <td>Detects when the car is stationary (e.g. at traffic lights) and automatically shuts off the engine</td>
+            <td>Eliminates unnecessary idling fuel consumption — saves up to 8% fuel in city driving</td>
+          </tr>
+          <tr>
+            <td><strong>Regenerative Braking (EVs/Hybrids)</strong></td>
+            <td>Converts kinetic energy when braking into electrical energy, stored in the battery</td>
+            <td>Recovers energy that would otherwise be lost as heat — extends range without burning more fuel</td>
+          </tr>
+          <tr>
+            <td><strong>Traction Control System</strong></td>
+            <td>Prevents wheel spin by reducing engine power or applying individual brakes</td>
+            <td>Reduces fuel wasted on wheel spin; improves tyre life</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="impact">Overall Environmental Impact</h2>
+      <p>Intelligent systems reduce environmental impact primarily through <strong>reducing energy waste</strong>. The key principle across all three types of system is the same:</p>
+
+      <div style="background:var(--green-light);border-left:4px solid var(--green-primary);padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1rem 0;">
+        <p style="margin:0;"><strong>Measure → Analyse → Optimise → Repeat</strong><br>
+        Sensors continuously measure real-world conditions. Software analyses the data. The system takes the most efficient action. The loop repeats — constantly adapting.</p>
+      </div>
+
+      <p>This replaces human guesswork and fixed schedules with data-driven decision making — typically resulting in <strong>10–30% reduction in energy use</strong> compared with non-intelligent equivalents.</p>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>In the exam, questions on this topic typically ask you to <strong>describe how a specific intelligent system works</strong> or to <strong>explain its environmental benefits</strong>. Always link the system's mechanism to the specific energy saving it achieves — don't just say "it saves energy."</div>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Intelligent Systems</div>
+      <div class="placeholder-sub">Describe and evaluate intelligent heating, traffic and car management systems</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

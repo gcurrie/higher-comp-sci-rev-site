@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL Queries — DDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Database Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">SQL — Queries</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Database Design &amp; Development</div>
+    <h1>SQL — Queries</h1>
+    <p>SELECT statements with WHERE, ORDER BY, GROUP BY, aggregate functions, wildcards (LIKE), computed values and aliases (AS).</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#select">SELECT &amp; WHERE</a></li>
+      <li><a href="#order">ORDER BY</a></li>
+      <li><a href="#wildcards">Wildcards (LIKE)</a></li>
+      <li><a href="#computed">Computed Values &amp; Aliases</a></li>
+      <li><a href="#aggregates">Aggregate Functions</a></li>
+      <li><a href="#groupby">GROUP BY</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="select">SELECT and WHERE</h2>
+      <p>The <code>SELECT</code> statement retrieves data from one or more tables. <code>WHERE</code> filters which rows are returned.</p>
+
+      <div class="code-block">
+        <div class="code-label">Basic SELECT</div>
+        <pre>-- Return all columns from Pupil table
+SELECT * FROM Pupil;
+
+-- Return specific columns only
+SELECT FirstName, LastName, Mark
+FROM Pupil;
+
+-- Filter with WHERE
+SELECT FirstName, LastName, Mark
+FROM Pupil
+WHERE Mark >= 70;
+
+-- Multiple conditions
+SELECT FirstName, LastName
+FROM Pupil
+WHERE Mark >= 60 AND Mark &lt; 70;
+
+-- OR condition
+SELECT * FROM Pupil
+WHERE House = 'Red' OR House = 'Blue';</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="order">ORDER BY</h2>
+      <p><code>ORDER BY</code> sorts the result set. The default order is ascending (smallest first); add <code>DESC</code> for descending.</p>
+
+      <div class="code-block">
+        <pre>-- Alphabetically by last name (ascending)
+SELECT FirstName, LastName FROM Pupil
+ORDER BY LastName;
+
+-- Highest mark first (descending)
+SELECT FirstName, LastName, Mark FROM Pupil
+ORDER BY Mark DESC;
+
+-- Sort by multiple columns
+SELECT FirstName, LastName, Mark FROM Pupil
+ORDER BY LastName ASC, FirstName ASC;</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="wildcards">Wildcards — LIKE</h2>
+      <p>The <code>LIKE</code> operator is used with <code>WHERE</code> to search for a <em>pattern</em> rather than an exact match. Two wildcard characters are used:</p>
+
+      <table>
+        <thead><tr><th>Wildcard</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>%</code></td>
+            <td>Matches any sequence of zero or more characters</td>
+            <td><code>'Sm%'</code> matches Smith, Smiley, Sm</td>
+          </tr>
+          <tr>
+            <td><code>_</code></td>
+            <td>Matches exactly one character</td>
+            <td><code>'_one'</code> matches Jones, Bones, Tones</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-block">
+        <div class="code-label">LIKE Examples</div>
+        <pre>-- All pupils whose surname starts with "Sm"
+SELECT FirstName, LastName FROM Pupil
+WHERE LastName LIKE 'Sm%';
+
+-- All pupils whose email contains "@school"
+SELECT FirstName, Email FROM Pupil
+WHERE Email LIKE '%@school%';
+
+-- All books published in the 1990s
+SELECT Title, Year FROM Book
+WHERE Year LIKE '199_';
+
+-- All members whose name ends in "son"
+SELECT * FROM Member
+WHERE LastName LIKE '%son';</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="computed">Computed Values and Aliases</h2>
+      <p>SQL can calculate new values on the fly using arithmetic in the SELECT clause. An <strong>alias</strong> (using <code>AS</code>) gives the computed column a readable name in the output.</p>
+
+      <div class="code-block">
+        <div class="code-label">Computed Values with AS Alias</div>
+        <pre>-- Calculate total price from unit price and quantity
+SELECT ProductName,
+       UnitPrice,
+       Quantity,
+       UnitPrice * Quantity AS TotalCost
+FROM OrderLine;
+
+-- Apply a 20% discount
+SELECT ProductName,
+       UnitPrice,
+       UnitPrice * 0.8 AS DiscountedPrice
+FROM Product;
+
+-- Calculate percentage from marks
+SELECT FirstName,
+       Mark,
+       ROUND((Mark / 100.0) * 100, 1) AS Percentage
+FROM Pupil;</pre>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>The <code>AS</code> keyword gives the column a name in the results — it does not change the actual data in the table. You can use <code>AS</code> on any column, not just computed ones.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="aggregates">Aggregate Functions</h2>
+      <p>Aggregate functions perform a calculation on a set of values and return a single result.</p>
+
+      <table>
+        <thead><tr><th>Function</th><th>What it returns</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>COUNT(*)</code></td><td>Number of rows</td><td>How many pupils are enrolled</td></tr>
+          <tr><td><code>COUNT(column)</code></td><td>Number of non-NULL values in that column</td><td>How many pupils have a mark recorded</td></tr>
+          <tr><td><code>SUM(column)</code></td><td>Total of all values</td><td>Total sales for a product</td></tr>
+          <tr><td><code>AVG(column)</code></td><td>Average (mean) of all values</td><td>Average mark in the class</td></tr>
+          <tr><td><code>MAX(column)</code></td><td>Highest value</td><td>Highest mark achieved</td></tr>
+          <tr><td><code>MIN(column)</code></td><td>Lowest value</td><td>Lowest mark achieved</td></tr>
+        </tbody>
+      </table>
+
+      <div class="code-block">
+        <div class="code-label">Aggregate Function Examples</div>
+        <pre>-- Count all pupils
+SELECT COUNT(*) AS NumberOfPupils FROM Pupil;
+
+-- Average, max and min marks
+SELECT AVG(Mark)  AS AverageMark,
+       MAX(Mark)  AS HighestMark,
+       MIN(Mark)  AS LowestMark
+FROM Pupil;
+
+-- Total value of all orders
+SELECT SUM(UnitPrice * Quantity) AS TotalRevenue
+FROM OrderLine;</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="groupby">GROUP BY</h2>
+      <p><code>GROUP BY</code> divides the rows into groups based on one or more columns, then applies aggregate functions to each group separately.</p>
+
+      <div class="code-block">
+        <div class="code-label">GROUP BY Examples</div>
+        <pre>-- Count pupils in each House
+SELECT House, COUNT(*) AS NumberOfPupils
+FROM Pupil
+GROUP BY House;
+
+-- Average mark per year group
+SELECT YearGroup,
+       AVG(Mark) AS AverageMark,
+       MAX(Mark) AS HighestMark
+FROM Pupil
+GROUP BY YearGroup
+ORDER BY YearGroup;
+
+-- Total sales per product
+SELECT ProductName, SUM(Quantity) AS TotalSold
+FROM Product
+INNER JOIN OrderLine ON Product.ProductID = OrderLine.ProductID
+GROUP BY ProductName
+ORDER BY TotalSold DESC;</pre>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div>When using <code>GROUP BY</code>, every column in the <code>SELECT</code> clause must either be in the <code>GROUP BY</code> clause or be inside an aggregate function. You cannot mix grouped and non-grouped columns.</div>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — SQL Queries</div>
+      <div class="placeholder-sub">Write SELECT queries with WHERE, ORDER BY, LIKE wildcards, computed values and GROUP BY</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

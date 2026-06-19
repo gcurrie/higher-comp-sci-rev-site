@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security — CS — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Computer Systems</a><span class="sep">›</span>
+    <span class="current">Security</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Computer Systems</div>
+    <h1>Security</h1>
+    <p>Computer Misuse Act 1990, tracking cookies, Denial of Service attacks, and public/private key encryption with digital certificates and signatures.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#cma">Computer Misuse Act 1990</a></li>
+      <li><a href="#cookies">Tracking Cookies</a></li>
+      <li><a href="#dos">DOS Attacks</a></li>
+      <li><a href="#encryption">Encryption</a></li>
+      <li><a href="#keys">Public &amp; Private Keys</a></li>
+      <li><a href="#certificates">Digital Certificates</a></li>
+      <li><a href="#signatures">Digital Signatures</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <div class="callout callout-warning">
+      <div class="callout-icon">⚠️</div>
+      <div>The Higher CS security topic covers <strong>four specific areas</strong>: the Computer Misuse Act, tracking cookies, DOS attacks, and encryption (public/private keys, digital certificates, digital signatures). Topics such as malware types, phishing, firewalls, MFA and backups are <strong>not</strong> in the Higher Computer Systems specification.</div>
+    </div>
+
+    <article>
+      <h2 id="cma">Computer Misuse Act 1990</h2>
+      <p>The <strong>Computer Misuse Act 1990</strong> is the main UK law covering illegal use of computers and computer systems. It defines three specific offences:</p>
+
+      <div style="display:flex;flex-direction:column;gap:1rem;margin:1rem 0;">
+
+        <div style="background:var(--white);border:1px solid var(--border);border-left:4px solid #c0392b;border-radius:var(--radius);padding:1rem 1.25rem;">
+          <strong>Offence 1 — Unauthorised Access to Computer Material</strong>
+          <p style="font-size:.9rem;margin:.5rem 0 0;">Accessing any computer, data or program without permission. This includes guessing or using another person's password to log into their account.</p>
+          <p style="font-size:.82rem;color:var(--text-muted);margin:.4rem 0 0;">Maximum penalty: 12 months imprisonment and/or unlimited fine</p>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--border);border-left:4px solid #e67e22;border-radius:var(--radius);padding:1rem 1.25rem;">
+          <strong>Offence 2 — Unauthorised Access with Intent to Commit Further Offences</strong>
+          <p style="font-size:.9rem;margin:.5rem 0 0;">Accessing a computer without permission as a <em>stepping stone</em> to committing a more serious crime — for example, breaking into a bank's database with the intent to commit fraud.</p>
+          <p style="font-size:.82rem;color:var(--text-muted);margin:.4rem 0 0;">Maximum penalty: 5 years imprisonment and/or unlimited fine</p>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--border);border-left:4px solid #922b21;border-radius:var(--radius);padding:1rem 1.25rem;">
+          <strong>Offence 3 — Unauthorised Modification of Computer Material</strong>
+          <p style="font-size:.9rem;margin:.5rem 0 0;">Making unauthorised changes to data or programs — including installing malware, deleting files, changing records, or spreading a virus. The intent must be to impair operation or prevent access.</p>
+          <p style="font-size:.82rem;color:var(--text-muted);margin:.4rem 0 0;">Maximum penalty: 10 years imprisonment and/or unlimited fine</p>
+        </div>
+
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Exam questions may ask you to <strong>identify which offence</strong> a described scenario falls under. The key differences are: Offence 1 = access only; Offence 2 = access + intent for further crime; Offence 3 = modifying data/programs without permission.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="cookies">Tracking Cookies</h2>
+      <p>A <strong>cookie</strong> is a small text file stored on your computer by a website. A <strong>tracking cookie</strong> is specifically designed to monitor and record your browsing behaviour — often across multiple websites — for the purposes of advertising, analytics, or data collection.</p>
+
+      <h3>How Tracking Cookies Work</h3>
+      <ol>
+        <li>You visit a website that includes third-party advertising content (e.g. a Google Ads banner)</li>
+        <li>The advertising company's server places a tracking cookie in your browser</li>
+        <li>When you visit <em>any other site</em> that uses the same advertising company, they read the cookie and recognise you</li>
+        <li>They build a profile of the sites you visit, what you search for, what you buy</li>
+        <li>This profile is used to serve targeted adverts, or sold to data brokers</li>
+      </ol>
+
+      <h3>What Data Can Be Collected</h3>
+      <ul>
+        <li>Which websites you have visited and how often</li>
+        <li>What products or pages you have viewed</li>
+        <li>Your approximate location (from IP address)</li>
+        <li>Your device type, browser and operating system</li>
+        <li>Search terms used</li>
+      </ul>
+
+      <h3>Privacy Implications</h3>
+      <ul>
+        <li>Users may not be aware they are being tracked</li>
+        <li>Data can be shared with or sold to third parties without explicit consent</li>
+        <li>Creates detailed personal profiles that can be used for manipulative advertising</li>
+        <li>UK/EU law (GDPR, PECR) requires websites to get consent before placing tracking cookies — this is why cookie consent banners appear</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="dos">Denial of Service (DOS) Attacks</h2>
+      <p>A <strong>Denial of Service (DoS) attack</strong> is a deliberate attempt to make a website or online service unavailable to its intended users by overwhelming it with a flood of fake requests.</p>
+
+      <h3>How a DOS Attack Works</h3>
+      <p>A web server can only handle a limited number of simultaneous requests. If an attacker sends far more requests than the server can cope with:</p>
+      <ul>
+        <li>The server becomes overloaded and cannot respond to legitimate requests</li>
+        <li>The service becomes very slow or completely unavailable</li>
+        <li>Legitimate users are denied access to the service</li>
+      </ul>
+
+      <h3>Distributed DOS (DDoS)</h3>
+      <p>A <strong>Distributed DoS (DDoS)</strong> attack uses many computers simultaneously — often a <strong>botnet</strong> (a network of compromised computers controlled remotely, without their owners' knowledge). This makes the attack much harder to block because traffic comes from thousands of different IP addresses.</p>
+
+      <h3>Symptoms of a DOS Attack</h3>
+      <ul>
+        <li>Website becomes extremely slow or unresponsive</li>
+        <li>Service is completely unavailable</li>
+        <li>Legitimate users receive timeout errors</li>
+        <li>Server logs show millions of requests from the same or many different IP addresses</li>
+      </ul>
+
+      <h3>Effects and Costs</h3>
+      <table>
+        <thead><tr><th>Effect</th><th>Example cost/consequence</th></tr></thead>
+        <tbody>
+          <tr><td>Lost revenue</td><td>An e-commerce site loses all sales during the attack</td></tr>
+          <tr><td>Reputational damage</td><td>Customers lose trust in a site that is frequently unavailable</td></tr>
+          <tr><td>Recovery costs</td><td>Paying for DDoS mitigation services, extra server capacity, security staff time</td></tr>
+          <tr><td>Ransom payment</td><td>Attackers may demand payment to stop the attack</td></tr>
+          <tr><td>Legal liability</td><td>If the site holds customer data, prolonged downtime may breach SLAs or data protection obligations</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Why DOS Attacks Are Carried Out</h3>
+      <ul>
+        <li><strong>Financial extortion</strong> — attackers demand a ransom to stop</li>
+        <li><strong>Competition</strong> — unethical competitors disrupt a rival's service</li>
+        <li><strong>Hacktivism</strong> — political protest against an organisation</li>
+        <li><strong>Revenge or vandalism</strong> — targeting an organisation the attacker dislikes</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="encryption">Encryption</h2>
+      <p><strong>Encryption</strong> is the process of scrambling data so that it can only be read by someone with the correct key. It protects data in transit (e.g. over the internet) and at rest (e.g. stored on a server).</p>
+    </article>
+
+    <article>
+      <h2 id="keys">Public and Private Keys</h2>
+      <p><strong>Public key encryption</strong> (asymmetric encryption) uses a <em>pair</em> of mathematically linked keys:</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+        <div style="background:#e8f5ee;border-radius:var(--radius);padding:1rem;">
+          <strong style="color:var(--green-primary);">🔓 Public Key</strong>
+          <ul style="margin:.5rem 0 0;font-size:.9rem;">
+            <li>Shared openly — anyone can see it</li>
+            <li>Used to <strong>encrypt</strong> data being sent to the key's owner</li>
+            <li>Cannot decrypt data it has encrypted</li>
+          </ul>
+        </div>
+        <div style="background:#fff3cd;border-radius:var(--radius);padding:1rem;">
+          <strong style="color:#856404;">🔑 Private Key</strong>
+          <ul style="margin:.5rem 0 0;font-size:.9rem;">
+            <li>Kept secret by the owner — never shared</li>
+            <li>Used to <strong>decrypt</strong> data encrypted with the matching public key</li>
+            <li>Only the owner can decrypt messages sent to them</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="example-block">
+        <div class="example-label">How Public Key Encryption Works — Step by Step</div>
+        <ol>
+          <li>Alice wants to send a secure message to Bob</li>
+          <li>Bob publishes his <strong>public key</strong> openly</li>
+          <li>Alice encrypts her message using Bob's public key</li>
+          <li>The encrypted message is sent over the internet — even if intercepted, it cannot be read</li>
+          <li>Bob uses his <strong>private key</strong> (only he has it) to decrypt the message</li>
+          <li>Only Bob can read the message — even Alice cannot decrypt it once encrypted</li>
+        </ol>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="certificates">Digital Certificates</h2>
+      <p>A <strong>digital certificate</strong> is an electronic document that proves the identity of a website or organisation and confirms that its public key is genuine. Certificates are issued by a trusted third party called a <strong>Certificate Authority (CA)</strong> (e.g. DigiCert, Let's Encrypt).</p>
+
+      <h3>What a Digital Certificate Contains</h3>
+      <ul>
+        <li>The organisation's name and website domain</li>
+        <li>The organisation's <strong>public key</strong></li>
+        <li>The name of the issuing Certificate Authority</li>
+        <li>The certificate's expiry date</li>
+        <li>The CA's <strong>digital signature</strong> (proving the certificate is genuine)</li>
+      </ul>
+
+      <h3>Why Certificates Are Needed</h3>
+      <p>Without certificates, an attacker could intercept traffic and substitute their own public key (a <em>man-in-the-middle attack</em>). The certificate proves that the public key you receive really belongs to the website you intended to visit, not an impersonator.</p>
+
+      <p>When a website has a valid certificate, browsers show a padlock icon in the address bar. The connection uses HTTPS (HTTP Secure).</p>
+    </article>
+
+    <article>
+      <h2 id="signatures">Digital Signatures</h2>
+      <p>A <strong>digital signature</strong> is a way of verifying that a document or message:</p>
+      <ol>
+        <li>Was created by the claimed sender (authenticity)</li>
+        <li>Has not been altered since it was signed (integrity)</li>
+      </ol>
+
+      <h3>How Digital Signatures Work</h3>
+      <ol>
+        <li>The sender creates a <strong>hash</strong> of the document (a fixed-size fingerprint of the content)</li>
+        <li>The hash is encrypted using the sender's <strong>private key</strong> — this produces the digital signature</li>
+        <li>The signed document (original + signature) is sent to the recipient</li>
+        <li>The recipient decrypts the signature using the sender's <strong>public key</strong> — this reveals the original hash</li>
+        <li>The recipient also creates their own hash of the received document</li>
+        <li>If the two hashes match, the document is genuine and unmodified</li>
+      </ol>
+
+      <div class="example-block">
+        <div class="example-label">Why This Works</div>
+        <p>Only the sender can create a valid signature (only they have the private key). Anyone can verify it (public key is openly available). If the document is changed after signing, the hashes will not match — tampering is immediately detected.</p>
+      </div>
+
+      <table>
+        <thead><tr><th>Concept</th><th>Key used to create</th><th>Key used to verify/decrypt</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Encrypted message</td><td>Recipient's public key</td><td>Recipient's private key</td><td>Confidentiality</td></tr>
+          <tr><td>Digital signature</td><td>Sender's private key</td><td>Sender's public key</td><td>Authenticity &amp; integrity</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Security</div>
+      <div class="placeholder-sub">Identify CMA offences, describe DOS attacks, explain public key encryption and digital certificates</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

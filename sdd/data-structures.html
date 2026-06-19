@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Structures — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Software Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Data Structures</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Software Design &amp; Development</div>
+    <h1>Data Structures</h1>
+    <p>At Higher level you work with three data structures: parallel 1D arrays, records, and arrays of records.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#parallel">Parallel 1D Arrays</a></li>
+      <li><a href="#records">Records</a></li>
+      <li><a href="#arrays-of-records">Arrays of Records</a></li>
+      <li><a href="#choosing">Choosing a Structure</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <div class="callout callout-info">
+      <div class="callout-icon">ℹ️</div>
+      <div><strong>Higher vs National 5:</strong> At National 5 you used simple 1D arrays. At Higher the three required structures are parallel 1D arrays, records, and arrays of records. 2D arrays are <strong>not</strong> a required data structure at Higher.</div>
+    </div>
+
+    <article>
+      <h2 id="parallel">Parallel 1D Arrays</h2>
+      <p>Two or more separate 1D arrays where the <strong>same index position</strong> holds related information about the same item. The arrays must always have the same length and be maintained together.</p>
+
+      <div class="code-block">
+        <div class="code-label">SQA Reference Language — Parallel Arrays</div>
+        <pre>DECLARE names  AS ARRAY OF STRING INITIALLY []
+DECLARE marks  AS ARRAY OF INTEGER INITIALLY []
+DECLARE grades AS ARRAY OF STRING INITIALLY []
+
+# names[0], marks[0] and grades[0] all describe the same pupil
+SET names[0]  TO "Alice"
+SET marks[0]  TO 78
+SET grades[0] TO "B"
+
+SET names[1]  TO "Bob"
+SET marks[1]  TO 92
+SET grades[1] TO "A"</pre>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Parallel arrays are useful when you want to apply standard algorithms (find max, count occurrences) on a single numeric array, then use the same index to look up related data from a second array.</div>
+      </div>
+
+      <h3>Using the Index to Link Related Data</h3>
+      <p>To display the name of the pupil with the highest mark, find the index of the maximum in <code>marks</code>, then use that index in <code>names</code>:</p>
+      <div class="code-block">
+        <pre>DECLARE maxIndex AS INTEGER INITIALLY 0
+FOR i FROM 1 TO LENGTH(marks) - 1 DO
+    IF marks[i] > marks[maxIndex] THEN
+        SET maxIndex TO i
+    END IF
+END FOR
+SEND "Top pupil: " &amp; names[maxIndex] &amp; " scored " &amp; marks[maxIndex] TO DISPLAY</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Parallel Arrays — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/PmN3RIDn5sY"
+            title="Parallel Arrays Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Parallel Arrays</div>
+          <div class="ip-sub">Interactive editor coming here — modify the arrays and run the code to see which index links the data</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="records">Records</h2>
+      <p>A <strong>record</strong> is a collection of named fields that can each hold a <em>different</em> data type. Where an array stores many values of the same type, a record stores multiple attributes of a <em>single</em> item.</p>
+
+      <div class="code-block">
+        <div class="code-label">Defining and Using a Record</div>
+        <pre>RECORD Pupil IS
+    name   : STRING
+    mark   : INTEGER
+    passed : BOOLEAN
+END RECORD
+
+DECLARE student AS Pupil
+
+SET student.name   TO "Claire"
+SET student.mark   TO 65
+SET student.passed TO TRUE
+
+SEND student.name &amp; " scored " &amp; student.mark TO DISPLAY</pre>
+      </div>
+
+      <table>
+        <thead><tr><th>Feature</th><th>Array</th><th>Record</th></tr></thead>
+        <tbody>
+          <tr><td>Stores</td><td>Many values, same type</td><td>Multiple fields, different types</td></tr>
+          <tr><td>Access</td><td>By numeric index: <code>arr[2]</code></td><td>By field name: <code>student.name</code></td></tr>
+          <tr><td>Use case</td><td>A list of the same kind of value</td><td>A single complex item with named attributes</td></tr>
+        </tbody>
+      </table>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Records — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-records"
+            title="Records Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Records</div>
+          <div class="ip-sub">Interactive editor coming here — declare a record type, create an instance, and access its fields</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="arrays-of-records">Arrays of Records</h2>
+      <p>An <strong>array of records</strong> combines both structures: a 1D array where every element is a record. This allows you to store a <em>list</em> of complex items, each with multiple named fields of different types.</p>
+
+      <div class="code-block">
+        <div class="code-label">Declaring an Array of Records</div>
+        <pre>RECORD Pupil IS
+    name : STRING
+    mark : INTEGER
+END RECORD
+
+DECLARE class AS ARRAY OF Pupil INITIALLY []
+
+SET class[0].name TO "Alice"
+SET class[0].mark TO 78
+
+SET class[1].name TO "Bob"
+SET class[1].mark TO 92</pre>
+      </div>
+
+      <h3>Iterating Over an Array of Records</h3>
+      <div class="code-block">
+        <pre>FOR i FROM 0 TO LENGTH(class) - 1 DO
+    SEND class[i].name &amp; ": " &amp; class[i].mark TO DISPLAY
+END FOR</pre>
+      </div>
+
+      <h3>Comparison: Parallel Arrays vs Array of Records</h3>
+      <table>
+        <thead><tr><th></th><th>Parallel Arrays</th><th>Array of Records</th></tr></thead>
+        <tbody>
+          <tr><td>Related data kept together?</td><td>Only by convention (same index)</td><td>Yes — one element holds all fields</td></tr>
+          <tr><td>Risk of mismatch</td><td>Higher — must keep arrays in sync</td><td>None — fields are part of the same element</td></tr>
+          <tr><td>Field access</td><td>Index: <code>names[i]</code>, <code>marks[i]</code></td><td>Dot notation: <code>class[i].name</code></td></tr>
+          <tr><td>Preferred for</td><td>Simple numeric algorithms on one attribute</td><td>Storing and processing structured records</td></tr>
+        </tbody>
+      </table>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Arrays of Records — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-arrays-of-records"
+            title="Arrays of Records Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Arrays of Records</div>
+          <div class="ip-sub">Interactive editor coming here — create an array of records, populate it with data, and iterate through the fields</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="choosing">Choosing a Data Structure</h2>
+      <ul>
+        <li>Use a <strong>1D array</strong> for a simple list of single values of the same type.</li>
+        <li>Use <strong>parallel 1D arrays</strong> when you have related data of different types and want standard algorithms on one numeric array.</li>
+        <li>Use a <strong>record</strong> for a single item with named attributes of different types.</li>
+        <li>Use an <strong>array of records</strong> for a list of items that each have multiple attributes of different types — the most common structure in Higher assignments.</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>Answers mentioning "2D arrays" for Higher data structures will not gain marks. The required structures are <strong>parallel arrays</strong>, <strong>records</strong>, and <strong>arrays of records</strong>.</div>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Data Structures</div>
+      <div class="placeholder-sub">Write declarations and access code for parallel arrays and arrays of records</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

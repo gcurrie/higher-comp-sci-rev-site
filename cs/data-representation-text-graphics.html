@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Representation: Text &amp; Graphics — CS — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Computer Systems</a><span class="sep">›</span>
+    <span class="current">Data Representation — Text &amp; Graphics</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Computer Systems</div>
+    <h1>Data Representation: Text &amp; Graphics</h1>
+    <p>Unicode vs extended ASCII for text representation; bitmap vs vector graphics — advantages, disadvantages and use cases.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#ascii">Extended ASCII</a></li>
+      <li><a href="#unicode">Unicode</a></li>
+      <li><a href="#comparison">ASCII vs Unicode</a></li>
+      <li><a href="#bitmap">Bitmap Graphics</a></li>
+      <li><a href="#vector">Vector Graphics</a></li>
+      <li><a href="#bitmapvsvector">Bitmap vs Vector</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="ascii">Extended ASCII</h2>
+      <p><strong>ASCII</strong> (American Standard Code for Information Interchange) was the original standard for encoding text characters as binary numbers. The original 7-bit ASCII could represent 128 characters (0–127): uppercase and lowercase English letters, digits, punctuation, and control codes.</p>
+
+      <p><strong>Extended ASCII</strong> uses <strong>8 bits</strong> per character, allowing 256 characters (0–255). The extra 128 values were used for accented characters, box-drawing symbols and other regional characters — but different manufacturers defined these extra characters differently, causing inconsistency.</p>
+
+      <div class="example-block">
+        <div class="example-label">Extended ASCII Examples</div>
+        <table>
+          <thead><tr><th>Character</th><th>Decimal code</th><th>8-bit binary</th></tr></thead>
+          <tbody>
+            <tr><td>A</td><td>65</td><td>01000001</td></tr>
+            <tr><td>a</td><td>97</td><td>01100001</td></tr>
+            <tr><td>0</td><td>48</td><td>00110000</td></tr>
+            <tr><td>Space</td><td>32</td><td>00100000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="unicode">Unicode</h2>
+      <p><strong>Unicode</strong> is a universal character encoding standard designed to represent <em>every character from every writing system in the world</em>. It assigns a unique code point to over 140,000 characters, covering Latin, Arabic, Chinese, Japanese, Korean, Greek, Cyrillic, emoji, and many more.</p>
+
+      <p>The most common Unicode encoding is <strong>UTF-8</strong>:</p>
+      <ul>
+        <li>Variable-length: characters use 1–4 bytes depending on their code point</li>
+        <li>The first 128 characters (standard ASCII) are encoded identically in ASCII and UTF-8 — backwards compatible</li>
+        <li>Used on over 98% of all websites</li>
+      </ul>
+
+      <p><strong>UTF-16</strong> uses 2 or 4 bytes per character. Used internally by Windows and Java.</p>
+    </article>
+
+    <article>
+      <h2 id="comparison">Extended ASCII vs Unicode</h2>
+      <table>
+        <thead><tr><th></th><th>Extended ASCII (8-bit)</th><th>Unicode (UTF-8)</th></tr></thead>
+        <tbody>
+          <tr><td>Bits per character</td><td>8 (fixed)</td><td>8–32 (variable)</td></tr>
+          <tr><td>Characters represented</td><td>256</td><td>Over 140,000+</td></tr>
+          <tr><td>Languages supported</td><td>Western European only</td><td>All human writing systems</td></tr>
+          <tr><td>Storage (English text)</td><td>1 byte per character</td><td>1 byte per character (same for ASCII range)</td></tr>
+          <tr><td>Storage (non-Latin text)</td><td>Not supported</td><td>2–4 bytes per character</td></tr>
+          <tr><td>Standard use</td><td>Legacy systems</td><td>All modern web, software and systems</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>The key difference the exam tests: ASCII uses <strong>8 bits</strong> (256 characters, Western European only); Unicode supports <strong>every writing system</strong> using variable-length encoding but requires more storage for non-Latin characters.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="bitmap">Bitmap Graphics</h2>
+      <p>A <strong>bitmap</strong> image (also called a raster image) stores the colour of every individual pixel in a grid. Common formats: JPEG, PNG, GIF, BMP.</p>
+
+      <h3>Key Terms</h3>
+      <table>
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Resolution</strong></td><td>The number of pixels in the image, usually stated as width × height (e.g. 1920×1080). More pixels = more detail = larger file.</td></tr>
+          <tr><td><strong>Colour depth</strong></td><td>The number of bits used to represent each pixel's colour. 8-bit = 256 colours; 24-bit = 16.7 million colours (true colour).</td></tr>
+          <tr><td><strong>File size</strong></td><td>Resolution × colour depth (in bits), then convert to bytes. A 100×100 pixel image at 24-bit colour = 100 × 100 × 24 = 240,000 bits = 30,000 bytes ≈ 29 KB (uncompressed).</td></tr>
+        </tbody>
+      </table>
+
+      <div class="example-block">
+        <div class="example-label">File Size Calculation</div>
+        <p>An image is 800 × 600 pixels with a colour depth of 24 bits.<br>
+        File size = 800 × 600 × 24 = 11,520,000 bits = 1,440,000 bytes = 1.37 MB (uncompressed)</p>
+      </div>
+
+      <h3>Advantages of Bitmap</h3>
+      <ul>
+        <li>Can represent complex, detailed images with many colours (photographs)</li>
+        <li>Widely supported by all image editing and display software</li>
+        <li>Easy to edit individual pixels</li>
+      </ul>
+
+      <h3>Disadvantages of Bitmap</h3>
+      <ul>
+        <li>Large file sizes for high-resolution or high-colour-depth images</li>
+        <li>Becomes pixelated (blurry) when scaled up — resolution is fixed</li>
+        <li>Not suitable for logos or line art that need to scale to any size</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="vector">Vector Graphics</h2>
+      <p>A <strong>vector</strong> image stores the image as a collection of <em>mathematical descriptions</em> of shapes — lines, curves, polygons — defined by coordinates, colours and properties. Common formats: SVG, AI, EPS.</p>
+
+      <h3>Advantages of Vector</h3>
+      <ul>
+        <li>Can be scaled to any size without loss of quality — the shapes are recalculated for the new size</li>
+        <li>Smaller file sizes for simple images (logos, diagrams, line art)</li>
+        <li>Easy to edit individual shapes, colours and elements</li>
+        <li>Ideal for print design, logos and illustrations</li>
+      </ul>
+
+      <h3>Disadvantages of Vector</h3>
+      <ul>
+        <li>Not suitable for complex photographic images — storing a photograph as mathematical shapes is impractical</li>
+        <li>Rendering complex vector images can be slow</li>
+        <li>Less widely supported than bitmap formats</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="bitmapvsvector">Bitmap vs Vector — Comparison</h2>
+      <table>
+        <thead><tr><th></th><th>Bitmap</th><th>Vector</th></tr></thead>
+        <tbody>
+          <tr><td>Storage method</td><td>Pixel-by-pixel colour values</td><td>Mathematical descriptions of shapes</td></tr>
+          <tr><td>Scaling quality</td><td>Degrades — becomes pixelated</td><td>Perfect at any size</td></tr>
+          <tr><td>File size</td><td>Large for high resolution/depth</td><td>Small for simple images; grows with complexity</td></tr>
+          <tr><td>Best for</td><td>Photographs, complex images</td><td>Logos, icons, diagrams, line art</td></tr>
+          <tr><td>Editing</td><td>Pixel-level editing</td><td>Shape/element editing</td></tr>
+          <tr><td>Examples</td><td>JPEG, PNG, GIF, BMP</td><td>SVG, AI, EPS</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Text &amp; Graphics</div>
+      <div class="placeholder-sub">Compare ASCII and Unicode; calculate bitmap file sizes; evaluate bitmap vs vector</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

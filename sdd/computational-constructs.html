@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computational Constructs — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Software Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Computational Constructs</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Software Design &amp; Development</div>
+    <h1>Computational Constructs</h1>
+    <p>Parameter passing, scope, functions and procedures, pre-defined functions (substrings, chr/ord, modulus, float-to-int), and file handling.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#subprograms">Functions &amp; Procedures</a></li>
+      <li><a href="#parameters">Parameter Passing</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#predef">Pre-defined Functions</a></li>
+      <li><a href="#filehandling">File Handling</a></li>
+      <li><a href="#constructs">Selection &amp; Iteration</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="subprograms">Functions and Procedures</h2>
+      <p>Breaking a program into <strong>subprograms</strong> (also called modules) is central to Higher-level programming. It makes code easier to test, maintain and reuse.</p>
+
+      <table>
+        <thead><tr><th></th><th>Procedure</th><th>Function</th></tr></thead>
+        <tbody>
+          <tr><td>Returns a value?</td><td>No</td><td>Yes — one value via <code>RETURN</code></td></tr>
+          <tr><td>Used for</td><td>Performing an action (e.g. display output)</td><td>Calculating and returning a result</td></tr>
+          <tr><td>Called by</td><td>Statement: <code>displayMenu()</code></td><td>Expression: <code>SET total TO add(a, b)</code></td></tr>
+        </tbody>
+      </table>
+
+      <div class="code-block">
+        <div class="code-label">Procedure and Function Examples</div>
+        <pre># Procedure — performs an action, no return value
+PROCEDURE displayGreeting(name : STRING)
+    SEND "Hello, " &amp; name TO DISPLAY
+END PROCEDURE
+
+# Function — calculates and returns a value
+FUNCTION square(n : INTEGER) RETURNS INTEGER
+    RETURN n * n
+END FUNCTION
+
+# Calling them
+CALL displayGreeting("Alice")
+SET result TO square(5)    # result = 25</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Functions &amp; Procedures — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-functions"
+            title="Functions and Procedures Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Functions &amp; Procedures</div>
+          <div class="ip-sub">Interactive editor coming here — write a procedure that displays output and a function that returns a calculated value</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="parameters">Parameter Passing</h2>
+      <p>Parameters allow data to be passed into a subprogram. There are two terms to know:</p>
+
+      <table>
+        <thead><tr><th>Term</th><th>Where?</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Formal parameter</strong></td>
+            <td>In the subprogram definition</td>
+            <td>The named placeholder that receives the value</td>
+          </tr>
+          <tr>
+            <td><strong>Actual parameter</strong></td>
+            <td>In the subprogram call</td>
+            <td>The real value or variable passed in when calling</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-block">
+        <div class="code-label">Formal vs Actual Parameters</div>
+        <pre>FUNCTION add(a : INTEGER, b : INTEGER) RETURNS INTEGER
+#              ^ formal      ^ formal
+    RETURN a + b
+END FUNCTION
+
+SET total TO add(10, 20)
+#                ^ actual  ^ actual</pre>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Exam questions often ask you to "identify the formal parameters" or "state the actual parameters used in the call." Always check <em>where</em> you are looking — definition = formal, call = actual.</div>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Parameter Passing — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-parameters"
+            title="Parameter Passing Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Parameter Passing</div>
+          <div class="ip-sub">Interactive editor coming here — identify formal and actual parameters in a working function call</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="scope">Scope: Local and Global Variables</h2>
+      <p>The <strong>scope</strong> of a variable determines where in a program it can be accessed.</p>
+
+      <table>
+        <thead><tr><th></th><th>Local Variable</th><th>Global Variable</th></tr></thead>
+        <tbody>
+          <tr><td>Declared inside</td><td>A subprogram</td><td>The main program (outside all subprograms)</td></tr>
+          <tr><td>Accessible</td><td>Only within that subprogram</td><td>Throughout the entire program</td></tr>
+          <tr><td>Exists</td><td>Only while subprogram runs</td><td>For the lifetime of the program</td></tr>
+          <tr><td>Preferred?</td><td>Yes — reduces unintended side effects</td><td>Avoid where possible</td></tr>
+        </tbody>
+      </table>
+
+      <div class="code-block">
+        <pre>DECLARE total AS INTEGER INITIALLY 0   # global
+
+PROCEDURE addToTotal(amount : INTEGER)
+    DECLARE temp AS INTEGER INITIALLY 0  # local to this procedure
+    SET temp TO amount * 2
+    SET total TO total + temp
+END PROCEDURE</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Scope — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-scope"
+            title="Local and Global Scope Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Scope</div>
+          <div class="ip-sub">Interactive editor coming here — experiment with local vs global variables and see which are accessible inside a subprogram</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="predef">Pre-defined Functions</h2>
+      <p>The SQA Higher exam expects you to know and use four categories of pre-defined functions. These are built-in operations provided by the language.</p>
+
+      <h3>1. Substrings</h3>
+      <p>Extract part of a string using a start position and a length.</p>
+      <div class="code-block">
+        <pre>DECLARE word AS STRING INITIALLY "Computing"
+
+SET part TO SUBSTRING(word, 0, 4)   # Returns "Comp"
+# SUBSTRING(string, start index, length)</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">SUBSTRING Function — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-substring"
+            title="SUBSTRING Function Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <h3>2. Character ↔ ASCII (chr and ord)</h3>
+      <p>Convert between a character and its ASCII (Unicode) code number.</p>
+      <div class="code-block">
+        <pre>SET code TO ASC("A")      # Returns 65
+SET letter TO CHR(65)     # Returns "A"
+
+# Useful for checking alphabetical order, shifting characters
+IF ASC(char) >= ASC("a") AND ASC(char) <= ASC("z") THEN
+    SEND "Lowercase letter" TO DISPLAY
+END IF</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">ASC &amp; CHR Functions — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-asc-chr"
+            title="ASC and CHR Functions Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <h3>3. Real to Integer</h3>
+      <p>Convert a floating-point (real) number to an integer by truncating (removing) the decimal part.</p>
+      <div class="code-block">
+        <pre>DECLARE price AS REAL INITIALLY 9.99
+
+SET whole TO INT(price)    # Returns 9 (truncates, does not round)
+SET rounded TO ROUND(price, 0)  # Returns 10.0</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">INT &amp; ROUND Functions — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-int-round"
+            title="INT and ROUND Functions Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <h3>4. Modulus (Remainder)</h3>
+      <p>The modulus operator returns the <strong>remainder</strong> after integer division. It is used to check divisibility, detect even/odd numbers, and cycle through indices.</p>
+      <div class="code-block">
+        <pre>SET remainder TO 17 MOD 5    # Returns 2  (17 = 3×5 + 2)
+SET isEven   TO n MOD 2 = 0  # TRUE if n is even
+
+# Check if a number is divisible by 3:
+IF n MOD 3 = 0 THEN
+    SEND n &amp; " is divisible by 3" TO DISPLAY
+END IF</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">MOD (Modulus) — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-mod"
+            title="MOD Modulus Operator Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Pre-defined Functions</div>
+          <div class="ip-sub">Interactive editor coming here — practice SUBSTRING, ASC/CHR, INT/ROUND, and MOD on example values</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="filehandling">File Handling</h2>
+      <p>At Higher level you are expected to read data from and write data to files using <strong>sequential access</strong>. The two most common formats are plain text files (<code>.txt</code>) and comma-separated value files (<code>.csv</code>).</p>
+
+      <h3>Reading from a File</h3>
+      <div class="code-block">
+        <div class="code-label">Reading all lines from a text file</div>
+        <pre>OPEN "scores.txt" FOR READING AS myFile
+
+WHILE NOT EOF(myFile) DO
+    RECEIVE line FROM myFile
+    SEND line TO DISPLAY
+END WHILE
+
+CLOSE myFile</pre>
+      </div>
+
+      <h3>Writing to a File</h3>
+      <div class="code-block">
+        <div class="code-label">Writing lines to a text file</div>
+        <pre>OPEN "output.txt" FOR WRITING AS myFile
+
+FOR i FROM 0 TO LENGTH(names) - 1 DO
+    SEND names[i] &amp; "," &amp; marks[i] TO myFile
+END FOR
+
+CLOSE myFile</pre>
+      </div>
+
+      <h3>Reading a CSV File into an Array of Records</h3>
+      <div class="code-block">
+        <pre>OPEN "pupils.csv" FOR READING AS csvFile
+
+DECLARE i AS INTEGER INITIALLY 0
+WHILE NOT EOF(csvFile) DO
+    RECEIVE line FROM csvFile
+    SET class[i].name TO FIELD(line, ",", 0)   # first field
+    SET class[i].mark TO INT(FIELD(line, ",", 1))  # second field
+    SET i TO i + 1
+END WHILE
+
+CLOSE csvFile</pre>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div>Key file-handling terms: <strong>OPEN</strong> (open a file for reading or writing), <strong>CLOSE</strong> (release the file when done), <strong>EOF</strong> (end of file — used to detect when all lines have been read), <strong>sequential access</strong> (reading from start to finish in order).</div>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">File Handling — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-file-handling"
+            title="File Handling Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — File Handling</div>
+          <div class="ip-sub">Interactive editor coming here — open a sample file, read lines with a WHILE NOT EOF loop, and display the contents</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="constructs">Selection and Iteration</h2>
+      <p>These constructs carry over from National 5 and are used throughout Higher programming tasks.</p>
+
+      <h3>Selection</h3>
+      <div class="code-block">
+        <pre># Simple IF
+IF mark >= 70 THEN
+    SET grade TO "A"
+ELSE IF mark >= 60 THEN
+    SET grade TO "B"
+ELSE
+    SET grade TO "C"
+END IF
+
+# CASE (equivalent to switch/match)
+CASE grade OF
+    "A" : SEND "Distinction" TO DISPLAY
+    "B" : SEND "Merit" TO DISPLAY
+    OTHERWISE : SEND "Pass" TO DISPLAY
+END CASE</pre>
+      </div>
+
+      <h3>Iteration</h3>
+      <div class="code-block">
+        <pre># Fixed loop
+FOR i FROM 0 TO 9 DO
+    SEND class[i].name TO DISPLAY
+END FOR
+
+# Conditional loop (pre-test)
+WHILE score &lt; 0 OR score > 100 DO
+    RECEIVE score FROM KEYBOARD
+END WHILE
+
+# Conditional loop (post-test — runs at least once)
+REPEAT
+    RECEIVE score FROM KEYBOARD
+UNTIL score >= 0 AND score &lt;= 100</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Selection &amp; Iteration — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-selection-iteration"
+            title="Selection and Iteration Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Selection &amp; Iteration</div>
+          <div class="ip-sub">Interactive editor coming here — write an IF/ELSE chain and a FOR loop, then adapt them to use WHILE and REPEAT</div>
+        </div>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Computational Constructs</div>
+      <div class="placeholder-sub">Parameter passing, scope, pre-defined functions and file handling exercises</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

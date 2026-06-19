@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Representation — Sound — CS — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Computer Systems</a><span class="sep">›</span>
+    <span class="current">Sound</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Computer Systems — Topic 3</div>
+    <h1>Data Representation — Sound</h1>
+    <p>How analogue sound is converted to digital data — sampling rate, sample depth and file size calculations.</p>
+  </div>
+</section>
+<main class="page-content">
+  <div class="content-layout">
+    <aside class="content-sidebar">
+      <nav class="sidebar-nav">
+        <div class="sn-header">🖥️ CS Topics</div>
+        <ul>
+          <li><a href="data-representation-numbers.html"><span class="sn-icon">🔢</span>Numbers</a></li>
+          <li><a href="data-representation-text-graphics.html"><span class="sn-icon">🔤</span>Text &amp; Graphics</a></li>
+          <li><a href="data-representation-sound.html" class="active"><span class="sn-icon">🔊</span>Sound</a></li>
+          <li><a href="computer-structure.html"><span class="sn-icon">⚙️</span>Computer Structure</a></li>
+          <li><a href="environmental-impact.html"><span class="sn-icon">🌱</span>Environmental Impact</a></li>
+          <li><a href="security.html"><span class="sn-icon">🔒</span>Security</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <article class="content-article">
+      <h2>Data Representation — Sound</h2>
+      <div class="article-meta">
+        <span class="badge">Computer Systems</span>
+        <span>Topic 3 of 6</span>
+      </div>
+
+      <p>Sound is naturally an <strong>analogue</strong> signal — a continuous wave that varies smoothly over time. To store sound digitally, it must be converted into a series of binary numbers through a process called <strong>Analogue-to-Digital Conversion (ADC)</strong>.</p>
+
+      <h3>How Sound is Digitised</h3>
+      <p>The process of converting analogue sound to digital involves <strong>sampling</strong>:</p>
+      <ol>
+        <li>The amplitude (volume/height) of the sound wave is measured at regular intervals</li>
+        <li>Each measurement is called a <strong>sample</strong></li>
+        <li>Each sample is stored as a binary number</li>
+        <li>Playback reconstructs the wave from these samples</li>
+      </ol>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">📷</div>
+        <p>Diagram: Analogue sound wave with sample points shown — to be added here</p>
+      </div>
+
+      <h3>Key Terms</h3>
+      <div class="key-terms">
+        <div class="key-term">
+          <div class="term">Sampling Rate</div>
+          <div class="def">The number of samples taken per second. Measured in Hertz (Hz) or kilohertz (kHz). Higher sampling rate = more accurate reproduction of the original sound, but larger file size.<br><em>CD quality: 44,100 Hz (44.1 kHz)</em></div>
+        </div>
+        <div class="key-term">
+          <div class="term">Sample Depth (Bit Depth)</div>
+          <div class="def">The number of bits used to store each sample. More bits = more possible amplitude values = higher quality, but larger file size.<br><em>CD quality: 16 bits per sample</em></div>
+        </div>
+        <div class="key-term">
+          <div class="term">Channels</div>
+          <div class="def">Mono (1 channel) or stereo (2 channels). Stereo doubles the file size compared to mono.</div>
+        </div>
+      </div>
+
+      <h3>Effect of Sampling Rate and Bit Depth</h3>
+      <table>
+        <thead><tr><th>Change</th><th>Effect on quality</th><th>Effect on file size</th></tr></thead>
+        <tbody>
+          <tr><td>Increase sampling rate</td><td>Higher frequency sounds reproduced more accurately</td><td>Larger</td></tr>
+          <tr><td>Decrease sampling rate</td><td>Loss of high-frequency detail; sound may seem muffled</td><td>Smaller</td></tr>
+          <tr><td>Increase bit depth</td><td>More amplitude values; less distortion (quantisation noise)</td><td>Larger</td></tr>
+          <tr><td>Decrease bit depth</td><td>Fewer amplitude values; distortion/noise more audible</td><td>Smaller</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Calculating Sound File Size</h3>
+      <p>File size (bits) = sampling rate × bit depth × duration (seconds) × number of channels</p>
+
+      <pre><code>Example: 3-minute stereo audio at CD quality
+Sampling rate = 44,100 Hz
+Bit depth     = 16 bits
+Duration      = 3 × 60 = 180 seconds
+Channels      = 2 (stereo)
+
+File size = 44,100 × 16 × 180 × 2
+          = 254,016,000 bits
+          = 254,016,000 ÷ 8        = 31,752,000 bytes
+          = 31,752,000 ÷ 1024      = 31,007.8 KB
+          = 31,007.8 ÷ 1024        ≈ 30.3 MB</code></pre>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div><strong>Units reminder:</strong> 1 byte = 8 bits | 1 KB = 1024 bytes | 1 MB = 1024 KB | 1 GB = 1024 MB. Always show your conversion steps in the exam.</div>
+      </div>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">📷</div>
+        <p>Diagram: Comparison of low vs high sampling rate on a waveform — to be added here</p>
+      </div>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">🎬</div>
+        <p>Video: Sound digitisation and file size calculations — to be embedded here</p>
+      </div>
+
+      <h3>Practice Questions</h3>
+      <div class="practice-q">
+        <div class="q-label">Question 1 — 2 marks</div>
+        <p>Explain what is meant by sampling rate and describe the effect of increasing the sampling rate on the quality and file size of a sound recording.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 2 — 4 marks</div>
+        <p>Calculate the file size in megabytes of a 5-minute mono audio recording with a sampling rate of 22,050 Hz and a bit depth of 16 bits. Show all working.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 3 — 2 marks</div>
+        <p>A music producer wants to reduce the file size of a recording without losing too much quality. Describe <strong>two</strong> changes they could make, and for each explain the trade-off.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 4 — 1 mark</div>
+        <p>State the sampling rate used for CD-quality audio.</p>
+      </div>
+    </article>
+  </div>
+</main>
+</body>
+</html>

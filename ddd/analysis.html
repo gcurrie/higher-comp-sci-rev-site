@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Analysis — DDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">DDD</a><span class="sep">›</span>
+    <span class="current">Database Analysis</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">DDD — Topic 1</div>
+    <h1>Database Analysis</h1>
+    <p>Identifying entities, attributes and relationships — the first step in designing a relational database.</p>
+  </div>
+</section>
+<main class="page-content">
+  <div class="content-layout">
+    <aside class="content-sidebar">
+      <nav class="sidebar-nav">
+        <div class="sn-header">🗄️ DDD Topics</div>
+        <ul>
+          <li><a href="analysis.html" class="active"><span class="sn-icon">🔍</span>Database Analysis</a></li>
+          <li><a href="er-diagrams.html"><span class="sn-icon">🔗</span>ER Diagrams</a></li>
+          <li><a href="database-design.html"><span class="sn-icon">🗄️</span>Database Design</a></li>
+          <li><a href="sql-queries.html"><span class="sn-icon">🔎</span>SQL — SELECT</a></li>
+          <li><a href="sql-joins.html"><span class="sn-icon">🔀</span>SQL — Joins</a></li>
+          <li><a href="sql-crud.html"><span class="sn-icon">✏️</span>SQL — INSERT/UPDATE/DELETE</a></li>
+          <li><a href="testing-evaluation.html"><span class="sn-icon">✅</span>Testing &amp; Evaluation</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <article class="content-article">
+      <h2>Database Analysis</h2>
+      <div class="article-meta">
+        <span class="badge">DDD Unit 2</span>
+        <span>Topic 1 of 7</span>
+      </div>
+
+      <p>The analysis stage involves understanding what data a database needs to store, how that data is organised, and how different pieces of data relate to each other.</p>
+
+      <h3>Key Concepts</h3>
+      <div class="key-terms">
+        <div class="key-term">
+          <div class="term">Entity</div>
+          <div class="def">A real-world object or concept about which data is stored. Becomes a table in the database. Examples: <em>Pupil</em>, <em>Course</em>, <em>Teacher</em>, <em>Product</em>.</div>
+        </div>
+        <div class="key-term">
+          <div class="term">Attribute</div>
+          <div class="def">A piece of information stored about an entity. Becomes a field (column) in the table. Example: a <em>Pupil</em> entity might have attributes: PupilID, Name, DateOfBirth, YearGroup.</div>
+        </div>
+        <div class="key-term">
+          <div class="term">Relationship</div>
+          <div class="def">A link between two entities showing how they are connected. Example: a <em>Pupil</em> is enrolled on a <em>Course</em>.</div>
+        </div>
+        <div class="key-term">
+          <div class="term">Primary Key</div>
+          <div class="def">A unique identifier for each record in a table. No two records can share the same primary key value. Example: PupilID.</div>
+        </div>
+        <div class="key-term">
+          <div class="term">Foreign Key</div>
+          <div class="def">A field in one table that refers to the primary key of another table, creating a link between them.</div>
+        </div>
+      </div>
+
+      <h3>Types of Relationship</h3>
+      <p>Relationships between entities describe how many instances of one entity can be associated with instances of another:</p>
+
+      <table>
+        <thead><tr><th>Relationship Type</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>One-to-One (1:1)</strong></td><td>One record in table A links to exactly one record in table B</td><td>A person has one passport</td></tr>
+          <tr><td><strong>One-to-Many (1:M)</strong></td><td>One record in table A links to many records in table B</td><td>One teacher teaches many pupils</td></tr>
+          <tr><td><strong>Many-to-Many (M:M)</strong></td><td>Many records in table A link to many records in table B</td><td>Many pupils enrol on many courses</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div>Many-to-many relationships cannot be directly implemented in a relational database. They must be resolved by creating a <strong>linking table</strong> (also called a junction or associative table) which breaks the M:M into two 1:M relationships.</div>
+      </div>
+
+      <h3>Worked Example — School Database</h3>
+      <p>Consider a school that wants to store information about pupils and the clubs they attend.</p>
+
+      <h4>Identifying entities</h4>
+      <ul>
+        <li><strong>Pupil</strong> — stores information about each pupil</li>
+        <li><strong>Club</strong> — stores information about each club</li>
+      </ul>
+
+      <h4>Identifying attributes</h4>
+      <ul>
+        <li><strong>Pupil:</strong> PupilID (PK), FirstName, LastName, YearGroup, DateOfBirth</li>
+        <li><strong>Club:</strong> ClubID (PK), ClubName, MeetingDay, TeacherInCharge</li>
+      </ul>
+
+      <h4>Identifying relationships</h4>
+      <p>A pupil can join many clubs, and a club can have many pupils — this is a <strong>many-to-many</strong> relationship. It requires a linking table:</p>
+      <ul>
+        <li><strong>PupilClub:</strong> PupilID (FK), ClubID (FK), DateJoined</li>
+      </ul>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">📷</div>
+        <p>Diagram: School database entity analysis example — to be added here</p>
+      </div>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">🎬</div>
+        <p>Video: Identifying entities, attributes and relationships — to be embedded here</p>
+      </div>
+
+      <h3>Practice Questions</h3>
+      <div class="practice-q">
+        <div class="q-label">Question 1 — 2 marks</div>
+        <p>Explain the difference between an entity and an attribute. Give an example of each from a library database.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 2 — 1 mark</div>
+        <p>State what is meant by a primary key.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 3 — 2 marks</div>
+        <p>A hospital stores data about patients and doctors. Describe the relationship between these two entities and explain whether it is one-to-one, one-to-many, or many-to-many.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 4 — 3 marks</div>
+        <p>A cinema database stores films and customers. A customer can book tickets for many films, and a film can be booked by many customers. Explain why a linking table is needed and suggest appropriate fields for it.</p>
+      </div>
+    </article>
+  </div>
+</main>
+</body>
+</html>

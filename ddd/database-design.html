@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Design &amp; Data Dictionary — DDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Database Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Database Design &amp; Data Dictionary</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Database Design &amp; Development</div>
+    <h1>Database Design &amp; Data Dictionary</h1>
+    <p>Translating an ER diagram into relational tables — including data types, primary and foreign keys, and a complete data dictionary with validation rules.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#tables">Tables and Keys</a></li>
+      <li><a href="#datatypes">Data Types</a></li>
+      <li><a href="#dictionary">Data Dictionary</a></li>
+      <li><a href="#validation">Validation Types</a></li>
+      <li><a href="#example">Worked Example</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="tables">Tables and Keys</h2>
+      <p>Each entity in an ER diagram becomes a <strong>table</strong> in the relational database. Relationships are implemented using keys.</p>
+
+      <table>
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary Key (PK)</strong></td>
+            <td>An attribute (or combination of attributes) that <em>uniquely identifies</em> every record in a table. Cannot be NULL; must be unique.</td>
+          </tr>
+          <tr>
+            <td><strong>Foreign Key (FK)</strong></td>
+            <td>An attribute in one table that refers to the primary key of another table. Used to create the link between related tables.</td>
+          </tr>
+          <tr>
+            <td><strong>Compound Key</strong></td>
+            <td>A primary key made of two or more attributes that together are unique (used in linking tables).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>In a one-to-many relationship, the foreign key always goes in the table on the <em>"many" side</em>. For example, if one Teacher teaches many Classes, the ClassTable gets a <code>TeacherID</code> foreign key.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="datatypes">Data Types</h2>
+      <table>
+        <thead><tr><th>Data Type</th><th>Used for</th><th>Example value</th></tr></thead>
+        <tbody>
+          <tr><td>TEXT / VARCHAR(n)</td><td>Text strings up to n characters</td><td>"Alice Smith"</td></tr>
+          <tr><td>INTEGER / INT</td><td>Whole numbers</td><td>42</td></tr>
+          <tr><td>REAL / DECIMAL(p,s)</td><td>Numbers with decimal places</td><td>9.99</td></tr>
+          <tr><td>BOOLEAN</td><td>True/False values</td><td>TRUE</td></tr>
+          <tr><td>DATE</td><td>Calendar dates</td><td>2024-06-15</td></tr>
+          <tr><td>CHAR(n)</td><td>Fixed-length text (always exactly n characters)</td><td>"M" or "F"</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="dictionary">Data Dictionary</h2>
+      <p>A <strong>data dictionary</strong> is a formal document that describes every attribute in the database in detail. It is produced during the design stage, before the database is built.</p>
+
+      <p>For each attribute, the data dictionary records:</p>
+      <ul>
+        <li><strong>Entity Name</strong> — which table the attribute belongs to</li>
+        <li><strong>Attribute Name</strong> — the name of the field/column</li>
+        <li><strong>Key</strong> — whether it is a Primary Key (PK), Foreign Key (FK), or neither</li>
+        <li><strong>Data Type</strong> — the type of data (integer, text, date, etc.)</li>
+        <li><strong>Size</strong> — the maximum length or number of digits</li>
+        <li><strong>Validation</strong> — rules that constrain what data can be entered</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="validation">Validation Types</h2>
+      <p>Validation ensures only sensible, correctly formatted data can be entered into the database.</p>
+
+      <table>
+        <thead><tr><th>Validation Type</th><th>What it checks</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Presence check</strong></td>
+            <td>The field must not be left empty — a value must be entered</td>
+            <td>CustomerName cannot be NULL</td>
+          </tr>
+          <tr>
+            <td><strong>Range check</strong></td>
+            <td>The value must fall within a specified minimum–maximum range</td>
+            <td>Mark must be between 0 and 100</td>
+          </tr>
+          <tr>
+            <td><strong>Type check</strong></td>
+            <td>The value must be of the correct data type</td>
+            <td>Age must be an integer, not text</td>
+          </tr>
+          <tr>
+            <td><strong>Restricted choice</strong></td>
+            <td>Only specific permitted values are allowed</td>
+            <td>Gender must be "M", "F" or "Other"</td>
+          </tr>
+          <tr>
+            <td><strong>Length check</strong></td>
+            <td>The value must be (or not exceed) a specified number of characters</td>
+            <td>Postcode must be between 6 and 8 characters</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="example">Worked Example — School Library Data Dictionary</h2>
+      <p>For a library database with tables: <strong>Member</strong>, <strong>Book</strong>, <strong>Loan</strong></p>
+
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Entity</th>
+              <th>Attribute</th>
+              <th>Key</th>
+              <th>Data Type</th>
+              <th>Size</th>
+              <th>Validation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Member</td><td>MemberID</td><td>PK</td><td>INTEGER</td><td>—</td><td>Presence, Type</td></tr>
+            <tr><td>Member</td><td>FirstName</td><td>—</td><td>TEXT</td><td>50</td><td>Presence, Length ≤ 50</td></tr>
+            <tr><td>Member</td><td>LastName</td><td>—</td><td>TEXT</td><td>50</td><td>Presence, Length ≤ 50</td></tr>
+            <tr><td>Member</td><td>Email</td><td>—</td><td>TEXT</td><td>100</td><td>Length ≤ 100</td></tr>
+            <tr><td>Member</td><td>MemberType</td><td>—</td><td>TEXT</td><td>10</td><td>Restricted choice: "Pupil", "Staff"</td></tr>
+            <tr><td>Book</td><td>ISBN</td><td>PK</td><td>CHAR</td><td>13</td><td>Presence, Length = 13</td></tr>
+            <tr><td>Book</td><td>Title</td><td>—</td><td>TEXT</td><td>200</td><td>Presence, Length ≤ 200</td></tr>
+            <tr><td>Book</td><td>Author</td><td>—</td><td>TEXT</td><td>100</td><td>Presence</td></tr>
+            <tr><td>Book</td><td>Year</td><td>—</td><td>INTEGER</td><td>—</td><td>Range: 1800–2025</td></tr>
+            <tr><td>Loan</td><td>LoanID</td><td>PK</td><td>INTEGER</td><td>—</td><td>Presence, Type</td></tr>
+            <tr><td>Loan</td><td>MemberID</td><td>FK</td><td>INTEGER</td><td>—</td><td>Presence, must exist in Member</td></tr>
+            <tr><td>Loan</td><td>ISBN</td><td>FK</td><td>CHAR</td><td>13</td><td>Presence, must exist in Book</td></tr>
+            <tr><td>Loan</td><td>DateBorrowed</td><td>—</td><td>DATE</td><td>—</td><td>Presence, Type</td></tr>
+            <tr><td>Loan</td><td>DateDue</td><td>—</td><td>DATE</td><td>—</td><td>Presence, must be after DateBorrowed</td></tr>
+            <tr><td>Loan</td><td>DateReturned</td><td>—</td><td>DATE</td><td>—</td><td>Type check (can be NULL if not yet returned)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Database Design</div>
+      <div class="placeholder-sub">Complete data dictionaries; identify appropriate validation for given scenarios</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

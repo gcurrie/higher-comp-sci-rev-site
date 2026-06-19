@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Representation: Numbers — CS — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Computer Systems</a><span class="sep">›</span>
+    <span class="current">Data Representation — Numbers</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Computer Systems</div>
+    <h1>Data Representation: Numbers</h1>
+    <p>Two's complement for representing positive and negative integers, and floating-point notation for positive and negative real numbers.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#binary">Binary Integers</a></li>
+      <li><a href="#twos">Two's Complement</a></li>
+      <li><a href="#floating">Floating-Point</a></li>
+      <li><a href="#mantissa">Mantissa &amp; Exponent</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <div class="callout callout-info">
+      <div class="callout-icon">ℹ️</div>
+      <div><strong>Higher scope:</strong> The Higher CS specification requires two's complement (positive and negative integers) and floating-point (positive and negative real numbers). <strong>Hexadecimal is not assessed in Higher Computer Systems</strong> — it appears only in National 5.</div>
+    </div>
+
+    <article>
+      <h2 id="binary">Binary Integers (Unsigned)</h2>
+      <p>Computers store all data in binary — using only the digits 0 and 1. Each binary digit is called a <strong>bit</strong>.</p>
+
+      <table>
+        <thead><tr><th>128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th><th>Denary value</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>13</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>90</td></tr>
+          <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>255</td></tr>
+        </tbody>
+      </table>
+
+      <p>An 8-bit (1 byte) number can represent unsigned values from 0 to 255 (2⁸ − 1).</p>
+    </article>
+
+    <article>
+      <h2 id="twos">Two's Complement</h2>
+      <p><strong>Two's complement</strong> is the method used to represent <em>both positive and negative</em> integers in binary. It uses the most significant bit (MSB — the leftmost bit) as a sign bit, but with a twist: the MSB has a negative place value.</p>
+
+      <h3>Place Values in Two's Complement (8-bit)</h3>
+      <table>
+        <thead><tr><th style="background:#f8d7da">−128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="background:#f8d7da">MSB (sign)</td>
+            <td colspan="7">→ these remain positive as usual</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul>
+        <li>If MSB = 0, the number is <strong>positive</strong></li>
+        <li>If MSB = 1, the number is <strong>negative</strong> (the MSB contributes −128)</li>
+      </ul>
+
+      <h3>Converting Two's Complement to Denary</h3>
+      <div class="example-block">
+        <div class="example-label">Example 1 — Positive: 01001010</div>
+        <p>MSB = 0, so positive.<br>0×(−128) + 1×64 + 0×32 + 0×16 + 1×8 + 0×4 + 1×2 + 0×1 = <strong>74</strong></p>
+
+        <div class="example-label" style="margin-top:.75rem;">Example 2 — Negative: 11110110</div>
+        <p>MSB = 1, so negative.<br>1×(−128) + 1×64 + 1×32 + 1×16 + 0×8 + 1×4 + 1×2 + 0×1<br>= −128 + 64 + 32 + 16 + 0 + 4 + 2 + 0 = <strong>−10</strong></p>
+      </div>
+
+      <h3>Converting a Negative Denary to Two's Complement</h3>
+      <p>To represent a negative number (e.g. −45) in 8-bit two's complement:</p>
+      <ol>
+        <li>Write the positive version in binary: 45 = <code>00101101</code></li>
+        <li>Flip all bits (invert): → <code>11010010</code></li>
+        <li>Add 1: → <code>11010011</code></li>
+      </ol>
+      <p><strong>Check:</strong> 1×(−128) + 1×64 + 1×16 + 0×8 + 0×4 + 1×2 + 1×1 = −128 + 64 + 16 + 2 + 1 = <strong>−45</strong> ✓</p>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>An 8-bit two's complement number can represent values from <strong>−128 to +127</strong> (2⁷ negative to 2⁷ − 1 positive). Notice it is not symmetric — there is one more negative value than positive.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="floating">Floating-Point Representation</h2>
+      <p><strong>Floating-point</strong> is used to represent <em>real numbers</em> (numbers with a fractional part, including very large or very small values) in binary. It can represent both <strong>positive and negative real numbers</strong>.</p>
+
+      <p>The name "floating-point" comes from the fact that the binary point can "float" — it can be positioned anywhere, allowing the representation of a wide range of values.</p>
+
+      <h3>Why Not Just Fixed-Point?</h3>
+      <p>A fixed-point format assigns a fixed number of bits to the integer part and to the fractional part. This limits the range. Floating-point uses a compact scientific-notation-style encoding to represent a much wider range of values in the same number of bits.</p>
+    </article>
+
+    <article>
+      <h2 id="mantissa">Mantissa and Exponent</h2>
+      <p>A floating-point number is split into two parts:</p>
+
+      <table>
+        <thead><tr><th>Part</th><th>What it is</th><th>Analogy</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Mantissa</strong></td>
+            <td>The significant digits of the number (the "precision")</td>
+            <td>The 3.14 in 3.14 × 10²</td>
+          </tr>
+          <tr>
+            <td><strong>Exponent</strong></td>
+            <td>The power by which the mantissa is scaled (where the binary point goes)</td>
+            <td>The 2 in 3.14 × 10²</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>In binary: a floating-point number is stored as <em>mantissa × 2<sup>exponent</sup></em>.</p>
+
+      <div class="example-block">
+        <div class="example-label">Example — 8-bit floating-point (5-bit mantissa, 3-bit exponent)</div>
+        <p>Representation: <code>0 1 1 0 1 | 0 1 1</code></p>
+        <p>Mantissa: <code>01101</code> = the value 0.1101 in binary (normalised — binary point after first bit)<br>
+        Exponent: <code>011</code> = +3 (shift binary point 3 places right)</p>
+        <p>Value: 0.1101 × 2³ = 1101.0 = 8 + 4 + 1 = <strong>13</strong></p>
+      </div>
+
+      <h3>Effect of Changing Bit Allocation</h3>
+      <table>
+        <thead><tr><th>Change</th><th>Effect on mantissa bits</th><th>Effect on exponent bits</th></tr></thead>
+        <tbody>
+          <tr><td>More bits to mantissa</td><td>Greater <strong>precision</strong> (more decimal places accurate)</td><td>Smaller <strong>range</strong> (fewer different magnitudes possible)</td></tr>
+          <tr><td>More bits to exponent</td><td>Lower <strong>precision</strong> (fewer accurate decimal places)</td><td>Greater <strong>range</strong> (can represent larger/smaller values)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div>
+          <strong>Key terms for exam answers:</strong>
+          <ul style="margin:.3rem 0 0;">
+            <li><strong>Precision</strong> — how many significant digits are stored accurately (more mantissa bits = more precise)</li>
+            <li><strong>Range</strong> — how large or small a number can be (more exponent bits = wider range)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Number Representation</div>
+      <div class="placeholder-sub">Convert between two's complement and denary; analyse floating-point storage</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

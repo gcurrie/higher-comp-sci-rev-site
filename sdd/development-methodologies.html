@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Development Methodologies — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">SDD</a><span class="sep">›</span>
+    <span class="current">Development Methodologies</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">SDD — Topic 8</div>
+    <h1>Development Methodologies</h1>
+    <p>How software projects are planned and managed — waterfall, iterative development and agile approaches.</p>
+  </div>
+</section>
+<main class="page-content">
+  <div class="content-layout">
+    <aside class="content-sidebar">
+      <nav class="sidebar-nav">
+        <div class="sn-header">💻 SDD Topics</div>
+        <ul>
+          <li><a href="languages-environments.html"><span class="sn-icon">🌐</span>Languages &amp; Environments</a></li>
+          <li><a href="data-types.html"><span class="sn-icon">🔢</span>Data Types</a></li>
+          <li><a href="data-structures.html"><span class="sn-icon">🗂️</span>Data Structures</a></li>
+          <li><a href="computational-constructs.html"><span class="sn-icon">⚙️</span>Computational Constructs</a></li>
+          <li><a href="standard-algorithms.html"><span class="sn-icon">🔍</span>Standard Algorithms</a></li>
+          <li><a href="testing-debugging.html"><span class="sn-icon">🐛</span>Testing &amp; Debugging</a></li>
+          <li><a href="design-notations.html"><span class="sn-icon">📐</span>Design Notations</a></li>
+          <li><a href="development-methodologies.html" class="active"><span class="sn-icon">🔄</span>Development Methodologies</a></li>
+          <li><a href="evaluation.html"><span class="sn-icon">✅</span>Evaluation</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <article class="content-article">
+      <h2>Development Methodologies</h2>
+      <div class="article-meta">
+        <span class="badge">SDD Unit 1</span>
+        <span>Topic 8 of 9</span>
+      </div>
+
+      <p>A <strong>software development methodology</strong> is a structured approach to planning, creating and managing a software project. Different methodologies suit different project sizes, teams and requirements.</p>
+
+      <h3>The Software Development Process</h3>
+      <p>Regardless of methodology, all software projects follow these stages:</p>
+      <ol>
+        <li><strong>Analysis</strong> — understand the problem and gather requirements</li>
+        <li><strong>Design</strong> — plan the solution (structure diagrams, pseudocode, wireframes)</li>
+        <li><strong>Implementation</strong> — write the code</li>
+        <li><strong>Testing</strong> — verify the program works correctly</li>
+        <li><strong>Evaluation</strong> — assess the finished product against requirements</li>
+        <li><strong>Maintenance</strong> — fix bugs and update the software after release</li>
+      </ol>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">📷</div>
+        <p>Diagram: Software development process stages — to be added here</p>
+      </div>
+
+      <h3>Iterative Development</h3>
+      <p>In iterative development, the software is built and refined through repeated cycles (iterations). Each iteration produces a working version of part of the software, which is reviewed and improved. This is the approach emphasised at Higher level.</p>
+
+      <ul>
+        <li>Work is done in small, manageable cycles</li>
+        <li>Each iteration includes analysis, design, implementation and testing</li>
+        <li>Feedback is gathered after each iteration and used to guide the next</li>
+        <li>The final product emerges gradually rather than all at once</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">✅</div>
+        <div><strong>Advantage:</strong> Problems are caught early, requirements can change between iterations, and the client can see progress regularly.</div>
+      </div>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">📷</div>
+        <p>Diagram: Iterative development cycle — to be added here</p>
+      </div>
+
+      <h3>Agile Methodology</h3>
+      <p>Agile is a popular family of iterative methodologies that prioritise flexibility, collaboration and delivering working software quickly. Key features:</p>
+      <ul>
+        <li>Short development cycles called <strong>sprints</strong> (typically 1–4 weeks)</li>
+        <li>Close collaboration between the development team and client</li>
+        <li>Requirements can change throughout the project</li>
+        <li>Working software is delivered at the end of each sprint</li>
+        <li>Daily stand-up meetings to track progress</li>
+      </ul>
+
+      <h3>Waterfall Model</h3>
+      <p>The waterfall model is a <strong>linear, sequential</strong> approach where each stage must be fully completed before the next begins. It was one of the earliest formal methodologies.</p>
+
+      <table>
+        <thead><tr><th>Stage</th><th>Output</th></tr></thead>
+        <tbody>
+          <tr><td>1. Requirements</td><td>Requirements specification document</td></tr>
+          <tr><td>2. Design</td><td>System and software design documents</td></tr>
+          <tr><td>3. Implementation</td><td>Working code modules</td></tr>
+          <tr><td>4. Testing</td><td>Test results and bug fixes</td></tr>
+          <tr><td>5. Deployment</td><td>Released product</td></tr>
+          <tr><td>6. Maintenance</td><td>Updates and patches</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Comparing Methodologies</h3>
+      <table>
+        <thead><tr><th>Feature</th><th>Waterfall</th><th>Iterative / Agile</th></tr></thead>
+        <tbody>
+          <tr><td>Approach</td><td>Linear, one pass</td><td>Cyclical, repeated passes</td></tr>
+          <tr><td>Flexibility</td><td>Low — changes are costly</td><td>High — adapts to change</td></tr>
+          <tr><td>Client involvement</td><td>At start and end only</td><td>Continuous throughout</td></tr>
+          <tr><td>Risk of failure</td><td>Higher — problems found late</td><td>Lower — problems caught early</td></tr>
+          <tr><td>Best for</td><td>Fixed, well-defined requirements</td><td>Evolving requirements, complex projects</td></tr>
+        </tbody>
+      </table>
+
+      <div class="placeholder-block">
+        <div class="ph-icon">🎬</div>
+        <p>Video: Development methodologies overview — to be embedded here</p>
+      </div>
+
+      <h3>Practice Questions</h3>
+      <div class="practice-q">
+        <div class="q-label">Question 1 — 2 marks</div>
+        <p>Describe what is meant by iterative development and explain one advantage over the waterfall model.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 2 — 2 marks</div>
+        <p>State <strong>two</strong> features of an agile development methodology.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 3 — 3 marks</div>
+        <p>A software team is developing a complex application where the client is unsure of all their requirements at the start of the project. Explain why an iterative methodology is more suitable than waterfall for this scenario.</p>
+      </div>
+      <div class="practice-q">
+        <div class="q-label">Question 4 — 1 mark</div>
+        <p>Name the stage of software development where the finished program is checked against the original requirements.</p>
+      </div>
+    </article>
+  </div>
+</main>
+</body>
+</html>

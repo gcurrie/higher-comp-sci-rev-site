@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analysis &amp; Design — WDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Web Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">Analysis &amp; Design</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Web Design &amp; Development</div>
+    <h1>Analysis &amp; Design</h1>
+    <p>Identifying website requirements, defining structure and producing low-fidelity wireframes and prototypes before any code is written.</p>
+  </div>
+</section>
+<main class="page-content content-with-sidebar">
+  <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#analysis">Analysis</a></li>
+      <li><a href="#requirements">Functional Requirements</a></li>
+      <li><a href="#structure">Website Structure</a></li>
+      <li><a href="#wireframes">Wireframes</a></li>
+      <li><a href="#prototype">Low-Fidelity Prototyping</a></li>
+    </ul>
+  </nav>
+  <div class="content-area">
+
+    <article>
+      <h2 id="analysis">Analysis</h2>
+      <p>Before designing or coding a website, a thorough analysis ensures that the final product meets the client's and users' needs. The analysis stage produces a clear specification to guide the rest of the project.</p>
+
+      <h3>Purpose</h3>
+      <p>The <strong>purpose</strong> of the website describes what it is trying to achieve. A purpose statement is typically one or two sentences:</p>
+      <div class="example-block">
+        <div class="example-label">Example Purpose Statement</div>
+        <blockquote style="border-left:3px solid var(--gold);padding:.5rem 1rem;font-style:italic;margin:.5rem 0;">
+          "A website for a local sports club to allow members to view upcoming events, register for sessions and contact the club committee."
+        </blockquote>
+      </div>
+
+      <h3>Target Audience</h3>
+      <p>Identifying the <strong>target audience</strong> shapes design decisions about layout, language, colours and navigation. Consider:</p>
+      <ul>
+        <li>Age range of users</li>
+        <li>Technical ability (novice vs experienced web users)</li>
+        <li>Devices typically used (desktop, mobile, tablet)</li>
+        <li>Accessibility needs (colour blindness, screen readers, large text)</li>
+      </ul>
+
+      <h3>End-User Requirements</h3>
+      <p>End-user requirements are specific needs expressed by the people who will use the website. These are gathered from the client and potential users:</p>
+      <ul>
+        <li>"The site must be navigable without a mouse (keyboard accessible)"</li>
+        <li>"All pages must load in under 3 seconds on a standard broadband connection"</li>
+        <li>"The site must work correctly on Chrome, Firefox and Safari"</li>
+        <li>"Text must be readable without zooming on a standard 13-inch screen"</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="requirements">Functional Requirements</h2>
+      <p>Functional requirements describe what the website must do. As with SDD, these are split into inputs, processes and outputs:</p>
+
+      <table>
+        <thead><tr><th>Category</th><th>Web context</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Inputs</strong></td>
+            <td>Data entered by the user via forms or other interactions</td>
+            <td>Name, email, session preference entered in a registration form</td>
+          </tr>
+          <tr>
+            <td><strong>Processes</strong></td>
+            <td>Actions performed on input or stored data</td>
+            <td>Validate form fields, filter event list by date, display image gallery</td>
+          </tr>
+          <tr>
+            <td><strong>Outputs</strong></td>
+            <td>Information displayed to the user</td>
+            <td>Confirmation message, filtered list of events, contact details</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h2 id="structure">Website Structure</h2>
+      <p>Before creating wireframes, the <strong>website structure</strong> (hierarchy) is planned. This shows all the pages in the site and how they link to each other.</p>
+
+      <h3>Levels in a Multi-Level Website</h3>
+      <ul>
+        <li><strong>Level 0</strong> — Home page (root)</li>
+        <li><strong>Level 1</strong> — Main section pages (e.g. About, Events, Contact)</li>
+        <li><strong>Level 2</strong> — Sub-pages within sections (e.g. individual event pages)</li>
+      </ul>
+
+      <div class="placeholder-block">
+        <div class="placeholder-icon">🌐</div>
+        <div class="placeholder-text">Diagram — Website Hierarchy Structure</div>
+        <div class="placeholder-sub">Tree diagram showing Home → Level 1 pages → Level 2 sub-pages</div>
+      </div>
+
+      <h3>Navigation Design</h3>
+      <p>The navigation structure determines how users move between pages. At Higher level, websites must include:</p>
+      <ul>
+        <li>A consistent navigation bar present on every page</li>
+        <li>Links that allow users to reach any page within two clicks of the home page</li>
+        <li>Clear visual indication of the current page</li>
+        <li>A breadcrumb trail or "back" links for deeper pages</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 id="wireframes">Wireframes</h2>
+      <p>A <strong>wireframe</strong> is a low-fidelity (rough) sketch of a web page's layout. It shows the position of elements — navigation, headings, images, text blocks, forms — without colours, fonts or final images.</p>
+
+      <h3>What a Webpage Wireframe Shows</h3>
+      <ul>
+        <li>Header area (logo, site title, navigation bar)</li>
+        <li>Main content area (text blocks, image placeholders, forms)</li>
+        <li>Sidebar areas (if applicable)</li>
+        <li>Footer (contact info, links, copyright)</li>
+        <li>Annotations explaining the purpose of each element</li>
+      </ul>
+
+      <div class="placeholder-block">
+        <div class="placeholder-icon">🖼️</div>
+        <div class="placeholder-text">Wireframe — Home Page Layout</div>
+        <div class="placeholder-sub">Low-fidelity wireframe showing header, nav bar, hero section, content grid, footer</div>
+      </div>
+
+      <div class="placeholder-block">
+        <div class="placeholder-icon">🖼️</div>
+        <div class="placeholder-text">Wireframe — Registration/Contact Form Page</div>
+        <div class="placeholder-sub">Form wireframe showing input fields, labels, submit button and validation message areas</div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">💡</div>
+        <div>Create a wireframe for <em>every distinct page layout</em> in the website — not just the home page. If the Events page and the Contact page have different layouts, both need their own wireframe.</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="prototype">Low-Fidelity Prototyping</h2>
+      <p>A <strong>low-fidelity prototype</strong> is a simple, quick representation of the website — typically paper sketches or basic digital mockups — used to test ideas and gather feedback before full development begins.</p>
+
+      <h3>Advantages of Low-Fidelity Prototyping</h3>
+      <ul>
+        <li>Very quick and cheap to produce</li>
+        <li>Easy to modify — changes can be made in seconds without rewriting code</li>
+        <li>Allows client and users to review layout and navigation before coding</li>
+        <li>Identifies usability issues early when they are cheapest to fix</li>
+        <li>Focuses feedback on structure, not cosmetic details (colours, fonts)</li>
+      </ul>
+
+      <h3>Limitations</h3>
+      <ul>
+        <li>Cannot test interactive behaviour (hover effects, form validation)</li>
+        <li>May not accurately represent how the final site will look on screen</li>
+        <li>Users may not give realistic feedback because it looks unfinished</li>
+      </ul>
+
+      <h3>Prototype vs Final Website</h3>
+      <table>
+        <thead><tr><th></th><th>Low-Fidelity Prototype</th><th>Final Website</th></tr></thead>
+        <tbody>
+          <tr><td>Content</td><td>Placeholder boxes and "Lorem ipsum" text</td><td>Real images, text and data</td></tr>
+          <tr><td>Colour</td><td>Greyscale / no colour</td><td>Full colour scheme applied</td></tr>
+          <tr><td>Interactivity</td><td>None (static paper/sketch)</td><td>Fully functional links, forms, JavaScript</td></tr>
+          <tr><td>Purpose</td><td>Agree layout with client; test navigation</td><td>Deliver to users</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — Analysis &amp; Design</div>
+      <div class="placeholder-sub">Write requirements documents, draw website hierarchies and annotate wireframes</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>
