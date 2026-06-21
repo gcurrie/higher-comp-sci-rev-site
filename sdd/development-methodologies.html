@@ -17,7 +17,7 @@
 </div>
 <section class="page-hero">
   <div class="inner">
-    <div class="hero-badge">SDD — Topic 8</div>
+    <div class="hero-badge">SDD — Topic 1</div>
     <h1>Development Methodologies</h1>
     <p>How software projects are planned and managed — describing and comparing the iterative (waterfall) development process with agile methodologies.</p>
   </div>
@@ -29,7 +29,7 @@
         <div class="sn-header">💻 SDD Topics</div>
         <ul>
           <li><a href="development-methodologies.html" class="active"><span class="sn-icon">🔄</span>Development Methodologies</a></li>
-          <li><a href="analysis.html">Analysis</a></li>
+          <li><a href="analysis.html"><span class="sn-icon">📋</span>Analysis</a></li>
           <li><a href="design-notations.html"><span class="sn-icon">📐</span>Design </a></li>
           <li><a href="data-types.html"><span class="sn-icon">🔢</span>Data Types</a></li>
           <li><a href="data-structures.html"><span class="sn-icon">🗂️</span>Data Structures</a></li>
@@ -37,6 +37,17 @@
           <li><a href="standard-algorithms.html"><span class="sn-icon">🔍</span>Standard Algorithms</a></li>
           <li><a href="testing-debugging.html"><span class="sn-icon">🐛</span>Testing &amp; Debugging</a></li>
           <li><a href="evaluation.html"><span class="sn-icon">✅</span>Evaluation</a></li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav" aria-label="Page sections">
+        <div class="sidebar-title">On this page</div>
+        <ul>
+          <li><a href="#key-terms">Key Terms</a></li>
+          <li><a href="#process">Software Development Process</a></li>
+          <li><a href="#iterative">Iterative (Waterfall)</a></li>
+          <li><a href="#agile">Agile Methodology</a></li>
+          <li><a href="#comparing">Comparing the Two</a></li>
+          <li><a href="#practice">Practice Questions</a></li>
         </ul>
       </nav>
     </aside>
@@ -54,7 +65,7 @@
         <div><strong>What you need to know at Higher:</strong> You must be able to <strong>describe and compare</strong> two development methodologies — the <strong>iterative development process</strong> (often called the <em>waterfall</em> model) and <strong>agile</strong> methodologies. Comparison questions usually focus on client interaction, teamwork, documentation, measurement of progress, adaptability and testing.</div>
       </div>
 
-      <h3>Key Terms</h3>
+      <h3 id="key-terms">Key Terms</h3>
       <div class="key-terms">
         <div class="key-term"><div class="term">Methodology</div><div class="def">The overall approach used to manage how a software project moves from stage to stage.</div></div>
         <div class="key-term"><div class="term">Iterative / Waterfall</div><div class="def">A development process that works through the phases (analysis → design → implementation → testing → documentation → evaluation) in a largely sequential order.</div></div>
@@ -63,7 +74,7 @@
         <div class="key-term"><div class="term">Prototype</div><div class="def">An early, working version of part of the software, used to gather feedback from the client.</div></div>
       </div>
 
-      <h3>The Software Development Process</h3>
+      <h3 id="process">The Software Development Process</h3>
       <p>Whatever methodology is chosen, a software project moves through the same core <strong>phases</strong>. The difference between methodologies is largely about the <em>order</em> these phases happen in, how often they are revisited, and how much the client is involved.</p>
       <table>
         <thead><tr><th>Phase</th><th>Purpose</th></tr></thead>
@@ -86,7 +97,7 @@
         <p>Diagram: Software development process phases — to be added here</p>
       </div>
 
-      <h3>The Iterative (Waterfall) Development Process</h3>
+      <h3 id="iterative">The Iterative (Waterfall) Development Process</h3>
       <p>In the iterative development process the project moves through the phases in a largely <strong>sequential</strong> order — analysis, then design, then implementation, then testing, and so on. It is often called the <strong>waterfall model</strong> because work "flows" downwards from one phase into the next. In practice developers do sometimes step back up to an earlier phase when a problem is found, but the project is fundamentally <strong>planned in detail at the start</strong> and progress is measured against that plan.</p>
       <ul>
         <li>The client is heavily involved at the <strong>start</strong> (signing off the specification) and at the <strong>end</strong> (evaluating the finished product), but much less in between.</li>
@@ -117,7 +128,7 @@
         <p>Diagram: The waterfall / iterative development process — to be added here</p>
       </div>
 
-      <h3>Agile Methodology</h3>
+      <h3 id="agile">Agile Methodology</h3>
       <p>Agile breaks a project into a series of short development goals called <strong>sprints</strong> (typically 1–4 weeks). Each sprint involves a <strong>cross-functional team</strong> doing planning, analysis, design, coding and testing together, and delivers a working prototype or component that the client reviews. The aim is to deliver useful software quickly and to keep adapting it as the client's needs become clearer.</p>
       <ul>
         <li>The client is involved <strong>throughout</strong>, giving constant feedback on prototypes — and that feedback is acted on quickly, so the software evolves as the project goes on.</li>
@@ -143,7 +154,7 @@
         <p>A start-up builds a new fitness-tracking app and is <strong>not yet sure</strong> which features users will value most. Using agile, they release a basic working version, watch how people use it, and add or change features sprint by sprint based on real feedback. Large software companies and banks such as <strong>Barclays, JP Morgan and RBS</strong> use agile for exactly this kind of fast-moving, feedback-driven work.</p>
       </div>
 
-      <h3>Comparing Iterative (Waterfall) and Agile</h3>
+      <h3 id="comparing">Comparing Iterative (Waterfall) and Agile</h3>
       <p>Comparison questions are common in the exam. Be ready to compare the two methodologies across these areas:</p>
       <table>
         <thead><tr><th>Feature</th><th>Iterative / Waterfall</th><th>Agile</th></tr></thead>
@@ -153,7 +164,7 @@
           <tr><td>Documentation</td><td>Detailed specification and documents created up front</td><td>Reduced — only documentation that helps progress the project</td></tr>
           <tr><td>Measurement of progress</td><td>Against timescales set at the beginning</td><td>By how quickly working prototypes/components are produced (sprints)</td></tr>
           <tr><td>Adaptive vs predictive</td><td>Predictive — plans in detail and caters for known risks</td><td>Adaptive — changes direction as the project's needs change</td></tr>
-          <tr><td>Testing</td><td>A separate phase, after implementation is complete</td><td>No separate phase — testing is done alongside programming</td></tr>
+          <tr><td>Testing & Evaluation</td><td>Seperate phases, after implementation is complete</td><td>Software is tested and evaluated on an ongoing basis throughout development.</td></tr>
           <tr><td>Best suited to</td><td>Fixed, well-understood requirements</td><td>Evolving or unclear requirements</td></tr>
         </tbody>
       </table>
@@ -168,81 +179,40 @@
         <p>Video: Development methodologies overview — to be embedded here</p>
       </div>
 
-      <h3>Practice Questions</h3>
+      <h3 id="practice">Practice Questions</h3>
       <div class="practice-q">
-        <div class="q-label">Question 1 — 2 marks</div>
-        <p>Describe what is meant by the <strong>iterative (waterfall) development process</strong>.</p>
+        <div class="q-label">Question 1 — 2025 Q4 - 1 Mark</div>
+        <p>This is a standard Development Methodology question from the 2025 Past Paper.</p>
+		<img src="../resources/sdd/dev_meth_q1.png">
+		<p>As we are only being asked to <strong>Explain</strong> why Agile is more suitable, and it is only
+		1 mark, we don't have to include a comparison to iterative in our answer.</p>
+		<br>
+		<p>The marking scheme offers 3 options for our answer</p>
+		<img src="../resources/sdd/dev_meth_q1_ans.png">
         <details class="q-answer">
           <summary>Suggested answer</summary>
           <div class="answer-body">
-            <p>The project works through the phases of development (analysis, design, implementation, testing, documentation, evaluation) in a largely <strong>sequential</strong> order, with each phase flowing into the next <em>(1 mark)</em>. The project is <strong>planned in detail at the start</strong>, the specification is fixed early, and progress is measured against the original timescales <em>(1 mark)</em>.</p>
+            <p>As regular feedback is given to a client in an Agile project, 
+			this would allow the client to make changes to the requirements more regularly at 
+			these feedback points.</p>
           </div>
         </details>
       </div>
       <div class="practice-q">
-        <div class="q-label">Question 2 — 2 marks</div>
-        <p>State <strong>two</strong> features of an agile development methodology.</p>
+        <div class="q-label">Question 2 — 2024 Q2 - 2 Marks</div>
+        <p>This is a more complex Development Methodology question as it is 2 marks and requires a
+		comparison between Agile & Iterative methodologies.</p>
+		<img src="../resources/sdd/dev_meth_q2.png">
+		<p>In this question, we are being asked to <strong>Describe</strong>, but more importantly describe
+		how <strong>evaluation differs</strong> during software development for Agile <strong>compared</strong> to Iterative. That <strong>compare</strong> means, to get full marks, we need to give 1 point about
+		Agile and 1 point about iterative.</p>
+		<br>
+		<p>The marking scheme offers 1 point for each methodology</p>
+		<img src="../resources/sdd/dev_meth_q2_ans.png">
         <details class="q-answer">
           <summary>Suggested answer</summary>
           <div class="answer-body">
-            <p>Any <strong>two</strong> of the following (1 mark each):</p>
-            <ul>
-              <li>Work is broken into short cycles called <strong>sprints</strong>.</li>
-              <li>The client is involved throughout, giving feedback on prototypes.</li>
-              <li>Requirements/goals can change during development.</li>
-              <li>Documentation is kept to a minimum.</li>
-              <li>Testing is carried out alongside programming (no separate testing phase).</li>
-              <li>Cross-functional teams collaborate with fast, face-to-face communication.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-      <div class="practice-q">
-        <div class="q-label">Question 3 — 4 marks</div>
-        <p><strong>Compare</strong> the iterative (waterfall) process with an agile methodology in terms of <strong>client interaction</strong> and <strong>testing</strong>.</p>
-        <details class="q-answer">
-          <summary>Suggested answer</summary>
-          <div class="answer-body">
-            <p><strong>Client interaction:</strong> In waterfall the client is heavily involved only at the start (signing off the specification) and at the end (evaluation) <em>(1 mark)</em>, whereas in agile the client is involved throughout, giving constant feedback on prototypes <em>(1 mark)</em>.</p>
-            <p><strong>Testing:</strong> In waterfall testing is a separate phase carried out after implementation is complete <em>(1 mark)</em>, whereas in agile there is no separate testing phase — testing is done in conjunction with programming <em>(1 mark)</em>.</p>
-          </div>
-        </details>
-      </div>
-      <div class="practice-q">
-        <div class="q-label">Question 4 — 3 marks</div>
-        <p>A software team is developing a complex application where the client is unsure of all their requirements at the start of the project. Explain why an <strong>agile</strong> methodology is more suitable than the waterfall model for this scenario.</p>
-        <details class="q-answer">
-          <summary>Suggested answer</summary>
-          <div class="answer-body">
-            <p>Any <strong>three</strong> of the following (1 mark each):</p>
-            <ul>
-              <li>Agile is <strong>adaptive</strong>, so it copes well with requirements that are unclear or likely to change as the project goes on.</li>
-              <li>The client reviews prototypes regularly and gives feedback, so requirements can be refined and added over time rather than fixed at the start.</li>
-              <li>Changing goals during development is treated as positive and improves final client satisfaction.</li>
-              <li>Working software is delivered early/often, so misunderstandings are caught quickly.</li>
-              <li>Waterfall would require a fixed specification up front, which the client cannot provide here, and changing it later would be costly.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-      <div class="practice-q">
-        <div class="q-label">Question 5 — 2 marks</div>
-        <p>Explain what is meant by describing the waterfall model as <strong>predictive</strong> and agile as <strong>adaptive</strong>.</p>
-        <details class="q-answer">
-          <summary>Suggested answer</summary>
-          <div class="answer-body">
-            <p><strong>Predictive (waterfall):</strong> the project is planned in detail in advance, catering for known risks, and relies on getting the early analysis right <em>(1 mark)</em>.</p>
-            <p><strong>Adaptive (agile):</strong> the team expects requirements to change and adapts the project as those needs change, rather than following a fixed long-term plan <em>(1 mark)</em>.</p>
-          </div>
-        </details>
-      </div>
-      <div class="practice-q">
-        <div class="q-label">Question 6 — 1 mark</div>
-        <p>Name the phase of the software development process where the finished program is judged against the original specification.</p>
-        <details class="q-answer">
-          <summary>Suggested answer</summary>
-          <div class="answer-body">
-            <p>Evaluation <em>(1 mark)</em>.</p>
+            <p>During development, the project is evaluated on an ongoing basis after each sprint, whereas, in iterative development evaluation takes place at the end of the development process, after the software has been fully developed and tested.</p>
           </div>
         </details>
       </div>

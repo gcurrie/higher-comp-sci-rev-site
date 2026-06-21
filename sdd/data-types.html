@@ -28,15 +28,27 @@
       <nav class="sidebar-nav">
         <div class="sn-header">💻 SDD Topics</div>
         <ul>
-          <li><a href="languages-environments.html"><span class="sn-icon">🌐</span>Languages &amp; Environments</a></li>
+          <li><a href="development-methodologies.html"><span class="sn-icon">🔄</span>Development Methodologies</a></li>
+          <li><a href="analysis.html"><span class="sn-icon">📋</span>Analysis</a></li>
+          <li><a href="design-notations.html"><span class="sn-icon">📐</span>Design </a></li>
           <li><a href="data-types.html" class="active"><span class="sn-icon">🔢</span>Data Types</a></li>
           <li><a href="data-structures.html"><span class="sn-icon">🗂️</span>Data Structures</a></li>
           <li><a href="computational-constructs.html"><span class="sn-icon">⚙️</span>Computational Constructs</a></li>
           <li><a href="standard-algorithms.html"><span class="sn-icon">🔍</span>Standard Algorithms</a></li>
           <li><a href="testing-debugging.html"><span class="sn-icon">🐛</span>Testing &amp; Debugging</a></li>
-          <li><a href="design-notations.html"><span class="sn-icon">📐</span>Design Notations</a></li>
-          <li><a href="development-methodologies.html"><span class="sn-icon">🔄</span>Development Methodologies</a></li>
           <li><a href="evaluation.html"><span class="sn-icon">✅</span>Evaluation</a></li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav" aria-label="Page sections">
+        <div class="sidebar-title">On this page</div>
+        <ul>
+          <li><a href="#main-types">The Main Data Types</a></li>
+          <li><a href="#integer">Integer</a></li>
+          <li><a href="#real">Real (Floating-Point)</a></li>
+          <li><a href="#boolean">Boolean</a></li>
+          <li><a href="#char-string">Character &amp; String</a></li>
+          <li><a href="#key-terms">Key Terms</a></li>
+          <li><a href="#practice">Practice Questions</a></li>
         </ul>
       </nav>
     </aside>
@@ -49,7 +61,7 @@
 
       <p>A <strong>data type</strong> tells the program what kind of value a variable will hold and what operations can be performed on it. Choosing the correct data type is important for accuracy and efficiency.</p>
 
-      <h3>The Main Data Types</h3>
+      <h3 id="main-types">The Main Data Types</h3>
       <table>
         <thead><tr><th>Data Type</th><th>Description</th><th>Example Values</th><th>Storage</th></tr></thead>
         <tbody>
@@ -66,7 +78,7 @@
         <p>Diagram: Data types overview — to be added here</p>
       </div>
 
-      <h3>Integer</h3>
+      <h3 id="integer">Integer</h3>
       <p>Integers are used for counting, indexing and any situation where whole numbers are required. They <strong>cannot</strong> store decimal values — if a calculation produces a decimal result, it is truncated (not rounded).</p>
       <pre><code># Python example
 age = 16
@@ -87,7 +99,7 @@ temperature = -3</code></pre>
         </div>
       </div>
 
-      <h3>Real (Floating-Point)</h3>
+      <h3 id="real">Real (Floating-Point)</h3>
       <p>Real numbers (also called floats or doubles) are used when decimal precision is needed — for example, prices, measurements or scientific values. They use more storage than integers and can introduce small rounding errors due to binary representation.</p>
       <pre><code># Python example
 price = 4.99
@@ -108,7 +120,7 @@ pi = 3.14159</code></pre>
         </div>
       </div>
 
-      <h3>Boolean</h3>
+      <h3 id="boolean">Boolean</h3>
       <p>Booleans store a logical true/false value. They are commonly used in conditions (if statements) and flags. Named after mathematician George Boole.</p>
       <pre><code># Python example
 logged_in = True
@@ -131,7 +143,7 @@ if logged_in:
         </div>
       </div>
 
-      <h3>Character &amp; String</h3>
+      <h3 id="char-string">Character &amp; String</h3>
       <p>A <strong>character</strong> is a single symbol. A <strong>string</strong> is a sequence of characters treated as a single unit. Strings support operations like concatenation (joining), length, and slicing.</p>
       <pre><code># Python example
 initial = 'J'          # character
@@ -163,7 +175,7 @@ print(len(name))       # length = 10</code></pre>
         <p>Video: Data types explained — to be embedded here</p>
       </div>
 
-      <h3>Key Terms</h3>
+      <h3 id="key-terms">Key Terms</h3>
       <div class="key-terms">
         <div class="key-term"><div class="term">Variable</div><div class="def">A named location in memory used to store a value that can change during program execution.</div></div>
         <div class="key-term"><div class="term">Literal</div><div class="def">A fixed value written directly in code, e.g. <code>42</code> or <code>"hello"</code>.</div></div>
@@ -171,7 +183,7 @@ print(len(name))       # length = 10</code></pre>
         <div class="key-term"><div class="term">Casting</div><div class="def">Converting a value from one data type to another, e.g. <code>int("5")</code> converts the string "5" to the integer 5.</div></div>
       </div>
 
-      <h3>Practice Questions</h3>
+      <h3 id="practice">Practice Questions</h3>
       <div class="practice-q">
         <div class="q-label">Question 1 — 1 mark</div>
         <p>State the most appropriate data type to store a pupil's age.</p>

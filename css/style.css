@@ -555,6 +555,9 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   top: 85px;
 }
 
+/* Stack multiple nav cards (SDD Topics + On this page) in the left rail */
+.content-sidebar .sidebar-nav + .sidebar-nav { margin-top: 1.25rem; }
+
 .sidebar-nav {
   background: var(--white);
   border: 1px solid var(--border);
@@ -822,6 +825,18 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 }
 
 .practice-q p { margin: 0; font-size: .92rem; }
+.practice-q p + p { margin-top: .6rem; }
+
+/* Screenshot images (question stems / marking schemes) inside a practice question */
+.practice-q img {
+  margin: .75rem 0;
+  max-width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: .5rem;
+}
 
 /* Collapsible suggested answer inside a practice question */
 .practice-q .q-answer {
