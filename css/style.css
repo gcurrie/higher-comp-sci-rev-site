@@ -823,6 +823,46 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 
 .practice-q p { margin: 0; font-size: .92rem; }
 
+/* Collapsible suggested answer inside a practice question */
+.practice-q .q-answer {
+  margin-top: .75rem;
+  border-top: 1px dashed var(--gold);
+  padding-top: .65rem;
+}
+
+.practice-q .q-answer > summary {
+  cursor: pointer;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--gold-dark);
+  list-style: none;
+}
+
+.practice-q .q-answer > summary::-webkit-details-marker { display: none; }
+
+.practice-q .q-answer > summary::before {
+  content: '▶ ';
+  font-size: .65rem;
+}
+
+.practice-q .q-answer[open] > summary::before { content: '▼ '; }
+
+.practice-q .q-answer > summary:hover { color: var(--green-dark); }
+
+.practice-q .q-answer .answer-body {
+  margin-top: .55rem;
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.practice-q .q-answer .answer-body p { font-size: .9rem; margin: 0 0 .5rem; }
+.practice-q .q-answer .answer-body p:last-child { margin-bottom: 0; }
+.practice-q .q-answer .answer-body ul { margin: .25rem 0 .5rem 1.1rem; }
+.practice-q .q-answer .answer-body li { font-size: .9rem; margin-bottom: .25rem; }
+
 /* ── Search ───────────────────────────────────────────────── */
 .search-wrap {
   position: relative;
