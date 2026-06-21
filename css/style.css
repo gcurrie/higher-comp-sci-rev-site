@@ -462,19 +462,22 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 
 .split-bar {
   display: flex;
-  height: 40px;
+  min-height: 52px;
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: .75rem;
+  margin-bottom: 1rem;
 }
 
 .split-bar .seg {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .8rem;
+  text-align: center;
+  padding: .55rem .9rem;
+  font-size: .82rem;
   font-weight: 700;
   color: var(--white);
+  line-height: 1.35;
   transition: flex .3s;
 }
 
@@ -1204,8 +1207,9 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 
 .example-block p:last-child { margin-bottom: 0; }
 
-/* ── Tables in content-area ───────────────────────────────── */
-.content-area table {
+/* ── Tables (content-area + standalone tables in page-content) ── */
+.content-area table,
+.page-content table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.1rem 0;
@@ -1215,7 +1219,8 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   overflow: hidden;
 }
 
-.content-area th {
+.content-area th,
+.page-content th {
   background: var(--green-primary);
   color: var(--white);
   padding: .75rem 1rem;
@@ -1226,27 +1231,34 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   letter-spacing: .01em;
 }
 
-.content-area th:first-child { border-radius: 0; } /* contained by overflow:hidden */
+.content-area th:first-child,
+.page-content th:first-child { border-radius: 0; } /* contained by overflow:hidden */
 
-.content-area td {
+.content-area td,
+.page-content td {
   padding: .7rem 1rem;
   border-bottom: 1px solid var(--border);
   vertical-align: top;
   line-height: 1.55;
 }
 
-.content-area tr:last-child td { border-bottom: none; }
+.content-area tr:last-child td,
+.page-content tr:last-child td { border-bottom: none; }
 
-.content-area tr:nth-child(even) td {
+.content-area tr:nth-child(even) td,
+.page-content tr:nth-child(even) td {
   background: var(--cream);
 }
 
 .content-area td:not(:last-child),
-.content-area th:not(:last-child) {
+.content-area th:not(:last-child),
+.page-content td:not(:last-child),
+.page-content th:not(:last-child) {
   border-right: 1px solid var(--border);
 }
 
-.content-area td code {
+.content-area td code,
+.page-content td code {
   font-size: .83rem;
 }
 
