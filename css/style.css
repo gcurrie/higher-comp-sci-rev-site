@@ -1371,6 +1371,24 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   line-height: 1.5;
 }
 
+/* When the box hosts a live code embed (e.g. trinket.io), stack it and let
+   the editor span the full content width instead of collapsing to ~300px */
+.interactive-placeholder:has(iframe) {
+  flex-direction: column;
+  align-items: stretch;
+  gap: .85rem;
+}
+
+.interactive-placeholder:has(iframe) .ip-sub { width: 100%; }
+
+.interactive-placeholder .ip-sub iframe {
+  display: block;
+  width: 100%;
+  border: 1px solid #BFDBFE;
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
 /* First callout / article inside content-area needs top spacing */
 .content-area > .callout:first-child {
   margin-top: 0;

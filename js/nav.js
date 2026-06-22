@@ -71,16 +71,26 @@
   </div>
 </footer>`;
 
-  document.body.insertAdjacentHTML('afterbegin', navHTML);
-  document.body.insertAdjacentHTML('beforeend', footerHTML);
+  function init() {
+    document.body.insertAdjacentHTML('afterbegin', navHTML);
+    document.body.insertAdjacentHTML('beforeend', footerHTML);
 
-  // Mobile nav toggle
-  document.getElementById('nav-toggle').addEventListener('click', function () {
-    document.getElementById('site-nav').classList.toggle('open');
-  });
+    // Mobile nav toggle
+    document.getElementById('nav-toggle').addEventListener('click', function () {
+      document.getElementById('site-nav').classList.toggle('open');
+    });
 
-  // Dynamically load search.js
-  const s = document.createElement('script');
-  s.src = ROOT + 'js/search.js';
-  document.head.appendChild(s);
+    // Dynamically load search.js
+    const s = document.createElement('script');
+    s.src = ROOT + 'js/search.js';
+    document.head.appendChild(s);
+  }
+
+  // Wait until the full body is parsed so the footer is appended at the very
+  // end of the page (otherwise it lands directly after this script tag).
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

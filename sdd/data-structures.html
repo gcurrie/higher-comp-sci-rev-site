@@ -19,7 +19,7 @@
   <div class="inner">
     <div class="hero-badge">Software Design &amp; Development</div>
     <h1>Data Structures</h1>
-    <p>At Higher level you work with three data structures: parallel 1D arrays, records, and arrays of records.</p>
+    <p>At Higher level you work with 2 main data structures: parallel 1D arrays, and arrays of records.</p>
   </div>
 </section>
 <main class="page-content">
@@ -53,57 +53,104 @@
 
     <div class="callout callout-info">
       <div class="callout-icon">ℹ️</div>
-      <div><strong>Higher vs National 5:</strong> At National 5 you used simple 1D arrays. At Higher the three required structures are parallel 1D arrays, records, and arrays of records. 2D arrays are <strong>not</strong> a required data structure at Higher.</div>
+      <div><p><strong>Higher vs National 5:</strong> At National 5 you used simple 1D arrays. At Higher the three required structures are parallel 1D arrays, records, and arrays of records.</p>
+	  <br>
+	  <p>You will however, have to declare a record structure for an array of records.</p>
+	  <br>
+	  <p>On this page, we will cover how to use each of these Data Structures, and how they crop up in exam questions.</p></div>
     </div>
 
     <article>
       <h2 id="parallel">Parallel 1D Arrays</h2>
-      <p>Two or more separate 1D arrays where the <strong>same index position</strong> holds related information about the same item. The arrays must always have the same length and be maintained together.</p>
+      <p>You already know that an array is a list of related values, called elements, that can be referred to by number, e.g. <code><i>temperature[0]</i></code>, <code><i>temperature[5]</i></code> etc. The following example is an array of temperatures in the month of June.</p>
+	  
+	  <table>
+        <thead><tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>...</th><th>end of array</th></tr></thead>
+        <tbody>
+          <tr><td>temperature</td><td>12</td><td>20</td><td>21</td><td>14</td><td>18</td><td>22</td><td>23</td><td>25</td><td>...</td><td>19</td></tr>
+
+        </tbody>
+      </table>
+	  
+	  <p>This next example adds a second array that records the date on which the temperature was taken.
+      </p>
+	  <p>We can look up the temperature on, say, the 8th of June, by looking for that date, and reading the corresponding temperature (14°). These are <strong>parallel arrays</strong>, because we can look up corresponding values, like a table.</p>
+	  
+	  <table>
+        <thead><tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>...</th><th>end of array</th></tr></thead>
+        <tbody>
+          <tr><td>dates</td><td>5/6</td><td>6/6</td><td>7/6</td><td>8/6</td><td>9/6</td><td>10/6</td><td>11/6</td><td>12/6</td><td>...</td><td>30/6</td></tr>
+		  <tr><td>temperature</td><td>12</td><td>20</td><td>21</td><td>14</td><td>18</td><td>22</td><td>23</td><td>25</td><td>...</td><td>19</td></tr>
+        </tbody>
+      </table>
+	  
+	  <p>In the next example example, pupil marks are stored in one array, and pupil names are stored in another. We can see that Jack scored 23, and Lucy scored 24, by looking at the two arrays side-by-side, as if they were a table.</p>
+	  
+	  <table>
+        <thead><tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+        <tbody>
+          <tr><td>pupil_names</td><td>Harry</td><td>Elise</td><td>Jack</td><td>Joanna</td><td>Fraser</td><td>Kathryn</td></tr>
+		  <tr><td>pupil_marks</td><td>20</td><td>21</td><td>23</td><td>18</td><td>19</td><td>24</td></tr>
+        </tbody>
+      </table>
+	  
+	  <p>In python, there is no special syntax or different way to write these. We just declare two arrays, whereas most of the programs you’ve used would have previously only had one.</p>
 
       <div class="code-block">
-        <div class="code-label">SQA Reference Language — Parallel Arrays</div>
-        <pre>DECLARE names  AS ARRAY OF STRING INITIALLY []
-DECLARE marks  AS ARRAY OF INTEGER INITIALLY []
-DECLARE grades AS ARRAY OF STRING INITIALLY []
-
-# names[0], marks[0] and grades[0] all describe the same pupil
-SET names[0]  TO "Alice"
-SET marks[0]  TO 78
-SET grades[0] TO "B"
-
-SET names[1]  TO "Bob"
-SET marks[1]  TO 92
-SET grades[1] TO "A"</pre>
+        <div class="code-label">Python — Parallel Arrays</div>
+        <pre># Two *parallel* arrays of pupil names and marks
+pupil_name = ["Harry", "Elise", "Jack", "Joanna", "Fraser", "Kathryn"]
+pupil_mark = [20, 21, 23, 18, 19, 24]</pre>
       </div>
-
+	  
+	  <p>If we want to find the name and mark of the fourth pupil in the list, we would say:</p>
+	  
+	  <div class="code-block">
+        <div class="code-label">Python — Parallel Arrays</div>
+        <pre>print(pupil_name[3])
+print(pupil_mark[3])</pre>
+      </div>
+	  
+	  <p>By using the <strong>same index (3)</strong> we get matching/corresponding data.</p>
+	  
       <div class="callout callout-tip">
         <div class="callout-icon">💡</div>
         <div>Parallel arrays are useful when you want to apply standard algorithms (find max, count occurrences) on a single numeric array, then use the same index to look up related data from a second array.</div>
       </div>
 
-      <h3>Using the Index to Link Related Data</h3>
-      <p>To display the name of the pupil with the highest mark, find the index of the maximum in <code>marks</code>, then use that index in <code>names</code>:</p>
+      <h3>Using Parallel Arrays</h3>
+	  
+	  <p>This example uses the two arrays of pupil names and marks above.</p>
+	  <p>The first section of code prints out each pupil’s name and mark (<code><i>pupil_name[count]</i></code> and <code><i>pupil_mark[count]</i></code>).</p>
+	  <p>The next section of code uses a standard algorithm <strong>(find max)</strong> to traverse the two arrays and find the highest mark. Each time a new maximum is found, it also sets a max_name variable that it uses to record who has scored the highest mark so far.</p>
+	  
       <div class="code-block">
-        <pre>DECLARE maxIndex AS INTEGER INITIALLY 0
-FOR i FROM 1 TO LENGTH(marks) - 1 DO
-    IF marks[i] > marks[maxIndex] THEN
-        SET maxIndex TO i
-    END IF
-END FOR
-SEND "Top pupil: " &amp; names[maxIndex] &amp; " scored " &amp; marks[maxIndex] TO DISPLAY</pre>
+	  <div class="code-label">Python — Parallel Arrays Using Find Max</div>
+        <pre># Two *parallel* arrays of pupil names and marks
+pupil_name = ["Harry", "Elise", "Jack", "Joanna", "Fraser", "Kathryn"]
+pupil_mark = [20, 21, 23, 18, 19, 24]
+ 
+# Print each pupil's name and mark together
+for count in range(len(pupil_name)):
+  print(pupil_name[count], pupil_mark[count])
+ 
+# Who got the highest mark?
+max_mark = pupil_mark[0]
+max_name = pupil_name[0]
+ 
+for count in range(len(pupil_name)):
+  if pupil_mark[count] > max_mark:
+    max_mark = pupil_mark[count]
+    max_name = pupil_name[count]
+ 
+print(max_name, "got the highest mark")</pre>
       </div>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Parallel Arrays — Video Explanation</p>
         <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/PmN3RIDn5sY"
-            title="Parallel Arrays Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/I1HfPsPkkyc?si=dgJ_lWS-97hT9s6P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -111,9 +158,20 @@ SEND "Top pupil: " &amp; names[maxIndex] &amp; " scored " &amp; marks[maxIndex] 
         <div class="ip-icon">💻</div>
         <div class="ip-body">
           <div class="ip-title">Try It — Parallel Arrays</div>
-          <div class="ip-sub">Interactive editor coming here — modify the arrays and run the code to see which index links the data</div>
+          <div class="ip-sub"><iframe src="https://trinket.io/embed/python3/eb6190ee4370" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe></div>
         </div>
       </div>
+	  <br>
+	  <p>Below you will find a walkthrough of how to answer Parallel Array questions in an exam context.</p>
+	  
+	  <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Parallel Arrays — Exam Question Walkthrough</p>
+        <div class="video-embed">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/S_EDI44akIk?si=InMeQmPjeww090Yb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+	  
     </article>
 
     <article>
