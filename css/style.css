@@ -37,6 +37,18 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--green-primary); text-decoration: none; }
 a:hover { color: var(--green-medium); text-decoration: underline; }
 
+/* ── Construction Banner ──────────────────────────────────── */
+.construction-banner {
+  background: #7A1414;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  padding: .4rem 1rem;
+  line-height: 1.35;
+}
+
 /* ── Site Header ──────────────────────────────────────────── */
 .site-header {
   background: var(--green-dark);

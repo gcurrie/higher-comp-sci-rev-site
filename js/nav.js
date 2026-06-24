@@ -23,6 +23,11 @@
     return path.includes('/' + href.replace('/', ''));
   }
 
+  const bannerHTML = `
+<div class="construction-banner" role="status">
+  🚧 This site is currently under construction — not all content is final.
+</div>`;
+
   const navHTML = `
 <header class="site-header">
   <div class="header-inner">
@@ -73,6 +78,7 @@
 
   function init() {
     document.body.insertAdjacentHTML('afterbegin', navHTML);
+    document.body.insertAdjacentHTML('afterbegin', bannerHTML);
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 
     // Mobile nav toggle
