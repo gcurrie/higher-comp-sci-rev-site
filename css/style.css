@@ -1158,6 +1158,22 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   margin: 1.1rem 0 .4rem;
 }
 
+.content-area article h5 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin: 1.5rem 0 .5rem;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.content-area article h6 {
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--green-primary);
+  margin: 1.1rem 0 .35rem;
+}
+
 .content-area article p {
   margin-bottom: .9rem;
   color: var(--text-dark);

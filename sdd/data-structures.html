@@ -171,6 +171,127 @@ print(max_name, "got the highest mark")</pre>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/S_EDI44akIk?si=InMeQmPjeww090Yb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
+
+
+    <h3 id="practice">Practice Question</h3>
+      <div class="practice-q">
+        <div class="q-label">Parallel Arrays — 2023 Q9 e) - 4 Mark</div>
+        <p>Parallel Arrays normally crop up in larger standard algorithm questions. You are unlikely to be asked to declare parallel arrays, you would just be expected to use them.</p>
+        <p><strong>(Check the Design Page for other examples using Data Flow).</strong></p>
+		<img src="../resources/sdd/data_struc_q1-1.png">
+    <img src="../resources/sdd/data_struc_q1-2.png">
+		<p>The first image introduces you to the Parallel Array data structure that stores: <strong>dogID, dogName, branch & noOfVisits</strong>.</p>
+    <p>The second image is the question that uses this data structure.</p>
+
+		<h5>What the question is asking</h5>
+    <p>Remember this questions is <strong>4 Marks</strong>.You need to write code that:</p>
+    <ol>
+      <li>asks the user to enter a branch name</li>
+      <li>checks every dog in the arrays</li>
+      <li>counts only the dogs that:</li>
+      <ul>
+        <li>attend that branch</li>
+        <li>have made more than five visits</li>
+      </ul>
+      <li>displays the final count</li>
+    </ol>
+
+    <h5>Working Through the Answer</h5>
+
+    <h6>Step 1: Identify the important arrays</h6>
+    <p>The question tells you to use:</p>
+    <ul>
+      <li><code>branch</code></li>
+      <li><code>noOfVisits</code></li>
+    </ul>
+    <p>These are <strong>parallel arrays</strong>, which means the same index position refers to the same dog. For example:</p>
+    <div class="code-block">
+      <pre>branch[2] = "Dundee"
+noOfVisits[2] = 6</pre>
+    </div>
+    <p>So dog 2 attends Dundee and has made 6 visits.</p>
+
+    <h6>Step 2: Get the branch from the user</h6>
+    <p>You need an input variable, for example <code>searchBranch</code>. This stores the branch the user wants to search for.</p>
+    <div class="code-block">
+      <pre>searchBranch = input("Enter branch: ")</pre>
+    </div>
+
+    <h6>Step 3: Set up a counter</h6>
+    <p>You need to count how many matching dogs are found. Start the counter at 0:</p>
+    <div class="code-block">
+      <pre>count = 0</pre>
+    </div>
+
+    <h6>Step 4: Loop through every dog</h6>
+    <p>Because the data is stored in arrays, use a loop to check each position. This checks every item in the <code>branch</code> array.</p>
+    <div class="code-block">
+      <pre>for index in range(len(branch)):</pre>
+    </div>
+
+    <h6>Step 5: Use an IF statement with two conditions</h6>
+    <p>A dog should only be counted if <strong>both</strong> conditions are true:</p>
+    <ul>
+      <li><code>branch[index]</code> matches the user's branch, <strong>AND</strong></li>
+      <li><code>noOfVisits[index] &gt; 5</code></li>
+    </ul>
+    <p>In Python:</p>
+    <div class="code-block">
+      <pre>if branch[index] == searchBranch and noOfVisits[index] &gt; 5:</pre>
+    </div>
+
+    <p>Each correct condition would gain <strong>1 Mark each</strong>.</p>
+
+    <h6>Step 6: Increment the counter</h6>
+    <p>If both conditions are true, add 1 to the counter:</p>
+    <div class="code-block">
+      <pre>count = count + 1</pre>
+    </div>
+    <p>This <strong>along with step 3</strong> would gain<strong>1 Mark</strong>.</p>
+
+    <h6>Step 7: Display the final answer</h6>
+    <p>After the loop has finished, display the count:</p>
+    <div class="code-block">
+      <pre>print(count)</pre>
+    </div>
+
+    <p>This <strong>along with steps 2 & 4</strong> would gain <strong>1 Mark</strong></p>
+
+
+		<img src="../resources/sdd/data_struc_q1_ans.png">
+        <details class="q-answer">
+          <summary>Suggested answer</summary>
+          <p>The python version would be:</p>
+      <div class="code-block">
+      <div class="code-label">Python — Full Example Answer</div>
+      <pre>searchBranch = input("Enter branch: ")
+
+dogCount = 0
+
+for index in range(len(branch)):
+    if branch[index] == searchBranch and noOfVisits[index] &gt; 5:
+        dogCount += 1
+
+print(dogCount)</pre>
+    </div>
+          <p>The SQA Reference Language version would be:</p>
+
+          <div class="code-block">
+      <div class="code-label">Python — Full Example Answer</div>
+      <pre>RECEIVE searchBranch FROM KEYBOARD
+
+SET dogCount TO 0
+
+FOR counter FROOM 0 TO LENGTH(branch)
+    IF branch[counter] == searchBranch and noOfVisits[counter] &gt; 5:
+        dogCount = dogCount + 1
+
+SEND dogCount TO DISPLAY</pre>
+        </details>
+      </div>
+
+
+    </div>
 	  
     </article>
 
