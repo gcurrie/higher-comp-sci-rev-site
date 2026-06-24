@@ -277,14 +277,16 @@ print(dogCount)</pre>
           <p>The SQA Reference Language version would be:</p>
 
           <div class="code-block">
-      <div class="code-label">Python — Full Example Answer</div>
+      <div class="code-label">SQA Reference Language — Full Example Answer</div>
       <pre>RECEIVE searchBranch FROM KEYBOARD
 
 SET dogCount TO 0
 
-FOR counter FROOM 0 TO LENGTH(branch)
-    IF branch[counter] == searchBranch and noOfVisits[counter] &gt; 5:
+FOR counter FROM 0 TO LENGTH(branch)
+    IF branch[counter] = searchBranch and noOfVisits[counter] &gt; 5
         dogCount = dogCount + 1
+    END IF
+END FOR
 
 SEND dogCount TO DISPLAY</pre>
         </details>
