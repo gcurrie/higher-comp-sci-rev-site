@@ -34,6 +34,7 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
+iframe { max-width: 100%; }
 a { color: var(--green-primary); text-decoration: none; }
 a:hover { color: var(--green-medium); text-decoration: underline; }
 
@@ -557,7 +558,7 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 /* ── Content page layout ──────────────────────────────────── */
 .content-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 260px minmax(0, 1fr);
   gap: 2rem;
   align-items: start;
 }
@@ -1091,7 +1092,7 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 /* ── Content-with-sidebar layout (topic pages) ───────────── */
 .content-with-sidebar {
   display: grid;
-  grid-template-columns: 230px 1fr;
+  grid-template-columns: 230px minmax(0, 1fr);
   gap: 2rem;
   align-items: start;
 }
@@ -1425,15 +1426,24 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 /* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .content-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .content-sidebar {
     position: static;
   }
 
+  /* Prevent grid blowout: stop intrinsic (min-content) sizes of sidebars,
+     tables and flex lists from forcing the single column wider than the screen */
+  .content-sidebar,
+  .content-area,
+  .content-article {
+    min-width: 0;
+    max-width: 100%;
+  }
+
   .content-with-sidebar {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .content-with-sidebar > .sidebar-nav {
@@ -1514,5 +1524,33 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 
   .card-grid-2, .card-grid-3, .card-grid-4 {
     grid-template-columns: 1fr;
+  }
+
+  /* Stop stray sub-pixel bleed creating a page-level horizontal scrollbar */
+  html, body { overflow-x: clip; }
+
+  /* Tables: scroll horizontally within their container instead of
+     punching out of the card / off the edge of the screen */
+  .content-area table,
+  .content-article table,
+  .page-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Let header cells wrap on phones so narrow tables fit without scrolling */
+  .content-area th,
+  .content-article th,
+  .page-content th {
+    white-space: normal;
+  }
+
+  /* Long code tokens (function signatures, URLs) wrap instead of overflowing */
+  .content-area article code,
+  .content-article code {
+    overflow-wrap: anywhere;
   }
 }
