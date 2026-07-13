@@ -19,7 +19,7 @@
   <div class="inner">
     <div class="hero-badge">Software Design &amp; Development</div>
     <h1>Data Structures</h1>
-    <p>At Higher level you work with 2 main data structures: parallel 1D arrays, and arrays of records.</p>
+    <p>At Higher level you work with 2 main data structures: Parallel 1D Arrays, and Arrays of Records.</p>
   </div>
 </section>
 <main class="page-content">
@@ -42,6 +42,8 @@
       <nav class="sidebar-nav" aria-label="Page sections">
     <div class="sidebar-title">On this page</div>
     <ul>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#key-terms">Key Terms</a></li>
       <li><a href="#parallel">Parallel 1D Arrays</a></li>
       <li><a href="#records">Records</a></li>
       <li><a href="#arrays-of-records">Arrays of Records</a></li>
@@ -51,14 +53,40 @@
     </aside>
   <div class="content-area">
 
-    <div class="callout callout-info">
-      <div class="callout-icon">ℹ️</div>
-      <div><p><strong>Higher vs National 5:</strong> At National 5 you used simple 1D arrays. At Higher the three required structures are parallel 1D arrays, records, and arrays of records.</p>
-	  <br>
+    <article>
+      <h2 id="intro">Data Structures</h2>
+      <div class="article-meta">
+        <span class="badge">SDD Unit 1</span>
+        <span>Topic 5 of 9</span>
+      </div>
+
+      <p>A <strong>data structure</strong> is a way of organising and storing related data so that a program can work with it efficiently. At Higher, you need to be able to use 2 data structures:</p>
+      <ul>
+        <li>A <strong>Parallel Array</strong> </li>
+        <li>An <strong>Array of Records</strong></li>
+        <ul>
+          <li>A <strong>Record</strong> - This is defined first, then used with an Array of Records.</li>
+        </ul>
+      </ul>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div><p><strong>Higher vs National 5:</strong> At National 5 you used simple 1D arrays. At Higher the three required structures are parallel 1D arrays, records, and arrays of records.</p>
+	  
 	  <p>You will however, have to declare a record structure for an array of records.</p>
-	  <br>
+	  
 	  <p>On this page, we will cover how to use each of these Data Structures, and how they crop up in exam questions.</p></div>
-    </div>
+      </div>
+
+      <h3 id="key-terms">Key Terms</h3>
+      <div class="key-terms">
+        <div class="key-term"><div class="term">Parallel Array</div><div class="def">uses two or more separate 1D arrays where the same index position holds related data about the same item.</div></div>
+        <div class="key-term"><div class="term">Record</div><div class="def">allows multiple pieces of related data to be stored in a single structure. The data can be of different data types. (You will not use this without also using an <strong>Array of Records</strong>.</div></div>
+        <div class="key-term"><div class="term">Array of Records</div><div class="def">stores a list of records, combining both structures so you can hold many items that each have several fields.</div></div>
+        <div class="key-term"><div class="term">Field</div><div class="def">Name of the piece of data being stored (e.g. "Pupil Name", "Age", "Score", etc)</div></div>
+        <div class="key-term"><div class="term">Data</div><div class="def">Value stored by a field within a specific record. (e.g. "Sophia", "16", "91")</div></div>
+      </div>
+    </article>
 
     <article>
       <h2 id="parallel">Parallel 1D Arrays</h2>
