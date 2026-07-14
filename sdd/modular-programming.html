@@ -19,7 +19,7 @@
   <div class="inner">
     <div class="hero-badge">Software Design &amp; Development</div>
     <h1>Modular Programming</h1>
-    <p>Functions and procedures, parameter passing, scope, pre-defined functions (substrings, chr/ord, modulus, float-to-int), and the selection and iteration constructs.</p>
+    <p>Functions, procedures and parameters, the scope of variables, and how to combine modules into a fully modular program.</p>
   </div>
 </section>
 <main class="page-content">
@@ -43,112 +43,130 @@
       <nav class="sidebar-nav" aria-label="Page sections">
     <div class="sidebar-title">On this page</div>
     <ul>
-      <li><a href="#subprograms">Functions &amp; Procedures</a></li>
-      <li><a href="#parameters">Parameter Passing</a></li>
-      <li><a href="#scope">Scope</a></li>
-      <li><a href="#predef">Pre-defined Functions</a></li>
-      <li><a href="#constructs">Selection &amp; Iteration</a></li>
+      <li><a href="#functions">Functions, Procedures &amp; Parameters</a></li>
+      <li><a href="#scope">Scope of Variables</a></li>
+      <li><a href="#tying">Tying it All Together</a></li>
+      <li><a href="#fully-modular">Fully Modular Program</a></li>
+      <li><a href="#benefits">Benefits of Modular Programming</a></li>
     </ul>
       </nav>
     </aside>
   <div class="content-area">
 
     <article>
-      <h2 id="subprograms">Functions and Procedures</h2>
-      <p>Breaking a program into <strong>subprograms</strong> (also called modules) is central to Higher-level programming. It makes code easier to test, maintain and reuse.</p>
+      <h2 id="functions">Functions, Procedures &amp; Parameters</h2>
+      <p>Modular programming means breaking a program down into smaller <strong>sub-programs</strong> (also called <strong>modules</strong>). In Python there are two types of module: <strong>functions</strong> and <strong>procedures</strong>. Both are defined using the <code>def</code> keyword.</p>
+
+      <h3>Functions</h3>
+      <p>A function is a sub-program that <strong>returns a value</strong>, so the final line of the function should be a <code>return</code> statement.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Basic Function Structure</div>
+        <pre>def get_speed(distance, time):
+  speed = distance / time
+  return speed</pre>
+      </div>
+      <p>Calling <code>myTopSpeed = get_speed(110, 35)</code> would return approximately <code>3.14</code> and store it in <code>myTopSpeed</code>.</p>
+
+      <div class="code-block">
+        <div class="code-label">Python — Function to Square a Number</div>
+        <pre># Function to square a number
+def square(n):
+  s = n * n
+  return s
+
+# Main part of the program...
+number = int(input("Please enter a number"))
+sq = square(number)
+print(sq)</pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-label">Python — Function Using the Find Max Algorithm</div>
+        <pre># A function using the find max algorithm
+def findmax(array_of_nums):
+  max = array_of_nums[0]
+  for index in range(1, len(array_of_nums)):
+    if array_of_nums[index] &gt; max:
+      max = array_of_nums[index]
+  return max
+
+# Main program...
+scores = [200, 55, 84, 21, 985, 300]
+high_score = findmax(scores)
+print(high_score)</pre>
+      </div>
+
+      <h3>Procedures</h3>
+      <p>A procedure is a sub-program that <strong>does not return a value</strong>. The key difference is the absence of a <code>return</code> statement. Procedures are used when data only needs to flow <em>into</em> the module (for example, to display output).</p>
+      <div class="code-block">
+        <div class="code-label">Python — Procedure to Add and Print</div>
+        <pre>def add_and_print(num1, num2):
+  total = num1 + num2
+  print("The total is", total)
+
+# Main program
+number1 = int(input("Please enter number 1"))
+number2 = int(input("Please enter number 2"))
+add_and_print(number1, number2)</pre>
+      </div>
 
       <table>
         <thead><tr><th></th><th>Procedure</th><th>Function</th></tr></thead>
         <tbody>
-          <tr><td>Returns a value?</td><td>No</td><td>Yes — one value via <code>RETURN</code></td></tr>
+          <tr><td>Returns a value?</td><td>No</td><td>Yes — one value via <code>return</code></td></tr>
+          <tr><td>Ends with</td><td>No <code>return</code> statement</td><td>A <code>return</code> statement</td></tr>
           <tr><td>Used for</td><td>Performing an action (e.g. display output)</td><td>Calculating and returning a result</td></tr>
-          <tr><td>Called by</td><td>Statement: <code>displayMenu()</code></td><td>Expression: <code>SET total TO add(a, b)</code></td></tr>
         </tbody>
       </table>
 
-      <div class="code-block">
-        <div class="code-label">Procedure and Function Examples</div>
-        <pre># Procedure — performs an action, no return value
-PROCEDURE displayGreeting(name : STRING)
-    SEND "Hello, " &amp; name TO DISPLAY
-END PROCEDURE
-
-# Function — calculates and returns a value
-FUNCTION square(n : INTEGER) RETURNS INTEGER
-    RETURN n * n
-END FUNCTION
-
-# Calling them
-CALL displayGreeting("Alice")
-SET result TO square(5)    # result = 25</pre>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Functions &amp; Procedures — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-functions"
-            title="Functions and Procedures Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Functions &amp; Procedures</div>
-          <div class="ip-sub">Interactive editor coming here — write a procedure that displays output and a function that returns a calculated value</div>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <h2 id="parameters">Parameter Passing</h2>
-      <p>Parameters allow data to be passed into a subprogram. There are two terms to know:</p>
+      <h3>Parameters</h3>
+      <p>A <strong>parameter</strong> is a piece of data that is passed into a function or procedure. This can be a static piece of data hardcoded into the program, or a variable. There are two types of parameter: <strong>actual</strong> and <strong>formal</strong>.</p>
 
       <table>
-        <thead><tr><th>Term</th><th>Where?</th><th>Definition</th></tr></thead>
+        <thead><tr><th>Type</th><th>Where?</th><th>Definition</th></tr></thead>
         <tbody>
           <tr>
             <td><strong>Formal parameter</strong></td>
-            <td>In the subprogram definition</td>
+            <td>In the <code>def</code> statement (where the module is <em>defined</em>)</td>
             <td>The named placeholder that receives the value</td>
           </tr>
           <tr>
             <td><strong>Actual parameter</strong></td>
-            <td>In the subprogram call</td>
-            <td>The real value or variable passed in when calling</td>
+            <td>In the brackets when the module is <em>called</em> (where it is <em>used</em>)</td>
+            <td>The real value or variable being passed in</td>
           </tr>
         </tbody>
       </table>
 
       <div class="code-block">
-        <div class="code-label">Formal vs Actual Parameters</div>
-        <pre>FUNCTION add(a : INTEGER, b : INTEGER) RETURNS INTEGER
-#              ^ formal      ^ formal
-    RETURN a + b
-END FUNCTION
-
-SET total TO add(10, 20)
-#                ^ actual  ^ actual</pre>
+        <div class="code-label">Python — Formal Parameters (in the definition)</div>
+        <pre>def get_speed(distance, time):
+#             ^ formal   ^ formal
+  speed = distance / time
+  return speed</pre>
+      </div>
+      <div class="code-block">
+        <div class="code-label">Python — Actual Parameters (in the call)</div>
+        <pre>high_score = findmax(scores)
+#                    ^ actual
+total = add_two_numbers(num1, num2)
+#                       ^ actual ^ actual
+display_total(total)
+#             ^ actual</pre>
       </div>
 
       <div class="callout callout-tip">
         <div class="callout-icon">💡</div>
-        <div>Exam questions often ask you to "identify the formal parameters" or "state the actual parameters used in the call." Always check <em>where</em> you are looking — definition = formal, call = actual.</div>
+        <div>Exam questions (for example, 2019) often ask you to identify one formal and one actual parameter from a piece of code. Always check <em>where</em> you are looking — parameters in the <code>def</code> statement are formal; parameters in the brackets when the module is called are actual.</div>
       </div>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Parameter Passing — Video Explanation</p>
+        <p class="video-section-title">Functions, Procedures &amp; Parameters — Video Explanation</p>
         <div class="video-embed">
           <iframe
-            src="https://www.youtube.com/embed/placeholder-parameters"
-            title="Parameter Passing Explained"
+            src="https://www.youtube.com/embed/placeholder-functions-procedures"
+            title="Functions, Procedures and Parameters Explained"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -159,43 +177,83 @@ SET total TO add(10, 20)
       <div class="interactive-placeholder">
         <div class="ip-icon">💻</div>
         <div class="ip-body">
-          <div class="ip-title">Try It — Parameter Passing</div>
-          <div class="ip-sub">Interactive editor coming here — identify formal and actual parameters in a working function call</div>
+          <div class="ip-title">Try It — Functions, Procedures &amp; Parameters</div>
+          <div class="ip-sub">Interactive editor coming here — write a function that returns a value and a procedure that displays output, and identify the formal and actual parameters</div>
         </div>
       </div>
     </article>
 
     <article>
-      <h2 id="scope">Scope: Local and Global Variables</h2>
-      <p>The <strong>scope</strong> of a variable determines where in a program it can be accessed.</p>
+      <h2 id="scope">Scope of Variables</h2>
+      <p>The <strong>scope</strong> of a variable determines where in a program it can be used. Variables are either <strong>global</strong> or <strong>local</strong>.</p>
 
-      <table>
-        <thead><tr><th></th><th>Local Variable</th><th>Global Variable</th></tr></thead>
-        <tbody>
-          <tr><td>Declared inside</td><td>A subprogram</td><td>The main program (outside all subprograms)</td></tr>
-          <tr><td>Accessible</td><td>Only within that subprogram</td><td>Throughout the entire program</td></tr>
-          <tr><td>Exists</td><td>Only while subprogram runs</td><td>For the lifetime of the program</td></tr>
-          <tr><td>Preferred?</td><td>Yes — reduces unintended side effects</td><td>Avoid where possible</td></tr>
-        </tbody>
-      </table>
+      <h3>Global Variables</h3>
+      <p><strong>Global variables can be used anywhere in the program.</strong> They are declared in the main program, outside any function block (with no indentation).</p>
+      <div class="code-block">
+        <div class="code-label">Python — Global Variables</div>
+        <pre>username = "admin"
+scores = [22, 5, 10, 18, 9]</pre>
+      </div>
+      <p>Global variables should not be over-used — they stay in memory for longer than necessary, which is less efficient and increases the risk of errors.</p>
+
+      <h3>Local Variables</h3>
+      <p><strong>Local variables can only be used in one section of code</strong> (for example, in a single function or procedure). In the example below, <code>total</code> is local to the function and cannot be accessed outside it.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Local Variables</div>
+        <pre>def myfunction(param1, param2):
+  total = param1 + param2
+  return total
+
+number1 = 5
+number2 = myfunction(number1, 6)</pre>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">✅</div>
+        <div><strong>Advantages of local variables:</strong>
+          <ul>
+            <li>They are released from memory when no longer needed, so they free up resources.</li>
+            <li>The same name can be re-used in different parts of the program without the variables interfering with each other.</li>
+            <li>You cannot accidentally affect another part of the program, which avoids logic errors.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Making a Global Variable Accessible</h3>
+      <p>Using the <code>global</code> keyword allows a function to reference and change a program-level (global) variable.</p>
+      <div class="code-block">
+        <div class="code-label">Python — The global Keyword</div>
+        <pre>total = 0
+
+def myfunction(param1, param2):
+  global total
+  total = param1 + param2
+  return total</pre>
+      </div>
 
       <div class="code-block">
-        <pre>DECLARE total AS INTEGER INITIALLY 0   # global
+        <div class="code-label">Python — Identifying Local and Global Variables</div>
+        <pre># Find Max Algorithm
+def findMax(list):
+  max = list[0]
+  for counter in range(len(list)):
+    if list[counter] &gt; max:
+      max = list[counter]
+  return max
 
-PROCEDURE addToTotal(amount : INTEGER)
-    DECLARE temp AS INTEGER INITIALLY 0  # local to this procedure
-    SET temp TO amount * 2
-    SET total TO total + temp
-END PROCEDURE</pre>
+# Declare an array of floats to store a list of BMIs
+bmis = [22.3, 26.3, 33.22, 21.22, 17.23]
+heaviest = findMax(bmis)</pre>
       </div>
+      <p>Here <code>max</code> and <code>list</code> are <strong>local</strong> (function-scoped), while <code>bmis</code> and <code>heaviest</code> are <strong>global</strong> (declared in the main program).</p>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Scope — Video Explanation</p>
+        <p class="video-section-title">Scope of Variables — Video Explanation</p>
         <div class="video-embed">
           <iframe
             src="https://www.youtube.com/embed/placeholder-scope"
-            title="Local and Global Scope Explained"
+            title="Scope of Variables Explained"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -206,107 +264,59 @@ END PROCEDURE</pre>
       <div class="interactive-placeholder">
         <div class="ip-icon">💻</div>
         <div class="ip-body">
-          <div class="ip-title">Try It — Scope</div>
-          <div class="ip-sub">Interactive editor coming here — experiment with local vs global variables and see which are accessible inside a subprogram</div>
+          <div class="ip-title">Try It — Scope of Variables</div>
+          <div class="ip-sub">Interactive editor coming here — experiment with local and global variables and see which are accessible inside a function</div>
         </div>
       </div>
     </article>
 
     <article>
-      <h2 id="predef">Pre-defined Functions</h2>
-      <p>The SQA Higher exam expects you to know and use four categories of pre-defined functions. These are built-in operations provided by the language.</p>
+      <h2 id="tying">Tying it All Together</h2>
+      <p>Functions and procedures are combined to build a complete program. Remember:</p>
+      <ul>
+        <li>A <strong>function</strong> returns a value (data going <em>out</em>).</li>
+        <li>A <strong>procedure</strong> is like a function, but without a <code>return</code> statement.</li>
+        <li>Both functions and procedures can accept passed <strong>parameters</strong>.</li>
+      </ul>
 
-      <h3>1. Substrings</h3>
-      <p>Extract part of a string using a start position and a length.</p>
+      <p>A good approach is to begin by writing the module <strong>stubs</strong> (just the <code>def</code> lines) before filling in the detail of each one.</p>
       <div class="code-block">
-        <pre>DECLARE word AS STRING INITIALLY "Computing"
+        <div class="code-label">Python — Module Stubs</div>
+        <pre># Read song data from text file
+def read_file():
 
-SET part TO SUBSTRING(word, 0, 4)   # Returns "Comp"
-# SUBSTRING(string, start index, length)</pre>
+# Count number of downloads for each song
+def count_downloads(songdata):
+
+# Find song with most downloads
+def find_most_dl(howmany):
+
+# Display song info
+def display_info(mostpopular, songdata):</pre>
+      </div>
+
+      <p>Once the modules are defined, add the <strong>main algorithm</strong> at the end of the file. This calls each module in turn, passing data between them.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Main Algorithm</div>
+        <pre># Main algorithm
+s = read_file()
+h = count_downloads(s)
+m = find_most_dl(h)
+display_info(m, s)</pre>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div>The order you write the modules in the file doesn't matter, so long as they all come <strong>before</strong> the main algorithm.</div>
       </div>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
-        <p class="video-section-title">SUBSTRING Function — Video Explanation</p>
+        <p class="video-section-title">Tying it All Together — Video Explanation</p>
         <div class="video-embed">
           <iframe
-            src="https://www.youtube.com/embed/placeholder-substring"
-            title="SUBSTRING Function Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <h3>2. Character ↔ ASCII (chr and ord)</h3>
-      <p>Convert between a character and its ASCII (Unicode) code number.</p>
-      <div class="code-block">
-        <pre>SET code TO ASC("A")      # Returns 65
-SET letter TO CHR(65)     # Returns "A"
-
-# Useful for checking alphabetical order, shifting characters
-IF ASC(char) >= ASC("a") AND ASC(char) <= ASC("z") THEN
-    SEND "Lowercase letter" TO DISPLAY
-END IF</pre>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">ASC &amp; CHR Functions — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-asc-chr"
-            title="ASC and CHR Functions Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <h3>3. Real to Integer</h3>
-      <p>Convert a floating-point (real) number to an integer by truncating (removing) the decimal part.</p>
-      <div class="code-block">
-        <pre>DECLARE price AS REAL INITIALLY 9.99
-
-SET whole TO INT(price)    # Returns 9 (truncates, does not round)
-SET rounded TO ROUND(price, 0)  # Returns 10.0</pre>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">INT &amp; ROUND Functions — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-int-round"
-            title="INT and ROUND Functions Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <h3>4. Modulus (Remainder)</h3>
-      <p>The modulus operator returns the <strong>remainder</strong> after integer division. It is used to check divisibility, detect even/odd numbers, and cycle through indices.</p>
-      <div class="code-block">
-        <pre>SET remainder TO 17 MOD 5    # Returns 2  (17 = 3×5 + 2)
-SET isEven   TO n MOD 2 = 0  # TRUE if n is even
-
-# Check if a number is divisible by 3:
-IF n MOD 3 = 0 THEN
-    SEND n &amp; " is divisible by 3" TO DISPLAY
-END IF</pre>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">MOD (Modulus) — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-mod"
-            title="MOD Modulus Operator Explained"
+            src="https://www.youtube.com/embed/placeholder-tying-together"
+            title="Tying it All Together Explained"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -317,60 +327,92 @@ END IF</pre>
       <div class="interactive-placeholder">
         <div class="ip-icon">💻</div>
         <div class="ip-body">
-          <div class="ip-title">Try It — Pre-defined Functions</div>
-          <div class="ip-sub">Interactive editor coming here — practice SUBSTRING, ASC/CHR, INT/ROUND, and MOD on example values</div>
+          <div class="ip-title">Try It — Tying it All Together</div>
+          <div class="ip-sub">Interactive editor coming here — combine several modules and a main algorithm into one working program</div>
         </div>
       </div>
     </article>
 
     <article>
-      <h2 id="constructs">Selection and Iteration</h2>
-      <p>These constructs carry over from National 5 and are used throughout Higher programming tasks.</p>
+      <h2 id="fully-modular">Fully Modular Program</h2>
+      <p>Here is a complete, fully modular program. It reads a list of one hundred countries from a text file, asks the user to enter a capital letter (validating the input), then counts how many countries begin with that letter.</p>
 
-      <h3>Selection</h3>
+      <h3>Module Design</h3>
+      <table>
+        <thead><tr><th>Module</th><th>Type</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><code>get_countries</code></td><td>Function</td><td>Returns the array of countries read from the file</td></tr>
+          <tr><td><code>get_letter</code></td><td>Function</td><td>Returns a validated capital letter entered by the user</td></tr>
+          <tr><td><code>count_countries</code></td><td>Function</td><td>Takes two parameters, returns the count of matches</td></tr>
+          <tr><td><code>show_result</code></td><td>Procedure</td><td>Takes the count parameter, displays it (no return value)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Module Skeleton and Main Algorithm</h3>
       <div class="code-block">
-        <pre># Simple IF
-IF mark >= 70 THEN
-    SET grade TO "A"
-ELSE IF mark >= 60 THEN
-    SET grade TO "B"
-ELSE
-    SET grade TO "C"
-END IF
+        <div class="code-label">Python — Skeleton</div>
+        <pre>def get_countries():
+  ...
+  return countries
 
-# CASE (equivalent to switch/match)
-CASE grade OF
-    "A" : SEND "Distinction" TO DISPLAY
-    "B" : SEND "Merit" TO DISPLAY
-    OTHERWISE : SEND "Pass" TO DISPLAY
-END CASE</pre>
+def get_letter():
+  ...
+  return letter
+
+def count_countries(countries, letter):
+  ...
+  return count
+
+def show_result(count):
+  print("...")
+
+# Main algorithm
+c = get_countries()
+l = get_letter()
+count = count_countries(c, l)
+show_result(count)</pre>
       </div>
 
-      <h3>Iteration</h3>
+      <h3>Complete Working Program</h3>
       <div class="code-block">
-        <pre># Fixed loop
-FOR i FROM 0 TO 9 DO
-    SEND class[i].name TO DISPLAY
-END FOR
+        <div class="code-label">Python — Fully Modular Program</div>
+        <pre>def get_countries():
+  file = open("countries.txt", "r")
+  countries = file.readlines()
+  file.close()
+  return countries
 
-# Conditional loop (pre-test)
-WHILE score &lt; 0 OR score > 100 DO
-    RECEIVE score FROM KEYBOARD
-END WHILE
+def get_letter():
+  letter = input("Please enter a capital letter:")
+  while len(letter) != 1 or (ord(letter) &lt; 65 or ord(letter) &gt; 90):
+    print("Error: input is not valid")
+    letter = input("Please enter a capital letter:")
+  return letter
 
-# Conditional loop (post-test — runs at least once)
-REPEAT
-    RECEIVE score FROM KEYBOARD
-UNTIL score >= 0 AND score &lt;= 100</pre>
+def count_countries(countries, letter):
+  count = 0
+  for index in range(0, len(countries)):
+    first_letter = countries[index][0:1]
+    if letter == first_letter:
+      count = count + 1
+  return count
+
+def show_result(count):
+  print("Matches found:", count)
+
+c = get_countries()
+l = get_letter()
+count = count_countries(c, l)
+show_result(count)</pre>
       </div>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Selection &amp; Iteration — Video Explanation</p>
+        <p class="video-section-title">Fully Modular Program — Video Explanation</p>
         <div class="video-embed">
           <iframe
-            src="https://www.youtube.com/embed/placeholder-selection-iteration"
-            title="Selection and Iteration Explained"
+            src="https://www.youtube.com/embed/placeholder-fully-modular"
+            title="Fully Modular Program Explained"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -381,8 +423,35 @@ UNTIL score >= 0 AND score &lt;= 100</pre>
       <div class="interactive-placeholder">
         <div class="ip-icon">💻</div>
         <div class="ip-body">
-          <div class="ip-title">Try It — Selection &amp; Iteration</div>
-          <div class="ip-sub">Interactive editor coming here — write an IF/ELSE chain and a FOR loop, then adapt them to use WHILE and REPEAT</div>
+          <div class="ip-title">Try It — Fully Modular Program</div>
+          <div class="ip-sub">Interactive editor coming here — run the complete modular program and trace how data is passed between the modules</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="benefits">Benefits of Modular Programming</h2>
+      <p>Breaking a program into modules has a number of important advantages:</p>
+      <ul>
+        <li><strong>Team working</strong> — multiple developers can work on different modules (parts of the project) at the same time.</li>
+        <li><strong>Independent testing</strong> — each module can be tested on its own, which makes errors far easier to locate and fix.</li>
+        <li><strong>Efficient use of memory</strong> — local variables are only held in memory while their module is running, then released, so resources are freed up.</li>
+        <li><strong>Fewer errors from variable scope</strong> — because modules mainly use local variables, one module is far less likely to accidentally change data belonging to another.</li>
+        <li><strong>Reusability</strong> — a well-written module can be reused in other programs without being rewritten.</li>
+        <li><strong>Readability and maintenance</strong> — each module does one clear job, so the program is easier to read, understand and update later.</li>
+      </ul>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Benefits of Modular Programming — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-modular-benefits"
+            title="Benefits of Modular Programming Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </article>
@@ -390,7 +459,7 @@ UNTIL score >= 0 AND score &lt;= 100</pre>
     <div class="placeholder-block">
       <div class="placeholder-icon">📋</div>
       <div class="placeholder-text">Practice Questions — Modular Programming</div>
-      <div class="placeholder-sub">Functions and procedures, parameter passing, scope and pre-defined functions exercises</div>
+      <div class="placeholder-sub">Functions, procedures, parameters, scope and building a fully modular program</div>
     </div>
 
   </div>
