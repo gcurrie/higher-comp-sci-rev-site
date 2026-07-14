@@ -326,32 +326,44 @@ SEND dogCount TO DISPLAY</pre>
     <article>
       <h2 id="records">Records</h2>
       <p>A <strong>record</strong> is a collection of named fields that can each hold a <em>different</em> data type. Where an array stores many values of the same type, a record stores multiple attributes of a <em>single</em> item.</p>
-
+      <p>It works in much the same way as a database record, in that the data being stored is all related. For example you could store the name, year group, and average test score of a single pupil in a record.</p>
+      <p>Let's look at how we would represent this. Lets say I want to store the following data in a record within a program:</p>
+      <p><strong>Pupil Name</strong>: Ewan</p>
+      <p><strong>Year Group</strong>: S5</p>
+      <p><strong>Average Test Score</strong>: 86</p>
+      <br>
+      <p>First I need to identify the fields, in this case: <strong>Pupil Name, Year Group & Average Test Score.</strong>. Then I need to identify the data types for these fields, in this case <strong>String, String & Integer</strong>.</p>
+      <p>I then need to come up with a relevant name for the record. I'll call it <code>pupilRecord</code></p>
+      <p>I now need to take this information, and declare the record structure. You can see the SQA Reference Language version, and the Python version below. <strong>(NOTE: Python technically doesn't support records. However you can get similar functionality from a Dictionary which is the example given below. You can also use a class. Either is accepted in the exam/coursework.)</strong></p>
       <div class="code-block">
-        <div class="code-label">Defining and Using a Record</div>
-        <pre>RECORD Pupil IS
-    name   : STRING
-    mark   : INTEGER
-    passed : BOOLEAN
-END RECORD
+        <div class="code-label">Python — Record Declaration</div>
+        <pre># SQA Reference Language Declaration
+DECLARE pupilRecord AS RECORD (STRING: pupilName, STRING: yearGroup, INT: averageScore)
 
-DECLARE student AS Pupil
-
-SET student.name   TO "Claire"
-SET student.mark   TO 65
-SET student.passed TO TRUE
-
-SEND student.name &amp; " scored " &amp; student.mark TO DISPLAY</pre>
+# Python Record Declaration using a Dictionary
+pupilRecord = {"pupilName": "", "yearGroup": "", "averageScore: 0}</pre>
       </div>
 
-      <table>
-        <thead><tr><th>Feature</th><th>Array</th><th>Record</th></tr></thead>
-        <tbody>
-          <tr><td>Stores</td><td>Many values, same type</td><td>Multiple fields, different types</td></tr>
-          <tr><td>Access</td><td>By numeric index: <code>arr[2]</code></td><td>By field name: <code>student.name</code></td></tr>
-          <tr><td>Use case</td><td>A list of the same kind of value</td><td>A single complex item with named attributes</td></tr>
-        </tbody>
-      </table>
+      <p>This however, just defines the record, it does not populute it with data. Normally, you will be populating an Array of Records as opposed to a single record, and you will do this when reading from a file. To see an example of this, <a href="">Click Here</a>.</p>
+      <p>To populate the record we can declare an empty record (as done in the code block above), and then add the data:</p>
+      <div class="code-block">
+        <div class="code-label">Adding Data to pupilRecord Version 1</div>
+        <pre># Adding data to pupilRecord
+pupilRecord["pupilName"] = "Ewan"
+pupilRecord["yearGroup"] = "S5"
+pupilRecord["averageScore"] = 86
+        </pre>
+      </div>
+
+      <p>To print, as with updating the record, we need to give the <strong>record name</strong> and <strong>the field name we want to print</strong>. If we just give the record name, it will print the entire record (field names and values).</p>
+      <div class="code-block">
+        <div class="code-label">Printing a record</div>
+        <pre># Printing a record
+print(pupilRecord["pupilName"] + " in " + pupilRecord["yearGroup"] + " has an average score of " + pupilRecord["averageScore"] + "%")
+        </pre>
+      </div>
+
+      <p>In the exam, you only really need to worry about declaring the record structure correctly, which is what the example below will go into. In any programs you will write, you will read data from a file and populate an array of records. To see examples of how to do this <a href="">Click Here</a>.</p>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
@@ -373,6 +385,51 @@ SEND student.name &amp; " scored " &amp; student.mark TO DISPLAY</pre>
           <div class="ip-title">Try It — Records</div>
           <div class="ip-sub">Interactive editor coming here — declare a record type, create an instance, and access its fields</div>
         </div>
+      </div>
+
+      <h3 id="practice">Practice Question</h3>
+      <div class="practice-q">
+        <div class="q-label">Record Declaration - 2025 q8 a) (i) - 2 Mark</div>
+        <p>The following is a typical Record declaration question, and normally acts as the 1st part of a larger multi-part question where you have to declare the record, array or records, and then use this data structure along with a standar algorithm. Sometimes however, this 1st part is already done (2024 past paper for example)</p>
+        <img src="../resources/sdd/data_struct_q2.png">
+        <p>Some of the information we have is relevant for later parts, such as allowing a "maximum of 10,000 attempts per day". </p>
+        <h6>Step 1 - Identify a Record Name - 1 Mark</h6>
+        <p>First thing to do is understand what data is being stored so you can give the record a name with appropriate context. Sometimes we are given the name to use in the question so watch out for this. If that happens it will normally be in a different font.</p>
+        <p>In this case, we are not given a name to use in the question, and we are storing data about a players attempts while playing a game. So I will call my record <code>playerDataRecord</code>.</p>
+        <p>You can see the start of my answer below</p>
+        <div class="code-block">
+        <div class="code-label">Initial Record Declaration for 2025 q8 a) (i) </div>
+        <pre># Part 1 of Record Declaration
+# SQA Reference Langaugae Version
+DECLARE pupilDataRecord AS RECORD
+
+# Python Version
+pupilDataRecord = {}
+        </pre>
+      </div>
+      <h6>Step 2 - Identify the Fields & Data Types - 1 Mark</h6>
+      <p>Now we have the record, we need to identify what data we are storing, and assign it the appropriate type. For this, we need to make sure we look at the sample data provided, and read the question thoroughly.</p>
+      <p>We are told that "Each time someone plays the game, their <strong>Name, e-mail, attemptID and reaction time</strong>" are stored. We have our 4 fields</p>
+      <p>Now we need to look at the sample data to identify the correct data types. Don't just infer what you assume is the data type, look at the sample data as this will confirm your assumptions.</p>
+      <p>We can see from the data that name will be a String, e-mail will be a String, attemptID will be a String & reaction time will be a REAL NUMBER.</p>
+      <p>So my updated answer would be</p>
+              <div class="code-block">
+        <div class="code-label">Initial Record Declaration for 2025 q8 a) (i) </div>
+        <pre># Part 2 of Record Declaration
+# SQA Reference Langaugae Version
+DECLARE pupilDataRecord AS RECORD (STRING: name, STRING: e-mail, STRING: attemptID, REAL: reactionTime)
+
+# Python Version
+pupilDataRecord = {"name": "", "e-mail": "", "attemptID": "", "reactionTime": 0.0}
+        </pre>
+      </div>
+      <p>You can see from the marking instructions below that you pick up a:</p>
+      <ul>
+        <li>mark for the record delcaration <code>DECLARE pupilDataRecords AS RECORD</code></li>
+        <li>mark for the correct fields & data types. <code>(STRING: name, STRING: e-mail, STRING: attemptID, REAL: reactionTime)</code></li>
+      </ul>
+      <img src="../resources/sdd/data_struct_q2_ans.png">
+      <p>This question will be continued in the <strong>Array of Records</strong> section below.</p>
       </div>
     </article>
 

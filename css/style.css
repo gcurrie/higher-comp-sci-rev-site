@@ -566,10 +566,14 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 .content-sidebar {
   position: sticky;
   top: 85px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-/* Stack multiple nav cards (SDD Topics + On this page) in the left rail */
-.content-sidebar .sidebar-nav + .sidebar-nav { margin-top: 1.25rem; }
+/* Show the "On this page" table of contents above the topic rail so it is
+   visible without scrolling past the long SDD Topics list */
+.content-sidebar .sidebar-nav:has(.sidebar-title) { order: -1; }
 
 .sidebar-nav {
   background: var(--white);
