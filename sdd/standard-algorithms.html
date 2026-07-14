@@ -44,7 +44,8 @@
     <ul>
       <li><a href="#which">Higher Algorithms</a></li>
       <li><a href="#linear-search">Linear Search</a></li>
-      <li><a href="#min-max">Find Min &amp; Max</a></li>
+      <li><a href="#max">Find Maximum</a></li>
+      <li><a href="#min">Find Minimum</a></li>
       <li><a href="#count">Count Occurrences</a></li>
       <li><a href="#records">With Arrays of Records</a></li>
     </ul>
@@ -70,54 +71,61 @@
 
     <article>
       <h2 id="linear-search">Linear Search</h2>
-      <p>A linear search checks every element in an array <strong>one at a time</strong>, from the first element to the last, until the target value is found or the end of the array is reached.</p>
+      <p>Linear search is used with one or more arrays of items. We traverse (loop through) the array, looking for a particular value. If one of the items in the array matches the search value, we do something.</p>
+      <p>There are two common variations: one records <strong>whether</strong> something is found, while the other records <strong>where</strong> it was found (its position in the list).</p>
 
-      <h3>Key Steps</h3>
-      <ol>
-        <li>Set a flag (found) to FALSE and an index to 0</li>
-        <li>Loop through each element</li>
-        <li>If the element matches the target, set found to TRUE and record the index</li>
-        <li>After the loop, report whether the target was found</li>
-      </ol>
-
+      <h3>Recording Whether an Item is Found</h3>
       <div class="code-block">
-        <div class="code-label">Linear Search — 1D Array</div>
-        <pre>DECLARE names AS ARRAY OF STRING INITIALLY ["Alice","Bob","Claire","David"]
-DECLARE target AS STRING INITIALLY "Claire"
-DECLARE found AS BOOLEAN INITIALLY FALSE
-DECLARE foundAt AS INTEGER INITIALLY -1
+        <div class="code-label">Python — Linear Search (found flag)</div>
+        <pre>names = ["Dopey", "Grumpy", "Doc", "Bashful", "Sneezy", "Sleepy", "Happy"]
+target = input("Enter a name to look for")
+found = False
 
-FOR i FROM 0 TO LENGTH(names) - 1 DO
-    IF names[i] = target THEN
-        SET found TO TRUE
-        SET foundAt TO i
-    END IF
-END FOR
+for counter in range(0, 7):
+  if names[counter] == target:
+    found = True
 
-IF found THEN
-    SEND target &amp; " found at index " &amp; foundAt TO DISPLAY
-ELSE
-    SEND target &amp; " not found" TO DISPLAY
-END IF</pre>
+print("Item was found:", found)</pre>
+      </div>
+
+      <h3>Recording the Position of an Item</h3>
+      <div class="code-block">
+        <div class="code-label">Python — Linear Search (position)</div>
+        <pre>names = ["Dopey", "Grumpy", "Doc", "Bashful", "Sneezy", "Sleepy", "Happy"]
+target = input("Enter a name to look for")
+position = -1
+
+for counter in range(0, 7):
+  if names[counter] == target:
+    position = counter
+
+print("Item was found at position:", position)</pre>
       </div>
 
       <div class="callout callout-tip">
         <div class="callout-icon">💡</div>
-        <div>Some exam mark schemes accept a version that exits the loop early once found (using a WHILE NOT found loop). Either approach is valid — check what your teacher prefers for coursework.</div>
+        <div>The position is initialised to <code>-1</code> because it isn't possible to be at position -1 in the array. That way, we know that anything other than -1 must mean the item was found.</div>
       </div>
 
-      <h3>Variation: Exit Early When Found</h3>
+      <h3>Searching Parallel Arrays</h3>
+      <p>Linear search is often used to find an item in one array, then read the corresponding data from a second, parallel array.</p>
       <div class="code-block">
-        <pre>DECLARE i AS INTEGER INITIALLY 0
-DECLARE found AS BOOLEAN INITIALLY FALSE
+        <div class="code-label">Python — Linear Search Across Parallel Arrays</div>
+        <pre>pupils = ["Fry", "Bender", "Leela", "Hermes", "Zoidberg"]
+marks = [10, 2, 1, 8, 9]
+target_name = input("Please enter a name: ")
+position = -1
 
-WHILE i &lt; LENGTH(names) AND NOT found DO
-    IF names[i] = target THEN
-        SET found TO TRUE
-    ELSE
-        SET i TO i + 1
-    END IF
-END WHILE</pre>
+for counter in range(len(pupils)):
+  if pupils[counter] == target_name:
+    position = counter
+
+their_mark = marks[position]
+
+if position != -1:
+  print(target_name + " got the mark " + str(their_mark))
+else:
+  print("Target not found")</pre>
       </div>
 
       <div class="video-section">
@@ -144,49 +152,37 @@ END WHILE</pre>
     </article>
 
     <article>
-      <h2 id="min-max">Find Minimum and Maximum</h2>
-      <p>Scan through the entire array, keeping track of the smallest (or largest) value seen so far. After the loop, the tracked value is the minimum (or maximum).</p>
+      <h2 id="max">Find Maximum</h2>
+      <p>The find maximum (find-max) and find minimum (find-min) algorithms are very similar, only differing in whether they use the <code>&gt;</code> or <code>&lt;</code> sign.</p>
+      <p>To find the maximum, we assume the first item is the largest, then loop through the rest of the array. Whenever we find a larger value, we update our maximum.</p>
 
-      <h3>Finding the Minimum</h3>
+      <h3>Pseudocode</h3>
+      <ol>
+        <li>Declare a maximum variable, set it to the first item in the array</li>
+        <li>Loop for each element in the array</li>
+        <li>If number(counter) &gt; maximum</li>
+        <li>Set maximum to number(counter)</li>
+        <li>End if</li>
+        <li>End for loop</li>
+      </ol>
+
       <div class="code-block">
-        <div class="code-label">Find Minimum Value and Its Index</div>
-        <pre>DECLARE marks AS ARRAY OF INTEGER INITIALLY [78, 45, 92, 61, 55]
-DECLARE minIndex AS INTEGER INITIALLY 0
-
-FOR i FROM 1 TO LENGTH(marks) - 1 DO
-    IF marks[i] &lt; marks[minIndex] THEN
-        SET minIndex TO i
-    END IF
-END FOR
-
-SEND "Lowest mark: " &amp; marks[minIndex] &amp; " (index " &amp; minIndex &amp; ")" TO DISPLAY</pre>
-      </div>
-
-      <h3>Finding the Maximum</h3>
-      <div class="code-block">
-        <pre>DECLARE maxIndex AS INTEGER INITIALLY 0
-
-FOR i FROM 1 TO LENGTH(marks) - 1 DO
-    IF marks[i] > marks[maxIndex] THEN
-        SET maxIndex TO i
-    END IF
-END FOR
-
-SEND "Highest mark: " &amp; marks[maxIndex] TO DISPLAY</pre>
-      </div>
-
-      <div class="callout callout-info">
-        <div class="callout-icon">ℹ️</div>
-        <div>Always <strong>start from index 1</strong> (not 0) in the loop — you use index 0 as the initial best candidate, then compare all others against it. Starting the loop from 0 would make an unnecessary comparison of the first element with itself.</div>
+        <div class="code-label">Python — Find Maximum</div>
+        <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
+maximum = numbers[0]
+for index in range(1, len(numbers)):
+  if numbers[index] &gt; maximum:
+    maximum = numbers[index]
+print("The highest number is", maximum)</pre>
       </div>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Find Minimum &amp; Maximum — Video Explanation</p>
+        <p class="video-section-title">Find Maximum — Video Explanation</p>
         <div class="video-embed">
           <iframe
-            src="https://www.youtube.com/embed/placeholder-min-max"
-            title="Find Minimum and Maximum Explained"
+            src="https://www.youtube.com/embed/placeholder-find-max"
+            title="Find Maximum Explained"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -197,29 +193,137 @@ SEND "Highest mark: " &amp; marks[maxIndex] TO DISPLAY</pre>
       <div class="interactive-placeholder">
         <div class="ip-icon">💻</div>
         <div class="ip-body">
-          <div class="ip-title">Try It — Find Min &amp; Max</div>
-          <div class="ip-sub">Interactive editor coming here — change the array values and watch the minIndex/maxIndex update as the loop runs</div>
+          <div class="ip-title">Try It — Find Maximum</div>
+          <div class="ip-sub">Interactive editor coming here — change the array values and watch the maximum update as the loop runs</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="min">Find Minimum</h2>
+      <p>Finding the minimum works in exactly the same way as finding the maximum — the only change is that we use the <code>&lt;</code> sign instead of <code>&gt;</code>. We assume the first item is the smallest, then update our minimum whenever we find a smaller value.</p>
+
+      <h3>Pseudocode</h3>
+      <ol>
+        <li>Declare a minimum variable, set it to the first item in the array</li>
+        <li>Loop for each element in the array</li>
+        <li>If number(counter) &lt; minimum</li>
+        <li>Set minimum to number(counter)</li>
+        <li>End if</li>
+        <li>End for loop</li>
+      </ol>
+
+      <div class="code-block">
+        <div class="code-label">Python — Find Minimum</div>
+        <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
+minimum = numbers[0]
+for index in range(1, len(numbers)):
+  if numbers[index] &lt; minimum:
+    minimum = numbers[index]
+print("The lowest number is", minimum)</pre>
+      </div>
+
+      <h3>Using Find Minimum with Parallel Arrays</h3>
+      <p>As with linear search, find minimum is often used with parallel arrays — here we track the <em>name</em> of the youngest person as well as their age.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Youngest Person (Parallel Arrays)</div>
+        <pre>names = ["Sarah", "Martin", "Gill", "Andrew", "Gerald", "James"]
+ages = [15, 32, 40, 12, 72, 16]
+minimum = ages[0]
+youngest_name = names[0]
+for count in range(0, 6):
+  if ages[count] &lt; minimum:
+    minimum = ages[count]
+    youngest_name = names[count]
+print("The youngest person is", youngest_name)</pre>
+      </div>
+
+      <h3>Finding Both at Once</h3>
+      <p>Because the two algorithms are so similar, you can find the minimum and maximum together in a single loop:</p>
+      <div class="code-block">
+        <div class="code-label">Python — Find Minimum and Maximum Together</div>
+        <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
+minimum = numbers[0]
+maximum = numbers[0]
+for index in range(1, 12):
+  if numbers[index] &lt; minimum:
+    minimum = numbers[index]
+  if numbers[index] &gt; maximum:
+    maximum = numbers[index]
+print("The lowest number is", minimum)
+print("and the highest is", maximum)</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Find Minimum — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-find-min"
+            title="Find Minimum Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Find Minimum</div>
+          <div class="ip-sub">Interactive editor coming here — change the array values and watch the minimum update as the loop runs</div>
         </div>
       </div>
     </article>
 
     <article>
       <h2 id="count">Count Occurrences</h2>
-      <p>Traverse the entire array, incrementing a counter each time the element matches the target value.</p>
+      <p>Count occurrences is very similar to linear search. The user enters a target/search term. The algorithm then searches the array. If the target is found, instead of recording position, it adds +1 to a total/counter.</p>
+      <p>The algorithm can search for exact matches, or apply conditional logic — values above a threshold, even numbers, uppercase letters, and so on.</p>
 
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>Do not confuse counting occurrences with keeping a <strong>running total</strong>: one counts how many of something there are, the other adds them all together.</div>
+      </div>
+
+      <h3>Counting Exact Matches</h3>
       <div class="code-block">
-        <div class="code-label">Count Occurrences of a Value</div>
-        <pre>DECLARE grades AS ARRAY OF STRING INITIALLY ["A","B","A","C","A","B"]
-DECLARE target AS STRING INITIALLY "A"
-DECLARE count AS INTEGER INITIALLY 0
+        <div class="code-label">Python — Count Matching Car Makes</div>
+        <pre>cars = ["Ford", "Ford", "Toyota", "Volkswagen", "Kia", "Nissan", "Honda"]
+make = input("Please enter a make: ")
+count = 0
+for index in range(len(cars)):
+  if cars[index] == make:
+    count = count + 1
+print("There were", count, "matching cars")</pre>
+      </div>
 
-FOR i FROM 0 TO LENGTH(grades) - 1 DO
-    IF grades[i] = target THEN
-        SET count TO count + 1
-    END IF
-END FOR
+      <h3>Counting with a Condition (Range Check)</h3>
+      <div class="code-block">
+        <div class="code-label">Python — Count Values of 50% or More</div>
+        <pre>percentages = [99.7, 100.0, 52.6, 13.9, 15.2, 88.1, 64.7, 22.5, 71.8]
+target = 50.0
+count = 0
+for index in range(len(percentages)):
+  if percentages[index] &gt;= target:
+    count = count + 1
+print("There were", count, "values of 50% or more")</pre>
+      </div>
 
-SEND "Number of " &amp; target &amp; " grades: " &amp; count TO DISPLAY</pre>
+      <h3>Counting into Two Categories (Odd / Even)</h3>
+      <div class="code-block">
+        <div class="code-label">Python — Count Odd and Even Numbers</div>
+        <pre>numbers = [99, 44, 55, 12, 19, 72, 60, 54, 13, 18, 2, 75]
+odd_count = 0
+even_count = 0
+for index in range(len(numbers)):
+  if (numbers[index] % 2) == 0:
+    even_count = even_count + 1
+  else:
+    odd_count = odd_count + 1
+print("There were", even_count, "even numbers")
+print("and", odd_count, "odd numbers in the list")</pre>
       </div>
 
       <div class="video-section">
