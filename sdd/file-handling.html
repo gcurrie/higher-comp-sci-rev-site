@@ -46,7 +46,7 @@
       <li><a href="#intro">Introduction</a></li>
       <li><a href="#reading">Reading from a File</a></li>
       <li><a href="#writing">Writing to a File</a></li>
-      <li><a href="#csv">CSV into Arrays of Records</a></li>
+      <li><a href="#csv">Reading from CSV File</a></li>
     </ul>
       </nav>
     </aside>
@@ -54,69 +54,58 @@
 
     <article>
       <h2 id="intro">File Handling</h2>
-      <p>At Higher level you are expected to read data from and write data to files using <strong>sequential access</strong>. The two most common formats are plain text files (<code>.txt</code>) and comma-separated value files (<code>.csv</code>).</p>
+      <p>At Higher level you need to be able to <strong>read data from</strong> and <strong>write data to</strong> files. In Python you open a file with <code>open(filename, mode)</code> — where the mode is <code>"r"</code> to read or <code>"w"</code> to write — and you should always <code>close()</code> the file when you are finished.</p>
 
       <div class="callout callout-info">
         <div class="callout-icon">ℹ️</div>
-        <div>Key file-handling terms: <strong>OPEN</strong> (open a file for reading or writing), <strong>CLOSE</strong> (release the file when done), <strong>EOF</strong> (end of file — used to detect when all lines have been read), <strong>sequential access</strong> (reading from start to finish in order).</div>
+        <div>Key Python file-handling terms: <code>open()</code> (opens a file in a given mode), <code>"r"</code> (read mode), <code>"w"</code> (write mode — overwrites existing contents), <code>read()</code> (reads the whole file into one variable), <code>write()</code> (writes a string to the file), <code>close()</code> (closes the file so changes are saved), and <code>.split(",")</code> (splits a CSV line into separate fields).</div>
       </div>
     </article>
 
     <article>
-      <h2 id="reading">Reading from a File</h2>
-      <p>Open the file for reading, then loop until the end of file (EOF) is reached, receiving one line at a time.</p>
+      <h2 id="reading">Reading from a File (Single Line Data)</h2>
+      <p>To retrieve saved data, open the file in read mode (<code>"r"</code>). The <code>read()</code> function retrieves all of the data at once into a single variable. Use this approach when the file only contains a single value that you have to read in.</p>
+
       <div class="code-block">
-        <div class="code-label">Reading all lines from a text file</div>
-        <pre>OPEN "scores.txt" FOR READING AS myFile
+        <div class="code-label">Python — Reading a Single Value</div>
+        <pre># Open the file for reading
+scorefile = open("scores.txt", "r")
+highscore = scorefile.read()
+print(highscore)
 
-WHILE NOT EOF(myFile) DO
-    RECEIVE line FROM myFile
-    SEND line TO DISPLAY
-END WHILE
-
-CLOSE myFile</pre>
+# Close the file
+scorefile.close()</pre>
       </div>
-    </article>
+      <p>This program accesses a file named <code>scores.txt</code> containing a high-score value and displays it.</p>
 
-    <article>
-      <h2 id="writing">Writing to a File</h2>
-      <p>Open the file for writing, then send each piece of data to the file. Remember to close the file when finished so the data is saved.</p>
       <div class="code-block">
-        <div class="code-label">Writing lines to a text file</div>
-        <pre>OPEN "output.txt" FOR WRITING AS myFile
+        <div class="code-label">Python — Reading and Checking a Password</div>
+        <pre># Open the file for reading
+passwordfile = open("passwd.txt", "r")
 
-FOR i FROM 0 TO LENGTH(names) - 1 DO
-    SEND names[i] &amp; "," &amp; marks[i] TO myFile
-END FOR
+# Read the whole contents of the file
+saved_password = passwordfile.read()
 
-CLOSE myFile</pre>
+# Ask user to enter password
+userpass = input("Enter your password")
+
+if saved_password == userpass:
+    print("Access granted")
+else:
+    print("Access denied")
+
+# Close the file
+passwordfile.close()</pre>
       </div>
-    </article>
-
-    <article>
-      <h2 id="csv">Reading a CSV File into an Array of Records</h2>
-      <p>A common Higher task is to read a CSV file line by line, splitting each line into fields and storing them in an array of records.</p>
-      <div class="code-block">
-        <pre>OPEN "pupils.csv" FOR READING AS csvFile
-
-DECLARE i AS INTEGER INITIALLY 0
-WHILE NOT EOF(csvFile) DO
-    RECEIVE line FROM csvFile
-    SET class[i].name TO FIELD(line, ",", 0)   # first field
-    SET class[i].mark TO INT(FIELD(line, ",", 1))  # second field
-    SET i TO i + 1
-END WHILE
-
-CLOSE csvFile</pre>
-      </div>
+      <p>This program reads a password from <code>passwd.txt</code>, prompts the user for input, and checks whether the entries match.</p>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
-        <p class="video-section-title">File Handling — Video Explanation</p>
+        <p class="video-section-title">Reading from a File — Video Explanation</p>
         <div class="video-embed">
           <iframe
-            src="https://www.youtube.com/embed/placeholder-file-handling"
-            title="File Handling Explained"
+            src="https://www.youtube.com/embed/placeholder-file-reading"
+            title="Reading from a File Explained"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -127,8 +116,131 @@ CLOSE csvFile</pre>
       <div class="interactive-placeholder">
         <div class="ip-icon">💻</div>
         <div class="ip-body">
-          <div class="ip-title">Try It — File Handling</div>
-          <div class="ip-sub">Interactive editor coming here — open a sample file, read lines with a WHILE NOT EOF loop, and display the contents</div>
+          <div class="ip-title">Try It — Reading from a File</div>
+          <div class="ip-sub">Interactive editor coming here — open a file in read mode, read its contents with read(), and display them</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="writing">Writing to a File</h2>
+      <p>Writing to a file uses write mode (<code>"w"</code>). This creates the file if it does not exist, but be careful — it <strong>overwrites whatever was previously in the file</strong>. The <code>write()</code> function saves data to the file, and you must <code>close()</code> the file when finished.</p>
+
+      <div class="code-block">
+        <div class="code-label">Python — Writing a Message</div>
+        <pre>messagefile = open("message.txt", "w")
+messagefile.write("Bla bla, this message will be saved in the file")
+messagefile.close()</pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-label">Python — Writing a Variable to a File</div>
+        <pre>animalfile = open("animals.txt", "w")
+elephant = "Arthur"
+animalfile.write(elephant)
+animalfile.close()</pre>
+      </div>
+
+      <h3>Writing Multiple Lines</h3>
+      <p>To write several entries on separate lines, add the newline character <code>"\n"</code> to the end of each piece of data.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Writing Multiple Lines with \n</div>
+        <pre>name = "Jane"
+outputFile = open("name.txt", "w")
+for counter in range(10):
+    outputFile.write("The name is " + name + "\n")
+outputFile.close()</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Writing to a File — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-file-writing"
+            title="Writing to a File Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Writing to a File</div>
+          <div class="ip-sub">Interactive editor coming here — open a file in write mode, write several lines using \n, then read them back</div>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="csv">Reading from CSV File</h2>
+      <p>Comma-separated values (<code>.csv</code>) files are often used to store table-like data. Values are stored line by line, with one line for each row of data, and columns separated by commas. The <code>split(",")</code> function separates each line into its individual fields.</p>
+      <p>Once a line has been split, you can populate either an <strong>array of records</strong> or a set of <strong>parallel 1D arrays</strong>.</p>
+
+      <h3>Reading into an Array of Records</h3>
+      <div class="code-block">
+        <div class="code-label">Python — CSV into an Array of Records</div>
+        <pre>runners = []
+runnerFile = open("runner.csv", "r")
+
+for line in runnerFile:
+    fields = line.split(",")
+    runnerName = fields[0]
+    runnerClub = fields[1]
+    runnerTime = float(fields[2])
+    runners.append({"name": runnerName, "club": runnerClub, "time": runnerTime})
+
+runnerFile.close()</pre>
+      </div>
+
+      <h3>Reading into Parallel Arrays</h3>
+      <div class="code-block">
+        <div class="code-label">Python — CSV into Parallel Arrays</div>
+        <pre>names = []
+clubs = []
+times = []
+
+runnerFile = open("runner.csv", "r")
+
+for line in runnerFile:
+    fields = line.split(",")
+    names.append(fields[0])
+    clubs.append(fields[1])
+    times.append(float(fields[2]))
+
+runnerFile.close()</pre>
+      </div>
+
+      <h3>Using the Data</h3>
+      <p>Once the records are loaded, loop through them to display or process the data.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Displaying the Records</div>
+        <pre>for counter in range(len(runners)):
+    print("The runner " + runners[counter]["name"] + " from " + runners[counter]["club"] + " has a time of " + str(runners[counter]["time"]))</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Reading from CSV File — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-file-csv"
+            title="Reading from CSV File Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Reading from CSV File</div>
+          <div class="ip-sub">Interactive editor coming here — read a CSV file line by line, split each line and load it into an array of records</div>
         </div>
       </div>
     </article>
