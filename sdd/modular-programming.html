@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Computational Constructs — SDD — Higher Computing Science</title>
+  <title>Modular Programming — SDD — Higher Computing Science</title>
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
@@ -12,14 +12,14 @@
   <div class="breadcrumb">
     <a href="../index.html">Home</a><span class="sep">›</span>
     <a href="index.html">Software Design &amp; Development</a><span class="sep">›</span>
-    <span class="current">Computational Constructs</span>
+    <span class="current">Modular Programming</span>
   </div>
 </div>
 <section class="page-hero">
   <div class="inner">
     <div class="hero-badge">Software Design &amp; Development</div>
-    <h1>Computational Constructs</h1>
-    <p>Parameter passing, scope, functions and procedures, pre-defined functions (substrings, chr/ord, modulus, float-to-int), and file handling.</p>
+    <h1>Modular Programming</h1>
+    <p>Functions and procedures, parameter passing, scope, pre-defined functions (substrings, chr/ord, modulus, float-to-int), and the selection and iteration constructs.</p>
   </div>
 </section>
 <main class="page-content">
@@ -33,8 +33,9 @@
           <li><a href="design-notations.html"><span class="sn-icon">📐</span>Design </a></li>
           <li><a href="data-types.html"><span class="sn-icon">🔢</span>Data Types</a></li>
           <li><a href="data-structures.html"><span class="sn-icon">🗂️</span>Data Structures</a></li>
-          <li><a href="computational-constructs.html" class="active"><span class="sn-icon">⚙️</span>Computational Constructs</a></li>
           <li><a href="standard-algorithms.html"><span class="sn-icon">🔍</span>Standard Algorithms</a></li>
+          <li><a href="file-handling.html"><span class="sn-icon">📁</span>File Handling</a></li>
+          <li><a href="modular-programming.html" class="active"><span class="sn-icon">⚙️</span>Modular Programming</a></li>
           <li><a href="testing-debugging.html"><span class="sn-icon">🐛</span>Testing &amp; Debugging</a></li>
           <li><a href="evaluation.html"><span class="sn-icon">✅</span>Evaluation</a></li>
         </ul>
@@ -46,7 +47,6 @@
       <li><a href="#parameters">Parameter Passing</a></li>
       <li><a href="#scope">Scope</a></li>
       <li><a href="#predef">Pre-defined Functions</a></li>
-      <li><a href="#filehandling">File Handling</a></li>
       <li><a href="#constructs">Selection &amp; Iteration</a></li>
     </ul>
       </nav>
@@ -324,78 +324,6 @@ END IF</pre>
     </article>
 
     <article>
-      <h2 id="filehandling">File Handling</h2>
-      <p>At Higher level you are expected to read data from and write data to files using <strong>sequential access</strong>. The two most common formats are plain text files (<code>.txt</code>) and comma-separated value files (<code>.csv</code>).</p>
-
-      <h3>Reading from a File</h3>
-      <div class="code-block">
-        <div class="code-label">Reading all lines from a text file</div>
-        <pre>OPEN "scores.txt" FOR READING AS myFile
-
-WHILE NOT EOF(myFile) DO
-    RECEIVE line FROM myFile
-    SEND line TO DISPLAY
-END WHILE
-
-CLOSE myFile</pre>
-      </div>
-
-      <h3>Writing to a File</h3>
-      <div class="code-block">
-        <div class="code-label">Writing lines to a text file</div>
-        <pre>OPEN "output.txt" FOR WRITING AS myFile
-
-FOR i FROM 0 TO LENGTH(names) - 1 DO
-    SEND names[i] &amp; "," &amp; marks[i] TO myFile
-END FOR
-
-CLOSE myFile</pre>
-      </div>
-
-      <h3>Reading a CSV File into an Array of Records</h3>
-      <div class="code-block">
-        <pre>OPEN "pupils.csv" FOR READING AS csvFile
-
-DECLARE i AS INTEGER INITIALLY 0
-WHILE NOT EOF(csvFile) DO
-    RECEIVE line FROM csvFile
-    SET class[i].name TO FIELD(line, ",", 0)   # first field
-    SET class[i].mark TO INT(FIELD(line, ",", 1))  # second field
-    SET i TO i + 1
-END WHILE
-
-CLOSE csvFile</pre>
-      </div>
-
-      <div class="callout callout-info">
-        <div class="callout-icon">ℹ️</div>
-        <div>Key file-handling terms: <strong>OPEN</strong> (open a file for reading or writing), <strong>CLOSE</strong> (release the file when done), <strong>EOF</strong> (end of file — used to detect when all lines have been read), <strong>sequential access</strong> (reading from start to finish in order).</div>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">File Handling — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-file-handling"
-            title="File Handling Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — File Handling</div>
-          <div class="ip-sub">Interactive editor coming here — open a sample file, read lines with a WHILE NOT EOF loop, and display the contents</div>
-        </div>
-      </div>
-    </article>
-
-    <article>
       <h2 id="constructs">Selection and Iteration</h2>
       <p>These constructs carry over from National 5 and are used throughout Higher programming tasks.</p>
 
@@ -461,8 +389,8 @@ UNTIL score >= 0 AND score &lt;= 100</pre>
 
     <div class="placeholder-block">
       <div class="placeholder-icon">📋</div>
-      <div class="placeholder-text">Practice Questions — Computational Constructs</div>
-      <div class="placeholder-sub">Parameter passing, scope, pre-defined functions and file handling exercises</div>
+      <div class="placeholder-text">Practice Questions — Modular Programming</div>
+      <div class="placeholder-sub">Functions and procedures, parameter passing, scope and pre-defined functions exercises</div>
     </div>
 
   </div>

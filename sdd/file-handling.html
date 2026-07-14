@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-depth="1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Handling — SDD — Higher Computing Science</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<script src="../js/nav.js"></script>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">›</span>
+    <a href="index.html">Software Design &amp; Development</a><span class="sep">›</span>
+    <span class="current">File Handling</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="inner">
+    <div class="hero-badge">Software Design &amp; Development</div>
+    <h1>File Handling</h1>
+    <p>Reading data from and writing data to sequential files, including loading a CSV file into an array of records.</p>
+  </div>
+</section>
+<main class="page-content">
+  <div class="content-layout">
+    <aside class="content-sidebar">
+      <nav class="sidebar-nav">
+        <div class="sn-header">💻 SDD Topics</div>
+        <ul>
+          <li><a href="development-methodologies.html"><span class="sn-icon">🔄</span>Development Methodologies</a></li>
+          <li><a href="analysis.html"><span class="sn-icon">📋</span>Analysis</a></li>
+          <li><a href="design-notations.html"><span class="sn-icon">📐</span>Design </a></li>
+          <li><a href="data-types.html"><span class="sn-icon">🔢</span>Data Types</a></li>
+          <li><a href="data-structures.html"><span class="sn-icon">🗂️</span>Data Structures</a></li>
+          <li><a href="standard-algorithms.html"><span class="sn-icon">🔍</span>Standard Algorithms</a></li>
+          <li><a href="file-handling.html" class="active"><span class="sn-icon">📁</span>File Handling</a></li>
+          <li><a href="modular-programming.html"><span class="sn-icon">⚙️</span>Modular Programming</a></li>
+          <li><a href="testing-debugging.html"><span class="sn-icon">🐛</span>Testing &amp; Debugging</a></li>
+          <li><a href="evaluation.html"><span class="sn-icon">✅</span>Evaluation</a></li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav" aria-label="Page sections">
+    <div class="sidebar-title">On this page</div>
+    <ul>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#reading">Reading from a File</a></li>
+      <li><a href="#writing">Writing to a File</a></li>
+      <li><a href="#csv">CSV into Arrays of Records</a></li>
+    </ul>
+      </nav>
+    </aside>
+  <div class="content-area">
+
+    <article>
+      <h2 id="intro">File Handling</h2>
+      <p>At Higher level you are expected to read data from and write data to files using <strong>sequential access</strong>. The two most common formats are plain text files (<code>.txt</code>) and comma-separated value files (<code>.csv</code>).</p>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div>Key file-handling terms: <strong>OPEN</strong> (open a file for reading or writing), <strong>CLOSE</strong> (release the file when done), <strong>EOF</strong> (end of file — used to detect when all lines have been read), <strong>sequential access</strong> (reading from start to finish in order).</div>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="reading">Reading from a File</h2>
+      <p>Open the file for reading, then loop until the end of file (EOF) is reached, receiving one line at a time.</p>
+      <div class="code-block">
+        <div class="code-label">Reading all lines from a text file</div>
+        <pre>OPEN "scores.txt" FOR READING AS myFile
+
+WHILE NOT EOF(myFile) DO
+    RECEIVE line FROM myFile
+    SEND line TO DISPLAY
+END WHILE
+
+CLOSE myFile</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="writing">Writing to a File</h2>
+      <p>Open the file for writing, then send each piece of data to the file. Remember to close the file when finished so the data is saved.</p>
+      <div class="code-block">
+        <div class="code-label">Writing lines to a text file</div>
+        <pre>OPEN "output.txt" FOR WRITING AS myFile
+
+FOR i FROM 0 TO LENGTH(names) - 1 DO
+    SEND names[i] &amp; "," &amp; marks[i] TO myFile
+END FOR
+
+CLOSE myFile</pre>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="csv">Reading a CSV File into an Array of Records</h2>
+      <p>A common Higher task is to read a CSV file line by line, splitting each line into fields and storing them in an array of records.</p>
+      <div class="code-block">
+        <pre>OPEN "pupils.csv" FOR READING AS csvFile
+
+DECLARE i AS INTEGER INITIALLY 0
+WHILE NOT EOF(csvFile) DO
+    RECEIVE line FROM csvFile
+    SET class[i].name TO FIELD(line, ",", 0)   # first field
+    SET class[i].mark TO INT(FIELD(line, ",", 1))  # second field
+    SET i TO i + 1
+END WHILE
+
+CLOSE csvFile</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">File Handling — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-file-handling"
+            title="File Handling Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — File Handling</div>
+          <div class="ip-sub">Interactive editor coming here — open a sample file, read lines with a WHILE NOT EOF loop, and display the contents</div>
+        </div>
+      </div>
+    </article>
+
+    <div class="placeholder-block">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-text">Practice Questions — File Handling</div>
+      <div class="placeholder-sub">Reading, writing and processing sequential and CSV files</div>
+    </div>
+
+  </div>
+  </div>
+</main>
+</body>
+</html>
