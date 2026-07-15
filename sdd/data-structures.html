@@ -206,7 +206,7 @@ print(max_name, "got the highest mark")</pre>
       <div class="practice-q">
         <div class="q-label">Parallel Arrays — 2023 Q9 e) - 4 Mark</div>
         <p>Parallel Arrays normally crop up in larger standard algorithm questions. You are unlikely to be asked to declare parallel arrays, you would just be expected to use them.</p>
-        <p><strong>(Check the Design Page for other examples using Data Flow).</strong></p>
+        <p><strong>(Check the Design Page for other examples using Data Flow), and the Standard Algotihm Page for further examples of Standard Algorithm questions. This is Count Occurrences.</strong></p>
 		<img src="../resources/sdd/data_struc_q1-1.png">
     <img src="../resources/sdd/data_struc_q1-2.png">
 		<p>The first image introduces you to the Parallel Array data structure that stores: <strong>dogID, dogName, branch & noOfVisits</strong>.</p>
@@ -436,29 +436,71 @@ pupilDataRecord = {"name": "", "e-mail": "", "attemptID": "", "reactionTime": 0.
 
     <article>
       <h2 id="arrays-of-records">Arrays of Records</h2>
-      <p>An <strong>array of records</strong> combines both structures: a 1D array where every element is a record. This allows you to store a <em>list</em> of complex items, each with multiple named fields of different types.</p>
-
+      <p>An <strong>array of records</strong> is a combination of a single Array from National 5, with a Record. Instead of every element of the array being a string or an integer, every element is a record.</p>
+      <p>This means you can store a list of complex items, each with multiple fields and different data types, all within the same structure. </p>
+      <p>Lets continue with the <code>pupilRecord</code> example from the <strong>records section</strong>. Lets say I want to store 5 pupils. I will need to declare the record first, then declare the array of records (both SQA Reference Language & Python examples given).</p>
       <div class="code-block">
         <div class="code-label">Declaring an Array of Records</div>
-        <pre>RECORD Pupil IS
-    name : STRING
-    mark : INTEGER
-END RECORD
+        <pre># Declaring pupil record - SQA Reference Language
+DECLARE pupilRecord AS RECORD (STRING: pupilName, STRING: yearGroup, INT: averageScore)
 
-DECLARE class AS ARRAY OF Pupil INITIALLY []
+# Declaring an Array of pupilRecords of size 5
+DECLARE pupilArray AS ARRAY OF RECORD pupilRecord {} * 5
 
-SET class[0].name TO "Alice"
-SET class[0].mark TO 78
+# Python - Declaring pupilRecord
+pupilRecord = {"pupilName": "", "yearGroup": "", "averageScore: 0}
 
-SET class[1].name TO "Bob"
-SET class[1].mark TO 92</pre>
+# Python - Declaring array of pupilRecord of size 5
+pupilArray = [pupilRecord for x in range(5)]</pre>
       </div>
 
+      <p>Notice that you <strong>must use the correct record name, and this must differ from the name used for the array of records</strong> when declaring the array.</p>
+      <p>Now lets say we want to populate and print the array of records (Click Here to see a Read From File version which is the most common at Higher).</p>
+      <p>We will populate the array with the following records:</p>
+      <table>
+        <thead><tr><th></th><th>pupilName</th><th>yearGroup</th><th>averageScore</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>Ewan</td><td>S5</td><td>86</td></tr>
+          <tr><td>1</td><td>Katherine</td><td>S5</td><td>67</td></tr>
+          <tr><td>2</td><td>Charlie</td><td>S5</td><td>93</td></tr>
+          <tr><td>3</td><td>Joanna</td><td>S6</td><td>73</td></tr>
+          <tr><td>4</td><td>Rory</td><td>S4</td><td>35</td></tr>
+        </tbody>
+      </table>
+
       <h3>Iterating Over an Array of Records</h3>
+      <p>The next 2 blocks show the SQA Reference Language version of accessing and iterating over a array of records, and the python version.</p>
+      <p>The <strong>dot notation</strong> is very important for accessing the correct part of the record. The correct order is <code>arrayName</code>, followed by the array counter <code>[counter]</code> or whatever counter variable you have used (or a specific position in the array), then the dot notation & field name<code>.fieldName</code>.</p>
+      <p>E.g. if we wanted to print the last persons name in our array (as it is length 5) we would do <code>pupilArray[4].pupilName</code></p>
+      <p>If we wanted to print all pupils names using a loop, inside the loop we would have <code>pupilArray[counter].pupilName</code></p>
       <div class="code-block">
-        <pre>FOR i FROM 0 TO LENGTH(class) - 1 DO
-    SEND class[i].name &amp; ": " &amp; class[i].mark TO DISPLAY
+        <pre># SQA Reference Language - Populating, Iterating & Printing
+pupilArray[0].pupilName = "Ewan"
+pupilArray[0].yearGroup = "S5"
+pupilArray[0].averageScore = 86
+...
+pupilArray[4].pupilName = "Rory"
+pupilArray[4].yearGroup = "S4"
+pupilArray[4].averageScore = 35
+
+FOR counter FROM 0 TO LENGTH(pupilArray) - 1 DO
+    SEND pupilArray[counter].pupilName &amp; " got an average of " &amp; pupilArray[counter].averageScore TO DISPLAY
 END FOR</pre>
+      </div>
+
+      <p>The python syntax differs slightly if you are using dictionaries. This does not matter for exams and you can use the dot notation above, but in your programs you will need to do the following:</p>
+      <div class="code-block">
+        <pre># Python - Populating, Iterating & Printing
+pupilArray[0][pupilName] = "Ewan"
+pupilArray[0][yearGroup] = "S5"
+pupilArray[0][averageScore] = 86
+...
+pupilArray[4][pupilName] = "Rory"
+pupilArray[4][yearGroup] = "S4"
+pupilArray[4][averageScore] = 35
+
+for counter in range(len(pupilArray)):
+    print(pupilArray[counter].pupilName + " got an average of " + pupilArray[counter].averageScore)</pre>
       </div>
 
       <h3>Comparison: Parallel Arrays vs Array of Records</h3>
@@ -493,10 +535,158 @@ END FOR</pre>
           <div class="ip-sub">Interactive editor coming here — create an array of records, populate it with data, and iterate through the fields</div>
         </div>
       </div>
+
+      <p>Below you will find a walkthrough of how to answer a multi-part Array of Records questions in an exam context.</p>
+      <p>You can then view a seperate practice question below and attempt to work through it before checking your answer against the solution provided</p>
+	  
+	  <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Array of Records — Exam Question Walkthrough</p>
+        <div class="video-embed">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/S_EDI44akIk?si=InMeQmPjeww090Yb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+
+
+    <h3 id="practice">Practice Questions</h3>
+    <div class="practice-q">
+      <div class="q-label">Array of Records (continued) - 2025 q8 a) (ii) - 2 Mark</div>
+      <p>We are going to continue to the next part of 2025 q8 a), as we answered this in the records section. To save you scrolling, the question and solution can be found below:</p>
+      <img src="../resources/sdd/data_struct_q2.png">
+      <div class="code-block">
+        <div class="code-label">Initial Record Declaration for 2025 q8 a) (i) </div>
+        <pre># Part 2 of Record Declaration
+# SQA Reference Langaugae Version
+DECLARE pupilDataRecord AS RECORD (STRING: name, STRING: e-mail, STRING: attemptID, REAL: reactionTime)
+
+# Python Version
+pupilDataRecord = {"name": "", "e-mail": "", "attemptID": "", "reactionTime": 0.0}
+        </pre>
+      </div>
+      <p>Remember in the original question it asked for a maximum of 10,000 attempts to be stored. This is the important bit for the array of records. You will always be given a size for your Array of Records, this must be carried through to your answer.</p>
+      <p>The question we are answering is:</p>
+      <img src="../resources/sdd/data_struct_q3_1.png"> 
+      <p>There are 2 really important parts here:</p>
+      <ul>
+        <li>Declare a vairable that could be used to store 10,000 attempts</li>
+        <li>Your answer should make use of the record data structure declared in part (i) - (see answer above for (i))</li>
+      </ul>
+      <p>The name you use for your Array, must be different to that of your record. To answer this we must make sure the array is the correct size, and uses our record. The following will declare the array:</p>
+      <div class="code-block">
+        <div class="code-label">Array of Record declaration for 2025 q8 a) (ii) </div>
+        <pre># Array of Record Declaration
+# SQA Reference Langaugae Version
+DECLARE attemptArray AS ARRAY OF RECORD pupilDataRecord () * 10000
+
+# Python Version
+attemptArray = [pupilDataRecord for x in range(10000)]
+        </pre>
+      </div>
+      <p>You can see the marking scheme below:</p>
+      <img src="../resources/sdd/data_struct_q3_1_ans.png"> 
+      <p>Be really careful if using python syntax for this question, as this is one of the rare occasions that incorrect syntax will cost marks, as you must have the <code>for x in range(10000)</code> part. This is becasue, without this, a copy of the record is created which means when 1 record is updated, all 10000 will be as well.</p>
+      <p>The next question will look at how to apply an array of records to a wider code quetsion.</p>
+    </div>
+
+      <div class="practice-q">
+        <div class="q-label">Array of Records (continued) — 2025 q8 b) (i) - 5 Mark</div>
+        <p>Once you have declared your <strong>Record & Array of Record</strong>, you will be expected to use them, normally alongside a standard algorithm. In this question we are using <strong>Find Min</strong>.</p>
+        <p><strong>(Check the Design Page for other examples using Data Flow), and the Standard Algotihm Page for further examples of Standard Algorithm questions.</strong></p>
+		<img src="../resources/sdd/data_struct_q3_2.png">
+    
+		<h5>What the question is asking</h5>
+    <p>Remember this questions is <strong>5 Marks</strong>. Some important points:</p>
+    <ul>
+      <li><code>numPlays</code> stores the amount ot attempts in a day for the game. Remember this is up to a maximum of 10,000</li>
+      <li>At the end of each day the game finds the fastest time</li>
+    </ul>
+
+    <p>We are being asked to write code that</p>
+      <ul>
+        <li>Finds the fastest time</li>
+        <li>uses the data structure and variables declared in part (a) - <strong>This is hughely improtant as your logic can be perfect but you will drop marks if you don't use the array of records & record structure correctly</strong>.</li>
+      </ul>
+
+
+    <h5>Working Through the Answer</h5>
+
+    <h6>Step 1: Initialise any variables</h6>
+    <p>We want to find the fastest time, the fastest time will be the smallest, so it is a find min</p>
+    <p>We don't need to initialise the array, for these questions we can assume it is already initialised and populated. But before we start the main logic of our answer, we need to initialise the Min (fastestTime).</p>
+    <p>We can't set it to 0, as nothing is smaller than 0. So, we can either set it to the first time in the array <code>fastestTime = attemptArray[0].reactionTime</code> - (Check your record fields for the most suitable field to use, and the correct name. In this case for me, it is <code>reactionTime</code>). Or something suitably high, <code>fastestTime = 99.99</code>.</p>
+    <p>If you are setting it to a suitablly high value, <strong>Check the sample data, as the data type must match, and the value given must be in the context of the question</strong>. I went with 99.99, as the value should be REAL, and the sample data given is 0.something.</p>
+    <div class="code-block">
+        <div class="code-label">Initialising fastestTime - 2025 q8 b) (i)</div>
+        <pre># initialise fastestTime
+fastestTime = attemptArray[0].reactionTime
+        </pre>
+      </div>
+    <p>If using the first time, <strong>You must ensure your array name matches part (a), and that you are using the correct field name from your record in part (a)</strong>.</p>
+
+    <p>This along with step 4 would gain 1 Mark.</p>
+
+    <h6>Step 2: Loop the correct number of times</h6>
+    <p>Normally, you will just loop for the length of the array. However this question is slightly unusual, in that we are told that there are a maximum of 10,000 attempts. This means that there may not be, so we can't loop to the end of the array as there might not be data stored there.</p>
+    <p>Instead, we are told that <code>numbPlays</code> stores the number of attempts made in a day. This is what we need to use to loop.</p>
+    <div class="code-block">
+      <pre>for counter in range(numPlays):</pre>
+    </div>
+    <p>As mentioned, normally, you will just loop for the length of the array, but you need to read the question carefully, and not make assumptions.</p>
+    <p>Looping using <code>numPlays</code> would gain 1 mark</p>
+
+    <h6>Step 3: Compare - (If Statement)</h6>
+    <p>For all standard algorithms, once you have looped, within this loop you must compare. As this is a <strong>Find Min</strong>, we want to check if the current value <code>attemptArray[counter].reactionTime</code> is less than our current <code>fastestTime</code>.</p>
+    <div class="code-block">
+      <pre>for counter in range(numPlays):
+          if attemptID[counter].reactionTime &lt; fastestTime:
+      </pre>
+    </div>
+    <p>You can also do it the opposite way, <code>if fastestTime > attemptID[counter].reactionTime:</code> just make sure you run through the logic in your head first.</p>
+    <p>The correct logic in the comparison would gain 1 Mark</p>
+
+    <h6>Step 4: If The Current Time is Faster, Update Your Min</h6>
+    <p>If the condition from Step 3 is true, we must update <code>fastestTime</code> to the current reaction time <code>attemptID[counter].reactionTime</code>.</p>
+    <div class="code-block">
+      <pre>for counter in range(numPlays):
+          if attemptID[counter].reactionTime &lt; fasetstTime:
+            fastestTime = attemptID[counter].reactionTime
+      </pre>
+    </div>
+
+    <h6>Step 5: Make Sure You Have Used Correct Array & Record Field Names</h6>
+    <p>As we are not asked to display or do anything with the fastest time, that is our algorithm complete. </p>
+    <p>However, you may still drop marks if you have not used the correct array name from part a) <code>attemptArray</code>, or the correct field name from part a) <code>reactionTime</code>.</p>
+    <p>Always double check this before moving on.</p>
+    <p>Each correct condition would gain <strong>1 Mark each</strong>.</p>
+    <p>The <strong>final 2 marks of the 5 are:</strong></p>
+    <ul>
+      <li>Use of the correct Array of Records variable from part a)</li>
+      <li>Use of the correct record fields with dot notation</li>
+    </ul>
+
+		<img src="../resources/sdd/data_struct_q3_2_ans.png">
+        <details class="q-answer">
+          <summary>Suggested answer</summary>
+          <p>So our solution above put together would be:</p>
+      <div class="code-block">
+      <div class="code-label">Python — Full Example Answer</div>
+      <pre>fastestTime = attemptArray[0].reactionTime
+
+for counter in range(numPlays):
+    if attemptArray[counter] &lt; fastestTime:
+        fastestTime = attemptArray[counter].reactionTime
+
+    </div>
+
+  
+        </details>
+      </div>
+
     </article>
 
     <article>
       <h2 id="choosing">Choosing a Data Structure</h2>
+      <p>You won't be asked to choose a data structure at Higher, but these are some of the reasons for why a specific structure would be chosen over another.</p>
       <ul>
         <li>Use a <strong>1D array</strong> for a simple list of single values of the same type.</li>
         <li>Use <strong>parallel 1D arrays</strong> when you have related data of different types and want standard algorithms on one numeric array.</li>
@@ -506,15 +696,9 @@ END FOR</pre>
 
       <div class="callout callout-warning">
         <div class="callout-icon">⚠️</div>
-        <div>Answers mentioning "2D arrays" for Higher data structures will not gain marks. The required structures are <strong>parallel arrays</strong>, <strong>records</strong>, and <strong>arrays of records</strong>.</div>
+        <div>The data structure you have to use for a question will be specifically mentioned in the question, as you have seen above, or will be indicated on a Data Flow diagram. You can see specific examples of this on the Data Flow page.</div>
       </div>
     </article>
-
-    <div class="placeholder-block">
-      <div class="placeholder-icon">📋</div>
-      <div class="placeholder-text">Practice Questions — Data Structures</div>
-      <div class="placeholder-sub">Write declarations and access code for parallel arrays and arrays of records</div>
-    </div>
 
   </div>
   </div>
