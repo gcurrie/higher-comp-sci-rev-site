@@ -1408,15 +1408,18 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   line-height: 1.5;
 }
 
-/* When the box hosts a live code embed (e.g. trinket.io), stack it and let
-   the editor span the full content width instead of collapsing to ~300px */
-.interactive-placeholder:has(iframe) {
+/* When the box hosts a live code embed (e.g. trinket.io) or its click-to-load
+   facade, stack it and let the editor span the full content width instead of
+   collapsing to ~300px */
+.interactive-placeholder:has(iframe),
+.interactive-placeholder:has(.trinket-embed) {
   flex-direction: column;
   align-items: stretch;
   gap: .85rem;
 }
 
-.interactive-placeholder:has(iframe) .ip-sub { width: 100%; }
+.interactive-placeholder:has(iframe) .ip-sub,
+.interactive-placeholder:has(.trinket-embed) .ip-sub { width: 100%; }
 
 .interactive-placeholder .ip-sub iframe {
   display: block;
@@ -1425,6 +1428,36 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   border-radius: var(--radius);
   background: var(--white);
 }
+
+/* Click-to-load facade for trinket.io editors (avoids the embed auto-focusing
+   and scrolling the page to itself on load) */
+.trinket-embed { width: 100%; }
+
+.trinket-load {
+  width: 100%;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1rem;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #1E40AF;
+  background: var(--white);
+  border: 1px solid #BFDBFE;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+
+.trinket-load:hover {
+  background: #EFF6FF;
+  border-color: #60A5FA;
+}
+
+.trinket-load .tl-icon { font-size: .8rem; }
 
 /* First callout / article inside content-area needs top spacing */
 .content-area > .callout:first-child {

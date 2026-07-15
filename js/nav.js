@@ -108,6 +108,27 @@
     });
   }
 
+  // Click-to-load facade for trinket.io editors: swap the placeholder button
+  // for the real iframe only when the user asks for it. This avoids the embed
+  // auto-focusing and scrolling the page to itself on load.
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.trinket-load');
+    if (!btn) return;
+    const wrap = btn.closest('.trinket-embed');
+    if (!wrap) return;
+    const src = wrap.getAttribute('data-trinket');
+    if (!src) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.width = '100%';
+    iframe.height = wrap.getAttribute('data-height') || '356';
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('marginwidth', '0');
+    iframe.setAttribute('marginheight', '0');
+    iframe.setAttribute('allowfullscreen', '');
+    wrap.replaceChildren(iframe);
+  });
+
   // Wait until the full body is parsed so the footer is appended at the very
   // end of the page (otherwise it lands directly after this script tag).
   if (document.readyState === 'loading') {
