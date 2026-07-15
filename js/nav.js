@@ -92,6 +92,22 @@
     document.head.appendChild(s);
   }
 
+  // Some embedded iframes (e.g. trinket.io) auto-focus their editor once they
+  // finish loading, which makes the browser scroll the page down to reveal
+  // them. Until the user has actively interacted with the page, snap back to
+  // the top if an iframe steals focus. Deep links (#anchor) are respected.
+  if (!location.hash) {
+    let interacted = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (evt) {
+      window.addEventListener(evt, function () { interacted = true; }, { passive: true, once: true });
+    });
+    window.addEventListener('focusin', function (e) {
+      if (!interacted && e.target && e.target.tagName === 'IFRAME') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+    });
+  }
+
   // Wait until the full body is parsed so the footer is appended at the very
   // end of the page (otherwise it lands directly after this script tag).
   if (document.readyState === 'loading') {
