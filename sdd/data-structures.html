@@ -206,7 +206,7 @@ print(max_name, "got the highest mark")</pre>
       <div class="practice-q">
         <div class="q-label">Parallel Arrays — 2023 Q9 e) - 4 Mark</div>
         <p>Parallel Arrays normally crop up in larger standard algorithm questions. You are unlikely to be asked to declare parallel arrays, you would just be expected to use them.</p>
-        <p><strong>(Check the Design Page for other examples using Data Flow), and the Standard Algotihm Page for further examples of Standard Algorithm questions. This is Count Occurrences.</strong></p>
+        <p><strong>(Check the Design Page for other examples using Data Flow), and the Standard Algorithm Page for further examples of Standard Algorithm questions. This is Count Occurrences.</strong></p>
 		<img src="../resources/sdd/data_struc_q1-1.png">
     <img src="../resources/sdd/data_struc_q1-2.png">
 		<p>The first image introduces you to the Parallel Array data structure that stores: <strong>dogID, dogName, branch & noOfVisits</strong>.</p>
@@ -342,7 +342,7 @@ SEND dogCount TO DISPLAY</pre>
 DECLARE pupilRecord AS RECORD (STRING: pupilName, STRING: yearGroup, INT: averageScore)
 
 # Python Record Declaration using a Dictionary
-pupilRecord = {"pupilName": "", "yearGroup": "", "averageScore: 0}</pre>
+pupilRecord = {"pupilName": "", "yearGroup": "", "averageScore": 0}</pre>
       </div>
 
       <p>This however, just defines the record, it does not populute it with data. Normally, you will be populating an Array of Records as opposed to a single record, and you will do this when reading from a file. To see an example of this, <a href="">Click Here</a>.</p>
@@ -401,7 +401,7 @@ print(pupilRecord["pupilName"] + " in " + pupilRecord["yearGroup"] + " has an av
         <div class="code-block">
         <div class="code-label">Initial Record Declaration for 2025 q8 a) (i) </div>
         <pre># Part 1 of Record Declaration
-# SQA Reference Langaugae Version
+# SQA Reference Language Version
 DECLARE pupilDataRecord AS RECORD
 
 # Python Version
@@ -417,7 +417,7 @@ pupilDataRecord = {}
               <div class="code-block">
         <div class="code-label">Initial Record Declaration for 2025 q8 a) (i) </div>
         <pre># Part 2 of Record Declaration
-# SQA Reference Langaugae Version
+# SQA Reference Language Version
 DECLARE pupilDataRecord AS RECORD (STRING: name, STRING: e-mail, STRING: attemptID, REAL: reactionTime)
 
 # Python Version
@@ -448,7 +448,7 @@ DECLARE pupilRecord AS RECORD (STRING: pupilName, STRING: yearGroup, INT: averag
 DECLARE pupilArray AS ARRAY OF RECORD pupilRecord {} * 5
 
 # Python - Declaring pupilRecord
-pupilRecord = {"pupilName": "", "yearGroup": "", "averageScore: 0}
+pupilRecord = {"pupilName": "", "yearGroup": "", "averageScore": 0}
 
 # Python - Declaring array of pupilRecord of size 5
 pupilArray = [pupilRecord for x in range(5)]</pre>
@@ -537,7 +537,7 @@ for counter in range(len(pupilArray)):
       </div>
 
       <p>Below you will find a walkthrough of how to answer a multi-part Array of Records questions in an exam context.</p>
-      <p>You can then view a seperate practice question below and attempt to work through it before checking your answer against the solution provided</p>
+      <p>You can then view a separate practice question below and attempt to work through it before checking your answer against the solution provided</p>
 	  
 	  <div class="video-section">
         <div class="video-section-label">Watch</div>
@@ -556,7 +556,7 @@ for counter in range(len(pupilArray)):
       <div class="code-block">
         <div class="code-label">Initial Record Declaration for 2025 q8 a) (i) </div>
         <pre># Part 2 of Record Declaration
-# SQA Reference Langaugae Version
+# SQA Reference Language Version
 DECLARE pupilDataRecord AS RECORD (STRING: name, STRING: e-mail, STRING: attemptID, REAL: reactionTime)
 
 # Python Version
@@ -568,14 +568,14 @@ pupilDataRecord = {"name": "", "e-mail": "", "attemptID": "", "reactionTime": 0.
       <img src="../resources/sdd/data_struct_q3_1.png"> 
       <p>There are 2 really important parts here:</p>
       <ul>
-        <li>Declare a vairable that could be used to store 10,000 attempts</li>
+        <li>Declare a variable that could be used to store 10,000 attempts</li>
         <li>Your answer should make use of the record data structure declared in part (i) - (see answer above for (i))</li>
       </ul>
       <p>The name you use for your Array, must be different to that of your record. To answer this we must make sure the array is the correct size, and uses our record. The following will declare the array:</p>
       <div class="code-block">
         <div class="code-label">Array of Record declaration for 2025 q8 a) (ii) </div>
         <pre># Array of Record Declaration
-# SQA Reference Langaugae Version
+# SQA Reference Language Version
 DECLARE attemptArray AS ARRAY OF RECORD pupilDataRecord () * 10000
 
 # Python Version
@@ -584,27 +584,27 @@ attemptArray = [pupilDataRecord for x in range(10000)]
       </div>
       <p>You can see the marking scheme below:</p>
       <img src="../resources/sdd/data_struct_q3_1_ans.png"> 
-      <p>Be really careful if using python syntax for this question, as this is one of the rare occasions that incorrect syntax will cost marks, as you must have the <code>for x in range(10000)</code> part. This is becasue, without this, a copy of the record is created which means when 1 record is updated, all 10000 will be as well.</p>
-      <p>The next question will look at how to apply an array of records to a wider code quetsion.</p>
+      <p>Be really careful if using python syntax for this question, as this is one of the rare occasions that incorrect syntax will cost marks, as you must have the <code>for x in range(10000)</code> part. This is because, without this, a copy of the record is created which means when 1 record is updated, all 10000 will be as well.</p>
+      <p>The next question will look at how to apply an array of records to a wider code question.</p>
     </div>
 
       <div class="practice-q">
         <div class="q-label">Array of Records (continued) — 2025 q8 b) (i) - 5 Mark</div>
         <p>Once you have declared your <strong>Record & Array of Record</strong>, you will be expected to use them, normally alongside a standard algorithm. In this question we are using <strong>Find Min</strong>.</p>
-        <p><strong>(Check the Design Page for other examples using Data Flow), and the Standard Algotihm Page for further examples of Standard Algorithm questions.</strong></p>
+        <p><strong>(Check the Design Page for other examples using Data Flow), and the Standard Algorithm Page for further examples of Standard Algorithm questions.</strong></p>
 		<img src="../resources/sdd/data_struct_q3_2.png">
     
 		<h5>What the question is asking</h5>
     <p>Remember this questions is <strong>5 Marks</strong>. Some important points:</p>
     <ul>
-      <li><code>numPlays</code> stores the amount ot attempts in a day for the game. Remember this is up to a maximum of 10,000</li>
+      <li><code>numPlays</code> stores the number of attempts in a day for the game. Remember this is up to a maximum of 10,000</li>
       <li>At the end of each day the game finds the fastest time</li>
     </ul>
 
     <p>We are being asked to write code that</p>
       <ul>
         <li>Finds the fastest time</li>
-        <li>uses the data structure and variables declared in part (a) - <strong>This is hughely improtant as your logic can be perfect but you will drop marks if you don't use the array of records & record structure correctly</strong>.</li>
+        <li>uses the data structure and variables declared in part (a) - <strong>This is hugely important as your logic can be perfect but you will drop marks if you don't use the array of records & record structure correctly</strong>.</li>
       </ul>
 
 
@@ -614,7 +614,7 @@ attemptArray = [pupilDataRecord for x in range(10000)]
     <p>We want to find the fastest time, the fastest time will be the smallest, so it is a find min</p>
     <p>We don't need to initialise the array, for these questions we can assume it is already initialised and populated. But before we start the main logic of our answer, we need to initialise the Min (fastestTime).</p>
     <p>We can't set it to 0, as nothing is smaller than 0. So, we can either set it to the first time in the array <code>fastestTime = attemptArray[0].reactionTime</code> - (Check your record fields for the most suitable field to use, and the correct name. In this case for me, it is <code>reactionTime</code>). Or something suitably high, <code>fastestTime = 99.99</code>.</p>
-    <p>If you are setting it to a suitablly high value, <strong>Check the sample data, as the data type must match, and the value given must be in the context of the question</strong>. I went with 99.99, as the value should be REAL, and the sample data given is 0.something.</p>
+    <p>If you are setting it to a suitably high value, <strong>Check the sample data, as the data type must match, and the value given must be in the context of the question</strong>. I went with 99.99, as the value should be REAL, and the sample data given is 0.something.</p>
     <div class="code-block">
         <div class="code-label">Initialising fastestTime - 2025 q8 b) (i)</div>
         <pre># initialise fastestTime
@@ -627,7 +627,7 @@ fastestTime = attemptArray[0].reactionTime
 
     <h6>Step 2: Loop the correct number of times</h6>
     <p>Normally, you will just loop for the length of the array. However this question is slightly unusual, in that we are told that there are a maximum of 10,000 attempts. This means that there may not be, so we can't loop to the end of the array as there might not be data stored there.</p>
-    <p>Instead, we are told that <code>numbPlays</code> stores the number of attempts made in a day. This is what we need to use to loop.</p>
+    <p>Instead, we are told that <code>numPlays</code> stores the number of attempts made in a day. This is what we need to use to loop.</p>
     <div class="code-block">
       <pre>for counter in range(numPlays):</pre>
     </div>
@@ -638,18 +638,18 @@ fastestTime = attemptArray[0].reactionTime
     <p>For all standard algorithms, once you have looped, within this loop you must compare. As this is a <strong>Find Min</strong>, we want to check if the current value <code>attemptArray[counter].reactionTime</code> is less than our current <code>fastestTime</code>.</p>
     <div class="code-block">
       <pre>for counter in range(numPlays):
-          if attemptID[counter].reactionTime &lt; fastestTime:
+          if attemptArray[counter].reactionTime &lt; fastestTime:
       </pre>
     </div>
-    <p>You can also do it the opposite way, <code>if fastestTime > attemptID[counter].reactionTime:</code> just make sure you run through the logic in your head first.</p>
+    <p>You can also do it the opposite way, <code>if fastestTime > attemptArray[counter].reactionTime:</code> just make sure you run through the logic in your head first.</p>
     <p>The correct logic in the comparison would gain 1 Mark</p>
 
     <h6>Step 4: If The Current Time is Faster, Update Your Min</h6>
-    <p>If the condition from Step 3 is true, we must update <code>fastestTime</code> to the current reaction time <code>attemptID[counter].reactionTime</code>.</p>
+    <p>If the condition from Step 3 is true, we must update <code>fastestTime</code> to the current reaction time <code>attemptArray[counter].reactionTime</code>.</p>
     <div class="code-block">
       <pre>for counter in range(numPlays):
-          if attemptID[counter].reactionTime &lt; fasetstTime:
-            fastestTime = attemptID[counter].reactionTime
+          if attemptArray[counter].reactionTime &lt; fastestTime:
+            fastestTime = attemptArray[counter].reactionTime
       </pre>
     </div>
 
@@ -673,12 +673,9 @@ fastestTime = attemptArray[0].reactionTime
       <pre>fastestTime = attemptArray[0].reactionTime
 
 for counter in range(numPlays):
-    if attemptArray[counter] &lt; fastestTime:
-        fastestTime = attemptArray[counter].reactionTime
-
-    </div>
-
-  
+    if attemptArray[counter].reactionTime &lt; fastestTime:
+        fastestTime = attemptArray[counter].reactionTime</pre>
+      </div>
         </details>
       </div>
 
