@@ -491,16 +491,16 @@ END FOR</pre>
       <p>The python syntax differs slightly if you are using dictionaries. This does not matter for exams and you can use the dot notation above, but in your programs you will need to do the following:</p>
       <div class="code-block">
         <pre># Python - Populating, Iterating & Printing
-pupilArray[0][pupilName] = "Ewan"
-pupilArray[0][yearGroup] = "S5"
-pupilArray[0][averageScore] = 86
+pupilArray[0]["pupilName"] = "Ewan"
+pupilArray[0]["yearGroup"] = "S5"
+pupilArray[0]["averageScore"] = 86
 ...
-pupilArray[4][pupilName] = "Rory"
-pupilArray[4][yearGroup] = "S4"
-pupilArray[4][averageScore] = 35
+pupilArray[4]["pupilName"] = "Rory"
+pupilArray[4]["yearGroup"] = "S4"
+pupilArray[4]["averageScore"] = 35
 
 for counter in range(len(pupilArray)):
-    print(pupilArray[counter].pupilName + " got an average of " + pupilArray[counter].averageScore)</pre>
+    print(pupilArray[counter]["pupilName"] + " got an average of " + pupilArray[counter]["averageScore"])</pre>
       </div>
 
       <h3>Comparison: Parallel Arrays vs Array of Records</h3>
