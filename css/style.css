@@ -1274,6 +1274,11 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 .tok-bool    { color: #FFA657; }
 .tok-bracket { color: #E3B341; }
 
+/* Manual highlight for code that has changed between two examples.
+   Add <span class="code-change">…</span> around the changed parts.
+   Survives the syntax highlighter (it only rewrites text nodes). */
+.code-change { color: #FF6B6B; font-weight: 700; }
+
 /* ── Example blocks ───────────────────────────────────────── */
 .example-block {
   background: var(--cream);

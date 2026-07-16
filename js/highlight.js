@@ -70,6 +70,29 @@
     return out;
   }
 
+  /* Highlight an element's code text while leaving any element children it
+     already contains (e.g. a hand-added <span style="color:red">) intact.
+     We only ever rewrite text nodes, so manual highlighting survives. */
+  function highlightElement(el) {
+    if (el.dataset.hl) return;
+    el.dataset.hl = '1';
+
+    // Collect text nodes first — mutating the tree while walking is unsafe.
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    const nodes = [];
+    let node;
+    while ((node = walker.nextNode())) nodes.push(node);
+
+    nodes.forEach(function (textNode) {
+      const raw = textNode.nodeValue;
+      const html = highlight(raw);
+      if (html === esc(raw)) return; // nothing needed colouring
+      const tpl = document.createElement('template');
+      tpl.innerHTML = html;
+      textNode.parentNode.replaceChild(tpl.content, textNode);
+    });
+  }
+
   function run() {
     const targets = new Set();
     document.querySelectorAll('.code-block pre').forEach(function (pre) {
@@ -78,11 +101,7 @@
     document.querySelectorAll('.content-article pre > code, .content-area pre > code').forEach(function (code) {
       targets.add(code);
     });
-    targets.forEach(function (el) {
-      if (el.dataset.hl) return;
-      el.innerHTML = highlight(el.textContent);
-      el.dataset.hl = '1';
-    });
+    targets.forEach(highlightElement);
   }
 
   if (document.readyState === 'loading') {
