@@ -90,6 +90,11 @@
     const s = document.createElement('script');
     s.src = ROOT + 'js/search.js';
     document.head.appendChild(s);
+
+    // Dynamically load the code-block syntax highlighter
+    const h = document.createElement('script');
+    h.src = ROOT + 'js/highlight.js';
+    document.head.appendChild(h);
   }
 
   // Some embedded iframes (e.g. trinket.io) auto-focus their editor once they

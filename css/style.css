@@ -1263,6 +1263,17 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   border-radius: 0;
 }
 
+/* ── Syntax highlighting tokens (Python + SQA Reference Language) ──
+   Applied by js/highlight.js. These classes only ever appear inside
+   dark code blocks, so plain global selectors are safe. */
+.tok-comment { color: #7D8590; font-style: italic; }
+.tok-keyword { color: #FF7B72; }
+.tok-func    { color: #D2A8FF; }
+.tok-string  { color: #7EE787; }
+.tok-number  { color: #79C0FF; }
+.tok-bool    { color: #FFA657; }
+.tok-bracket { color: #E3B341; }
+
 /* ── Example blocks ───────────────────────────────────────── */
 .example-block {
   background: var(--cream);
