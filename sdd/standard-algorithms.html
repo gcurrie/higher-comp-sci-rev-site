@@ -55,17 +55,320 @@
   <div class="content-area">
 
     <article>
-      <h2 id="which">Which Algorithms Are Required at Higher?</h2>
-      <div class="callout callout-warning">
-        <div class="callout-icon">⚠️</div>
-        <div>
-          <p><strong>Higher requires only three standard algorithms:</strong></p>
+      <h2 id="intro">Standard Algorithms</h2>
+      <div class="article-meta">
+        <span class="badge">SDD Unit 1</span>
+        <span>Topic 6 of 10</span>
+      </div>
+
+      <p>A <strong>standard Algorithms</strong> is step by step process used to solve a specific problem.</p>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">ℹ️</div>
+        <div><p><strong>Higher vs National 5:</strong> At National 5 the Algorithms used were:</p>
           <ul>
-            <li>Linear search</li>
-            <li>Find minimum and maximum</li>
-            <li>Count occurrences</li>
+            <li>Traversing an Array</li>
+            <li>Running Total</li>
+            <li>Input Validation</li>
           </ul>
-          <p style="margin-bottom:0;">Input validation and running total are <strong>National 5 algorithms</strong> — they will not be asked in a Higher exam context as a "standard algorithm" question.</p>
+          <p>These are now assumed knowledge and you could be expected to use these throughout practical programs, when designing solutions or reading/understanding code in the exam.</p>
+          <p>At Higher there are 4 Algorithms you need to know:</p>
+          <ul>
+            <li>Find Minimum</li>
+            <li>Find Maximum</li>
+            <li>Count Occurrences</li>
+            <li>Linear Search</li>
+          </ul>
+
+        </div>
+      </div>
+
+      <h3 id="key-terms">Key Terms</h3>
+      <div class="key-terms">
+        <div class="key-term"><div class="term">Find Min</div><div class="def">Finds the smallest value (or position of the smallest value) in an Array.</div></div>
+        <div class="key-term"><div class="term">Find Max</div><div class="def">Finds the largest value (or position of the largest value) in an Array.</div></div>
+        <div class="key-term"><div class="term">Count Occurrences</div><div class="def">Counts the number of times a specific value(s) appears in an Array.</div></div>
+        <div class="key-term"><div class="term">Linear Search</div><div class="def">Checks if a specific value(s) exists in an Array.</div></div>
+        </div>
+
+        <p>Fortunately, all of these algorithms operate in a similar way, with slight tweaks and addtions between them.</p>
+        <p>For each algorithm, you will:</p>
+        <ul>
+          <li>Declare initial values</li>
+          <li>Loop through the data structure</li>
+          <li>Compare the target value(s) against the values in the current index of the data structure</li>
+          <li>If the comparison is true you will update a value (dependant on algorithm)</li>
+        </ul>
+
+        <p>So a template for a standard algorithm would be:</p>
+      <div class="code-block">
+        <div class="code-label">Python — Linear Search (found flag)</div>
+        <pre># Set Initial Values
+
+# Loop through data structure
+          # If initial value with current value in list
+              # update initial value if True
+        </pre>
+      </div>
+
+      <p>These 4 Algorithms can be applied to a standard array, Parallel Arrays, or an Array of Records.</p>
+      <p>Each section will introduce the algorithm with a single array, but the practice questions will use one of the Higher Data Structures.</p>
+
+    </article>
+
+    <article>
+      <h2 id="min">Find Minimum</h2>
+      <p>The find minimum (find-min) and find maximum (find-max) algorithms are very similar, only differing in whether they use the <code>&lt;</code> or <code>&gt;</code> sign.</p>
+      <p>To find the minimum, we assume the first item is the smallest (or in some cases set the min as a very high value), then loop through the rest of the array. Whenever we find a smaller value, we update our minimum.</p>
+
+      <h3>Pseudocode</h3>
+      <ul>
+        <li>Declare a minimum variable, set it to the first item in the array</li>
+        <li>Loop for each element in the array</li>
+        <ul>
+        <li>If number(counter) &lt; minimum</li>
+        <ul>
+        <li>Set minimum to number(counter)</li>
+        </ul>
+        <li>End if</li>
+        </ul>
+        <li>End for loop</li>
+      </ul>
+
+      <p>In the following examples, the data structures are defined at the top. This would not be necessary in exam questions.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Find Minimum</div>
+        <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
+
+minimum = numbers[0]
+
+for index in range(1, len(numbers)):
+  if numbers[index] &lt; minimum:
+    minimum = numbers[index]
+
+print("The lowest number is", minimum)</pre>
+      </div>
+
+      <p>Notice that, <strong>as we set the minimum as the 1st value in the array, we start our loop from index 1</strong>, <code>for index in range(<strong style="color:red;">1</strong>, len(number)):</code></p>
+
+      <h3>Using Find Minimum with Parallel Arrays</h3>
+      <p>Find minimum is often used with parallel arrays — here we track the <em>name</em> of the youngest person as well as their age.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Youngest Person (Parallel Arrays)</div>
+        <pre>names = ["Sarah", "Martin", "Gill", "Andrew", "Gerald", "James"]
+ages = [15, 32, 40, 12, 72, 16]
+
+minimum = ages[0]
+youngest_name = names[0]
+
+for count in range(0, 6):
+  if ages[count] &lt; minimum:
+    minimum = ages[count]
+    youngest_name = names[count]
+
+print("The youngest person is", youngest_name)</pre>
+      </div>
+
+      <p>Remember, as we wan't both pieces of data (the youngest age, and the name of the youngest person), we need to update both.</p>
+      <p>We could also have used a position variable here, you will see an example of this on later algorithms.</p>
+
+      <h3>Using Find Minimum with Array of Records</h3>
+      <p>Each algorithm can also be used with Array of Records. For this example, we will assume that the Array of Records holds the same data as the Parallel Array example, with a record structure of: <code>DECLARE person AS RECORD (STRING: personName, INT: age)</code>. The array of records will be called <code>people[]</code>.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Youngest Person (Parallel Arrays)</div>
+        <pre>minimum = people[0].age
+youngest_name = people[0].personName
+
+for count in range(1, len(people)):
+  if people[count].age &lt; minimum:
+    minimum = people[count].age
+    youngest_name = people[count].personName
+
+print("The youngest person is", youngest_name)</pre>
+      </div>
+
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Find Minimum — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-find-min"
+            title="Find Minimum Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Find Minimum</div>
+          <div class="ip-sub">Interactive editor coming here — change the array values and watch the minimum update as the loop runs</div>
+        </div>
+      </div>
+
+      <div class="practice-q">
+        <div class="q-label">Find Min on an Array of Records — 2025 q8 b) (i) - 5 Mark</div>
+        <p>In this question, a <strong>Find Min</strong> is applied to an array of records. For the sake of this example, you can see the array of records declaration below:</p>
+        <div class="code-block">
+          <div class="code-label">Array of Record declaration for 2025 q8 a) (ii) </div>
+            <pre># Array of Record Declaration
+DECLARE pupilDataRecord AS RECORD (STRING: name, STRING: e-mail, STRING: attemptID, REAL: reactionTime)
+
+DECLARE attemptArray AS ARRAY OF RECORD pupilDataRecord () * 10000
+              </pre>
+              </div>
+
+        <p>This is the question we are working through:</p>
+        <img src="../resources/sdd/data_struct_q2.png">
+        <img src="../resources/sdd/data_struct_q3_2.png">
+        
+        <h5>What Is The Question Asking?</h5>
+        <p>Remember this questions is <strong>5 Marks</strong>. Some important points:</p>
+        <ul>
+          <li><code>numPlays</code> stores the number of attempts in a day for the game. Remember this is up to a maximum of 10,000</li>
+          <li>At the end of each day the game finds the fastest time</li>
+        </ul>
+
+    <p>We are being asked to write code that</p>
+      <ul>
+        <li>Finds the fastest time <strong>(Find Min)</strong></li>
+        <li>uses the data structure and variables declared in part (a) - <strong>This is hugely important as your logic can be perfect but you will drop marks if you don't use the array of records & record structure correctly</strong>.</li>
+      </ul>
+
+      <h5>Working Through the Answer</h5>
+
+      <h6>Step 1: Initialise any variables</h6>
+      <p>We want to find the fastest time, the fastest time will be the smallest, so it is a find min</p>
+      <p>We don't need to initialise the array, for these questions we can assume it is already initialised and populated. But before we start the main logic of our answer, we need to initialise the Min (fastestTime).</p>
+      <p>We can't set it to 0, as nothing is smaller than 0. So, we can either set it to the first time in the array <code>fastestTime = attemptArray[0].reactionTime</code> - (Check your record fields for the most suitable field to use, and the correct name. In this case for me, it is <code>reactionTime</code>). Or something suitably high, <code>fastestTime = 99.99</code>.</p>
+      <p>If you are setting it to a suitably high value, <strong>Check the sample data, as the data type must match, and the value given must be in the context of the question</strong>. I went with 99.99, as the value should be REAL, and the sample data given is 0.something.</p>
+      <div class="code-block">
+          <div class="code-label">Initialising fastestTime - 2025 q8 b) (i)</div>
+          <pre># initialise fastestTime
+  fastestTime = attemptArray[0].reactionTime
+          </pre>
+      </div>
+      <p>If using the first time, <strong>You must ensure your array name matches part (a), and that you are using the correct field name from your record in part (a)</strong>.</p>
+
+      <p>This along with step 4 would gain 1 Mark.</p>
+
+      <h6>Step 2: Loop the correct number of times</h6>
+      <p>Normally, you will just loop for the length of the array. However this question is slightly unusual, in that we are told that there are a maximum of 10,000 attempts. This means that there may not be, so we can't loop to the end of the array as there might not be data stored there.</p>
+      <p>Instead, we are told that <code>numPlays</code> stores the number of attempts made in a day. This is what we need to use to loop.</p>
+      <div class="code-block">
+        <pre>for counter in range(numPlays):</pre>
+      </div>
+      <p>As mentioned, normally, you will just loop for the length of the array, but you need to read the question carefully, and not make assumptions.</p>
+      <p>Looping using <code>numPlays</code> would gain 1 mark</p>
+
+      <h6>Step 3: Compare - (If Statement)</h6>
+      <p>For all standard algorithms, once you have looped, within this loop you must compare. As this is a <strong>Find Min</strong>, we want to check if the current value <code>attemptArray[counter].reactionTime</code> is less than our current <code>fastestTime</code>.</p>
+      <div class="code-block">
+        <pre>if attemptArray[counter].reactionTime &lt; fastestTime:</pre>
+      </div>
+      <p>You can also do it the opposite way, <code>if fastestTime > attemptArray[counter].reactionTime:</code> just make sure you run through the logic in your head first.</p>
+      <p>The correct logic in the comparison would gain 1 Mark</p>
+
+      <h6>Step 4: If The Current Time is Faster, Update Your Min</h6>
+      <p>If the condition from Step 3 is true, we must update <code>fastestTime</code> to the current reaction time <code>attemptArray[counter].reactionTime</code>.</p>
+      <div class="code-block">
+        <pre>fastestTime = attemptArray[counter].reactionTime</pre>
+      </div>
+
+      <h6>Step 5: Make Sure You Have Used Correct Array & Record Field Names</h6>
+      <p>As we are not asked to display or do anything with the fastest time, that is our algorithm complete. </p>
+      <p>However, you may still drop marks if you have not used the correct array name from part a) <code>attemptArray</code>, or the correct field name from part a) <code>reactionTime</code>.</p>
+      <p>Always double check this before moving on.</p>
+      <p>Each correct condition would gain <strong>1 Mark each</strong>.</p>
+      <p>The <strong>final 2 marks of the 5 are:</strong></p>
+      <ul>
+        <li>Use of the correct Array of Records variable from part a)</li>
+        <li>Use of the correct record fields with dot notation</li>
+      </ul>
+
+		  <img src="../resources/sdd/data_struct_q3_2_ans.png">
+        <details class="q-answer">
+          <summary>Suggested answer</summary>
+          <p>So our solution above put together would be:</p>
+          <div class="code-block">
+            <div class="code-label">Python — Full Example Answer</div>
+            <pre>fastestTime = attemptArray[0].reactionTime
+
+for counter in range(numPlays):
+    if attemptArray[counter].reactionTime &lt; fastestTime:
+        fastestTime = attemptArray[counter].reactionTime</pre>
+          </div>
+
+          <p>The SQA Reference Language version would be:</p>
+
+          <div class="code-block">
+            <div class="code-label">SQA Reference Language — Full Example Answer</div>
+              <pre>SET fastestTime TO attemptArray[0].reactionTime
+
+FOR counter FROM 1 TO LENGTH(attemptArray)
+    IF attemptArray[counter].reactionTime &lt; fastestTime THEN
+        SET fastetTime TO attemptArray[counter].reactionTime
+    END IF
+END FOR</pre>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <article>
+      <h2 id="max">Find Maximum</h2>
+      <p>This algorithm is almost identical to Find Min. All we need to to is switch the <strong>&lt;</strong> to a <strong>&gt</strong>, and change any variables with the name min, or minimim, to max.</strong>
+      <p>To find the maximum, we assume the first item is the largest, then loop through the rest of the array. Whenever we find a larger value, we update our maximum.</p>
+
+      <h3>Pseudocode</h3>
+      <ul>
+        <li>Declare a maximum variable, set it to the first item in the array</li>
+        <li>Loop for each element in the array</li>
+        <ul>
+        <li>If number(counter) &gt; maximum</li>
+        <ul>
+        <li>Set maximum to number(counter)</li>
+        </ul>
+        <li>End if</li>
+        </ul>
+        <li>End for loop</li>
+      </ul>
+
+      <p>Here is a basic Fin Max, using the same data from the corresponding example in the Find Min section. The changes have been highlighted <strong style="color:red;">RED</strong>.</p>
+
+      <div class="code-block">
+        <div class="code-label">Find Maximum</div>
+        <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
+<span style="color:red;">maximum</span> = numbers[0]
+for index in range(1, len(numbers)):
+  if numbers[index] <span style="color:red;">&gt; maximum</span>:
+    <span style="color:red;">maximum</span> = numbers[index]
+print("The <span style="color:red;">highest</span> number is", <span style="color:red;">maximum</span>)</pre>
+      </div>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Find Maximum — Video Explanation</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/placeholder-find-max"
+            title="Find Maximum Explained"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Find Maximum</div>
+          <div class="ip-sub">Interactive editor coming here — change the array values and watch the maximum update as the loop runs</div>
         </div>
       </div>
     </article>
@@ -150,134 +453,13 @@ else:
           <div class="ip-sub">Interactive editor coming here — modify the target value and trace how the algorithm finds (or doesn't find) a match</div>
         </div>
       </div>
+
+      
+
     </article>
 
-    <article>
-      <h2 id="max">Find Maximum</h2>
-      <p>The find maximum (find-max) and find minimum (find-min) algorithms are very similar, only differing in whether they use the <code>&gt;</code> or <code>&lt;</code> sign.</p>
-      <p>To find the maximum, we assume the first item is the largest, then loop through the rest of the array. Whenever we find a larger value, we update our maximum.</p>
 
-      <h3>Pseudocode</h3>
-      <ol>
-        <li>Declare a maximum variable, set it to the first item in the array</li>
-        <li>Loop for each element in the array</li>
-        <li>If number(counter) &gt; maximum</li>
-        <li>Set maximum to number(counter)</li>
-        <li>End if</li>
-        <li>End for loop</li>
-      </ol>
-
-      <div class="code-block">
-        <div class="code-label">Python — Find Maximum</div>
-        <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
-maximum = numbers[0]
-for index in range(1, len(numbers)):
-  if numbers[index] &gt; maximum:
-    maximum = numbers[index]
-print("The highest number is", maximum)</pre>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Find Maximum — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-find-max"
-            title="Find Maximum Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Find Maximum</div>
-          <div class="ip-sub">Interactive editor coming here — change the array values and watch the maximum update as the loop runs</div>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <h2 id="min">Find Minimum</h2>
-      <p>Finding the minimum works in exactly the same way as finding the maximum — the only change is that we use the <code>&lt;</code> sign instead of <code>&gt;</code>. We assume the first item is the smallest, then update our minimum whenever we find a smaller value.</p>
-
-      <h3>Pseudocode</h3>
-      <ol>
-        <li>Declare a minimum variable, set it to the first item in the array</li>
-        <li>Loop for each element in the array</li>
-        <li>If number(counter) &lt; minimum</li>
-        <li>Set minimum to number(counter)</li>
-        <li>End if</li>
-        <li>End for loop</li>
-      </ol>
-
-      <div class="code-block">
-        <div class="code-label">Python — Find Minimum</div>
-        <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
-minimum = numbers[0]
-for index in range(1, len(numbers)):
-  if numbers[index] &lt; minimum:
-    minimum = numbers[index]
-print("The lowest number is", minimum)</pre>
-      </div>
-
-      <h3>Using Find Minimum with Parallel Arrays</h3>
-      <p>As with linear search, find minimum is often used with parallel arrays — here we track the <em>name</em> of the youngest person as well as their age.</p>
-      <div class="code-block">
-        <div class="code-label">Python — Youngest Person (Parallel Arrays)</div>
-        <pre>names = ["Sarah", "Martin", "Gill", "Andrew", "Gerald", "James"]
-ages = [15, 32, 40, 12, 72, 16]
-minimum = ages[0]
-youngest_name = names[0]
-for count in range(0, 6):
-  if ages[count] &lt; minimum:
-    minimum = ages[count]
-    youngest_name = names[count]
-print("The youngest person is", youngest_name)</pre>
-      </div>
-
-      <h3>Finding Both at Once</h3>
-      <p>Because the two algorithms are so similar, you can find the minimum and maximum together in a single loop:</p>
-      <div class="code-block">
-        <div class="code-label">Python — Find Minimum and Maximum Together</div>
-        <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
-minimum = numbers[0]
-maximum = numbers[0]
-for index in range(1, 12):
-  if numbers[index] &lt; minimum:
-    minimum = numbers[index]
-  if numbers[index] &gt; maximum:
-    maximum = numbers[index]
-print("The lowest number is", minimum)
-print("and the highest is", maximum)</pre>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Find Minimum — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-find-min"
-            title="Find Minimum Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Find Minimum</div>
-          <div class="ip-sub">Interactive editor coming here — change the array values and watch the minimum update as the loop runs</div>
-        </div>
-      </div>
-    </article>
-
+    
     <article>
       <h2 id="count">Count Occurrences</h2>
       <p>Count occurrences is very similar to linear search. The user enters a target/search term. The algorithm then searches the array. If the target is found, instead of recording position, it adds +1 to a total/counter.</p>

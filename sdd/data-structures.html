@@ -94,7 +94,7 @@
       <p>You already know that an array is a list of related values, called elements, that can be referred to by number, e.g. <code><i>temperature[0]</i></code>, <code><i>temperature[5]</i></code> etc. The following example is an array of temperatures in the month of June.</p>
 	  
 	  <table>
-        <thead><tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>...</th><th>end of array</th></tr></thead>
+        <thead><tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>...</th><th>29</th></tr></thead>
         <tbody>
           <tr><td>temperature</td><td>12</td><td>20</td><td>21</td><td>14</td><td>18</td><td>22</td><td>23</td><td>25</td><td>...</td><td>19</td></tr>
 
@@ -103,17 +103,17 @@
 	  
 	  <p>This next example adds a second array that records the date on which the temperature was taken.
       </p>
-	  <p>We can look up the temperature on, say, the 8th of June, by looking for that date, and reading the corresponding temperature (14°). These are <strong>parallel arrays</strong>, because we can look up corresponding values, like a table.</p>
+	  <p>We can look up the temperature on, say, the 8th of June, by looking for that date, and reading the corresponding temperature (25°). These are <strong>parallel arrays</strong>, because we can look up corresponding values, like a table.</p>
 	  
 	  <table>
-        <thead><tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>...</th><th>end of array</th></tr></thead>
+        <thead><tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>...</th><th>29</th></tr></thead>
         <tbody>
-          <tr><td>dates</td><td>5/6</td><td>6/6</td><td>7/6</td><td>8/6</td><td>9/6</td><td>10/6</td><td>11/6</td><td>12/6</td><td>...</td><td>30/6</td></tr>
+          <tr><td>dates</td><td>01/6</td><td>02/6</td><td>03/6</td><td>04/6</td><td>05/6</td><td>06/6</td><td>07/6</td><td>08/6</td><td>...</td><td>30/6</td></tr>
 		  <tr><td>temperature</td><td>12</td><td>20</td><td>21</td><td>14</td><td>18</td><td>22</td><td>23</td><td>25</td><td>...</td><td>19</td></tr>
         </tbody>
       </table>
 	  
-	  <p>In the next example example, pupil marks are stored in one array, and pupil names are stored in another. We can see that Jack scored 23, and Lucy scored 24, by looking at the two arrays side-by-side, as if they were a table.</p>
+	  <p>In the next example, <strong>pupil marks</strong> are stored in one array, and <strong>pupil names</strong> are stored in another. We can see that <strong>Jack</strong> scored <strong>23</strong>, and <strong>Kathryn</strong> scored <strong>24</strong>, by looking at the two arrays side-by-side, as if they were a table.</p>
 	  
 	  <table>
         <thead><tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
@@ -150,7 +150,7 @@ print(pupil_mark[3])</pre>
       <h3>Using Parallel Arrays</h3>
 	  
 	  <p>This example uses the two arrays of pupil names and marks above.</p>
-	  <p>The first section of code prints out each pupil’s name and mark (<code><i>pupil_name[count]</i></code> and <code><i>pupil_mark[count]</i></code>).</p>
+	  <p>The first section of code prints out each pupil’s name and mark (<code><i>pupil_name[index]</i></code> and <code><i>pupil_mark[index]</i></code>).</p>
 	  <p>The next section of code uses a standard algorithm <strong>(find max)</strong> to traverse the two arrays and find the highest mark. Each time a new maximum is found, it also sets a max_name variable that it uses to record who has scored the highest mark so far.</p>
 	  
       <div class="code-block">
@@ -160,17 +160,17 @@ pupil_name = ["Harry", "Elise", "Jack", "Joanna", "Fraser", "Kathryn"]
 pupil_mark = [20, 21, 23, 18, 19, 24]
  
 # Print each pupil's name and mark together
-for count in range(len(pupil_name)):
-  print(pupil_name[count], pupil_mark[count])
+for index in range(len(pupil_name)):
+  print(pupil_name[index], pupil_mark[index])
  
 # Who got the highest mark?
 max_mark = pupil_mark[0]
 max_name = pupil_name[0]
  
-for count in range(len(pupil_name)):
-  if pupil_mark[count] > max_mark:
-    max_mark = pupil_mark[count]
-    max_name = pupil_name[count]
+for index in range(len(pupil_name)):
+  if pupil_mark[index] > max_mark:
+    max_mark = pupil_mark[index]
+    max_name = pupil_name[index]
  
 print(max_name, "got the highest mark")</pre>
       </div>
@@ -221,7 +221,7 @@ print(max_name, "got the highest mark")</pre>
 		<p>The first image introduces you to the Parallel Array data structure that stores: <strong>dogID, dogName, branch & noOfVisits</strong>.</p>
     <p>The second image is the question that uses this data structure.</p>
 
-		<h5>What the question is asking</h5>
+		<h5>What Is The Question Asking?</h5>
     <p>Remember this questions is <strong>4 Marks</strong>.You need to write code that:</p>
     <ol>
       <li>asks the user to enter a branch name</li>
@@ -426,7 +426,7 @@ pupilDataRecord = {}
       <p>Now we have the record, we need to identify what data we are storing, and assign it the appropriate type. For this, we need to make sure we look at the sample data provided, and read the question thoroughly.</p>
       <p>We are told that "Each time someone plays the game, their <strong>Name, e-mail, attemptID and reaction time</strong>" are stored. We have our 4 fields</p>
       <p>Now we need to look at the sample data to identify the correct data types. Don't just infer what you assume is the data type, look at the sample data as this will confirm your assumptions.</p>
-      <p>We can see from the data that name will be a String, e-mail will be a String, attemptID will be a String & reaction time will be a REAL NUMBER.</p>
+      <p>We can see from the data that name will be a String <strong>(Lucy Scott)</strong>, e-mail will be a String <strong>(lscott@hmail.com)</strong>, attemptID will be a String <strong>(lscott8)</strong> & reaction time will be a REAL NUMBER <strong>(0.215)</strong>.</p>
       <p>So my updated answer would be</p>
               <div class="code-block">
         <div class="code-label">Initial Record Declaration for 2025 q8 a) (i) </div>
@@ -452,7 +452,7 @@ pupilDataRecord = {"name": "", "e-mail": "", "attemptID": "", "reactionTime": 0.
       <h2 id="arrays-of-records">Arrays of Records</h2>
       <p>An <strong>array of records</strong> is a combination of a single Array from National 5, with a Record. Instead of every element of the array being a string or an integer, every element is a record.</p>
       <p>This means you can store a list of complex items, each with multiple fields and different data types, all within the same structure. </p>
-      <p>Lets continue with the <code>pupilRecord</code> example from the <strong>records section</strong>. Lets say I want to store 5 pupils. I will need to declare the record first, then declare the array of records (both SQA Reference Language & Python examples given).</p>
+      <p>Lets continue with the <code>pupilRecord</code> example from the <strong>records section</strong>. Lets say I want to store 5 pupils. I will need to declare the record first, then declare the array of records <strong>(both SQA Reference Language & Python examples given)</strong>.</p>
       <div class="code-block">
         <div class="code-label">Declaring an Array of Records</div>
         <pre># Declaring pupil record - SQA Reference Language
@@ -489,13 +489,13 @@ pupilArray = [pupilRecord for x in range(5)]</pre>
       <p>If we wanted to print all pupils names using a loop, inside the loop we would have <code>pupilArray[counter].pupilName</code></p>
       <div class="code-block">
         <pre># SQA Reference Language - Populating, Iterating & Printing
-pupilArray[0].pupilName = "Ewan"
-pupilArray[0].yearGroup = "S5"
-pupilArray[0].averageScore = 86
+SET pupilArray[0].pupilName TO "Ewan"
+SET pupilArray[0].yearGroup TO "S5"
+SET pupilArray[0].averageScore TO 86
 ...
-pupilArray[4].pupilName = "Rory"
-pupilArray[4].yearGroup = "S4"
-pupilArray[4].averageScore = 35
+SET pupilArray[4].pupilName TO "Rory"
+SET pupilArray[4].yearGroup TO "S4"
+SET pupilArray[4].averageScore TO 35
 
 FOR counter FROM 0 TO LENGTH(pupilArray) - 1 DO
     SEND pupilArray[counter].pupilName &amp; " got an average of " &amp; pupilArray[counter].averageScore TO DISPLAY
@@ -523,7 +523,7 @@ for counter in range(len(pupilArray)):
         <tbody>
           <tr><td>Related data kept together?</td><td>Only by convention (same index)</td><td>Yes — one element holds all fields</td></tr>
           <tr><td>Risk of mismatch</td><td>Higher — must keep arrays in sync</td><td>None — fields are part of the same element</td></tr>
-          <tr><td>Field access</td><td>Index: <code>names[i]</code>, <code>marks[i]</code></td><td>Dot notation: <code>class[i].name</code></td></tr>
+          <tr><td>Field access</td><td>Index: <code>names[i]</code>, <code>marks[i]</code></td><td>Dot notation: <code>array[i].name</code></td></tr>
           <tr><td>Preferred for</td><td>Simple numeric algorithms on one attribute</td><td>Storing and processing structured records</td></tr>
         </tbody>
       </table>
@@ -598,7 +598,7 @@ pupilDataRecord = {"name": "", "e-mail": "", "attemptID": "", "reactionTime": 0.
         <li>Declare a variable that could be used to store 10,000 attempts</li>
         <li>Your answer should make use of the record data structure declared in part (i) - (see answer above for (i))</li>
       </ul>
-      <p>The name you use for your Array, must be different to that of your record. To answer this we must make sure the array is the correct size, and uses our record. The following will declare the array:</p>
+      <p><strong>The name you use for your Array, must be different to that of your record</strong>. To answer this we must make sure the array is the correct size, and uses our record. The following will declare the array:</p>
       <div class="code-block">
         <div class="code-label">Array of Record declaration for 2025 q8 a) (ii) </div>
         <pre># Array of Record Declaration
@@ -611,7 +611,7 @@ attemptArray = [pupilDataRecord for x in range(10000)]
       </div>
       <p>You can see the marking scheme below:</p>
       <img src="../resources/sdd/data_struct_q3_1_ans.png"> 
-      <p>Be really careful if using python syntax for this question, as this is one of the rare occasions that incorrect syntax will cost marks, as you must have the <code>for x in range(10000)</code> part. This is because, without this, a copy of the record is created which means when 1 record is updated, all 10000 will be as well.</p>
+      <p><strong>Be really careful if using python syntax for this question, as this is one of the rare occasions that incorrect syntax will cost marks</strong>, as you must have the <code>for x in range(10000)</code> part. This is because, without this, a copy of the record is created which means when 1 record is updated, all 10000 will be as well.</p>
       <p>The next question will look at how to apply an array of records to a wider code question.</p>
     </div>
 
@@ -621,7 +621,7 @@ attemptArray = [pupilDataRecord for x in range(10000)]
         <p><strong>(Check the Design Page for other examples using Data Flow), and the Standard Algorithm Page for further examples of Standard Algorithm questions.</strong></p>
 		<img src="../resources/sdd/data_struct_q3_2.png">
     
-		<h5>What the question is asking</h5>
+		<h5>What Is The Question Asking?</h5>
     <p>Remember this questions is <strong>5 Marks</strong>. Some important points:</p>
     <ul>
       <li><code>numPlays</code> stores the number of attempts in a day for the game. Remember this is up to a maximum of 10,000</li>
@@ -664,8 +664,7 @@ fastestTime = attemptArray[0].reactionTime
     <h6>Step 3: Compare - (If Statement)</h6>
     <p>For all standard algorithms, once you have looped, within this loop you must compare. As this is a <strong>Find Min</strong>, we want to check if the current value <code>attemptArray[counter].reactionTime</code> is less than our current <code>fastestTime</code>.</p>
     <div class="code-block">
-      <pre>for counter in range(numPlays):
-          if attemptArray[counter].reactionTime &lt; fastestTime:
+      <pre>if attemptArray[counter].reactionTime &lt; fastestTime:
       </pre>
     </div>
     <p>You can also do it the opposite way, <code>if fastestTime > attemptArray[counter].reactionTime:</code> just make sure you run through the logic in your head first.</p>
@@ -674,9 +673,7 @@ fastestTime = attemptArray[0].reactionTime
     <h6>Step 4: If The Current Time is Faster, Update Your Min</h6>
     <p>If the condition from Step 3 is true, we must update <code>fastestTime</code> to the current reaction time <code>attemptArray[counter].reactionTime</code>.</p>
     <div class="code-block">
-      <pre>for counter in range(numPlays):
-          if attemptArray[counter].reactionTime &lt; fastestTime:
-            fastestTime = attemptArray[counter].reactionTime
+      <pre>fastestTime = attemptArray[counter].reactionTime
       </pre>
     </div>
 
@@ -703,6 +700,19 @@ for counter in range(numPlays):
     if attemptArray[counter].reactionTime &lt; fastestTime:
         fastestTime = attemptArray[counter].reactionTime</pre>
       </div>
+
+      <p>The SQA Reference Language version would be:</p>
+
+          <div class="code-block">
+      <div class="code-label">SQA Reference Language — Full Example Answer</div>
+      <pre>SET fastestTime TO attemptArray[0].reactionTime
+
+FOR counter FROM 1 TO LENGTH(attemptArray)
+    IF attemptArray[counter].reactionTime &lt; fastestTime THEN
+        SET fastetTime TO attemptArray[counter].reactionTime
+    END IF
+END FOR</pre>
+          </div>
         </details>
       </div>
 
