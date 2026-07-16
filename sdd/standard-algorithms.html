@@ -43,11 +43,11 @@
       <nav class="sidebar-nav" aria-label="Page sections">
     <div class="sidebar-title">On this page</div>
     <ul>
-      <li><a href="#which">Higher Algorithms</a></li>
-      <li><a href="#linear-search">Linear Search</a></li>
-      <li><a href="#max">Find Maximum</a></li>
+      <li><a href="#intro">Introduction</a></li>
       <li><a href="#min">Find Minimum</a></li>
+      <li><a href="#max">Find Maximum</a></li>
       <li><a href="#count">Count Occurrences</a></li>
+      <li><a href="#linear-search">Linear Search</a></li>
       <li><a href="#records">With Arrays of Records</a></li>
     </ul>
       </nav>
@@ -61,7 +61,7 @@
         <span>Topic 6 of 10</span>
       </div>
 
-      <p>A <strong>standard Algorithm</strong> is step by step process used to solve a specific problem.</p>
+      <p>A <strong>standard algorithm</strong> is a step-by-step process used to solve a specific problem.</p>
 
       <div class="callout callout-info">
         <div class="callout-icon">ℹ️</div>
@@ -91,7 +91,7 @@
         <div class="key-term"><div class="term">Linear Search</div><div class="def">Checks if a specific value(s) exists in an Array.</div></div>
         </div>
 
-        <p>Fortunately, all of these algorithms operate in a similar way, with slight tweaks and addtions between them.</p>
+        <p>Fortunately, all of these algorithms operate in a similar way, with slight tweaks and additions between them.</p>
         <p>For each algorithm, you will:</p>
         <ul>
           <li>Declare initial values</li>
@@ -102,7 +102,7 @@
 
         <p>So a template for a standard algorithm would be:</p>
       <div class="code-block">
-        <div class="code-label">Python — Linear Search (found flag)</div>
+        <div class="code-label">Standard Algorithm — Template</div>
         <pre># Set Initial Values
 
 # Loop through data structure
@@ -126,9 +126,9 @@
         <li>Declare a minimum variable, set it to the first item in the array</li>
         <li>Loop for each element in the array</li>
         <ul>
-        <li>If number(counter) &lt; minimum</li>
+        <li>If current array value is less than the minimum</li>
         <ul>
-        <li>Set minimum to number(counter)</li>
+        <li>Set minimum to current array value</li>
         </ul>
         <li>End if</li>
         </ul>
@@ -149,7 +149,7 @@ for index in range(1, len(numbers)):
 print("The lowest number is", minimum)</pre>
       </div>
 
-      <p>Notice that, <strong>as we set the minimum as the 1st value in the array, we start our loop from index 1</strong>, <code>for index in range(<strong style="color:red;">1</strong>, len(number)):</code></p>
+      <p>Notice that, <strong>as we set the minimum as the 1st value in the array, we start our loop from index 1</strong>, <code>for index in range(<strong style="color:red;">1</strong>, len(numbers)):</code></p>
 
       <h3>Using Find Minimum with Parallel Arrays</h3>
       <p>Find minimum is often used with parallel arrays — here we track the <em>name</em> of the youngest person as well as their age.</p>
@@ -169,13 +169,13 @@ for count in range(0, 6):
 print("The youngest person is", youngest_name)</pre>
       </div>
 
-      <p>Remember, as we wan't both pieces of data (the youngest age, and the name of the youngest person), we need to update both.</p>
+      <p>Remember, as we want both pieces of data (the youngest age, and the name of the youngest person), we need to update both.</p>
       <p>We could also have used a position variable here, you will see an example of this on later algorithms.</p>
 
       <h3>Using Find Minimum with Array of Records</h3>
       <p>Each algorithm can also be used with Array of Records. For this example, we will assume that the Array of Records holds the same data as the Parallel Array example, with a record structure of: <code>DECLARE person AS RECORD (STRING: personName, INT: age)</code>. The array of records will be called <code>people[]</code>.</p>
       <div class="code-block">
-        <div class="code-label">Python — Youngest Person (Parallel Arrays)</div>
+        <div class="code-label">Python — Youngest Person (Array of Records)</div>
         <pre>minimum = people[0].age
 youngest_name = people[0].personName
 
@@ -192,11 +192,14 @@ print("The youngest person is", youngest_name)</pre>
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Find Minimum — Video Explanation</p>
         <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-find-min"
-            title="Find Minimum Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/QzmNPiv9UjU?si=ffY3-lM8QlqyneSx" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
             allowfullscreen>
           </iframe>
         </div>
@@ -206,7 +209,7 @@ print("The youngest person is", youngest_name)</pre>
         <div class="ip-icon">💻</div>
         <div class="ip-body">
           <div class="ip-title">Try It — Find Minimum</div>
-          <div class="ip-sub">Interactive editor coming here — change the array values and watch the minimum update as the loop runs</div>
+          <div class="trinket-embed" data-trinket="https://trinket.io/embed/python3/bd5bea9c4462" data-height="356"><button type="button" class="trinket-load"><span class="tl-icon">▶</span>Load interactive Python editor</button></div>
         </div>
       </div>
 
@@ -309,9 +312,9 @@ for counter in range(numPlays):
             <div class="code-label">SQA Reference Language — Full Example Answer</div>
               <pre>SET fastestTime TO attemptArray[0].reactionTime
 
-FOR counter FROM 1 TO LENGTH(attemptArray)
+FOR counter FROM 0 TO numPlays - 1 DO
     IF attemptArray[counter].reactionTime &lt; fastestTime THEN
-        SET fastetTime TO attemptArray[counter].reactionTime
+        SET fastestTime TO attemptArray[counter].reactionTime
     END IF
 END FOR</pre>
           </div>
@@ -321,7 +324,7 @@ END FOR</pre>
 
     <article>
       <h2 id="max">Find Maximum</h2>
-      <p>This algorithm is almost identical to Find Min. All we need to to is switch the <strong>&lt;</strong> to a <strong>&gt</strong>, and change any variables with the name min, or minimim, to max.</strong>
+      <p>This algorithm is almost identical to Find Min. All we need to do is switch the <strong>&lt;</strong> to a <strong>&gt;</strong>, and change any variables with the name min, or minimum, to max.</p>
       <p>To find the maximum, we assume the first item is the largest, then loop through the rest of the array. Whenever we find a larger value, we update our maximum.</p>
 
       <h3>Pseudocode</h3>
@@ -329,9 +332,9 @@ END FOR</pre>
         <li>Declare a maximum variable, set it to the first item in the array</li>
         <li>Loop for each element in the array</li>
         <ul>
-        <li>If number(counter) &gt; maximum</li>
+        <li>If current array value is greater than the maximum</li>
         <ul>
-        <li>Set maximum to number(counter)</li>
+        <li>Set maximum to current array value</li>
         </ul>
         <li>End if</li>
         </ul>
@@ -350,15 +353,185 @@ for index in range(1, len(numbers)):
 print("The highest number is", <span class="code-change">maximum</span>)</pre>
       </div>
 
+      <p>Here are the other 2 examples, but using Parallel Arrays & Array of Records:</p>
+
+      <h3>Using Find Maximum with Parallel Arrays</h3>
+      <p>Find maximum is often used with parallel arrays — here we track the <em>name</em> of the oldest person as well as their age.</p>
+      <p>Here I will use a position variable to track the data, instead of <code>oldest_age</code> variable.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Oldest Person (Parallel Arrays)</div>
+        <pre>names = ["Sarah", "Martin", "Gill", "Andrew", "Gerald", "James"]
+ages = [15, 32, 40, 12, 72, 16]
+
+maximum = ages[0]
+max_pos = 0
+
+for count in range(0, 6):
+  if ages[count] &gt; maximum:
+    maximum = ages[count]
+    max_pos = count
+
+print("The oldest person is", names[max_pos])</pre>
+      </div>
+
+      <p>In this example, the <code>max_pos</code> variable, keeps track of the position of the highest value in the <strong>Parallel Arrays</strong>, updating the position each time the <code>maximum</code> changes.</p>
+      <p>This is useful when there are 2 or more pieces of data that you need to process and use when the min/max is found.</p>
+
+      <h3>Using Find Maximum with Array of Records</h3>
+      <p>Each algorithm can also be used with Array of Records. For this example, we will assume that the Array of Records holds the same data as the Parallel Array example, with a record structure of: <code>DECLARE person AS RECORD (STRING: personName, INT: age)</code>. The array of records will be called <code>people[]</code>.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Oldest Person (Array of Records)</div>
+        <pre>maximum = people[0].age
+max_pos = 0
+
+for count in range(1, len(people)):
+  if people[count].age &gt; maximum:
+    maximum = people[count].age
+    max_pos = count
+
+print("The oldest person is", people[max_pos].personName)</pre>
+      </div>
+
       <div class="video-section">
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Find Maximum — Video Explanation</p>
         <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-find-max"
-            title="Find Maximum Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/1S6nhVRtFdY?si=4D3hKK2eGYMI7Xkw" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+        </div>
+      </div>
+
+      <div class="interactive-placeholder">
+        <div class="ip-icon">💻</div>
+        <div class="ip-body">
+          <div class="ip-title">Try It — Find Maximum</div>
+          <div class="trinket-embed" data-trinket="https://trinket.io/embed/python3/45795f2b4909" data-height="356"><button type="button" class="trinket-load"><span class="tl-icon">▶</span>Load interactive Python editor</button></div>
+        </div>
+      </div>
+
+      <div class="practice-q">
+        <div class="q-label">No Find Max Practice Question Given due to similarity with Find Min</div>
+        <p>Find Max & Find Min are really similar. On the <a href="">SDD Practice Questions</a> page, you will find some examples of Find Max & Find Min.</p>
+      </div>
+      
+    </article>
+
+    <article>
+      <h2 id="count">Count Occurrences</h2>
+      <p>Count occurrences is very similar to linear search (more on that in the next section). The user enters a target/search term, or a specific one is given to hard code into the condition <strong>(This is the initialise values)</strong>. The algorithm then searches the array. If the target is found, instead of recording position, it adds +1 to a total/counter.</p>
+      <p>The algorithm can search for exact matches, or apply conditional logic — values above a threshold, even numbers, uppercase letters, and so on.</p>
+      <p>For example, we could count how many pupils are in S5, we could count how many pupils have a score of over 70%, we could count how many names start with the letter H, and so on.</p>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>Do not confuse counting occurrences with keeping a <strong>running total</strong>: one counts how many of something there are, the other adds them all together.</div>
+      </div>
+
+      <h3>Pseudocode</h3>
+      <ul>
+        <li>Set count to 0 - not to be confused with the loop counter (sometimes called counter/index) - you may have multiple counts depending on the question</li>
+        <li>Optional - get target from user</li>
+        <li>Loop for each element in the array</li>
+        <ul>
+        <li>If current array value is equal to target</li>
+        <ul>
+        <li>Set count to count + 1</li>
+        </ul>
+        <li>End if</li>
+        </ul>
+        <li>End for loop</li>
+      </ul>
+
+      <h3>Counting Exact Matches</h3>
+      <p>Here we will apply it to a single array, use an exact match, and take the target from the user.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Count Matching Car Makes</div>
+        <pre>cars = ["Ford", "Ford", "Toyota", "Volkswagen", "Kia", "Nissan", "Honda"]
+
+# Take in target make from the user
+make = input("Please enter a make: ")
+
+# Initialise our count to 0
+makeCount = 0
+
+for index in range(len(cars)):
+
+  # If current car make matches the user target
+  if cars[index] == make:
+
+    # Add 1 to the make count
+    makeCount += 1
+
+print("There were", makeCount, "matching cars")</pre>
+      </div>
+
+      <p>Lets say the user enters in <strong>Ford</strong>, we should get the message <strong>There were 2 matching cars</strong>.</p>
+
+      <h3>Counting with a Condition (Range Check)</h3>
+      <p>We are still just using a single array here, but we are counting based on a range, rather than an exact match. The target is also hard-coded, and we are checking how many percentages 50.0 and above.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Count Values of 50% or More</div>
+        <pre>percentages = [99.7, 100.0, 52.6, 13.9, 15.2, 88.1, 64.7, 22.5, 71.8]
+
+target = 50.0
+
+percentageCount = 0
+
+for index in range(len(percentages)):
+  if percentages[index] &gt;= target:
+    percentageCount += 1
+
+print("There were", percentageCount, "values of 50% or more")</pre>
+      </div>
+
+      <p>So we should get a message of <strong>There were 6 values of 50% or more</strong>.</p>
+
+      <h3>Counting into Two Categories (Odd / Even)</h3>
+      <p>The final example, we are still using a single array, and we have hard-coded values directly into the conditions this time. We also have 2 counts, <code>odd_count</code> and <code>even_count</code>.</p>
+      <p>For each value in the array, we will use  <strong>Modulus</strong> - (pre-defined function, although is an operator in python) - if the calculation evaluates to 0, there is no remainder an so it is even, otherwise it is odd. </p>
+      <div class="code-block">
+        <div class="code-label">Python — Count Odd and Even Numbers</div>
+        <pre>numbers = [99, 44, 55, 12, 19, 72, 60, 54, 13, 18, 2, 75]
+
+# Initialise odd & even count variables to 0
+odd_count = 0
+even_count = 0
+
+# loop through numbers array
+for index in range(len(numbers)):
+
+  # if current value % (modulus) 2 returns 0, there is no remainder and even_count increases by 1, otherwise it is odd
+  if (numbers[index] % 2) == 0:
+    even_count += 1
+  else:
+    odd_count += 1
+
+print("There were", even_count, "even numbers")
+print("and", odd_count, "odd numbers in the list")</pre>
+      </div>
+
+      <p>We should get 2 messages: <strong>There were 7 even numbers</strong> along with <strong>and 5 odd numbers in the list</strong>.</p>
+
+      <div class="video-section">
+        <div class="video-section-label">Watch</div>
+        <p class="video-section-title">Count Occurrences — Video Explanation</p>
+        <div class="video-embed">
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/NK4gL64r_6M?si=-8-TzkWZ-G-1wYxY" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
             allowfullscreen>
           </iframe>
         </div>
@@ -367,35 +540,168 @@ print("The highest number is", <span class="code-change">maximum</span>)</pre>
       <div class="interactive-placeholder">
         <div class="ip-icon">💻</div>
         <div class="ip-body">
-          <div class="ip-title">Try It — Find Maximum</div>
-          <div class="ip-sub">Interactive editor coming here — change the array values and watch the maximum update as the loop runs</div>
+          <div class="ip-title">Try It — Count Occurrences</div>
+          <div class="trinket-embed" data-trinket="https://trinket.io/embed/python3/dbe8c6ad76f8" data-height="356"><button type="button" class="trinket-load"><span class="tl-icon">▶</span>Load interactive Python editor</button></div>
         </div>
+      </div>
+
+      <p>The following practice question shows how a <strong>Count Occurrences</strong> is used with <strong>Parallel Arrays</strong>. As with find min & max, the logic doesn't change, just how you access the data. The same is true of using it with an array of records.</p>
+
+      <h3 id="practice">Practice Question</h3>
+      <div class="practice-q">
+        <div class="q-label">Parallel Arrays — 2023 Q9 e) - 4 Mark</div>
+        <p>Parallel Arrays normally crop up in larger standard algorithm questions. You are unlikely to be asked to declare parallel arrays, you would just be expected to use them.</p>
+        <p><strong>(Check the Design Page for other examples using Data Flow), and the Standard Algorithm Page for further examples of Standard Algorithm questions. This is Count Occurrences.</strong></p>
+		<img src="../resources/sdd/data_struc_q1-1.png">
+    <img src="../resources/sdd/data_struc_q1-2.png">
+		<p>The first image introduces you to the Parallel Array data structure that stores: <strong>dogID, dogName, branch & noOfVisits</strong>.</p>
+    <p>The second image is the question that uses this data structure.</p>
+
+		<h5>What Is The Question Asking?</h5>
+    <p>Remember this questions is <strong>4 Marks</strong>.You need to write code that:</p>
+    <ol>
+      <li>asks the user to enter a branch name</li>
+      <li>checks every dog in the arrays</li>
+      <li>counts only the dogs that:</li>
+      <ul>
+        <li>attend that branch</li>
+        <li>have made more than five visits</li>
+      </ul>
+      <li>displays the final count</li>
+    </ol>
+
+    <h5>Working Through the Answer</h5>
+
+    <h6>Step 1: Identify the important arrays</h6>
+    <p>The question tells you to use:</p>
+    <ul>
+      <li><code>branch</code></li>
+      <li><code>noOfVisits</code></li>
+    </ul>
+    <p>These are <strong>parallel arrays</strong>, which means the same index position refers to the same dog. For example:</p>
+    <div class="code-block">
+      <pre>branch[2] = "Dundee"
+noOfVisits[2] = 6</pre>
+    </div>
+    <p>So dog 2 attends Dundee and has made 6 visits.</p>
+
+    <h6>Step 2: Get the branch from the user</h6>
+    <p>You need an input variable, for example <code>searchBranch</code>. This stores the branch the user wants to search for.</p>
+    <div class="code-block">
+      <pre>searchBranch = input("Enter branch: ")</pre>
+    </div>
+
+    <h6>Step 3: Set up a counter</h6>
+    <p>You need to count how many matching dogs are found. Start the counter at 0:</p>
+    <div class="code-block">
+      <pre>count = 0</pre>
+    </div>
+
+    <h6>Step 4: Loop through every dog</h6>
+    <p>Because the data is stored in arrays, use a loop to check each position. This checks every item in the <code>branch</code> array.</p>
+    <div class="code-block">
+      <pre>for index in range(len(branch)):</pre>
+    </div>
+
+    <h6>Step 5: Use an IF statement with two conditions</h6>
+    <p>A dog should only be counted if <strong>both</strong> conditions are true:</p>
+    <ul>
+      <li><code>branch[index]</code> matches the user's branch, <strong>AND</strong></li>
+      <li><code>noOfVisits[index] &gt; 5</code></li>
+    </ul>
+    <p>In Python:</p>
+    <div class="code-block">
+      <pre>if branch[index] == searchBranch and noOfVisits[index] &gt; 5:</pre>
+    </div>
+
+    <p>Each correct condition would gain <strong>1 Mark each</strong>.</p>
+
+    <h6>Step 6: Increment the counter</h6>
+    <p>If both conditions are true, add 1 to the counter:</p>
+    <div class="code-block">
+      <pre>count = count + 1</pre>
+    </div>
+    <p>This <strong>along with step 3</strong> would gain<strong>1 Mark</strong>.</p>
+
+    <h6>Step 7: Display the final answer</h6>
+    <p>After the loop has finished, display the count:</p>
+    <div class="code-block">
+      <pre>print(count)</pre>
+    </div>
+
+    <p>This <strong>along with steps 2 & 4</strong> would gain <strong>1 Mark</strong></p>
+
+
+		<img src="../resources/sdd/data_struc_q1_ans.png">
+        <details class="q-answer">
+          <summary>Suggested answer</summary>
+          <p>The python version would be:</p>
+      <div class="code-block">
+      <div class="code-label">Python — Full Example Answer</div>
+      <pre>searchBranch = input("Enter branch: ")
+
+dogCount = 0
+
+for index in range(len(branch)):
+    if branch[index] == searchBranch and noOfVisits[index] &gt; 5:
+        dogCount += 1
+
+print(dogCount)</pre>
+    </div>
+          <p>The SQA Reference Language version would be:</p>
+
+          <div class="code-block">
+      <div class="code-label">SQA Reference Language — Full Example Answer</div>
+      <pre>RECEIVE searchBranch FROM KEYBOARD
+
+SET dogCount TO 0
+
+FOR counter FROM 0 TO LENGTH(branch) - 1 DO
+    IF branch[counter] = searchBranch AND noOfVisits[counter] &gt; 5 THEN
+        SET dogCount TO dogCount + 1
+    END IF
+END FOR
+
+SEND dogCount TO DISPLAY</pre>
+          </div>
+        </details>
       </div>
     </article>
 
     <article>
       <h2 id="linear-search">Linear Search</h2>
-      <p>Linear search is used with one or more arrays of items. We traverse (loop through) the array, looking for a particular value. If one of the items in the array matches the search value, we do something.</p>
-      <p>There are two common variations: one records <strong>whether</strong> something is found, while the other records <strong>where</strong> it was found (its position in the list).</p>
+      <p>A linear search, searches for a specific target, or set of conditions, and then processes this data if found, and normally displaying that it is not found if the condition isn't met.</p>
+      <p>There are two common variations: one records <strong>whether something is found or not</strong>, while the other records <strong>where it was found (its position in the list), and it's related data</strong>.</p>
 
       <h3>Recording Whether an Item is Found</h3>
+      <p>Here, we are going to search through a single array, and use a <strong>found flag</strong> to identify if the user entered target is found or not.</p>
       <div class="code-block">
         <div class="code-label">Python — Linear Search (found flag)</div>
-        <pre>names = ["Dopey", "Grumpy", "Doc", "Bashful", "Sneezy", "Sleepy", "Happy"]
+        <pre>names = ["Pearse", "Sophia", "Hugh", "James", "Elise", "Iona", "Quintin"]
+
 target = input("Enter a name to look for")
 found = False
 
-for counter in range(0, 7):
+for counter in range(len(names)):
   if names[counter] == target:
     found = True
 
-print("Item was found:", found)</pre>
+if found:
+  print(target + " was found")
+else:
+  print(target + " was not found")</pre>
       </div>
 
+      <p>In the example above, lets say <code>target</code> is entered as <strong>Hugh</strong>. We would get the message <strong>Hugh was found</strong> as when <code>counter</code> is 2, the condition would evaluate to true as <code>names[counter]</code> would be Hugh. This would set <strong>found to True</strong>.</p>
+      <p>However if <code>target</code> was entered as <strong>Rory</strong>, we would get the message <strong>Rory was not found</strong>. This name does not appear in the list, so <code>found</code> remains False, and the print in the else block is printed as a result.</p>
+
       <h3>Recording the Position of an Item</h3>
+      <p>Sometimes, instead of just whether it has been found or not, we want the position. This is particularly helpful when we are using Parallel Arrays or Array of Records and want to return related data to the target.</p>
+      <p>To make sure we can identify whether the target is found or not, we set <code>position = -1</code>. -1 is not a position in the list, and as such, it position remains -1, we know the target is not found.</p>
       <div class="code-block">
         <div class="code-label">Python — Linear Search (position)</div>
-        <pre>names = ["Dopey", "Grumpy", "Doc", "Bashful", "Sneezy", "Sleepy", "Happy"]
+        <pre>names = ["Pearse", "Sophia", "Hugh", "James", "Elise", "Iona", "Quintin"]
+
 target = input("Enter a name to look for")
 position = -1
 
@@ -403,8 +709,13 @@ for counter in range(0, 7):
   if names[counter] == target:
     position = counter
 
-print("Item was found at position:", position)</pre>
+if position != -1:
+  print(target + " was found")
+else:
+  print(target + " was not found")</pre>
       </div>
+
+      <p>This would give us the same result as the 1st example, but becomes much more useful when we use Parallel Arrays, as we will see in a moment.</p>
 
       <div class="callout callout-tip">
         <div class="callout-icon">💡</div>
@@ -415,8 +726,9 @@ print("Item was found at position:", position)</pre>
       <p>Linear search is often used to find an item in one array, then read the corresponding data from a second, parallel array.</p>
       <div class="code-block">
         <div class="code-label">Python — Linear Search Across Parallel Arrays</div>
-        <pre>pupils = ["Fry", "Bender", "Leela", "Hermes", "Zoidberg"]
-marks = [10, 2, 1, 8, 9]
+        <pre>pupils = ["Pearse", "Sophia", "Hugh", "James", "Elise", "Iona", "Quintin"]
+marks = [8, 10, 6, 6, 9, 7, 9]
+
 target_name = input("Please enter a name: ")
 position = -1
 
@@ -424,25 +736,31 @@ for counter in range(len(pupils)):
   if pupils[counter] == target_name:
     position = counter
 
-their_mark = marks[position]
+
 
 if position != -1:
-  print(target_name + " got the mark " + str(their_mark))
+  print(target_name + " got the mark " + marks[position])
 else:
   print("Target not found")</pre>
       </div>
+
+      <p>Again, this works in exactly the same way regarding finding the name, but we can then use the position to retrieve the correct mark.</p>
+      <p>So if we enter <strong>Quintin</strong> as the <code>target</code>, he will be found when counter is 6. This means we will get the mark at position 6, so the message will be <strong>Quintin got the mark 9</strong>.</p>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Linear Search — Video Explanation</p>
         <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-linear-search"
-            title="Linear Search Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+          <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/b7uC24IltlM?si=raWtgqKRyZ2KhYj2" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
         </div>
       </div>
 
@@ -450,165 +768,185 @@ else:
         <div class="ip-icon">💻</div>
         <div class="ip-body">
           <div class="ip-title">Try It — Linear Search</div>
-          <div class="ip-sub">Interactive editor coming here — modify the target value and trace how the algorithm finds (or doesn't find) a match</div>
+          <div class="trinket-embed" data-trinket="https://trinket.io/embed/python3/7f8b3af78ae9" data-height="356"><button type="button" class="trinket-load"><span class="tl-icon">▶</span>Load interactive Python editor</button></div>
         </div>
       </div>
 
-      
+      <p>The following practice question shows how a <strong>Linear Search</strong> is used with <strong>Array of Records</strong>. As with find min & max, the logic doesn't change, just how you access the data.</p>
 
-    </article>
+      <h3 id="practice">Practice Question</h3>
+      <div class="practice-q">
+        <div class="q-label">Linear Search — SQP Q6 c) - 6 Mark</div>
 
+        <p>In this question we will need to define a record and an array of records structure. I have skipped this bit of the question to focus solely on the <strong>Linear Search</strong>.</p>
 
-    
-    <article>
-      <h2 id="count">Count Occurrences</h2>
-      <p>Count occurrences is very similar to linear search. The user enters a target/search term. The algorithm then searches the array. If the target is found, instead of recording position, it adds +1 to a total/counter.</p>
-      <p>The algorithm can search for exact matches, or apply conditional logic — values above a threshold, even numbers, uppercase letters, and so on.</p>
+		    <img src="../resources/sdd/stand_algo_q4_1.png">
+        <img src="../resources/sdd/stand_algo_q4_2.png">
 
-      <div class="callout callout-warning">
-        <div class="callout-icon">⚠️</div>
-        <div>Do not confuse counting occurrences with keeping a <strong>running total</strong>: one counts how many of something there are, the other adds them all together.</div>
-      </div>
+        <p>This question relates to athelets, and their name and club is stored, along with an event, and a distance.</p>
+        <p>We want to store 800 of these (not important for the question overall, but for the sake of the array I will declare below).</p>
+        <p>Going through the process from the Array of Records section on the Data Structures page, we end up with:</p>
 
-      <h3>Counting Exact Matches</h3>
-      <div class="code-block">
-        <div class="code-label">Python — Count Matching Car Makes</div>
-        <pre>cars = ["Ford", "Ford", "Toyota", "Volkswagen", "Kia", "Nissan", "Honda"]
-make = input("Please enter a make: ")
-count = 0
-for index in range(len(cars)):
-  if cars[index] == make:
-    count = count + 1
-print("There were", count, "matching cars")</pre>
-      </div>
+        <div class="code-block">
+          <div class="code-label">Python — Full Example Answer</div>
+            <pre>DECLARE athlete AS RECORD (STRING: athleteName, STRING: club, STRING: event, REAL: distance)
 
-      <h3>Counting with a Condition (Range Check)</h3>
-      <div class="code-block">
-        <div class="code-label">Python — Count Values of 50% or More</div>
-        <pre>percentages = [99.7, 100.0, 52.6, 13.9, 15.2, 88.1, 64.7, 22.5, 71.8]
-target = 50.0
-count = 0
-for index in range(len(percentages)):
-  if percentages[index] &gt;= target:
-    count = count + 1
-print("There were", count, "values of 50% or more")</pre>
-      </div>
-
-      <h3>Counting into Two Categories (Odd / Even)</h3>
-      <div class="code-block">
-        <div class="code-label">Python — Count Odd and Even Numbers</div>
-        <pre>numbers = [99, 44, 55, 12, 19, 72, 60, 54, 13, 18, 2, 75]
-odd_count = 0
-even_count = 0
-for index in range(len(numbers)):
-  if (numbers[index] % 2) == 0:
-    even_count = even_count + 1
-  else:
-    odd_count = odd_count + 1
-print("There were", even_count, "even numbers")
-print("and", odd_count, "odd numbers in the list")</pre>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Count Occurrences — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-count"
-            title="Count Occurrences Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+DECLARE athleteArray AS ARRAY OF RECORD athlete () * 800</pre>
         </div>
-      </div>
 
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Count Occurrences</div>
-          <div class="ip-sub">Interactive editor coming here — change the target value and see the counter increment each time a match is found</div>
-        </div>
-      </div>
-    </article>
+		<h5>What Is The Question Asking?</h5>
+    <p>Now we have our Record and Array of Records set up, we can dig into the Linear Search Properly.</p>
+    <p>Remember this questions is <strong>6 Marks</strong>.You need to write code that:</p>
+    <ul>
+      <li>asks users to enter an athlete <strong>name</strong> and <strong>event</strong>.</li>
+      <li>If found, their name, event and distance should be displayed</li>
+      <li>if not, "Competitor not found" should be displayed</li>
+      <li>To do this we will need to</li>
+      <ul>
+        <li>Loop through the array</li>
+        <li>Compare the user entered values to the current values in the array</li>
+        <li>Update a found flag or position if the athlete is found</li>
+      </ul>
+    </ul>
 
-    <article>
-      <h2 id="records">Applying Algorithms to Arrays of Records</h2>
-      <p>All three algorithms work with arrays of records — you simply specify which <strong>field</strong> to compare.</p>
+    <h5>Working Through the Answer</h5>
 
+    <h6>Step 1: Identify the Algorithm</h6>
+    <p>You know from the placement of this question on this page it is a Linear Search, but in an exam, you need to work out what algorithm it is you are using. This will help you start your answer.</p>
+    <p>We know that the user is <strong>enter a name and an event</strong>. That narrows it down to Count Occurrences or Linear Search.</p>
+    <p>We can then confirm it is a linear search as:</p>
+    <ul>
+      <li>At no point does it mention a count</li>
+      <li>We can see we need to print a message of "Competitor not found" if the targets aren't found.</li>
+      <li>We are only printing 1 thing, not multiple.</li>
+    </ul>
+
+    <p>Once you have correctly identified the algorithm, you will be in a better place to push on.</p>
+
+    <h6>Step 2: Get the name and event from the user</h6>
+    <p>You need input variables, for example <code>searchName</code> and <code>searchEvent</code>. This stores the name and event the user wants to search for.</p>
+    <div class="code-block">
+      <pre>searchName = input("Enter the name you want to search for: ")
+searchEvent = input("Enter the event you want to search for: ")</pre>
+    </div>
+
+    <p>This, along with ensuring you use the correct variable names you have declared here in <strong>Step 5</strong> will gain you <strong>1 Mark</strong>.</p>
+
+    <h6>Step 3: Set a Found Variable or Position</h6>
+    <p>As this is a Linear Search, we need a mechanism for identifying if the targets are found or not. We could use <code>found = False</code>, but as we need to gather the distance, as well as the 2 target values, I'm going to use <code>pos = -1</code>.</p>
+    <p>If the targets are found, and the pos updated, I will easily be able to retrieve the distance from the array and print it alongside it's related data.</p>
+    <div class="code-block">
+      <pre>pos = -1</pre>
+    </div>
+
+    <h6>Step 4: Loop through every Athlete</h6>
+    <p>As with all standard algorithms, once my variables are intialised, I then loop through my array. Remember, the array here is called <code>athleteArray</code>.</p>
+    <div class="code-block">
+      <pre>for index in range(len(athleteArray)):</pre>
+    </div>
+
+    <p>Based on the marking scheme, this gains <strong>1 Mark, although in more recent exams, looping correctly is bundled with other marks as opposed to a single mark for looping.</strong></p>
+
+    <h6>Step 5: Compare the Values</h6>
+    <p>As I have taken in 2 targets, I need 2 parts to my if statement. In this case, I am checking if <code>searchName is equal to the name in the current record</code> and <code>searchEvent is equal to the event in the current record</code>:</p>
+    <ul>
+      <li><code>athleteArray[index].athleteName</code> matches the user's entered name, <strong>AND</strong></li>
+      <li><code>athleteArray[index].event</code> matches the user's entered event</li>
+    </ul>
+    <p>In Python:</p>
+    <div class="code-block">
+      <pre>if athleteArray[index].athleteName == searchName and athleteArray[index].event == searchEvent:</pre>
+    </div>
+
+    <p>This step, with the correct condition logic, will gain <strong>1 Mark</strong></p>
+
+    <h6>Step 6: If the condition from Step 5 is True, update the position</h6>
+    <p>If both conditions are true, set pos to index:</p>
+    <div class="code-block">
+      <pre>pos = index</pre>
+    </div>
+
+    <h6>Step 7: After the loop, print the appropriate message</h6>
+    <p>The indentation for this step is really important, as a lot of pupils include this in their loop. <strong>If you include your print logic (the following code) inside your loop, it will print not found 799 or 800 times, instead of just once.</strong></p>
+    <p>We need to use our <code>pos</code> variable, to identify if the targets are found. <strong>This should be done after the loop to avoid excessive printing</strong>.</p>
+    <p>To do this we need to check if pos is -1 or not, and then tailor the message to suit. <strong>Always check the question in case it wants specific wording for the messages</strong>. In this case, we have 2 examples: <strong>J Smith threw 17.23 in the Shot Putt</strong> and <strong>Competitor not found</strong>. We need to match these in our answer:</p>
+    <div class="code-block">
+      <pre>if pos != -1:
+  print(athleteArray[pos].athleteName + " threw " + athleteArray[pos].distance + " in the " + athleteArray[pos].event)
+else:
+  print("Competitor Not Found")</pre>
+    </div>
+
+    <p><strong>2 Marks</strong> are available for this step:</p>
+    <ul>
+      <li>Using found or pos (Must also do Step 3 & 6 correctly) to decide which message to print</li>
+      <li>Printing the correct messages, with variables correctly concatenated (the name, event and distance displaying correctly with the message)</li>
+    </ul>
+
+    <p>The eagle eyed will spot that is only 5, and the question is out of 6. The final mark is for <strong>correct use of the array of records variable</strong>. Remember, you need to use the array name, dot notation, and the correct field names.</p>
+
+		<img src="../resources/sdd/stand_algo_q4_ans.png">
+        <details class="q-answer">
+          <summary>Suggested answer</summary>
+          <p>The python version of the full answer we worked through would be:</p>
       <div class="code-block">
-        <div class="code-label">Find Maximum in an Array of Records</div>
-        <pre>RECORD Pupil IS
-    name : STRING
-    mark : INTEGER
-END RECORD
+      <div class="code-label">Python — Full Example Answer</div>
+      <pre>searchName = input("Enter the name you want to search for: ")
+searchEvent = input("Enter the event you want to search for: ")
 
-DECLARE class AS ARRAY OF Pupil INITIALLY []
-# (assume class is populated with pupil data)
+pos = -1
 
-DECLARE maxIndex AS INTEGER INITIALLY 0
+for index in range(len(athleteArray)):
+    if athleteArray[index].athleteName == searchName and athleteArray[index].event == searchEvent:
+        pos = index
 
-FOR i FROM 1 TO LENGTH(class) - 1 DO
-    IF class[i].mark > class[maxIndex].mark THEN
-        SET maxIndex TO i
+if pos != -1:
+  print(athleteArray[pos].athleteName + " threw " + athleteArray[pos].distance + " in the " + athleteArray[pos].event)
+else:
+  print("Competitor Not Found")</pre>
+    </div>
+          <p>The SQA Reference Language version would be:</p>
+
+          <div class="code-block">
+      <div class="code-label">SQA Reference Language — Full Example Answer</div>
+      <pre>RECEIVE searchName FROM KEYBOARD
+RECEIVE searchEvent FROM KEYBOARD
+
+SET pos TO -1
+
+FOR index FROM 0 TO LENGTH(athleteArray) - 1 DO
+    IF athleteArray[index].athleteName = searchName AND athleteArray[index].event = searchEvent THEN
+        SET pos TO index
     END IF
 END FOR
 
-SEND "Top pupil: " &amp; class[maxIndex].name &amp;
-     " with " &amp; class[maxIndex].mark TO DISPLAY</pre>
+IF pos ≠ -1 THEN
+  SEND (athleteArray[pos].athleteName & " threw " & athleteArray[pos].distance & " in the " & athleteArray[pos].event) TO DISPLAY
+ELSE
+  SEND "Competitor Not Found" TO DISPLAY
+END IF</pre>
+          </div>
+        </details>
       </div>
 
-      <div class="code-block">
-        <div class="code-label">Linear Search on a Record Field</div>
-        <pre>DECLARE target AS STRING INITIALLY "Bob"
-DECLARE found AS BOOLEAN INITIALLY FALSE
-DECLARE foundAt AS INTEGER INITIALLY -1
+    </article>
 
-FOR i FROM 0 TO LENGTH(class) - 1 DO
-    IF class[i].name = target THEN
-        SET found TO TRUE
-        SET foundAt TO i
-    END IF
-END FOR</pre>
-      </div>
+    
+    <article>
+      <h2 id="records">Applying Algorithms to Parallel Arrays vs Array of Records</h2>
+      <p>All three algorithms work with arrays of records — you simply specify which <strong>field</strong> to compare.</p>
+
+      <p>The table below should help highlight the different ways you access the data if you are using Parallel Arrays, vs Array of Records.</p>
 
       <table>
         <thead><tr><th>Algorithm</th><th>Array version</th><th>Array of records version</th></tr></thead>
         <tbody>
-          <tr><td>Linear search</td><td><code>names[i] = target</code></td><td><code>class[i].name = target</code></td></tr>
-          <tr><td>Find max</td><td><code>marks[i] > marks[max]</code></td><td><code>class[i].mark > class[max].mark</code></td></tr>
-          <tr><td>Count occurrences</td><td><code>grades[i] = "A"</code></td><td><code>class[i].grade = "A"</code></td></tr>
+          <tr><td>Linear search</td><td><code>names[i] = target</code></td><td><code>array[i].name = target</code></td></tr>
+          <tr><td>Find max</td><td><code>marks[i] > marks[max]</code></td><td><code>array[i].mark > array[max].mark</code></td></tr>
+          <tr><td>Count occurrences</td><td><code>grades[i] = "A"</code></td><td><code>array[i].grade = "A"</code></td></tr>
         </tbody>
       </table>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Algorithms on Arrays of Records — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-records-algorithms"
-            title="Applying Algorithms to Arrays of Records"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Algorithms on Arrays of Records</div>
-          <div class="ip-sub">Interactive editor coming here — apply linear search, find max, and count occurrences on a record field of your choice</div>
-        </div>
-      </div>
-    </article>
-
-    <div class="placeholder-block">
-      <div class="placeholder-icon">📋</div>
-      <div class="placeholder-text">Practice Questions — Standard Algorithms</div>
-      <div class="placeholder-sub">Write and trace algorithms on 1D arrays and arrays of records</div>
-    </div>
+    
 
   </div>
   </div>
