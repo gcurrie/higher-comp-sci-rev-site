@@ -338,16 +338,16 @@ END FOR</pre>
         <li>End for loop</li>
       </ul>
 
-      <p>Here is a basic Fin Max, using the same data from the corresponding example in the Find Min section. The changes have been highlighted <strong style="color:red;">RED</strong>.</p>
+      <p>Here is a basic Find Max, using the same data from the corresponding example in the Find Min section. The changes have been highlighted <strong style="color:red;">RED</strong>.</p>
 
       <div class="code-block">
         <div class="code-label">Find Maximum</div>
         <pre>numbers = [33, 44, 55, 12, 19, 72, 60, 54, 13, 98, 2, 75]
-<span style="color:red;">maximum</span> = numbers[0]
+<span class="code-change">maximum</span> = numbers[0]
 for index in range(1, len(numbers)):
-  if numbers[index] <span style="color:red;">&gt; maximum</span>:
-    <span style="color:red;">maximum</span> = numbers[index]
-print("The <span style="color:red;">highest</span> number is", <span style="color:red;">maximum</span>)</pre>
+  if numbers[index] <span class="code-change">&gt; maximum</span>:
+    <span class="code-change">maximum</span> = numbers[index]
+print("The highest number is", <span class="code-change">maximum</span>)</pre>
       </div>
 
       <div class="video-section">
