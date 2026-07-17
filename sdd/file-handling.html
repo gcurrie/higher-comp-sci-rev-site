@@ -68,6 +68,10 @@
 
     <article>
       <h2 id="reading">Reading from a File (Single Line Data)</h2>
+      <p><strong>Reading from a file</strong> takes the contents of a file and adds it to your program. This allows the program to take large amounts of <strong>input</strong> from a file, instead of the user typing in all the required data.</p>
+      <p>Let's say a program takes in pupil test scores for 50 pupils. Instead of the user typing in all of this data, the program could instead read this data from a file. This is more efficient as it removes the time taken to type in the 50 scores, and prevents human error when typing the data.</p>
+
+      <h3>Reading a Single Value</h3>
       <p>To retrieve saved data, open the file in read mode (<code>"r"</code>). The <code>read()</code> function retrieves all of the data at once into a single variable. Use this approach when the file only contains a single value that you have to read in.</p>
 
       <div class="code-block">
@@ -103,15 +107,54 @@ passwordfile.close()</pre>
       </div>
       <p>This program reads a password from <code>passwd.txt</code>, prompts the user for input, and checks whether the entries match.</p>
 
+      <h3>Reading Multiple Lines</h3>
+      <img src="../resources/sdd/namesFile.png" alt="Contents of names.txt showing a list of ten names" class="img-float-right">
+      <p>In the following example, we are going to read in multiple lines of data. We are only going to read in a single type of data — in this example, we will be reading in 10 names.</p>
+      <p>We start off by opening the file. In this case our file is called <strong>"names.txt"</strong>. You can see the contents in the image opposite, or use the file tree on the left to check the file for yourself.</p>
+
+      <div class="code-block" style="clear:both;">
+        <div class="code-label">Python — Open the File</div>
+        <pre>names_file = open("names.txt", "r")</pre>
+      </div>
+      <p>Remember to use the <strong><code>"r"</code></strong> mode parameter so the program knows you are reading data.</p>
+
+      <p>Next, we have to read each line. Instead of using the <code>read()</code> function as we did in the previous example, we need to use the <code>readlines()</code> function, as we are reading multiple lines. So we would have:</p>
+      <div class="code-block">
+        <div class="code-label">Python — Read All Lines</div>
+        <pre>names = names_file.readlines()</pre>
+      </div>
+      <p>This will read each line into an array. In this case we are assigning the array returned by the <code>readlines()</code> function to the <strong>names variable</strong>. So <code>names</code> will store our list of names.</p>
+
+      <p>Any time you read in a multi-line file, you will need to loop through your data. As we now have an array of names, what we can do is:</p>
+      <div class="code-block">
+        <div class="code-label">Python — Loop Through the Names</div>
+        <pre>for name in names:</pre>
+      </div>
+      <p>This will loop through each name in the array.</p>
+
+      <p>To print out each name to check we have read the file correctly, we can then do:</p>
+      <div class="code-block">
+        <div class="code-label">Python — Print Each Name</div>
+        <pre>for name in names:
+  print(name)</pre>
+      </div>
+
+      <p>Finally, once we are finished with the file, we close it:</p>
+      <div class="code-block">
+        <div class="code-label">Python — Close the File</div>
+        <pre>names_file.close()</pre>
+      </div>
+
       <div class="video-section">
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Reading from a File — Video Explanation</p>
         <div class="video-embed">
           <iframe
-            src="https://www.youtube.com/embed/placeholder-file-reading"
-            title="Reading from a File Explained"
+            src="https://www.youtube.com/embed/DDt8bfTpM1o?si=Ud-FtTa4dTEmsNZz"
+            title="Reading from a File — Video Explanation"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
           </iframe>
         </div>

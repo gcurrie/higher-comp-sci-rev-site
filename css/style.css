@@ -1279,6 +1279,26 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
    Survives the syntax highlighter (it only rewrites text nodes). */
 .code-change { color: #FF6B6B; font-weight: 700; }
 
+/* Float an image to the right so body text wraps beside it (saves space).
+   Stacks full-width on narrow screens. */
+.content-area article img.img-float-right {
+  float: right;
+  width: 42%;
+  max-width: 340px;
+  margin: 0 0 1rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 700px) {
+  .content-area article img.img-float-right {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+}
+
 /* ── Example blocks ───────────────────────────────────────── */
 .example-block {
   background: var(--cream);
