@@ -60,14 +60,18 @@
       </div>
       <p>At Higher level you need to be able to <strong>read data from</strong> and <strong>write data to</strong> files. In Python you open a file with <code>open(filename, mode)</code> — where the mode is <code>"r"</code> to read or <code>"w"</code> to write — and you should always <code>close()</code> the file when you are finished.</p>
 
-      <div class="callout callout-info">
-        <div class="callout-icon">ℹ️</div>
-        <div>Key Python file-handling terms: <code>open()</code> (opens a file in a given mode), <code>"r"</code> (read mode), <code>"w"</code> (write mode — overwrites existing contents), <code>read()</code> (reads the whole file into one variable), <code>write()</code> (writes a string to the file), <code>close()</code> (closes the file so changes are saved), and <code>.split(",")</code> (splits a CSV line into separate fields).</div>
-      </div>
+      <h3 id="key-terms">Key Terms & Knowledge</h3>
+      <div class="key-terms">
+        <div class="key-term"><div class="term">Read</div><div class="def">Loads existing data from a text or csv file into your program.</div></div>
+        <div class="key-term"><div class="term">Write</div><div class="def">Saves data from your program into an external file (text or csv).</div></div>
+        <div class="key-term"><div class="term">open()</div><div class="def">A file must be opened before you can <strong>read</strong> or <strong>write</strong>data to it.</div></div>
+        <div class="key-term"><div class="term">close()</div><div class="def">When a file is opened within your program, it must be closed once you are finished reading or writing.</div></div>
+        <div class="key-term"><div class="term">\n</div><div class="def">A new line character that allows you to move anything after it onto a new line when writing to a file.</div></div>
+        </div>
     </article>
 
     <article>
-      <h2 id="reading">Reading from a File (Single Line Data)</h2>
+      <h2 id="reading">Reading from a Text File</h2>
       <p><strong>Reading from a file</strong> takes the contents of a file and adds it to your program. This allows the program to take large amounts of <strong>input</strong> from a file, instead of the user typing in all the required data.</p>
       <p>Let's say a program takes in pupil test scores for 50 pupils. Instead of the user typing in all of this data, the program could instead read this data from a file. This is more efficient as it removes the time taken to type in the 50 scores, and prevents human error when typing the data.</p>
 
@@ -149,12 +153,14 @@ passwordfile.close()</pre>
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Reading from a File — Video Explanation</p>
         <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/DDt8bfTpM1o?si=Ud-FtTa4dTEmsNZz"
-            title="Reading from a File — Video Explanation"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/nluvxxucsso?si=QqWjE91Vc2XDP7wr" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
             allowfullscreen>
           </iframe>
         </div>
