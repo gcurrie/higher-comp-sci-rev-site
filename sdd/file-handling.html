@@ -167,15 +167,7 @@ passwordfile.close()</pre>
           </iframe>
         </div>
       </div>
-
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Reading from a File</div>
-          <div class="ip-sub">Interactive editor coming here — open a file in read mode, read its contents with read(), and display them</div>
-        </div>
-      </div>
-    </article>
+	</article>
 	
 	<article>
 		<h2 id="csv">Reading from CSV File</h2>
@@ -301,76 +293,301 @@ runnerFile.close()</pre>
 			allowfullscreen></iframe>
 		  </div>
 		</div>
+		
+		<div class="practice-q">
+			<div class="q-label">Read Data From File — 2022 q8 b)- 4 Mark</div>
+			<p>Very rarely are you asked to read from a file during an exam. You will definately have to do this in the coursework, and you will have to have knowledge of both <strong>reading</strong> & <strong>writing</strong> to file in <a href="">Data Flow</a> Questions, but it is unlikely you will be asked to implement code that reads data during the exam. </p>
+			<p>The following question is one of the few times this has been asked.</p>
 
-		<div class="interactive-placeholder">
-			<div class="ip-icon">💻</div>
-			<div class="ip-body">
-				<div class="ip-title">Try It — Reading from CSV File</div>
-				<div class="ip-sub">Interactive editor coming here — read a CSV file line by line, split each line and load it into an array of records</div>
+			<img src="../resources/sdd/file_hand_q1.png">
+			
+			<p>The context is that a game is created where users guess the word, that is selected at random, based on a picture.</p>
+        
+			<h5>What Is The Question Asking?</h5>
+			<p>Remember this question is <strong>4 Marks</strong>. Some important points:</p>
+			<ul>
+			  <li>The file we are reading from is called <code>threeLetters.txt</code>. We must use this filename</li>
+			  <li>Our solution must <strong>read</strong> data from the above file</li>
+			  <li>One of the words in the file, once loaded into the program, must be chosen at random and assigned to the variable <code>chosenWord</code></li>
+			  <li>The question asks for us to use <strong>"a design technique of our choice"</strong>. This means we can freely use psuedocode, and don't have to fully abide by things like <code>[counter]</code> for arrays or <strong>dot notation</strong> for array of records. Our logic still needs to be correct, but we can be a bit less formal in our solution</li>
+			</ul>
+
+			<h5>Working Through the Answer</h5>
+
+			<h6>Step 1: What data Structure do I need</h6>
+			<p>I know that I am <strong>reading</strong> <code>threeLetters.txt</code>, but what data structure should I use?.</p>
+			<p>I am not given any sample data, but I can see that it is a <code>.txt</code> file. This means that it will be <strong>one piece of data per line</strong>. As there is only one piece per line, I am only storing a list of the same data type, so I can just use a basic array.</p>
+			<p>Remember, we can just use psuedocode for this solution. <strong>(You can use python or any other programming language if you want to)</strong></p>
+	
+			<div class="code-block">
+				<div class="code-label">Initialiseing Array</div>
+				<pre>Initialise array called wordsArray of type string</pre>
 			</div>
-		</div>
+
+			<h6>Step 2: Open the file</h6>
+			<p>Now we have our data structure, we need to open the file. <strong>Remember, we need to use the name given in the question</strong>.</p>
+
+			<div class="code-block">
+				<div class="code-label">Open the file</div>
+				<pre>Open file threeLetters.txt</pre>
+			</div>
+			
+
+			<p>This, along with step 5, would gain <strong>1 Mark</strong>. </p>
+
+			<h6>Step 3: Read the file into the data structure</h6>
+			<p>Now we need to read the data from the open file into our data structure.</p>
+			<div class="code-block">
+				<div class="code-label">Read File</div>
+				<pre>Loop through each line in the file
+	Append the current word from threeLetters.txt to the wordsArray</pre>
+			</div>
+			
+			<p>Reading the contents of the file to your data structure would gain <strong>1 Mark</strong></p>
+
+			<h6>Step 4: Generate your random number</h6>
+			<p>In order to pick a word at random, we need to generate a random number between 0 and the length of the list  (or file).</p>
+			<div class="code-block">
+				<div class="code-label">Generate the random number</div>
+				<pre>randomNumber = generate random number between 0 and the length of the list</pre>
+			</div>
+			
+			<p>This gains <strong>1 Mark</strong>.</p>
+
+			<h6>Step 5: Assign the random word to chosen word</h6>
+			<p>Now we need to take the random number, and get the word at that position in words array, and assign it to <code>chosenWord</code>.</p>
+			<div class="code-block">
+				<div class="code-label">Assign randomWord to chosenWord</div>
+				<pre>chosenWord = wordsArray at position randomNumber</pre>
+			</div>
+			
+			<p>This gains <strong>1 Mark</strong>.</p>
+			
+			<h6>Step 6: Close the file</h6>
+			<p>Lastly, we need to close threeLetters.txt.</p>
+			<div class="code-block">
+				<div class="code-label">Closing the file</div>
+				<pre>Close threeLetters.txt</pre>
+			</div>
+			
+			<p>This, along with step 2, gains <strong>1 Mark</strong>.</p>
+
+		    <img src="../resources/sdd/file_hand_q1_ans.png">
+			<details class="q-answer">
+				<summary>Suggested answer</summary>
+				<p>So our solution above put together would be:</p>
+				<div class="code-block">
+					<div class="code-label">Psuedocode — Full Example Answer</div>
+					<pre>Initialise array called wordsArray of type string
+
+Open file threeLetters.txt
+
+Loop through each line in the file
+	Append the current word from threeLetters.txt to the wordsArray
+	
+Close threeLetters.txt
+
+randomNumber = generate random number between 0 and the length of the list
+chosenWord = wordsArray at position randomNumber</pre>
+				</div>
+
+				<p>The Python version would be:</p>
+
+				<div class="code-block">
+				<div class="code-label">Python — Full Example Answer</div>
+					<pre>wordsArray = []
+
+wordsFile = open("threeLetters.txt", "r")
+wordList = wordsFile.readLines()
+
+for word in wordList:
+	wordsArray.append(word)
+	
+wordsFile.close()
+	
+randomNumber = random.randint(0, len(wordsArray)
+chosenWord = wordsArray[randomNumber]</pre>
+				</div>
+			</details>
+        </div>
+		
     </article>
 
 
     <article>
-      <h2 id="writing">Writing to a File</h2>
-      <p>Writing to a file uses write mode (<code>"w"</code>). This creates the file if it does not exist, but be careful — it <strong>overwrites whatever was previously in the file</strong>. The <code>write()</code> function saves data to the file, and you must <code>close()</code> the file when finished.</p>
+		<h2 id="writing">Writing to a File</h2>
+		<p>Writing to a file uses write mode (<code>"w"</code>). This creates the file if it does not exist, but be careful — it <strong>overwrites whatever was previously in the file</strong>. The <code>write()</code> function saves data to the file, and you must <code>close()</code> the file when finished.</p>
+	  
+		<p>The <code>write()</code> can basically act as a substitute for a print statement, as the message within the brackets will be the same regardless, <strong>(unless you want to write to the file across multiple lines)</strong>.</p>
 
-      <div class="code-block">
-        <div class="code-label">Python — Writing a Message</div>
-        <pre>messagefile = open("message.txt", "w")
+		<div class="code-block">
+			<div class="code-label">Python — Writing a Message</div>
+			<pre>messagefile = open("message.txt", "w")
 messagefile.write("Bla bla, this message will be saved in the file")
 messagefile.close()</pre>
-      </div>
+		</div>
+	  
+		<p>Here, the message <strong>Bla bla, this message will be saved in the file</strong> will be written to the file <code>message.txt</code>.</p>
 
-      <div class="code-block">
-        <div class="code-label">Python — Writing a Variable to a File</div>
-        <pre>animalfile = open("animals.txt", "w")
+		<div class="code-block">
+			<div class="code-label">Python — Writing a Variable to a File</div>
+			<pre>animalfile = open("animals.txt", "w")
 elephant = "Arthur"
 animalfile.write(elephant)
 animalfile.close()</pre>
-      </div>
+		</div>
+	  
+		<p>Here, the contents of the variable <code>elephant</code>, which is <strong>Arthur</strong> will be written to the file <code>animals.txt</code>.</p>
+	  
+		<p>If we want to write a message that contains a variable, this works in the same way as a print.</p>
 
-      <h3>Writing Multiple Lines</h3>
-      <p>To write several entries on separate lines, add the newline character <code>"\n"</code> to the end of each piece of data.</p>
-      <div class="code-block">
-        <div class="code-label">Python — Writing Multiple Lines with \n</div>
-        <pre>name = "Jane"
-outputFile = open("name.txt", "w")
-for counter in range(10):
-    outputFile.write("The name is " + name + "\n")
+		<div class="code-block">
+			<div class="code-label">Python — Writing a message with a variable to a File</div>
+			<pre>pupilFile = open("marks.txt", "w")
+pupilFile.write(pupilName + " got the mark " + percentage + "%")
+pupilFile.close()</pre>
+		</div>
+
+		<h3>Writing Multiple Lines</h3>
+		<p>To write several entries on separate lines, add the newline character <code>"\n"</code> to the end of each piece of data.</p>
+		<p>Let's say we have the following list of names stored in an array called <code>outputNames</code>:</p>
+		<img src="../resources/sdd/names.png">
+		<div class="code-block">
+			<div class="code-label">Python — Writing Multiple Lines with \n</div>
+			<pre>outputFile = open("names.txt", "w")
+for counter in range(len(outputNames)):
+    outputFile.write("The name is " + outputNames[counter] + "\n")
 outputFile.close()</pre>
-      </div>
+		</div>
+	  
+		<p>The output, <strong>if we did not have the "\n"</strong> would be:</p>
+		<img src="../resources/sdd/writeNames1.png">
+		<br>
+		<p>The output, <strong>with the "\n"</strong> would be:</p>
+		<img src="../resources/sdd/writeNames2.png">
 
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Writing to a File — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-file-writing"
-            title="Writing to a File Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
+		<div class="video-section">
+			<div class="video-section-label">Watch</div>
+			<p class="video-section-title">Writing to a File — Video Explanation</p>
+			<div class="video-embed">
+				<iframe 
+					width="560" 
+					height="315" 
+					src="https://www.youtube.com/embed/DvKh6ul8x2E?si=-YYd1jMXT5B10euM" 
+					title="YouTube video player" 
+					frameborder="0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+					referrerpolicy="strict-origin-when-cross-origin" 
+					allowfullscreen>
+				</iframe>
+			</div>
+		</div>
+		
+		<div class="practice-q">
+			<div class="q-label">Write Data To File — SQP q6 b)- 5 Mark</div>
+			<p>Normally, if writing to file is required in the exam, it will be a small piece of a larger question. You are more likely to be asked to do this in the coursework, and you will have to have knowledge of both <strong>reading</strong> & <strong>writing</strong> to file in <a href="">Data Flow</a> Questions.</p>
+			
+			<img src="../resources/sdd/file_hand_q2-1.png">
+			
+			<p>A record structure, and an Array of Records of size 800 was created in part a), and is needed for this question. If you need a refresher of how to do this, go to the <a href="">Data Structures</a> page.</p>
+			
+			<p>The record & array of record structure are:</p>
+			
+			<div class="code-block">
+				<div class="code-label">Athlete Record & Array of Records Structure</div>
+				<pre>DECLARE athlete AS RECORD (STRING: athleteName, STRING: club, STRING: event, REAL: distance)
 
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Writing to a File</div>
-          <div class="ip-sub">Interactive editor coming here — open a file in write mode, write several lines using \n, then read them back</div>
+DECLARE athleteArray AS ARRAY OF RECORD athlete () * 800</pre>
+			</div>
+			
+        
+			<h5>What Is The Question Asking?</h5>
+			<p>Remember this question is <strong>5 Marks</strong>. Some important points:</p>
+			<ul>
+			  <li>Check if the athlete's event was Javelin</li>
+			  <li>Check if their distance was 70 metres or more</li>
+			  <li>Do this for all 800 athletes</li>
+			  <li>If there are any who meet this criteria, create a file and write their name, and club to it.</li>
+			</ul>
+
+			<h5>Working Through the Answer</h5>
+
+			<h6>Step 1: Open The File</h6>
+			<p>In this case, I may need to add multiple athletes to the file, so rather than opening and closing it within the loop, I will do this before and then close it after.</p>
+
+			<div class="code-block">
+				<div class="code-label">Open File</div>
+				<pre>javelinFile = open("javelin.csv", "w")</pre>
+			</div>
+			
+			<p>If using python, you must make sure it is open in write mode - <code>"w"</code>.</p>
+			
+			<p>This, along with step 5, would gain <strong>1 Mark</strong>.</p>
+
+			<h6>Step 2: Loop through all athletes</h6>
+			<p>Like all standard algorithms, I need to loop through my data structure</p>
+
+			<div class="code-block">
+				<div class="code-label">Loop through Array of Records</div>
+				<pre>for counter in range(len(athleteArray)):</pre>
+			</div>
+			
+
+			<p>This would gain <strong>1 Mark</strong>. </p>
+
+			<h6>Step 3: Complex Condition</h6>
+			<p>I now need to check: if the athlete's event is javelin, and if their distance thrown is 70 or more.</p>
+			<p><strong>As this is a design technique question, I don't need to make sure I use correct dot notation/etc, although it is still good practice to do so, as this is required in part c) - (<a href="">See practice question for linear search</a>)</strong></p>
+			<div class="code-block">
+				<div class="code-label">Complex Condition</div>
+				<pre>if athleteArray[counter].event == "Javelin" and athleteArray[counter].distance &gt;= 70:</pre>
+			</div>
+			
+			<p>The following would gain <strong>1 Mark</strong> each:</p>
+			<ul>
+				<li>The event condition</li>
+				<li>AND the distance (remember &gt;=, not just &gt;, it is 70 or more)</li>
+			</ul>
+
+			<h6>Step 4: If both conditions are true, Write to the file</h6>
+			<p>Now, if the conditions are true, I want to write that athletes data to the file. I only want the name, and club though.</p>
+			<div class="code-block">
+				<div class="code-label">Write to the File</div>
+				<pre>javelinFile.write(athleteArray[counter].athleteName + ", "+ athleteArray[counter].club + "\n")</pre>
+			</div>
+			
+			<p>This gains <strong>1 Mark</strong>.</p>
+
+			<h6>Step 5: Close the file</h6>
+			<p>Finally, I need to close the file after the loop has terminated.</p>
+			<div class="code-block">
+				<div class="code-label">Close File</div>
+				<pre>javelinFile.close()</pre>
+			</div>
+			
+			<p>This, along with step 1, gains <strong>1 Mark</strong>.</p>
+			
+			<p>The above was in python, but you can see a more basic pseudocode version in the marking instructions below. <strong> Remember that for a "programming language of your choice" question, you must use the array, and dot notation correctly as I have done above. You only get away with the sample answer in the marking instructions below if it is a "design technique of your choice question"</strong>.</p>
+		    <img src="../resources/sdd/file_hand_q2_ans.png">
+			<details class="q-answer">
+				<summary>Suggested answer</summary>
+				<p>So our solution above put together would be:</p>
+				<div class="code-block">
+					<div class="code-label">Python — Full Example Answer</div>
+					<pre>javelinFile = open("javelin.csv", "w")
+
+for counter in range(len(athleteArray)):
+	if athleteArray[counter].event == "Javelin" and athleteArray[counter].distance &gt;= 70:
+		javelinFile.write(athleteArray[counter].athleteName + ", "+ athleteArray[counter].club + "\n")
+
+javelinFile.close()</pre>
+				</div>
+			</details>
         </div>
-      </div>
+      
     </article>
 
     
-    <div class="placeholder-block">
-      <div class="placeholder-icon">📋</div>
-      <div class="placeholder-text">Practice Questions — File Handling</div>
-      <div class="placeholder-sub">Reading, writing and processing sequential and CSV files</div>
-    </div>
 
   </div>
   </div>
