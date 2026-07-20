@@ -45,8 +45,8 @@
     <ul>
       <li><a href="#intro">Introduction</a></li>
       <li><a href="#reading">Reading from a File</a></li>
-      <li><a href="#writing">Writing to a File</a></li>
       <li><a href="#csv">Reading from CSV File</a></li>
+      <li><a href="#writing">Writing to a File</a></li>
     </ul>
       </nav>
     </aside>
@@ -76,9 +76,10 @@
       <p>Let's say a program takes in pupil test scores for 50 pupils. Instead of the user typing in all of this data, the program could instead read this data from a file. This is more efficient as it removes the time taken to type in the 50 scores, and prevents human error when typing the data.</p>
 
       <h3>Reading a Single Value</h3>
+	  <img src="../resources/sdd/scores.png" alt="Contents of scores.txt showing the single value 85" class="img-float-right">
       <p>To retrieve saved data, open the file in read mode (<code>"r"</code>). The <code>read()</code> function retrieves all of the data at once into a single variable. Use this approach when the file only contains a single value that you have to read in.</p>
 
-      <div class="code-block">
+      <div class="code-block" style="clear:both;">
         <div class="code-label">Python — Reading a Single Value</div>
         <pre># Open the file for reading
 scorefile = open("scores.txt", "r")
@@ -88,9 +89,10 @@ print(highscore)
 # Close the file
 scorefile.close()</pre>
       </div>
+	  <img src="../resources/sdd/password.png" alt="Contents of passwd.txt showing the saved password" class="img-float-right">
       <p>This program accesses a file named <code>scores.txt</code> containing a high-score value and displays it.</p>
 
-      <div class="code-block">
+      <div class="code-block" style="clear:both;">
         <div class="code-label">Python — Reading and Checking a Password</div>
         <pre># Open the file for reading
 passwordfile = open("passwd.txt", "r")
@@ -174,6 +176,141 @@ passwordfile.close()</pre>
         </div>
       </div>
     </article>
+	
+	<article>
+		<h2 id="csv">Reading from CSV File</h2>
+		<p>A <strong>CSV</strong> (Comma Separated Values) file stores data that is separated by a comma.</p>
+
+		<p>For example, the following data on runners:</p>
+
+		<img src="../resources/sdd/CSV_example2.png" alt="A table of runner data with Name, Club and Time columns" class="img-float-right">
+
+		<p>Could be stored in a CSV file, with each field of data separated by a comma, with each row on a new line.</p>
+
+		<img src="../resources/sdd/file_hand_img1.png" alt="The same runner data stored as comma-separated lines in runners.csv" class="img-float-right" style="clear:right;">
+
+		<p>This allows us to "<strong>split</strong>" each line into its separate pieces of data.</p>
+		
+		<p>So the first piece of data on each line, before the first comma, is the <strong>Name</strong>, the second piece of data, between the first and second commas, is the <strong>Club</strong>, and the last piece of data on each line, is the <strong>Time</strong>.</p>
+
+		<p>This structure makes it easy to split the data into individual fields, facilitating the creation of data structures like parallel arrays or arrays of records. CSV files are also human-readable and can be easily created or edited with spreadsheet software, making them versatile for data exchange between different applications or systems.</p>
+
+		<p>The file above is called <strong>runners.csv</strong>. The following is example code for how to read and split the data from this type of file. In the example, we are going to split into a <strong>Parallel Array</strong>.</p>
+
+		<p>Declare my 3 empty parallel arrays: <code>names[]</code>, <code>clubs[]</code> & <code>times[]</code>.</p>
+		<div class="code-block" style="clear:both;">
+			<div class="code-label">Python — Declare 3 arrays</div>
+			 <pre>names = []
+clubs = []
+times = []</pre>
+		</div>
+		
+		<p>Open and read in the CSV file <strong>(runners.csv - this is the file you can see above.)</strong>.</p>
+		<p><strong>Remember, your python file must be in the same folder as the file you are trying to open, or you must use the correct filepath instead of just the file name.</strong></p>
+		<div class="code-block">
+			<div class="code-label">Python — Open the CSV File</div>
+			 <pre>runnerFile = open("runners.csv", "r")</pre>
+		</div>
+		  
+		  <p>Loop through each line in the file.</p>
+			<div class="code-block">
+			  <div class="code-label">Python — Loop Through Each Line</div>
+			  <pre>for line in runnerFile:</pre>
+			</div>
+		  
+		  <p>As there are 3 fields per line, we split each line by the comma. Each line then essentially becomes an array which we have called fields.</p>
+			<div class="code-block">
+			  <div class="code-label">Python — Split the Line</div>
+			  <pre>fields = line.split(",")</pre>
+			</div>
+
+		<p>The variable fields, as mentioned above, would be stored as an array. On the first line, fields would look like:</p>
+
+		<img src="../resources/sdd/fields.png" alt="The fields array holding the three values split from the first line of the CSV file">
+
+
+		  <p>We then add each field to the appropriate array, declared at the start of the program.</p>
+			<div class="code-block">
+			  <div class="code-label">Python — Add Each Field to an Array</div>
+			  <pre>names.append(fields[0])
+clubs.append(fields[1])
+
+# The default data type for data read from file is string. 
+# As time needs to be a real number, we need to do this manually at the 
+# time of import.
+times.append(float(fields[2]))</pre>
+			</div>
+		  
+		  <p>Close the file</p>
+		  <div class="code-block">
+			  <div class="code-label">Python — Close the file once we are finished reading.</div>
+			  <pre>runnerFile.close()</pre>
+			</div>
+		
+		<p>So the code would look like:</p>
+		<div class="code-block">
+			  <div class="code-label">Python — Reading a File and Storing in Parallel Arrays:</div>
+			  <pre>names = []
+clubs = []
+times = []
+
+runnerFile = open("runners.csv", "r")
+for line in runnerFile:
+	fields = line.split(",")
+	names.append(fields[0])
+	clubs.append(fields[1])
+	times.append(float(fields[2]))
+	
+runnerFile.close()</pre>
+		</div>
+		
+		<p>For an Array of Records, it is very similar, but instead of appending each individual piece of data to an array during the loop, we use each piece of data to build a record, which we then append to the array.</p>
+		
+		<div class="code-block">
+			<div class="code-label">Python — Reading a File and Storing in an Array of Records:</div>
+			<pre>runnersArray = []
+
+runnerFile = open("runners.csv", "r")
+for line in runnerFile:
+	fields = line.split(",")
+	runnerName = fields[0]
+	runnerClub = fields[1]
+	runnerTime = float(fields[2])
+	
+	runnerRecord = {"rName": runnerName, "rClub": runnerClub, "rTime": runnerTime}
+	runnersArray.append(runnerRecord)
+	
+runnerFile.close()</pre>
+		</div>
+
+		<h3 id="csv-video">Video Explainer</h3>
+
+		<p>Watch the following video for further information on CSV files and how we can read data in from these into either of the Higher Data Structures (Parallel Arrays or Array of Records)</p>
+
+		<div class="video-section">
+		  <div class="video-section-label">Watch</div>
+		  <p class="video-section-title">Reading from CSV Files — Video Explanation</p>
+		  <div class="video-embed">
+			<iframe 
+			width="560" 
+			height="315" 
+			src="https://www.youtube.com/embed/BW4ADskbbcM?si=nwOvSj-Sd7qVjuxj" 
+			title="YouTube video player" 
+			frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+			allowfullscreen></iframe>
+		  </div>
+		</div>
+
+		<div class="interactive-placeholder">
+			<div class="ip-icon">💻</div>
+			<div class="ip-body">
+				<div class="ip-title">Try It — Reading from CSV File</div>
+				<div class="ip-sub">Interactive editor coming here — read a CSV file line by line, split each line and load it into an array of records</div>
+			</div>
+		</div>
+    </article>
+
 
     <article>
       <h2 id="writing">Writing to a File</h2>
@@ -228,76 +365,7 @@ outputFile.close()</pre>
       </div>
     </article>
 
-    <article>
-      <h2 id="csv">Reading from CSV File</h2>
-      <p>Comma-separated values (<code>.csv</code>) files are often used to store table-like data. Values are stored line by line, with one line for each row of data, and columns separated by commas. The <code>split(",")</code> function separates each line into its individual fields.</p>
-      <p>Once a line has been split, you can populate either an <strong>array of records</strong> or a set of <strong>parallel 1D arrays</strong>.</p>
-
-      <h3>Reading into an Array of Records</h3>
-      <div class="code-block">
-        <div class="code-label">Python — CSV into an Array of Records</div>
-        <pre>runners = []
-runnerFile = open("runner.csv", "r")
-
-for line in runnerFile:
-    fields = line.split(",")
-    runnerName = fields[0]
-    runnerClub = fields[1]
-    runnerTime = float(fields[2])
-    runners.append({"name": runnerName, "club": runnerClub, "time": runnerTime})
-
-runnerFile.close()</pre>
-      </div>
-
-      <h3>Reading into Parallel Arrays</h3>
-      <div class="code-block">
-        <div class="code-label">Python — CSV into Parallel Arrays</div>
-        <pre>names = []
-clubs = []
-times = []
-
-runnerFile = open("runner.csv", "r")
-
-for line in runnerFile:
-    fields = line.split(",")
-    names.append(fields[0])
-    clubs.append(fields[1])
-    times.append(float(fields[2]))
-
-runnerFile.close()</pre>
-      </div>
-
-      <h3>Using the Data</h3>
-      <p>Once the records are loaded, loop through them to display or process the data.</p>
-      <div class="code-block">
-        <div class="code-label">Python — Displaying the Records</div>
-        <pre>for counter in range(len(runners)):
-    print("The runner " + runners[counter]["name"] + " from " + runners[counter]["club"] + " has a time of " + str(runners[counter]["time"]))</pre>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Reading from CSV File — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-file-csv"
-            title="Reading from CSV File Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Reading from CSV File</div>
-          <div class="ip-sub">Interactive editor coming here — read a CSV file line by line, split each line and load it into an array of records</div>
-        </div>
-      </div>
-    </article>
-
+    
     <div class="placeholder-block">
       <div class="placeholder-icon">📋</div>
       <div class="placeholder-text">Practice Questions — File Handling</div>
