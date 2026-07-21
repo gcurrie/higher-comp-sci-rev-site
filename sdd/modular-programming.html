@@ -330,6 +330,17 @@ minNamePos = findMin(<span style="color:#00838F;">pupils</span>)
 displayFirstNameInAlphabet(<span style="color:#00838F;">pupils</span>, <span style="color:#00838F;">minNamePos</span>)</pre>
       </div>
 
+      <div class="callout callout-success">
+        <div class="callout-icon">✅</div>
+        <div><strong>Advantages of Functions/Procedures & Parameters:</strong>
+          <ul>
+            <li>Functions & Procedures can be re-used multiple times throughout the program.</li>
+            <li>Different developers can work on different modules at the same time, speeding up development.</li>
+            <li>Modules can be tested independently of one another, making it easier to identify errors within a module, rather than the whole program.</li>
+          </ul>
+        </div>
+      </div>
+
       <div class="video-section">
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Functions, Procedures &amp; Parameters — Video Explanation</p>
@@ -351,8 +362,125 @@ displayFirstNameInAlphabet(<span style="color:#00838F;">pupils</span>, <span sty
         <div class="ip-icon">💻</div>
         <div class="ip-body">
           <div class="ip-title">Try It — Functions, Procedures &amp; Parameters</div>
-          <div class="ip-sub">Interactive editor coming here — write a function that returns a value and a procedure that displays output, and identify the formal and actual parameters</div>
+          <div class="ip-sub"><div class="trinket-embed" data-trinket="https://trinket.io/embed/python3/5075ac78941e" data-height="356"><button type="button" class="trinket-load"><span class="tl-icon">▶</span>Load interactive Python editor</button></div></div>
         </div>
+      </div>
+
+      <h3>Practice Questions - Identify Parameters</h3>
+      <p>The following questions will show you how to:</p>
+      <ul>
+        <li>Identify Formal & Actual parameters</li>
+        <li>Describe how Formal & Actual parameters are used</li>
+      </ul>
+      <h4>Question 1</h4>
+      <div class="practice-q">
+        <div class="q-label">Identify Parameters — 2023 q9 b)- 2 Mark</div>
+        <p>The most common parameter question, is to identify a formal & actual parameter. The following code was used in the Past Paper for 2023, Question 9.</p>
+
+        <img src="../resources/sdd/mod_prog_q1-1.png">
+
+        <p>We are answering part b</p>
+
+        <img src="../resources/sdd/mod_prog_q1-2.png">
+        
+        <p>To answer these questions, follow this process.</p>
+          
+        <h6>Step 1: Look for the module definition</h6>
+        <p>I can see on <strong>Line 1</strong> that this is a <strong>procedure</strong> with the name <strong>customerSearch</strong>. That means from <strong>Line 1 to the ...</strong> will be my module code.</p>
+
+        <h6>Step 2: Identify the formal parameters</h6>
+        <p>Now I know that the procedure definition starts on line 1, I can look for the <strong style="color:red;">formal parameters</strong> inside the <code>()</code> of the definition.</p>
+        <p>Don't be thrown off by the <strong>ARRAY OF STRING</strong>, and <strong>ARRAY OF INTEGER</strong> data types, we are just looking for the parameter names. They are:</p>
+        <ul>
+          <li style="color:red;">petNo</li>
+          <li style="color:red;">city</li>
+          <li style="color:red;">visits</li>
+        </ul>
+
+        <p>We can select any 1 of these as our formal parameter answer. This would gain <strong>1 Mark</strong>.</p>
+
+
+        <h6>Step 3: Identify the actual parameter</h6>
+        <p>Now we need to identify the <strong style="color:#00838F;">Actual Parameters</strong>. To do this, let's look for the Procedure call in the main block of the program. </p>
+        <p>We can see based on the <strong>...</strong>, that the procedure definition ends on Line 7, and the main program block begins on <strong>Line 20</strong>. We can start looking here for the procedure <code>customerSearch()</code> being called.</p>
+        <p>If we look at <strong>Line 24</strong>, we can see the procedure name in the main program block, with 3 parameters. As this is the procedure being called, this makes these parameters, <strong style="color:#00838F;">Actual Parameters</strong>.</p>
+
+        <p>So the <strong style="color:#00838F;">Actual Parameters</strong> are:</p>
+        <ul>
+          <li style="color:#00838F;">dogID</li>
+          <li style="color:#00838F;">branch</li>
+          <li style="color:#00838F;">noOfVisits</li>
+        </ul>
+
+        <p>Now, as the question says, <strong>Identify one formal parameter and its associated actual parameter</strong>, I can't just pick any of the 3. I must pick the one that corresponds with my selection of formal parameter.</p>
+
+        <p>The acceptable pairs are:</p>
+        <ul>
+          <li><span style="color:red;">petNo</span> -> <span style="color:#00838F;">dogID</span></li>
+          <li><span style="color:red;">city</span> -> <span style="color:#00838F;">branch</span></li>
+          <li><span style="color:red;">visits</span> -> <span style="color:#00838F;">noOfVisits</span></li>
+        </ul>
+
+        
+        <p>A correct formal Parameter gains <strong>1 Mark</strong>, and its associated actual parameter gains the <strong>2nd Mark</strong>.</p>
+
+   
+
+          <img src="../resources/sdd/mod_prog_q1_ans.png">
+
+      </div>
+		
+      <h4>Question 2</h4>
+      <div class="practice-q">
+        <div class="q-label">Describing Parameter Passing — 2018 q15 b)- 3 Mark</div>
+        <p>This type of question requires a bit more than just identification, although if you do correctly identify the parameters and put it into a sentence, you can get 2 out of 3.</p>
+        <p>The Description of Parameter Passing appears more infrequently, but can easily throw candidates off by seeming more complex than it actually is.</p>
+        <p>The code for 2018 Question 15 is:</p>
+
+        <img src="../resources/sdd/mod_prog_q2-1.png">
+
+        <p>We are answering part b</p>
+
+        <img src="../resources/sdd/mod_prog_q2-2.png">
+        
+        <p>To answer these questions, follow this process.</p>
+          
+        <h6>Step 1: Look for the module definition</h6>
+        <p>I can see on <strong>Line 1</strong> that this is a <strong>function</strong> with the name <strong>fastest_time</strong>. That means from <strong>Line 1 to the ...</strong> will be my module code.</p>
+
+        <h6>Step 2: Identify the formal parameters</h6>
+        <p>Now I know that the function definition starts on line 1, I can look for the <strong style="color:red;">formal parameters</strong> inside the <code>()</code> of the definition.</p>
+        <p>Don't be thrown off by the <strong>ARRAY OF REAL</strong> data type, we are just looking for the parameter names.</p>
+        <p>This time, there is only 1, and it is<span style="color:red;">list</span>.</p>
+        
+
+        <h6>Step 3: Identify the actual parameter</h6>
+        <p>Now we need to identify the <strong style="color:#00838F;">Actual Parameters</strong>. To do this, let's look for the Function call in the main block of the program. </p>
+        <p>We can see based on the <strong>...</strong>, that the function definition ends on Line 10, and the main program block begins on <strong>Line 21</strong>. We can start looking here for the function <code>fastest_time()</code> being called.</p>
+        <p>If we look at <strong>Line 23</strong> & <strong>Line 24</strong>, we can see the function name in the main program block appear twice, with a different parameter on each line. As this is the function being called, this makes these parameters, <strong style="color:#00838F;">Actual Parameters</strong>.</p>
+
+        <p>So the <strong style="color:#00838F;">Actual Parameters</strong> are:</p>
+        <ul>
+          <li style="color:#00838F;">heat1</li>
+          <li style="color:#00838F;">heat2</li>
+        </ul>
+
+        <h6>Step 4: How do I fit these parameters into a description?</h6>
+        <p>Now, as the question says, <strong>Describe how the parameters are used when executing line 23. Your answer should identify the formal and actual parameters.</strong>, I need to figure out how to describe the use of the parameters, specifically <strong>on Line 23</strong>.</p>
+        <p>So let's start there. Line 23 is <code>SET first_result TO fastest_time(heat1)</code>. As we identified, the parameter here is <strong style="color:#00838F;">heat1</strong> and it is being passed to the function <code>fastest_time()</code>, so let's start with that</p>
+        <p><em style="color:#6A1B9A;">The actual parameter heat1 is passed to the function fastest_time().</em></p>
+        <p>So what happens next, the function fastest_time starts running. Remember we are being asked to describe how the parameters are being used, so our answer only relates to this. Once the function starts running, our actual parameter becomes the formal parameter, which we already identified as <strong style="color:red;">list</strong>. That should make the next part of my answer.</p>
+        <p><em style="color:#6A1B9A;">When the function fastest_time() starts running on line 23, the actual parameter heat1, becomes the formal parameter list.</em></p>
+        <p>I have now correctly identified the formal and actual parameters in a description answer, but that only gets me <strong>2 out of 3, 1 for each parameter identification</strong>. The final mark is awarded for displaying knowledge about how a parameter actually works, as the formal is just a place holder pointing at the actual parameter.</p>
+        <p>So the final part of the answer is:</p>
+        <p><em style="color:#6A1B9A;">While the function runs, the formal parameter list is a pointer to the address of the actual parameter, it doesn't contain the actual values.</em></p>
+        <p>That final sentence would gain the final of the 3 marks.</p>
+
+        <img src="../resources/sdd/mod_prog_q2_ans.png">
+        
+        <p>So the full answer would be:</p>
+        <p><em style="color:#6A1B9A;">The actual parameter heat1 is passed to the function fastest_time(). When the function fastest_time() starts running on line 23, the actual parameter heat1, becomes the formal parameter list. While the function runs, the formal parameter list is a pointer to the address of the actual parameter, it doesn't contain the actual values.</em></p>
+
       </div>
     </article>
 
