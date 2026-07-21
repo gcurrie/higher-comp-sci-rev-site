@@ -60,77 +60,96 @@
         <span class="badge">SDD Unit 1</span>
         <span>Topic 8 of 10</span>
       </div>
-      <p>Modular programming breaks a program down into smaller, reusable sub-programs called <strong>modules</strong>, making code easier to write, test and maintain. This section covers functions, procedures and parameters, the scope of variables, and how to combine modules into a fully modular program.</p>
+      <p>Modular programming breaks a program down into smaller, reusable sub-programs called <strong>modules</strong>, making code easier to write, test and maintain. This section covers <strong>functions</strong>, <strong>procedures</strong> and <strong>parameters</strong>, <strong>the scope of variables</strong>, and <strong>how to combine modules into a fully modular program</strong>.</p>
+      <div class="callout callout-info">
+        <div class="callout-icon">🎯</div>
+        <div><strong>What you need to know at Higher.</strong> You must be able to: 
+          <ul>
+            <li>Read, Understand & Explain a Modular Program</li>
+            <li>Identify Formal & Actual Parameters</li>
+            <li>Identify/Describe/Explain the scope of a variable</li>
+            <li>Build a fully modular & maintainable program</li>
+            <li>Describe the benefits of Modular Programming</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-success">
+        <div class="callout-icon">✅</div>
+        <div>We will revisit the <strong>Advantages of Modular Programming</strong> throughout this page, and go into full detail at the end, but at a glance, here are some of the advantages:
+        <ul>
+          <li>Multiple developers can work on different modules concurrently (at the same time), speeding up development</li>
+          <li>Modules can be tested independently from one another, so it can be easier to pinpoint errors</li>
+          <li>Variables used in a module are only in memory while the module is running, making your program more efficient</li>
+          <li>Modules can be re-used throughout your program - (think <code>len()</code> being used throughout your programs at N5)</li>
+          <li>As each module has one job, it is easier to read and understand what the overall program is doing, and it is easier to find the modules that may need updated.</li>
+        </ul></div>
+      </div>
+      <h3 id="key-terms">Key Terms</h3>
+      <div class="key-terms">
+        <div class="key-term"><div class="term">Module</div><div class="def"><strong>Also referred to as a sub-program or sub-routine</strong>. A block of code that is separate from the main code of your program. It can be re-used throughout the program.</div></div>
+        <div class="key-term"><div class="term">Function</div><div class="def">A type of module that returns a value once it finishes running.</div></div>
+        <div class="key-term"><div class="term">Procedure</div><div class="def">A type of module that does not return a value once it finishes running.</div></div>
+        <div class="key-term"><div class="term">Calling</div><div class="def">The process of running the module.</div></div>
+        <div class="key-term"><div class="term">Parameters</div><div class="def">Data that is passed to a module at the point the module is called.</div></div>
+        <div class="key-term"><div class="term">Variable Scope</div><div class="def">Whether a variable is <strong>Global - (declared in the main section of your program)</strong> or <strong>Local - (a variable declared within a module)</strong></div></div>
+      </div>
     </article>
 
     <article>
       <h2 id="functions">Functions, Procedures &amp; Parameters</h2>
-      <p>Modular programming means breaking a program down into smaller <strong>sub-programs</strong> (also called <strong>modules</strong>). In Python there are two types of module: <strong>functions</strong> and <strong>procedures</strong>. Both are defined using the <code>def</code> keyword.</p>
+      <p>Modular programming means breaking a program down into smaller <strong>sub-programs</strong> (also called <strong>modules</strong>). At Higher, there are two types of module: <strong>functions</strong> and <strong>procedures</strong>. In Python, these are defined using the <code>def</code> keyword.</p>
 
       <h3>Functions</h3>
       <p>A function is a sub-program that <strong>returns a value</strong>, so the final line of the function should be a <code>return</code> statement.</p>
       <div class="code-block">
         <div class="code-label">Python — Basic Function Structure</div>
-        <pre>def get_speed(distance, time):
-  speed = distance / time
-  return speed</pre>
+        <pre>def calculateAnswer():
+  ans = 10 + 5
+  return ans</pre>
       </div>
-      <p>Calling <code>myTopSpeed = get_speed(110, 35)</code> would return approximately <code>3.14</code> and store it in <code>myTopSpeed</code>.</p>
+      <p>To <strong>call/run</strong> the module above, we use the following code <code>answer = calculateAnswer()</code>. This will run the module, and return the answer of <strong>15</strong>, and assign this value to the variable <code>answer</code>.</p>
 
+      <p>So our program to create and run the module above would be.</p>
       <div class="code-block">
-        <div class="code-label">Python — Function to Square a Number</div>
-        <pre># Function to square a number
-def square(n):
-  s = n * n
-  return s
+        <div class="code-label">Python — Create & Run a Function</div>
+        <pre>def calculateAnswer():
+  ans = 10 + 5
+  return ans
 
-# Main part of the program...
-number = int(input("Please enter a number"))
-sq = square(number)
-print(sq)</pre>
+answer = calculateAnswer()
+print(answer)</pre>
       </div>
 
-      <div class="code-block">
-        <div class="code-label">Python — Function Using the Find Max Algorithm</div>
-        <pre># A function using the find max algorithm
-def findmax(array_of_nums):
-  max = array_of_nums[0]
-  for index in range(1, len(array_of_nums)):
-    if array_of_nums[index] &gt; max:
-      max = array_of_nums[index]
-  return max
+      <p>As the above module <strong>returns a value</strong>, it is a <strong>Function</strong>.</p>
 
-# Main program...
-scores = [200, 55, 84, 21, 985, 300]
-high_score = findmax(scores)
-print(high_score)</pre>
-      </div>
+
 
       <h3>Procedures</h3>
       <p>A procedure is a sub-program that <strong>does not return a value</strong>. The key difference is the absence of a <code>return</code> statement. Procedures are used when data only needs to flow <em>into</em> the module (for example, to display output).</p>
       <div class="code-block">
         <div class="code-label">Python — Procedure to Add and Print</div>
-        <pre>def add_and_print(num1, num2):
-  total = num1 + num2
+        <pre>def add_and_print():
+  total = 10 + 5
   print("The total is", total)
 
 # Main program
-number1 = int(input("Please enter number 1"))
-number2 = int(input("Please enter number 2"))
-add_and_print(number1, number2)</pre>
+add_and_print()</pre>
       </div>
+
+      <p>The above procedure, <code>add_and_print</code>, does the same calculation as our function, but does not return the total. Instead it is printed within the procedure. As a result, when we call the procedure, we do not need the <code>variable = </code> part of the call, we can simply use the procedure's name with brackets, <code>add_and_print()</code>.</p>
 
       <table>
         <thead><tr><th></th><th>Procedure</th><th>Function</th></tr></thead>
         <tbody>
-          <tr><td>Returns a value?</td><td>No</td><td>Yes — one value via <code>return</code></td></tr>
+          <tr><td>Returns a value?</td><td>No</td><td>Yes — via <code>return</code></td></tr>
           <tr><td>Ends with</td><td>No <code>return</code> statement</td><td>A <code>return</code> statement</td></tr>
-          <tr><td>Used for</td><td>Performing an action (e.g. display output)</td><td>Calculating and returning a result</td></tr>
+          <tr><td>Used for</td><td>Performing an action (e.g. display output/write to file)</td><td>Calculating and returning a result</td></tr>
         </tbody>
       </table>
 
       <h3>Parameters</h3>
-      <p>A <strong>parameter</strong> is a piece of data that is passed into a function or procedure. This can be a static piece of data hardcoded into the program, or a variable. There are two types of parameter: <strong>actual</strong> and <strong>formal</strong>.</p>
+      <p>The above examples seem pretty pointless, however once we build in parameters to our modules, they become much more useful</p>
+      <p>A <strong>parameter</strong> is a piece of data that is passed into a function or procedure. This can be a static piece of data hardcoded into the program, or a variable. There are two types of parameter: <strong style="color:#00838F;">actual</strong> and <strong style="color:red;">formal</strong>.</p>
 
       <table>
         <thead><tr><th>Type</th><th>Where?</th><th>Definition</th></tr></thead>
@@ -138,47 +157,191 @@ add_and_print(number1, number2)</pre>
           <tr>
             <td><strong>Formal parameter</strong></td>
             <td>In the <code>def</code> statement (where the module is <em>defined</em>)</td>
-            <td>The named placeholder that receives the value</td>
+            <td>The named placeholder that receives the value. This is the variable name you will use throughout the module.</td>
           </tr>
           <tr>
             <td><strong>Actual parameter</strong></td>
-            <td>In the brackets when the module is <em>called</em> (where it is <em>used</em>)</td>
+            <td>In the brackets when the module is <em>called</em> - This is normally in the main body of your program.</td>
             <td>The real value or variable being passed in</td>
           </tr>
         </tbody>
       </table>
 
+      <p>Let's flesh out the example <strong>function</strong> &amp; <strong>procedure</strong> from above. For reference, in the following examples <strong style="color:#00838F;">actual</strong> parameters will be coloured teal, and <strong style="color:red;">formal</strong> parameters will be coloured red.</p>
+      <p>If we take the function <code>calculateAnswer()</code>, in the code below, we will add formal and actual parameters.</p>
       <div class="code-block">
-        <div class="code-label">Python — Formal Parameters (in the definition)</div>
-        <pre>def get_speed(distance, time):
-#             ^ formal   ^ formal
-  speed = distance / time
-  return speed</pre>
-      </div>
-      <div class="code-block">
-        <div class="code-label">Python — Actual Parameters (in the call)</div>
-        <pre>high_score = findmax(scores)
-#                    ^ actual
-total = add_two_numbers(num1, num2)
-#                       ^ actual ^ actual
-display_total(total)
-#             ^ actual</pre>
+        <div class="code-label">Python — Function using parameters </div>
+        <pre># Function definition with formal parameters
+def calculateAnswer(<span style="color:red;">num1</span>, <span style="color:red;">num2</span>):
+  ans = num1 + num2
+  return ans
+
+# Main program
+number1 = int(input("Enter number 1: "))
+number2 = int(input("Enter number 2: "))
+answer = calculateAnswer(<span style="color:#00838F;">number1</span>, <span style="color:#00838F;">number2</span>)
+print(answer)</pre>
       </div>
 
-      <div class="callout callout-tip">
-        <div class="callout-icon">💡</div>
-        <div>Exam questions (for example, 2019) often ask you to identify one formal and one actual parameter from a piece of code. Always check <em>where</em> you are looking — parameters in the <code>def</code> statement are formal; parameters in the brackets when the module is called are actual.</div>
+      <p>Now when the program runs, it takes in 2 variables, <code>number1</code> and <code>number2</code> as input, and passes them as <strong style="color:#00838F;">actual parameters</strong> to the function <code>calculateAnswer(<span style="color:#00838F;">number1</span>, <span style="color:#00838F;">number2</span>)</code>.</p>
+      <p>The function then runs, with the <strong style="color:#00838F;">actual parameters</strong> now passed to the <strong style="color:red;">formal parameters</strong> <code>num1</code> and <code>num2</code>. The parameters are received in the order they are passed in so you must be careful of this. </p>
+      <p>Once the function completes, the variable <code>ans</code> is returned and assigned to the variable <code>answer</code> in the main part of the program, where it is then printed.</p>
+
+      <p>Let's take a quick look at the procedure from above, <code>add_and_print()</code>.</p>
+      <div class="code-block">
+        <div class="code-label">Python — Procedure using parameters</div>
+        <pre>def add_and_print(<span style="color:red;">num1</span>, <span style="color:red;">num2</span>):
+  total = num1 + num2
+  print("The total is", total)
+
+# Main program
+number1 = int(input("Enter number 1: "))
+number2 = int(input("Enter number 2: "))
+add_and_print(<span style="color:#00838F;">number1</span>, <span style="color:#00838F;">number2</span>)</pre>
+      </div>
+
+      <p>Similar to the function above, now when the program runs, it takes in 2 variables, <code>number1</code> and <code>number2</code> as input, and passes them as <strong style="color:#00838F;">actual parameters</strong> to the procedure <code>add_and_print(<span style="color:#00838F;">number1</span>, <span style="color:#00838F;">number2</span>)</code>.</p>
+      <p>The procedure then runs, with the <strong style="color:#00838F;">actual parameters</strong> now passed to the <strong style="color:red;">formal parameters</strong> <code>num1</code> and <code>num2</code>. The parameters are received in the order they are passed in so you must be careful of this. </p>
+      <p>The procedure then prints the "The total is ...", based on the inputs from the user, and the parameters passed to it.</p>
+      <p>So if the user entered, <strong>35</strong> & <strong>2</strong>, the procedure would print <strong>The total is 37</strong></p>
+
+      <h3>A Larger Example</h3>
+      <p>Let's now take a look at a function that uses a find min, and a procedure that prints the answer. We will use a parallel array structure of pupils and marks</p>
+      <table>
+        <thead>
+          <tr><th>Index</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>pupils</td><td>Pearse</td><td>Sophia</td><td>Hugh</td><td>James</td><td>Elise</td><td>Iona</td><td>Quintin</td></tr>
+          <tr><td>marks</td><td>8</td><td>10</td><td>6</td><td>6</td><td>9</td><td>7</td><td>9</td></tr>
+        </tbody>
+      </table>
+
+      <p>First, let's do a generic find min algorithm, this will make it re-usable, which means it can find the min of both the pupil names, and the marks.</p>
+
+      <div class="code-block">
+        <div class="code-label">Function - Generic Find Min</div>
+        <pre>def findMin(<span style="color:red;">arrayList</span>):
+
+  min = arrayList[0]
+  pos = 0
+
+  for counter in range(len(arrayList)):
+    if arrayList[counter] &lt; min:
+      min = arrayList[counter]
+      pos = counter
+  
+  return pos</pre>
+      </div>
+
+      <p>Here we have a function that has 1 <strong style="color:red;">formal parameter</strong>, <code>arrayList</code>. This could be any single array that is passed to our function <code>findMin()</code>. The function finds the position of the smallest item in the list, and returns this position as <code>pos</code>.</p>
+
+      <p>Now let's create a procedure that will print the pupil with the lowest mark.</p>
+
+      <div class="code-block">
+        <div class="code-label">Procedure - Display Lowest</div>
+        <pre>def displayLowest(<span style="color:red;">pupilNames</span>, <span style="color:red;">pupilMarks</span>, <span style="color:red;">pos</span>):
+  print(pupilNames[pos] + " had the lowest mark of " + pupilMarks[pos])</pre>
+      </div>
+
+      <p>This procedure has 3 <strong style="color:red;">formal parameters</strong> <code>pupilNames</code>, <code>pupilMarks</code> &amp; <code>pos</code>. It uses the <code>pos</code> to print the message inside the procedure with the correct name and mark from each of the arrays <code>pupilNames</code> &<code>pupilMarks</code>.</p>
+      <p>Now let's call these modules:</p>
+
+      <div class="code-block">
+        <div class="code-label">Find Min with Modules</div>
+        <pre># Find Min Module
+def findMin(<span style="color:red;">arrayList</span>):
+
+      min = arrayList[0]
+      pos = 0
+
+      for counter in range(len(arrayList)):
+        if arrayList[counter] &lt; min:
+            min = arrayList[counter]
+            pos = counter
+  
+      return pos
+
+def displayLowest(<span style="color:red;">pupilNames</span>, <span style="color:red;">pupilMarks</span>, <span style="color:red;">pos</span>):
+      print(pupilNames[pos] + " had the lowest mark of " + pupilMarks[pos])
+
+
+# MAIN PROGRAM
+pupils = ["Pearse", "Sophia", "Hugh", "James", "Elise", "Iona", "Quintin"]
+marks = [8, 10, 6, 6, 9, 7, 9]
+
+# findMin called with 1 actual parameter, the array marks[].
+# Pos of smallest mark will be assigned to minPosition
+minPosition = findMin(<span style="color:#00838F;">marks</span>)
+
+# displayLowest called with 3 actual parameters, the arrays pupils[] and marks[], and the variable minPosition
+# The name and mark of the pupil with the lowest mark will be printed with the message.
+displayLowest(<span style="color:#00838F;">pupils</span>, <span style="color:#00838F;">marks</span>, <span style="color:#00838F;">minPosition</span>)
+</pre>
+      </div>
+
+      <p>The generic find min allows us to easily add a feature that will print the pupil name that is first in alphabetical order</p>
+
+      <div class="code-block">
+        <div class="code-label">Procedure - Display First Name in Alphabet</div>
+        <pre>def displayFirstNameInAlphabet(<span style="color:red;">pupilNames</span>, <span style="color:red;">pos</span>):
+  print(pupilNames[pos] + " is the first name in the class in alphabetical order")</pre>
+      </div>
+
+      <p>We could then just slot this into the program above with another call to findMin(), but this time with <code>pupilNames</code> as the parameter.</p>
+
+      <div class="code-block">
+        <div class="code-label">Find Min with Modules</div>
+        <pre># Find Min Module
+def findMin(<span style="color:red;">arrayList</span>):
+
+      min = arrayList[0]
+      pos = 0
+
+      for counter in range(len(arrayList)):
+        if arrayList[counter] &lt; min:
+            min = arrayList[counter]
+            pos = counter
+  
+      return pos
+
+def displayLowest(<span style="color:red;">pupilNames</span>, <span style="color:red;">pupilMarks</span>, <span style="color:red;">pos</span>):
+      print(pupilNames[pos] + " had the lowest mark of " + pupilMarks[pos])
+
+
+def displayFirstNameInAlphabet(<span style="color:red;">pupilNames</span>, <span style="color:red;">pos</span>):
+  print(pupilNames[pos] + " is the first name in the class in alphabetical order")
+
+# MAIN PROGRAM
+pupils = ["Pearse", "Sophia", "Hugh", "James", "Elise", "Iona", "Quintin"]
+marks = [8, 10, 6, 6, 9, 7, 9]
+
+# findMin called with 1 actual parameter, the array marks[].
+# Pos of smallest mark will be assigned to minPosition
+minPosition = findMin(<span style="color:#00838F;">marks</span>)
+
+# displayLowest called with 3 actual parameters, the arrays pupils[] and marks[], and the variable minPosition
+# The name and mark of the pupil with the lowest mark will be printed with the message.
+displayLowest(<span style="color:#00838F;">pupils</span>, <span style="color:#00838F;">marks</span>, <span style="color:#00838F;">minPosition</span>)
+
+# Re-using find Min to find smallest Name
+minNamePos = findMin(<span style="color:#00838F;">pupils</span>)
+
+displayFirstNameInAlphabet(<span style="color:#00838F;">pupils</span>, <span style="color:#00838F;">minNamePos</span>)</pre>
       </div>
 
       <div class="video-section">
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Functions, Procedures &amp; Parameters — Video Explanation</p>
         <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-functions-procedures"
-            title="Functions, Procedures and Parameters Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/46NBJiz2Jkg?si=KHG6iblUau1eDJ1s" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
             allowfullscreen>
           </iframe>
         </div>
