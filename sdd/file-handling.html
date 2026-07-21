@@ -151,6 +151,19 @@ passwordfile.close()</pre>
         <pre>names_file.close()</pre>
       </div>
 
+	  <p>Put that all together and we get:</p>
+      <div class="code-block">
+        <div class="code-label">Python — Read a full multi-line file</div>
+        <pre>names_file = open("names.txt", "r")
+
+names = names_file.readlines()
+
+for name in names:
+	print(name)
+
+names_file.close()</pre>
+      </div>
+
       <div class="video-section">
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Reading from a File — Video Explanation</p>
@@ -309,7 +322,7 @@ runnerFile.close()</pre>
 			  <li>The file we are reading from is called <code>threeLetters.txt</code>. We must use this filename</li>
 			  <li>Our solution must <strong>read</strong> data from the above file</li>
 			  <li>One of the words in the file, once loaded into the program, must be chosen at random and assigned to the variable <code>chosenWord</code></li>
-			  <li>The question asks for us to use <strong>"a design technique of our choice"</strong>. This means we can freely use psuedocode, and don't have to fully abide by things like <code>[counter]</code> for arrays or <strong>dot notation</strong> for array of records. Our logic still needs to be correct, but we can be a bit less formal in our solution</li>
+			  <li>The question asks for us to use <strong>"a design technique of our choice"</strong>. This means we can freely use pseudocode, and don't have to fully abide by things like <code>[counter]</code> for arrays or <strong>dot notation</strong> for array of records. Our logic still needs to be correct, but we can be a bit less formal in our solution</li>
 			</ul>
 
 			<h5>Working Through the Answer</h5>
@@ -317,10 +330,10 @@ runnerFile.close()</pre>
 			<h6>Step 1: What data Structure do I need</h6>
 			<p>I know that I am <strong>reading</strong> <code>threeLetters.txt</code>, but what data structure should I use?.</p>
 			<p>I am not given any sample data, but I can see that it is a <code>.txt</code> file. This means that it will be <strong>one piece of data per line</strong>. As there is only one piece per line, I am only storing a list of the same data type, so I can just use a basic array.</p>
-			<p>Remember, we can just use psuedocode for this solution. <strong>(You can use python or any other programming language if you want to)</strong></p>
+			<p>Remember, we can just use pseudocode for this solution. <strong>(You can use Python or any other programming language if you want to)</strong></p>
 	
 			<div class="code-block">
-				<div class="code-label">Initialiseing Array</div>
+				<div class="code-label">Initialising Array</div>
 				<pre>Initialise array called wordsArray of type string</pre>
 			</div>
 
@@ -337,10 +350,10 @@ runnerFile.close()</pre>
 
 			<h6>Step 3: Read the file into the data structure</h6>
 			<p>Now we need to read the data from the open file into our data structure.</p>
+			<p>In Python, we use the <code>readlines()</code> function for this, but we can do something like the following for pseudocode.</p>
 			<div class="code-block">
 				<div class="code-label">Read File</div>
-				<pre>Loop through each line in the file
-	Append the current word from threeLetters.txt to the wordsArray</pre>
+				<pre>Read each line of threeLetters.txt into wordsArray</pre>
 			</div>
 			
 			<p>Reading the contents of the file to your data structure would gain <strong>1 Mark</strong></p>
@@ -377,13 +390,12 @@ runnerFile.close()</pre>
 				<summary>Suggested answer</summary>
 				<p>So our solution above put together would be:</p>
 				<div class="code-block">
-					<div class="code-label">Psuedocode — Full Example Answer</div>
+					<div class="code-label">Pseudocode — Full Example Answer</div>
 					<pre>Initialise array called wordsArray of type string
 
 Open file threeLetters.txt
 
-Loop through each line in the file
-	Append the current word from threeLetters.txt to the wordsArray
+Read each line of threeLetters.txt into wordsArray
 	
 Close threeLetters.txt
 
@@ -398,14 +410,12 @@ chosenWord = wordsArray at position randomNumber</pre>
 					<pre>wordsArray = []
 
 wordsFile = open("threeLetters.txt", "r")
-wordList = wordsFile.readLines()
 
-for word in wordList:
-	wordsArray.append(word)
+wordsArray = wordsFile.readlines()
 	
 wordsFile.close()
 	
-randomNumber = random.randint(0, len(wordsArray)
+randomNumber = random.randint(0, len(wordsArray) - 1)
 chosenWord = wordsArray[randomNumber]</pre>
 				</div>
 			</details>
@@ -520,7 +530,7 @@ DECLARE athleteArray AS ARRAY OF RECORD athlete () * 800</pre>
 				<pre>javelinFile = open("javelin.csv", "w")</pre>
 			</div>
 			
-			<p>If using python, you must make sure it is open in write mode - <code>"w"</code>.</p>
+			<p>If using Python, you must make sure it is open in write mode - <code>"w"</code>.</p>
 			
 			<p>This, along with step 5, would gain <strong>1 Mark</strong>.</p>
 
@@ -567,7 +577,7 @@ DECLARE athleteArray AS ARRAY OF RECORD athlete () * 800</pre>
 			
 			<p>This, along with step 1, gains <strong>1 Mark</strong>.</p>
 			
-			<p>The above was in python, but you can see a more basic pseudocode version in the marking instructions below. <strong> Remember that for a "programming language of your choice" question, you must use the array, and dot notation correctly as I have done above. You only get away with the sample answer in the marking instructions below if it is a "design technique of your choice question"</strong>.</p>
+			<p>The above was in Python, but you can see a more basic pseudocode version in the marking instructions below. <strong> Remember that for a "programming language of your choice" question, you must use the array, and dot notation correctly as I have done above. You only get away with the sample answer in the marking instructions below if it is a "design technique of your choice question"</strong>.</p>
 		    <img src="../resources/sdd/file_hand_q2_ans.png">
 			<details class="q-answer">
 				<summary>Suggested answer</summary>
