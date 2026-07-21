@@ -836,6 +836,74 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
   margin: .6rem 0;
 }
 
+/* ── Collapsible practice questions ───────────────────────────
+   nav.js converts each .practice-q into <details class="practice-q">
+   with a gold banner summary. Without JS they stay fully expanded. */
+details.practice-q {
+  padding: 0;
+  overflow: hidden;
+  margin: .9rem 0;
+}
+
+details.practice-q > summary {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .8rem 1.1rem;
+  background: var(--gold);
+  cursor: pointer;
+  list-style: none;
+  transition: filter .15s;
+}
+
+details.practice-q > summary::-webkit-details-marker { display: none; }
+details.practice-q > summary:hover { filter: brightness(1.06); }
+details.practice-q > summary:focus-visible {
+  outline: 3px solid var(--green-primary);
+  outline-offset: -3px;
+}
+
+details.practice-q .pq-icon { font-size: 1.15rem; line-height: 1; flex-shrink: 0; }
+
+details.practice-q .pq-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+details.practice-q .pq-kicker {
+  font-size: .68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: rgba(0,0,0,.62);
+  line-height: 1.4;
+}
+
+details.practice-q .pq-label {
+  font-size: .93rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.35;
+}
+
+details.practice-q .pq-chevron {
+  flex-shrink: 0;
+  font-size: .7rem;
+  color: rgba(0,0,0,.62);
+}
+
+details.practice-q:not([open]) .pq-chevron::before { content: '\25B6'; }
+details.practice-q[open] .pq-chevron::before { content: '\25BC'; }
+
+details.practice-q .pq-body {
+  padding: 1.1rem 1.25rem;
+  border-top: 1px solid var(--gold);
+}
+
+details.practice-q .pq-body > *:first-child { margin-top: 0; }
+
 .practice-q .q-label {
   font-size: .75rem;
   font-weight: 700;

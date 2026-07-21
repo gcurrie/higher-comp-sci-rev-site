@@ -76,10 +76,46 @@
   </div>
 </footer>`;
 
+  // Collapse each practice question behind a gold banner so pages are less
+  // cluttered. The question's existing .q-label becomes the banner text, and
+  // any nested "Suggested answer" stays collapsed independently inside.
+  // If this never runs, the questions simply render fully expanded as before.
+  function collapsePracticeQuestions() {
+    document.querySelectorAll('div.practice-q').forEach(function (q) {
+      const label = q.querySelector(':scope > .q-label');
+      if (!label) return;
+
+      const details = document.createElement('details');
+      details.className = 'practice-q';
+
+      const summary = document.createElement('summary');
+      summary.innerHTML =
+        '<span class="pq-icon" aria-hidden="true">✏️</span>' +
+        '<span class="pq-text">' +
+          '<span class="pq-kicker">Practice Question</span>' +
+          '<span class="pq-label"></span>' +
+        '</span>' +
+        '<span class="pq-chevron" aria-hidden="true"></span>';
+      summary.querySelector('.pq-label').textContent = label.textContent.trim();
+
+      const body = document.createElement('div');
+      body.className = 'pq-body';
+
+      label.remove();
+      while (q.firstChild) body.appendChild(q.firstChild);
+
+      details.appendChild(summary);
+      details.appendChild(body);
+      q.replaceWith(details);
+    });
+  }
+
   function init() {
     document.body.insertAdjacentHTML('afterbegin', navHTML);
     document.body.insertAdjacentHTML('afterbegin', bannerHTML);
     document.body.insertAdjacentHTML('beforeend', footerHTML);
+
+    collapsePracticeQuestions();
 
     // Mobile nav toggle
     document.getElementById('nav-toggle').addEventListener('click', function () {
