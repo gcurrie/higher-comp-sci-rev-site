@@ -46,7 +46,6 @@
       <li><a href="#intro">Introduction</a></li>
       <li><a href="#functions">Functions, Procedures &amp; Parameters</a></li>
       <li><a href="#scope">Scope of Variables</a></li>
-      <li><a href="#tying">Tying it All Together</a></li>
       <li><a href="#fully-modular">Fully Modular Program</a></li>
       <li><a href="#benefits">Benefits of Modular Programming</a></li>
     </ul>
@@ -486,28 +485,41 @@ displayFirstNameInAlphabet(<span style="color:#00838F;">pupils</span>, <span sty
 
     <article>
       <h2 id="scope">Scope of Variables</h2>
-      <p>The <strong>scope</strong> of a variable determines where in a program it can be used. Variables are either <strong>global</strong> or <strong>local</strong>.</p>
+      <p>The <strong>scope</strong> of a variable determines where in a program it can be used. Variables are either <strong style="color:rgb(95, 119, 54);">global</strong> or <strong style="color:#9A6D00">local</strong>.</p>
 
       <h3>Global Variables</h3>
       <p><strong>Global variables can be used anywhere in the program.</strong> They are declared in the main program, outside any function block (with no indentation).</p>
       <div class="code-block">
         <div class="code-label">Python — Global Variables</div>
-        <pre>username = "admin"
-scores = [22, 5, 10, 18, 9]</pre>
+        <pre><span style="color:rgb(95, 119, 54);">username</span> = "admin"
+<span style="color:rgb(95, 119, 54);">scores</span> = [22, 5, 10, 18, 9]
+
+def login():
+    
+    <span style="color:#9A6D00;">enteredUserName</span> = input("enter your username: ")
+  
+    if <span style="color:#9A6D00;">enteredUserName</span> == <span style="color:rgb(95, 119, 54);">username</span>:
+      print("You are now logged in and can view the scores")
+    else:
+      print("invalid username")</pre>
       </div>
+
+      <p>In the example above, <code>username</code> is declared in the main part of the program (no indentation), and as such can be used in the main block, or in any module that is created. We can see <code>username</code> used in the <code>login()</code> procedure.</p>
       <p>Global variables should not be over-used — they stay in memory for longer than necessary, which is less efficient and increases the risk of errors.</p>
 
       <h3>Local Variables</h3>
-      <p><strong>Local variables can only be used in one section of code</strong> (for example, in a single function or procedure). In the example below, <code>total</code> is local to the function and cannot be accessed outside it.</p>
+      <p><strong>Local variables can only be used in the block of code in which they are declared</strong> (for example, in a single function or procedure). In the example below, <code>total</code> is local to the function and cannot be accessed outside it.</p>
       <div class="code-block">
         <div class="code-label">Python — Local Variables</div>
         <pre>def myfunction(param1, param2):
-  total = param1 + param2
-  return total
+  <span style="color:#9A6D00;">total</span> = <span style="color:#9A6D00;">param1</span> + <span style="color:#9A6D00;">param2</span>
+  return <span style="color:#9A6D00;">total</span>
 
-number1 = 5
-number2 = myfunction(number1, 6)</pre>
+<span style="color:rgb(95, 119, 54);">number1</span> = 5
+<span style="color:rgb(95, 119, 54);">number2</span> = myfunction(number1, 6)</pre>
       </div>
+
+      <p>If we attempted to use <code>total</code> in the main block of code, our program would crash with <strong>total not defined</strong>.</p>
 
       <div class="callout callout-success">
         <div class="callout-icon">✅</div>
@@ -521,6 +533,7 @@ number2 = myfunction(number1, 6)</pre>
       </div>
 
       <h3>Making a Global Variable Accessible</h3>
+      <p><strong>The following information is python specific and does not apply to the exam. All you have to know for the exam is in the above section.</strong></p>
       <p>Using the <code>global</code> keyword allows a function to reference and change a program-level (global) variable.</p>
       <div class="code-block">
         <div class="code-label">Python — The global Keyword</div>
@@ -552,86 +565,127 @@ heaviest = findMax(bmis)</pre>
         <div class="video-section-label">Watch</div>
         <p class="video-section-title">Scope of Variables — Video Explanation</p>
         <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-scope"
-            title="Scope of Variables Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/6aH-5Kg6-1E?si=lJtul_r1ZNDraNTo" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
             allowfullscreen>
           </iframe>
         </div>
       </div>
 
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Scope of Variables</div>
-          <div class="ip-sub">Interactive editor coming here — experiment with local and global variables and see which are accessible inside a function</div>
-        </div>
-      </div>
-    </article>
+      <h3>Practice Questions - Variable Scope</h3>
+      <p>The following 3 questions are all part of 2023 part d), and will go through scope from identification, to description and the explanation of benefits. Essentially, nearly everything you could be asked in an exam.</p>
 
-    <article>
-      <h2 id="tying">Tying it All Together</h2>
-      <p>Functions and procedures are combined to build a complete program. Remember:</p>
+      <h4>Question 1</h4>
+      <div class="practice-q">
+        <div class="q-label">Identify Variable Scope — 2023 q9 d) (i)- 1 Mark</div>
+        <p>This is the same overall question as practice question 1 from the above section on parameters.</p>
+        <p>As a reminder, the code we are being asked about is:</p>
+
+        <img src="../resources/sdd/mod_prog_q1-1.png">
+
+        <p>We are answering part d) (i)</p>
+
+        <img src="../resources/sdd/mod_prog_q3-1.png">
+        
+        <p>Here, we are being asked to <strong>Identify</strong> a variable with a local scope.</p>
+        <p>As we are identifying a local variable, <strong>we need to look for one that is declared in the procedure</strong>.</p>
+        <p>As we did in practice question 1 from the parameters section, we know that the procedure code runs from <strong>line 1 to line 7</strong>. We need to look in here for a variable that is declared.</p>
+        <p>Unfortunately, there are none that are declared, there are only the formal parameters. <strong>However, formal parameters can only be used in the module that they are defined in, so they count as <span style="color:#9A6D00;">Local Variables</span></strong>.</p>
+        <p>That means we have 3 options:</p>
+        <ul>
+          <li>petNo</li>
+          <li>city</li>
+          <li>visits</li>
+        </ul>
+
+        <p>The marking instructions are:</p>
+        <img src="../resources/sdd/mod_prog_q3-1_ans.png">
+        <p>Technically, the loop counter used in the procedure also counts as a local variable, as it can only be used within the procedure as well.</p>
+        <p>For reference, the <strong><span style="color:rgb(95, 119, 54);">Global</span> </strong> variables are: <strong>dogID</strong>, <strong>dogName</strong>, <strong>branch</strong> & <strong>noOfVisits</strong> as these are declared in the main program block and can be used anywhere in the program.</p>
+
+      </div>
+
+      <h4>Question 2</h4>
+      <div class="practice-q">
+        <div class="q-label">Identify Variable Scope — 2023 q9 d) (ii)- 1 Mark</div>
+        <p>This is the same overall question as practice question 1.</p>
+        <p>As a reminder, the code we are being asked about is:</p>
+
+        <img src="../resources/sdd/mod_prog_q1-1.png">
+
+        <p>We are answering part d) (ii)</p>
+
+        <img src="../resources/sdd/mod_prog_q3-2.png">
+        
+        <p>Here, we are being asked to <strong>Describe</strong> the scope of the local variable from part (i).</p>
+        <p>Now, we have identified that the Local variables are:</p>
+        <ul>
+          <li>petNo</li>
+          <li>city</li>
+          <li>visits</li>
+        </ul>
+        <p>So let's pick, petNo. Although this could apply to any of the 3.</p>
+        <p>To describe the scope, is to describe where it can be used, so to answer this question, we just need to say where our chosen local variable can be used. We know that it can be used in the procedure as it is local, but not in the main program block on lines 20 to 24. So all we need to say is:</p>
+        <p><em style="color:#6A1B9A;">The variable petNo is local as it can only be used in the customerSearch procedure.</em></p>
+        <p>You could also quote line numbers (1 to 7 to be more specific)</p>
+        <p>The marking instructions are below:</p>
+        <img src="../resources/sdd/mod_prog_q3-2_ans.png">
+        
+      </div>
+
+      <h4>Question 3</h4>
+      <div class="practice-q">
+        <div class="q-label">Identify Variable Scope — 2023 q9 d) (iii)- 1 Mark</div>
+        <p>This is the same overall question as practice question 1 & 2.</p>
+        <p>As a reminder, the code we are being asked about is:</p>
+
+        <img src="../resources/sdd/mod_prog_q1-1.png">
+
+        <p>We are answering part d) (iii)</p>
+
+        <img src="../resources/sdd/mod_prog_q3-3.png">
+        
+        <p>Here, we are being asked to <strong>Explain</strong> why local variables make a program more maintainable.</p>
+        <p>Remember, maintainability means: <em>how easily another programmer can understand the code and make changes to it with minimum difficulty.</em> Things like meaningful variable names, indentation, internal commentary and splitting the program into modules all make a program more maintainable.</p>
+
+        <p>So essentially, we are being asked about the <strong>benefits of modular programming</strong>, specifically relating to <strong>local variables</strong> & <strong>maintainability</strong>.</p>
+        <p>So let's refresh our memory on the benefits related to variable scope and try to identify which relate to maintainability.</p>
+        <div class="callout callout-success">
+          <div class="callout-icon">✅</div>
+          <div><strong>Advantages of local variables:</strong>
+            <ul>
+              <li>They are released from memory when no longer needed, so they free up resources. - <strong>Talking about memory usage, so not maintainable, but a good answer if asked about efficiency</strong> <span class="verdict" title="Not a maintainability answer">❌</span></li>
+              <li>The same name can be re-used in different parts of the program without the variables interfering with each other. - <strong>talks about variable naming, this is covered by maintainability</strong> - <span class="verdict" title="Valid maintainability answer">✅</span></li>
+              <li>You cannot accidentally affect another part of the program, which avoids logic errors. - <strong>removing possibility of accidental errors is covered by maintainability, as without these it will be easier to maintain</strong> - <span class="verdict" title="Valid maintainability answer">✅</span></li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <p>So, as it is 1 mark, we can pick either advantage 2 or 3 from the above options. <strong>Remember the question is asking about maintainability, not efficiency, this changes our answer</strong>.</p>
+
+        <p>As this is an <strong>Explain</strong> question, we can't simply state a fact and get the mark, you need to clearly demonstrate the advantage in terms of maintainability:</p>
+        <p><em style="color:#6A1B9A;">If you have multiple modules that have local variables with the same names, updating 1 module won't affect the others.</em></p>
+        <p>or:</p>
+        <p><em style="color:#6A1B9A;">Using more local variables means less reliance on global variables, which reduces the chance of accidentally updating a global variable in a module.</em></p>
+        <p>The marking instructions are below:</p>
+        <img src="../resources/sdd/mod_prog_q3-3_ans.png">
+        
+      </div>
+      
+      <p>Other types of questions you could get are:</p>
       <ul>
-        <li>A <strong>function</strong> returns a value (data going <em>out</em>).</li>
-        <li>A <strong>procedure</strong> is like a function, but without a <code>return</code> statement.</li>
-        <li>Both functions and procedures can accept passed <strong>parameters</strong>.</li>
+        <li><em>State the scope of the variable [variableName from code]</em></li>
+        <li><em>Describe what is meant by the scope of a variable </em></li>
+        <li><em>Explain why local variables are more efficient than using global</em></li>
       </ul>
 
-      <p>A good approach is to begin by writing the module <strong>stubs</strong> (just the <code>def</code> lines) before filling in the detail of each one.</p>
-      <div class="code-block">
-        <div class="code-label">Python — Module Stubs</div>
-        <pre># Read song data from text file
-def read_file():
-
-# Count number of downloads for each song
-def count_downloads(songdata):
-
-# Find song with most downloads
-def find_most_dl(howmany):
-
-# Display song info
-def display_info(mostpopular, songdata):</pre>
-      </div>
-
-      <p>Once the modules are defined, add the <strong>main algorithm</strong> at the end of the file. This calls each module in turn, passing data between them.</p>
-      <div class="code-block">
-        <div class="code-label">Python — Main Algorithm</div>
-        <pre># Main algorithm
-s = read_file()
-h = count_downloads(s)
-m = find_most_dl(h)
-display_info(m, s)</pre>
-      </div>
-
-      <div class="callout callout-info">
-        <div class="callout-icon">ℹ️</div>
-        <div>The order you write the modules in the file doesn't matter, so long as they all come <strong>before</strong> the main algorithm.</div>
-      </div>
-
-      <div class="video-section">
-        <div class="video-section-label">Watch</div>
-        <p class="video-section-title">Tying it All Together — Video Explanation</p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/placeholder-tying-together"
-            title="Tying it All Together Explained"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="interactive-placeholder">
-        <div class="ip-icon">💻</div>
-        <div class="ip-body">
-          <div class="ip-title">Try It — Tying it All Together</div>
-          <div class="ip-sub">Interactive editor coming here — combine several modules and a main algorithm into one working program</div>
-        </div>
-      </div>
     </article>
 
     <article>

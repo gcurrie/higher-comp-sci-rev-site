@@ -827,6 +827,15 @@ a:hover { color: var(--green-medium); text-decoration: underline; }
 
 .content-article tr:nth-child(even) td { background: var(--cream); }
 
+/* Inline ✅ / ❌ verdict marker used in worked answers */
+.verdict {
+  font-size: 1.05rem;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: -.1em;
+  margin-left: .15rem;
+}
+
 /* Practice questions */
 .practice-q {
   background: var(--gold-light);
